@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513591393;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513645519;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -73,7 +73,7 @@ a {
 					<li class="layui-nav-item layui-this"><a href="#" data-url="">后台首页</a>
 					</li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('article/articlelist'); ?>">课程管理</a></li>
+						data-url="<?php echo url('course/index'); ?>">课程管理</a></li>
 					<li class="layui-nav-item"><a href="#"
 						data-url="http://www.qq.com">企业管理</a></li>
 					<li class="layui-nav-item"><a href="#"
