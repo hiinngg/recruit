@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513782368;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -50,7 +51,7 @@ a {
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-right">
 				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="http://t.cn/RCzsdCq" class="layui-nav-img"> {$adminuser}
+						src="http://t.cn/RCzsdCq" class="layui-nav-img"> <?php echo $adminuser; ?>
 				</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -60,7 +61,7 @@ a {
 							<a href="">安全设置</a>
 						</dd>
 					</dl></li>
-				<li class="layui-nav-item"><a href="{:url('index/logout')}">退出</a>
+				<li class="layui-nav-item"><a href="<?php echo url('index/logout'); ?>">退出</a>
 				</li>
 			</ul>
 		</div>
@@ -74,26 +75,26 @@ a {
 					<li class="layui-nav-item"><a href="#">课程管理</a>
 							<dl class="layui-nav-child">
 							<dd>
-								<a data-url="{:url('course/index')}" href="javascript:;">课程类目管理</a>
+								<a data-url="<?php echo url('course/index'); ?>" href="javascript:;">课程类目管理</a>
 							</dd>
 							<dd>
-								<a data-url="{:url('course/courseList')}" href="javascript:;">课程列表</a>
+								<a data-url="<?php echo url('course/courseList'); ?>" href="javascript:;">课程列表</a>
 							</dd>
 						</dl>
 						
 						</li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="{:url('company/companyList')}">企业管理</a></li>
+						data-url="<?php echo url('company/companyList'); ?>">企业管理</a></li>
 					<li class="layui-nav-item"><a href="#"
 						data-url="http://www.qq.com">会员管理</a></li>
 					<li class="layui-nav-item "><a class=""
 						href="javascript:;">页面设置</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a data-url="{:url('page/pageList')}" href="javascript:;">栏目编辑</a>
+								<a data-url="<?php echo url('page/pageList'); ?>" href="javascript:;">栏目编辑</a>
 							</dd>
 							<dd>
-								<a data-url="{:url('nav/navList')}" href="javascript:;">导航设置</a>
+								<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
 							</dd>
 						</dl>
 						</li>

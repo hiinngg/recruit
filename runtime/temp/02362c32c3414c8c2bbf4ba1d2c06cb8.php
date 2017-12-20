@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1513772608;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513786363;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,25 +98,74 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{:url('index/index')}" >logo</a>
+      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse " id="mynav">
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
-      <li  data-c="index" class="active"><a href="{:url('index/index')}">首页 <span class="sr-only">(current)</span></a></li>
-      <li data-c="course"><a href="{:url('course/courseList')}">职学院</a></li>
-      <li data-c="job"><a href="{:url('job/jobList')}">找工作</a></li>
-      <li data-c="talent"><a href="{:url('talent/talent')}">找人才</a></li>
-      <li data-c='register'><a href="{:url('companyadmin/index/login')}">企业入口</a></li>
+      <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
+      <li data-c="course"><a href="<?php echo url('course/courseList'); ?>">职学院</a></li>
+      <li data-c="job"><a href="<?php echo url('job/jobList'); ?>">找工作</a></li>
+      <li data-c="talent"><a href="<?php echo url('talent/talent'); ?>">找人才</a></li>
+      <li data-c='register'><a href="<?php echo url('companyadmin/index/login'); ?>">企业入口</a></li>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- {__CONTENT__}
+ 
+<div class="container">
+<h2 class="text-center">找工作</h2>
+
+<div class="sever row">
+<div class="col-md-3 col-center col-md-offset-2" style="">
+<img src="" width="210px"  height="120px"  alt="" />
+ <button type="button" class="btn " style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+</div>
+<div class="col-md-3 col-center col-md-push-2">
+<img src="" width="210px"  height="120px"  alt="" />
+<button type="button" class="btn" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+</div>
+<div class="col-md-3 col-center col-md-offset-2">
+<img src="" width="210px"  height="120px"  alt="" />
+<button type="button" class="btn" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+</div>
+<div class="col-md-3 col-center col-md-push-2">
+<img src="" width="210px"  height="120px"  alt="" />
+<button type="button" class="btn" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+</div>
+<div class="col-md-3 col-center col-md-offset-2">
+<img src="" width="210px"  height="120px"  alt="" />
+<button type="button" class="btn" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+</div>
+</div>
+<button type="button"  c class='center-block btn btn-default'>更多工作</button>
+
+
+
+<div class="container sever">
+<h2 class="text-center">内推企业</h2>
+
+<div class="swiper-container sever" id="company-list">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide company-logo">Slide 1</div>
+        <div class="swiper-slide company-logo">Slide 2</div>
+        <div class="swiper-slide company-logo">Slide 3</div>
+        <div class="swiper-slide company-logo">Slide 4</div>
+        <div class="swiper-slide company-logo">Slide 5</div>
+        <div class="swiper-slide company-logo">Slide 6</div>
+        <div class="swiper-slide company-logo">Slide 7</div>
+        <div class="swiper-slide company-logo">Slide 8</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
@@ -213,10 +263,10 @@ body,html{
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
 /*common*/
-{present name="nav"}
+<?php if(isset($nav)): ?>
 $("#mynav").find("li").removeClass("active");
-$("#mynav").find("li[data-c='{$nav}']").addClass("active")
-{/present}
+$("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
+<?php endif; ?>
 
 /*common  */
 
@@ -253,7 +303,7 @@ layui.use(['layer', 'form','upload'], function(){
     	 return;
      }	  
     $.ajax({
-    	url:"{:url('companyReg')}",
+    	url:"<?php echo url('companyReg'); ?>",
     	data:{data:data.field,images:images},
     	type:"post",
     	beforeSend:function(){
@@ -278,7 +328,7 @@ layui.use(['layer', 'form','upload'], function(){
   /* /企业注册*/
 	  upload.render({
 			   elem: '.companyimg',
-			  url: "{:url('imgUpload')}",
+			  url: "<?php echo url('imgUpload'); ?>",
 			  field:"image",
 			  multiple:true,
 	         before: function(obj){ 
@@ -309,7 +359,7 @@ layui.use(['layer', 'form','upload'], function(){
   //点击进入课程内页
   $(".course-item").on("click",function(){
 	  
-	  location.href="{:url('course/courseDetail')}"
+	  location.href="<?php echo url('course/courseDetail'); ?>"
 	  
   })
   /* 课程 */

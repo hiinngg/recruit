@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\nav\navlist.html";i:1513780337;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +24,15 @@
 	</blockquote>
 		
 	
-    {present name="none"}
+    <?php if(isset($none)): ?>
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
 			<p>这里一个导航都没有</p>			
 		</div>
-		{else/}
+		<?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
-	{/present}
+	<?php endif; ?>
     <script src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
 	var tranStatus={
@@ -43,12 +44,12 @@
 			var table = layui.table;
 			var layer=layui.layer;		
 			var form = layui.form;
-		{notpresent  name="none"}
+		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
 		var tableIns = table.render({
 			        elem:"#table",	
 			       
-			        url: "{:url('nav/navList')}",
+			        url: "<?php echo url('nav/navList'); ?>",
 			        cols:[[
 			         {checkbox: true},
 			         {field: 'navid', title: '编号' },
@@ -64,7 +65,7 @@
 				});
 			 
 			 
-			{/notpresent};
+			<?php endif; ?>;
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 					  var data = obj.data; //获得当前行数据
@@ -85,7 +86,7 @@
 
 					  } else if(layEvent === 'del'){ //删除
 					    layer.confirm('确定删除该新闻么', function(index){
-					    	  _ajax("{:url('articleDel')}",{postid:data.postid},dtd);
+					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd);
 							  dtd.done(function(){
 								  obj.del();
 								  layer.close(index);
@@ -95,7 +96,7 @@
 						 layer.prompt({title:"请输入新的导航名字",value:data.name},function(value,index,elem){
 
                          layer.closeAll();
-                             _ajax("{:url('nameChange')}",{navid:data.navid,name:value},dtd);
+                             _ajax("<?php echo url('nameChange'); ?>",{navid:data.navid,name:value},dtd);
                              dtd.done(function(){
                                  obj.update({
                                      name:value
@@ -106,7 +107,7 @@
                       })
 					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("{:url('statusChange')}",{navid:data.navid,status:1},dtd);
+						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:1},dtd);
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>';
 								  obj.update({
@@ -115,7 +116,7 @@
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("{:url('statusChange')}",{navid:data.navid,status:0},dtd);
+						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:0},dtd);
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>';
 						  obj.update({
@@ -125,7 +126,7 @@
 					
 					  }else if(layEvent === 'moveUp'){
 						  
-					  _ajax("{:url('sortChange')}",{navid:data.navid,sortid:data.sortid},dtd);
+					  _ajax("<?php echo url('sortChange'); ?>",{navid:data.navid,sortid:data.sortid},dtd);
 						 dtd.done(function() {
                             tableIns.reload();
 

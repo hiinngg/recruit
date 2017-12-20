@@ -29,4 +29,41 @@ class Nav extends Common
         }
         return $this->fetch();
     }
+
+   public function  sortChange(){
+
+        $post=$this->request->post();
+
+        Db::name("nav")->where("sortid",$post['sortid']-1)->setInc("sortid");
+        Db::name("nav")->where("navid",$post['navid'])->setDec('sortid');
+
+        return 1;
+
+
+    }
+
+    public function statusChange()
+    {
+        $post = $this->request->post();
+        if (Db::name('nav')->where("navid", $post['navid'])->update([
+            'status' => $post['status']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public function nameChange(){
+        $post = $this->request->post();
+        if (Db::name('nav')->where("navid", $post['navid'])->update([
+            'name' => $post['name']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+
+    }
 }
