@@ -40,7 +40,10 @@ function transOneImage($path, $tgpath, $width = "640", $height = "")
         unset($tgpathArr[count($tgpathArr) - 1]);
         $tgpathArr = implode("/", $tgpathArr);
     }
-    
+    $datefloder =".".$tgpath;
+    if (! file_exists($datefloder)) {
+        mkdir($datefloder);
+    } 
     $temp_arr = explode("/", $path);
     $fileName = $temp_arr[count($temp_arr) - 1];
     
@@ -52,6 +55,14 @@ function transOneImage($path, $tgpath, $width = "640", $height = "")
         ->save("." . $newimg);
     return $newimg;
 }
+
+function matchImage($new,$old){
+    if($new!=$old){
+        unlink(".".$old);
+    }
+    return $new;
+}
+
 
 function delDir($path){
     $dir = ".".$path;

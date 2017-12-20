@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\positionlist.html";i:1513666335;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\nav\navlist.html";i:1513764576;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>普工需求管理</title>
+<title>新闻管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -15,7 +15,9 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-
+<!-- 		<button class="layui-btn layui-btn-danger">
+			<i class="layui-icon">&#xe640;</i>批量删除
+		</button> -->
 		<button class="layui-btn " onclick="refresh()">
 			刷新
 		</button>
@@ -25,7 +27,7 @@
     <?php if(isset($none)): ?>
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-			<p>您还没有发布普工需求</p>			
+			<p>这里一个导航都没有</p>			
 		</div>
 		<?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
@@ -47,16 +49,16 @@
 		var articleTable = table.render({
 			        elem:"#table",	
 			       
-			        url: "<?php echo url('position/positionList'); ?>",
+			        url: "<?php echo url('nav/navList'); ?>",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'poid', title: '编号' },
-			         {field: 'name', title: '职位名称' },
+			         {field: 'navid', title: '编号' },
+			         {field: 'name', title: '导航名称' },
+			         {field: 'column', title: '对应栏目' },
 			         {field: 'status', title: '状态',templet: '#statusTpl' },
-			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
-				   page:true,
+				   
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
 			        layer.close(init)
 			    }
@@ -82,7 +84,17 @@
 			 
 			<?php endif; ?>
 	
-	
+			
+				$(".add").on("click",function(){			
+					var data = {
+							title:"新增新闻",
+							href : $(this).attr("data-url")
+						}
+					window.parent.navtab.tabAdd(data)
+					
+				})
+			
+				
 
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
@@ -103,8 +115,8 @@
 						    });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该需求么', function(index){
-					    	  _ajax("<?php echo url('positionDel'); ?>",{poid:data.poid},dtd)
+					    layer.confirm('确定删除该新闻么', function(index){
+					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
 								  layer.close(index);
@@ -118,24 +130,24 @@
 						      shade: false,
 						      maxmin: true, //开启最大化最小化按钮
 						      area: ['893px', '600px'],
-						      content: "positionEdit?poid="+data.poid
+						      content: "articleEdit?id="+data.postid
 						    });
 					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
-									  status:1
+									  is_valid:1
 						       });
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
-							status:0
+							is_valid:0
 						 });
 						  })
 					
@@ -174,15 +186,22 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
   <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-  {{#  if(d.status== 1){ }}
+
+
+  {{#  if(  d.LAY_INDEX   != 1){ }}
+ <button class="layui-btn layui-btn-xs on" lay-event="change2on">上移</button>
+  {{#  } else { }}
+    
+  {{#  } }}
+
+
+  {{#  if(d.status == 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
   {{#  } }}
 
-  <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
  
   <!-- 这里同样支持 laytpl 语法，如： -->
 

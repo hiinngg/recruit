@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1513676348;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1513747017;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,39 +30,59 @@
   <div class="layui-form-item">
     <label class="layui-form-label">课程名称</label>
     <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" value="<?php echo isset($data['title'])?$data['title']: ''; ?>">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" value="<?php echo isset($data['name'])?$data['name']: ''; ?>">
     </div>
   </div>
 <div class="layui-form-item">
     <label class="layui-form-label">课程价格</label>
     <div class="layui-input-block">
-      <input type="number" name="number" required  lay-verify="required" placeholder="请输入课程价格" autocomplete="off" class="layui-input" value="<?php echo isset($data['number'])?$data['number']:''; ?>">
+      <input type="number" name="price" required  lay-verify="required" placeholder="请输入课程价格" autocomplete="off" class="layui-input" value="<?php echo isset($data['price'])?$data['price']:''; ?>">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">课程分类</label>
+    <div class="layui-input-block">
+      <select name="cates" lay-verify="required"   lay-filter="type">
+        <option value=""></option>
+        <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+           <option value="<?php echo $vo['cateid']; ?>"><?php echo $vo['name']; ?></option>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+      </select>
     </div>
   </div>
 
    <div class="layui-form-item">
     <label class="layui-form-label">授课形式</label>
     <div class="layui-input-block">
-      <select name="cate" lay-verify="required"   lay-filter="type">
+      <select name="type" lay-verify="required"   lay-filter="type">
         <option value=""></option>
-        <option value="0">微信授课</option>
+        <option value="2">微信授课</option>
         <option value="1">直播授课</option>
-        <option value="2">线下授课</option>
+        <option value="0">线下授课</option>
       </select>
     </div>
   </div> 
+   
   
     <div class="layui-form-item  link disable">
     <label class="layui-form-label">课程链接</label>
     <div class="layui-input-block">
-      <input   disabled type="text" name="title"  placeholder="如需要请加入课程链接" autocomplete="off" class="layui-input" value="<?php echo isset($data['title'])?$data['title']: ''; ?>">
+      <input   disabled type="text" name="link"  placeholder="如需要请加入课程链接（以'http://'或'https://'开头）" autocomplete="off" class="layui-input" value="<?php echo isset($data['link'])?$data['link']: ''; ?>">
+    </div>
+  </div>
+  
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">课程简介</label>
+    <div class="layui-input-block">
+      <textarea name="desc" rows="4" placeholder="请填写课程简介" class="layui-textarea" value=""></textarea>
     </div>
   </div>
   
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">目录</label>
     <div class="layui-input-block">
-      <textarea name="des" rows="8" placeholder="请输入目录" class="layui-textarea" value=""><?php echo isset($data['des'])?$data['des']: ''; ?></textarea>
+      <textarea name="menu" rows="8" placeholder="请输入目录" class="layui-textarea" value=""></textarea>
     </div>
   </div>
   
@@ -84,7 +104,7 @@
 <div style="margin-bottom:30px;display:flex;margin-left:63px;">
   <p style="margin-right:15px;">内容</p>
   <script id="container" name="content" type="text/plain">  
-<?php echo isset($data['content'])?$data['content']:''; ?>
+  <?php echo isset($data['content'])?$data['content']:''; ?>
   </script>
 </div>
 
@@ -115,17 +135,24 @@
 		  var upload = layui.upload;
 		  var layer  = layui.layer;
 		  
+		  <?php if(isset($data)): ?>
+		  $("select[name='cates']").val("<?php echo $data['cateid']; ?>").change();
+		  $("select[name='type']").val("<?php echo $data['type']; ?>").change();
+		  linkStatus("<?php echo $data['type']; ?>")
 		  
+		  var desc="<?php echo $data['desc']; ?>";
+		  var menu="<?php echo $data['menu']; ?>";
+		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+		  desc=desc.replace(reg,"\n");
+		  menu=menu.replace(reg,"\n");
+		  $("textarea[name='desc']").text(desc)
+		  $("textarea[name='menu']").text(menu)
+		  
+		  form.render()
+		  <?php endif; ?>
+
 		  form.on('select(type)', function(data){
-			if(data.value == "0"||data.value == "1"){
-			     $(".link").removeClass("disable")
-			     $(".link").find("input").prop("disabled",false)
-			     $(".link").find("input").prop("lay-verify","required")
-			}else{
-				 $(".link").addClass("disable")
-				 $(".link").find("input").prop("disabled",true)
-			     $(".link").find("input").removeAttr("lay-verify")
-			}
+		    linkStatus(data.value)
 			});  
 
 		  //监听提交
@@ -138,14 +165,15 @@
 				layer.msg("请编辑内容",{icon:5,shift:6})
 				return false;
 			}
-
-	     var url="<?php echo url('editArticle'); ?>";
+	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
+	    data.field['menu']=data.field['menu'].replace(/\n|\r\n/g,"<br>");
+	    
+	     var url="<?php echo url('addCourse'); ?>";
 	     var data={data:data.field}
-	     data['txt']=ue.getContentTxt();
 		     <?php if(isset($data)): ?>
-		     data['postid']="<?php echo $data['postid']; ?>"
+	     url="<?php echo url('editCourse'); ?>"
+		     data['courseid']="<?php echo $data['courseid']; ?>"
 		     <?php endif; ?>
-		    /* layer.msg(JSON.stringify(data.field)); */
 		    $.ajax({
 		    	url:url,
 		    	data:data,
@@ -161,7 +189,7 @@
 		    			})
 		    		}
 		    	}		    
-		    })
+		    }) 
 		    return false;
 		  });
 		  		  
@@ -171,11 +199,11 @@
 			  field:"image"
 			  ,done: function(res, index, upload){			  
 			    if(res.code == 0){		
-			     $("input[name='label_img']").val('/temp/'+res.src.replace(/\\/g,'/'))
+			     $("input[name='label_img']").val(res.src.replace(/\\/g,'/'))
 			     if($(".img").children("img").length>0){
-			    	 $(".img").children("img").attr("src",'/temp/'+res.src.replace(/\\/g,'/'))
+			    	 $(".img").children("img").attr("src",res.src.replace(/\\/g,'/'))
 			     }else{
-			    	 $(".img").append('<img   style="object-fit:cover;"  width="200px" height="100px"  src="/temp/'+res.src.replace(/\\/g,'/')+'"  />')
+			    	 $(".img").append('<img   style="object-fit:cover;"  width="200px" height="100px"  src="'+res.src.replace(/\\/g,'/')+'"  />')
 			     }
 			    }			    
 			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
@@ -189,6 +217,22 @@
 		  
 		  
 		});
+	
+	function linkStatus(val){
+		
+		if(val != 0){
+		     $(".link").removeClass("disable")
+		     $(".link").find("input").prop("disabled",false)
+		     $(".link").find("input").attr("lay-verify","required")
+		}else{
+			 $(".link").find("input").val("")
+			 $(".link").addClass("disable")
+			 $(".link").find("input").prop("disabled",true)
+		     $(".link").find("input").removeAttr("lay-verify")
+		}
+		
+	}
+	
 	</script>
 
 </body>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1513667756;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1513752753;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,20 +39,11 @@
 </style>
 <body style="height:100%;">
 
-	<blockquote class="layui-elem-quote flex-row">
-       <button class="layui-btn addCourse" data-url="<?php echo url('addCourse'); ?>" >
-			新增课程
-		</button>
-		<button class="layui-btn " onclick="refresh()">
-			刷新
-		</button>
-	   </blockquote>
-
 
 
 	<div    style="height:100%;">
 				<div class="panel panel-default"
-					style=" position:fixed; top:100px;  width: 250px; height:500px;   overflow:auto;">
+					style=" position:fixed;   width: 250px; height:800px;   overflow:auto;">
 					<div class="panel-body"  style=" ">
 						<h4 style="text-align: center;">课程分类管理</h4>
 						<ul unselectable="on" id="demo"
@@ -64,84 +55,38 @@
 		
 	
 
-		<div  style="margin-left: 250px;  height:100%;">
-	    <table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
-	    
-	    </table>
-		</div>
-
 	</div>
 
 
 	<script type="text/javascript" src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
- 	layui.use(['jquery','layer','element','laypage','form','tree','table'],function(){
+ 	layui.use(['jquery','layer','element','laypage','form','tree'],function(){
 	      window.jQuery = window.$ = layui.jquery;
 	      window.layer = layui.layer;
 	      var form  =  layui.form;
 	      var elem = layui.element;
-	  	  var table = layui.table;
 	  	  
-	  	  //添加课程
-	  	  	$(".addCourse").on("click",function(){			
-					var data = {
-							title:"新增课程",
-							href : $(this).attr("data-url")
-						}
-					window.parent.navtab.tabAdd(data)
-					
-		   })
-	  	  
-	  	  
-	  	  
-	  	  
-	      //初始化layer.tree
-	      var tree = layui.tree({
- 	    	  elem: '#demo',
- 	    	   target:"aaa"       //传入元素选择器
- 	    	  ,nodes:<?php echo $tree; ?>
- 	    	});	
 
-	      //初始化table
-	    var init= layer.load(2, {shade: false});
-		var articleTable = table.render({
-			        elem:"#table",	
-			        url: "<?php echo url('course/courseByCate'); ?>",
-			        cols:[[
-			         {checkbox: true},
-			         {field: 'courseid', title: '编号' },
-			         {field: 'name', title: '职位名称' },
-			         {field: 'type', title: '授课形式' },
-			         {field: 'price', title: '价格' },
-			         {field: 'status', title: '状态',templet: '#statusTpl' },
-			         {field: 'createtime', title: '创建时间' },
-			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
-			        ]],
-				   page:true,
-				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
-			        layer.close(init)
-			    }
-				});
-			 
-	      
-	      
-	window.onload=function(){
-	  	 //删除layui-tree 自带的样式    
-	   
-	      $("i.layui-tree-branch").remove();
-	      $("i.layui-tree-leaf").remove();
-		  //添加操作的图标
-		  $("ul#demo").find("a").after("<i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i> ")	  
-		  $("ul#demo").find("li").each(function(){
-			    var id = $(this).children("a").attr("href");
-			    $(this).children("a").attr("href","../course/courseByCate?id="+id);
-			    $(this).attr("id",id)
-		  })
-	}      
-	      
-	      
-	      
-		
+		  //初始化layer.tree
+		   var tree = layui.tree({
+ 	    	  elem: '#demo',
+ 	    	  nodes:<?php echo $tree; ?>
+ 	    	});	
+	  	  
+			window.onload=function(){
+
+	  		  	 //删除layui-tree 自带的样式    
+	  		      $("i.layui-tree-branch").remove();
+	  		      $("i.layui-tree-leaf").remove();
+	  			  //添加操作的图标
+	  			  $("ul#demo").find("a").after("<i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i> ")	  
+	  			  $("ul#demo").find("li").each(function(){
+	  				    var id = $(this).children("a").attr("href");
+	  				    $(this).children("a").attr("href","../course/courseByCate?id="+id);
+	  				    $(this).attr("id",id)
+	  			  })
+	  		}
+
 //添加顶级分类
 	$("#addcate").on("click",function(){
 		layer.prompt({title: '输入分类名称，并确认', formType:0}, function(text, index){
@@ -307,22 +252,12 @@ $("ul#demo ").on("click","li .del",function(){
 },  'i.layui-tree-spread');  
 
  	      	
-    }); 
-	
-    
-  //方法
-  
-  //刷新
-  function refresh(){
-	  history.go(0)
-  }
-  
+ }); 
 
-  
-	
-
-	
 </script>
+
+
+
 </body>
 
 </html>

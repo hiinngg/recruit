@@ -45,7 +45,7 @@ class Editor extends Controller
                 }
                 
                 $image = Image::open($tmpimg);
-                $newimg = str_replace('/temp/', '/image/',$tmpimg);
+                $newimg = str_replace('/temp/', '/image/', $tmpimg);
                 if (! $image->thumb(640, $image->height())
                     ->save($newimg)) {
                     throw new \think\exception("保存图片出错");
@@ -65,14 +65,24 @@ class Editor extends Controller
         preg_match_all($pattern, $this->old_content, $old_pics);
         preg_match_all($pattern, $this->content, $pics);
         $del_pics = array_diff($old_pics[1], $pics[1]);
-        foreach ($del_pics as $val){
-            if(!unlink('.'.$val)){
+        foreach ($del_pics as $val) {
+            if (! unlink('.' . $val)) {
                 throw new \think\Exception("删除图片失败");
             }
         }
     }
 
- 
+    public function delAllImage()
+    {
+        $pattern = '/<[img|IMG].*?src=[\'|\"](\/image\/.*?\.(jpeg|jpg|gif|bmp|bnp|png))([\'|\"].*?[\/]?>)/i';
+        preg_match_all($pattern, $this->content, $pics);
+        foreach ($pics[1] as $val){
+            if (! unlink('.' . $val)) {
+                throw new \think\Exception("删除图片失败");
+            }
+        }
+        return $pics;
+    }
 
     public function setOldContent($value)
     {

@@ -20,6 +20,22 @@ class Index extends Controller
         
         return $this->fetch();
     }
+    
+    
+    public  function  profile(Common $common){
+        
+      $res=Db::name("company")->where("cid",$common->companyid)->find();
+      if(isset($res['pics'])){
+          
+          $res['pics']= json_decode($res['pics']);
+          
+      }
+        $this->assign("data",$res);
+        return $this->fetch();
+        
+        
+    }
+    
 
     public function login()
     {

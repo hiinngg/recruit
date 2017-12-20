@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513242138;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513756232;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -108,7 +108,7 @@ a {
 					<div class="layui-tab-content"
 						style=" ">
 						<div class="layui-tab-item layui-show" style="overflow:hidden;">
-							<iframe src="" style="width: 100%; height: 100%;"
+							<iframe src="<?php echo url('profile'); ?>" style="width: 100%; height: 100%;"
 								frameborder="0"></iframe>
 						</div>
 					</div>
