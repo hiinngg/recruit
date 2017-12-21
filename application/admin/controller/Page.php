@@ -8,6 +8,7 @@
 namespace app\admin\controller;
 
 use think\Db;
+use app\common\controller\Editor;
 
 
 
@@ -26,6 +27,7 @@ class Page extends  Common{
         if ($this->request->isAjax()) {
             // $res = json_decode(httpGet("http://www.layui.com/demo/table/user?page={$this->request->get('page')}&limit={$this->request->get('limit')}"));
             $result = Db::name("page")
+                ->where("column","neq","站点信息")
                 ->order("createtime desc")
                 ->page($page, $limit)
                 ->select();

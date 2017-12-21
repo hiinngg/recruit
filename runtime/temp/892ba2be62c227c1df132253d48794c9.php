@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\nav\navlist.html";i:1513764576;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\nav\navlist.html";i:1513816780;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新闻管理</title>
+<title>导航管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -38,15 +38,15 @@
 	var tranStatus={
 			'发布':1,
 			'不发布':0
-	}
+	};
 		layui.use([ 'table', 'layer','jquery','form' ], function() {
 			var $=layui.jquery;
 			var table = layui.table;
 			var layer=layui.layer;		
-			var form = layui.form
+			var form = layui.form;
 		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
-		var articleTable = table.render({
+		var tableIns = table.render({
 			        elem:"#table",	
 			       
 			        url: "<?php echo url('nav/navList'); ?>",
@@ -65,44 +65,14 @@
 				});
 			 
 			 
-			 $(".articleSearch").on("click",function(){
-				 var keyword=$("input[name='keyword']").val();
-				 if(keyword==""){
-					 return;
-				 }
-				 articleTable.reload({
-					  where: { 
-					    keyword:keyword
-					  }
-					  ,page: {
-					    curr: 1 //重新从第 1 页开始
-					  }
-					});
-				 
-			 })
-			 
-			 
-			<?php endif; ?>
-	
-			
-				$(".add").on("click",function(){			
-					var data = {
-							title:"新增新闻",
-							href : $(this).attr("data-url")
-						}
-					window.parent.navtab.tabAdd(data)
-					
-				})
-			
-				
-
+			<?php endif; ?>;
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 					  var data = obj.data; //获得当前行数据
 					  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
 					  var tr = obj.tr; //获得当前行 tr 的DOM对象	
 					  var dtd=$.Deferred();
-					  console.log(data)
+
 					  if(layEvent === 'detail'){ //查看
 						  layer.open({
 						      type: 2,
@@ -116,44 +86,54 @@
 
 					  } else if(layEvent === 'del'){ //删除
 					    layer.confirm('确定删除该新闻么', function(index){
-					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd)
+					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd);
 							  dtd.done(function(){
-								  obj.del(); 
+								  obj.del();
 								  layer.close(index);
 							  })
 					    });
 					  } else if(layEvent === 'edit'){ //编辑
-						  layer.open({
-						      type: 2,
-						      title: '内容编辑',
-						      shadeClose: true,
-						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
-						      content: "articleEdit?id="+data.postid
-						    });
+						 layer.prompt({title:"请输入新的导航名字",value:data.name},function(value,index,elem){
+
+                         layer.closeAll();
+                             _ajax("<?php echo url('nameChange'); ?>",{navid:data.navid,name:value},dtd);
+                             dtd.done(function(){
+                                 obj.update({
+                                     name:value
+                                 });
+                             })
+
+
+                      })
 					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:1},dtd);
 						  dtd.done(function(){
-							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
+							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>';
 								  obj.update({
-									  is_valid:1
+									  status:1
 						       });
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:0},dtd);
 						 dtd.done(function(){
-					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
+					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>';
 						  obj.update({
-							is_valid:0
+							status:0
 						 });
 						  })
 					
-					  }
+					  }else if(layEvent === 'moveUp'){
+						  
+					  _ajax("<?php echo url('sortChange'); ?>",{navid:data.navid,sortid:data.sortid},dtd);
+						 dtd.done(function() {
+                            tableIns.reload();
+
+                         })
+                      }
 					});
-				
+
 				function  _ajax(url,data,deferred){
 					var index = layer.load(2, {shade: false});
 					$.ajax({
@@ -161,7 +141,7 @@
 						data:data,
 						type:"post",
 						success:function(data){
-							layer.close(index)
+							layer.close(index);
 							if(data==1){
 								deferred.resolve();
 							}else{
@@ -190,14 +170,14 @@
 
 
   {{#  if(  d.LAY_INDEX   != 1){ }}
- <button class="layui-btn layui-btn-xs on" lay-event="change2on">上移</button>
+  <button class="layui-btn layui-btn-xs on" lay-event="moveUp">上移</button>
   {{#  } else { }}
     
   {{#  } }}
 
 
   {{#  if(d.status == 1){ }}
-   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
+  <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
   {{#  } }}

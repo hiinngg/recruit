@@ -10,6 +10,9 @@ class Course extends Common{
     
     public  function  courseList(){
         
+      
+        
+        
          return $this->fetch();
     }
     public function courseDetail(){

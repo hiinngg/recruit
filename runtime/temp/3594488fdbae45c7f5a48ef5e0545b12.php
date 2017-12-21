@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\companyreg.html";i:1512961257;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513157366;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\companyreg.html";i:1513838113;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513826708;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +49,6 @@ body,html{
 }
 /*index  */
 
-
-
 /*course  */
 #course{
   border:0;	
@@ -98,7 +96,7 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" >logo</a>
+      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -106,10 +104,9 @@ body,html{
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
-      <li data-c="course"><a href="<?php echo url('course/courseList'); ?>">职学院</a></li>
-      <li data-c="job"><a href="<?php echo url('job/jobList'); ?>">找工作</a></li>
-      <li data-c="talent"><a href="<?php echo url('talent/talent'); ?>">找人才</a></li>
-      <li data-c='register'><a href="<?php echo url('companyadmin/index/login'); ?>">企业入口</a></li>
+      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
     </div><!-- /.navbar-collapse -->
@@ -153,6 +150,13 @@ body,html{
       <input type="text" name="fullName" required  placeholder="请输入" autocomplete="off" class="layui-input">
     </div>
 </div>
+
+<p style="margin-left:15px;">企业logo:</p>
+<div style="border:1px solid #c2c2c2; width:128px;height:64px;cursor:pointer;position:relative;margin-left:25px;" class="text-center companyimg" id="image4">
+<span class="fa fa-plus plus  " style="line-height:64px;"></span>
+</div>
+
+
 <p style="margin-left:15px;">办公室照片：</p>
 
 <div class="sever row-center" style="justify-content:flex-start;margin-left:15px;">
@@ -210,18 +214,18 @@ body,html{
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容</h4>
+<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
+     <?php echo $footer['desc']; ?>
        </div>
 	   <div class="col-md-4 col-center">
-      <div style="background:#ffffff;width:150px;height:150px;">二维码</div>
+      <div style="background:#ffffff;width:150px;height:150px;">
+      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
+      </div>
       </div>
 	</div>
 	<h5 class='text-center'>Copyright@2013-2018 ZHONGSHAN ZMR Co.Ltd掌门人网络科技有限公司技术支持</h5>
@@ -232,13 +236,16 @@ body,html{
 
 <div class="modal fade"  role="dialog" id="userModal" style="">
  <div class="modal-dislog" style="width:350px;  position:absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);">
-     <div class="modal-content">
+     <div class="hidden modal-content userReg">
      
         <div style="padding:15px;">
           <h4 style="border-bottom:2px solid #1881EC;margin-bottom:0;display:inline-block;padding-bottom:15px;">绑定信息</h4>
           <hr  style="margin:0;" />
         </div>
-     
+
+
+
+
         <div class="modal-body">
         
         	<form class="form-horizontal">
@@ -258,10 +265,40 @@ body,html{
                <button type="button"  style="width:100%;" class="btn btn-default">验证码</button>
              </div>            
         	</div>
+
+                <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
         	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
+     <div class="modal-content userLogin">
+
+         <div style="padding:15px;">
+             <h4 style="border-bottom:2px solid #1881EC;margin-bottom:0;display:inline-block;padding-bottom:15px;">登录</h4>
+             <hr  style="margin:0;" />
+         </div>
+
+         <div class="modal-body">
+
+             <form class="form-horizontal">
+
+                 <div class="form-group">
+                     <div class="col-md-12">
+                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <div class="col-md-12">
+                         <input type="text"  class="form-control" placeholder="请输入密码" />
+                     </div>
+                 </div>
+
+                 <h5>还没有账号？现在去 <a href="#" class="reg">注册</a></h5>
+                 <button  type="submit" class="center-block btn btn-default"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
+             </form>
+         </div>
+     </div>
  </div>
 </div> 
 <!-- 用户注册时弹出 -->
@@ -371,7 +408,25 @@ layui.use(['layer', 'form','upload'], function(){
 	  
   })
   /* 课程 */
-  
+
+
+  /*用户注册按钮*/
+$(".reg").on("click",function(e){
+
+e.preventDefault();
+$(this).closest(".modal-content").addClass("hidden");
+$(".userReg").removeClass("hidden")
+
+})
+
+$(".login").on("click",function(e){
+
+    e.preventDefault();
+    $(this).closest(".modal-content").addClass("hidden");
+    $(".userLogin").removeClass("hidden")
+
+})
+  /**/
   
   
   

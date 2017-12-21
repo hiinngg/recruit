@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513762545;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513850278;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -86,18 +86,23 @@ a {
 					<li class="layui-nav-item"><a href="#"
 						data-url="<?php echo url('company/companyList'); ?>">企业管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="http://www.qq.com">会员管理</a></li>
+						data-url="<?php echo url('jhbdsf/companyList'); ?>">会员管理</a></li>
 					<li class="layui-nav-item "><a class=""
 						href="javascript:;">页面设置</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a data-url="http://www.baidu.com" href="javascript:;">栏目编辑</a>
+								<a data-url="<?php echo url('page/pageList'); ?>" href="javascript:;">内容块编辑</a>
 							</dd>
 							<dd>
 								<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
 							</dd>
+							<dd>
+								<a data-url="<?php echo url('course/courseSet'); ?>" href="javascript:;">课程设置</a>
+							</dd>
 						</dl>
-						</li>
+				   </li>
+					<li class="layui-nav-item"><a href="#"
+						data-url="<?php echo url('info/index'); ?>">站点信息</a></li>
 				</ul>
 			</div>
 		</div>

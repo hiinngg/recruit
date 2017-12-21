@@ -13,6 +13,16 @@ use app\common\controller\Editor;
 class Course extends Common
 {
 
+    public function courseSet()
+    {
+        $res = Db::name("course")->where("is_show", 1)->column("name");
+        if (! empty($res)) {
+            $this->assign("data", $res);
+        }
+         $this->assign("courselist",Db::name("course")->where("status",1)->field("courseid,name")->select());      
+        return $this->fetch();
+    }
+
     /**
      * 课程管理页面
      *
@@ -68,7 +78,9 @@ class Course extends Common
             if ($cateid != "") {
                 
                 $res = Db::name("course")->page($page, $limit)
-                    ->where(['cateid'=>$cateid])
+                    ->where([
+                    'cateid' => $cateid
+                ])
                     ->field("courseid,name,price,type,status,createtime")
                     ->order("createtime desc")
                     ->select();
@@ -102,7 +114,6 @@ class Course extends Common
             $content = new Editor($post['data']['content']);
             $content->imageTrans();
             $post['data']['content'] = $content->getContent();
-            
             $data = [
                 'menu' => $post['data']['menu'],
                 'cateid' => $post['data']['cates'],
@@ -115,7 +126,10 @@ class Course extends Common
                 'createtime' => date("Y-m-d H:i:s"),
                 'status' => 1
             ];
-            
+            if (isset($post['data']['link'])) {
+                
+                $data['link'] = $post['data']['link'];
+            }
             if (Db::name("course")->insert($data) != 1) {
                 return "新增失败";
             }
@@ -178,7 +192,10 @@ class Course extends Common
                 'content' => $post['data']['content'],
                 'status' => 1
             ];
-            
+            if (isset($post['data']['link'])) {
+                
+                $data['link'] = $post['data']['link'];
+            }
             delDir("/temp/admin");
             if (Db::name("course")->where("courseid", $post['courseid'])->update($data) >= 0) {
                 return 1;

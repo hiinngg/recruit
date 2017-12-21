@@ -31,9 +31,15 @@ class Register extends Common
             
             if (($post['data']['fullName'] != "") && (isset($post['images']))) {
                 $pics = [];
+                if (isset($post['images']['image4'])) {
+                    // 有企业logo
+                    $data['avastar'] = transOneImage($post['images']['image4'], "/image/company");
+                    unset($post['images']['image4']);
+                }
                 foreach ($post['images'] as $k => $val) {
                     array_push($pics, transOneImage($val, "/image/company"));
                 }
+                
                 // 成为内推企业
                 $data['fullname'] = trim($post['data']['fullName']);
                 $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);

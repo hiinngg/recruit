@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513756232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513816780;}*/ ?>
 <!DOCTYPE html>
 <html>
 
