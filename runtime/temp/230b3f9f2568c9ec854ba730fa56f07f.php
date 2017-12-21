@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1513772608;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513786363;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1513860454;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513873793;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +48,6 @@ body,html{
      color:#1881EC;
 }
 /*index  */
-
-
 
 /*course  */
 #course{
@@ -106,32 +104,36 @@ body,html{
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
-      <li data-c="course"><a href="<?php echo url('course/courseList'); ?>">职学院</a></li>
-      <li data-c="job"><a href="<?php echo url('job/jobList'); ?>">找工作</a></li>
-      <li data-c="talent"><a href="<?php echo url('talent/talent'); ?>">找人才</a></li>
-      <li data-c='register'><a href="<?php echo url('companyadmin/index/login'); ?>">企业入口</a></li>
+      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- <h2 class='text-center'>找人才</h2>
+ 
+<div class="container">
+<h2 class='text-center'>找人才</h2>
+<p class="sever"><?php echo $data; ?></p>
+</div>
+
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容</h4>
+<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
+     <?php echo $footer['desc']; ?>
        </div>
 	   <div class="col-md-4 col-center">
-      <div style="background:#ffffff;width:150px;height:150px;">二维码</div>
+      <div style="background:#ffffff;width:150px;height:150px;">
+      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
+      </div>
       </div>
 	</div>
 	<h5 class='text-center'>Copyright@2013-2018 ZHONGSHAN ZMR Co.Ltd掌门人网络科技有限公司技术支持</h5>
@@ -227,8 +229,7 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
-	loop:true,
-	loopedSlides: 8,
+      freeMode:true
   })  
 
 

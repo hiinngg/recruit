@@ -23,6 +23,19 @@ class Course extends Common
         return $this->fetch();
     }
 
+
+    public function showChange(){
+        $post = $this->request->post();
+        if (Db::name('course')->where("courseid", $post['courseid'])->update([
+            'is_show' => $post['is_show']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
     /**
      * 课程管理页面
      *
@@ -81,12 +94,12 @@ class Course extends Common
                     ->where([
                     'cateid' => $cateid
                 ])
-                    ->field("courseid,name,price,type,status,createtime")
+                    ->field("courseid,name,price,type,status,createtime,is_show")
                     ->order("createtime desc")
                     ->select();
             } else {
                 $res = Db::name("course")->page($page, $limit)
-                    ->field("courseid,name,price,type,status,createtime")
+                    ->field("courseid,name,price,type,status,createtime,is_show")
                     ->order("createtime desc")
                     ->select();
             }
@@ -123,6 +136,8 @@ class Course extends Common
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
                 'label_img' => transOneImage($post['data']['label_img'], "/image/admin"),
                 'content' => $post['data']['content'],
+                'teacher' =>$post['data']['teacher'],
+                'contact'=>$post['data']['contact'],
                 'createtime' => date("Y-m-d H:i:s"),
                 'status' => 1
             ];
@@ -187,6 +202,8 @@ class Course extends Common
                 'name' => trim($post['data']['name']),
                 'price' => $post['data']['price'],
                 'type' => $post['data']['type'],
+                'teacher' =>$post['data']['teacher'],
+                'contact'=>$post['data']['contact'],
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
                 'label_img' => transOneImage(matchImage($post['data']['label_img'], $old_data['label_img']), "/image/admin"),
                 'content' => $post['data']['content'],

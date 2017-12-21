@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courseset.html";i:1513862297;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,30 +28,32 @@
 <form  class="layui-form hide" action="">
 <div class="layui-form-item">
     <div class="layui-input-block"  style="margin-left:0;">
-      <select name="type" lay-verify="required"   lay-filter="course">
+      <select name="type" lay-verify="required"   lay-filter="type">
         <option value=""></option>
-      {volist  name="courselist" id="vo"}
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-          <option value="{$vo.courseid}">{$vo.name}</option>
-      {/volist}
+      <?php if(is_array($courselist) || $courselist instanceof \think\Collection || $courselist instanceof \think\Paginator): $i = 0; $__LIST__ = $courselist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+          <option value="<?php echo $vo['courseid']; ?>"><?php echo $vo['name']; ?></option>
+
+
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </select>
     </div>
-</div>
+  </div> 
    
 </form>
 
-<div class="sever" id="course1" ><button class="layui-btn">选择课程</button></div>
+<div class="sever"><button class="layui-btn">选择课程</button></div>
 <hr />
-<div class="sever" id="course2"><button class="layui-btn">选择课程</button></div>
+<div class="sever"><button class="layui-btn">选择课程</button></div>
 <hr />
-<div class="sever" id="course3"><button class="layui-btn">选择课程</button></div>
+<div class="sever"><button class="layui-btn">选择课程</button></div>
 <hr />
-<div class="sever" id="course4"><button class="layui-btn">选择课程</button></div>
+<div class="sever"><button class="layui-btn">选择课程</button></div>
 
 <button class="sever layui-btn layui-btn-normal">保存</button>
 
@@ -64,7 +67,7 @@
 		  var upload = layui.upload;
 		  var layer  = layui.layer;
 		  $(".sever button").on("click",function(){
-            target=$(this);
+			  
 			  layer.open({
 				  type: 1,
 				  shade: false,
@@ -72,16 +75,16 @@
 				  content: $('.layui-form'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
 				  area: ['500px', '300px']
 				});
+			  
 		  })
 
-        form.on('select(course)', function(data){
-           $.ajax({
-               url:"{:url('courseSet')}",
-               data:{}
-           })
-        });
 
-        //监听提交
+
+
+		  
+		  
+		  
+		  //监听提交
 		  form.on('submit(formDemo)', function(data){
 	 		if(data.field.label_img==""){
 				layer.msg("请上传封面",{icon:5,shift:6})
@@ -92,12 +95,12 @@
 				return false;
 			}
 
-	     var url="{:url('editArticle')}";
+	     var url="<?php echo url('editArticle'); ?>";
 	     var data={data:data.field}
 	     data['txt']=ue.getContentTxt();
-		     {present name="data"}
-		     data['postid']="{$data.postid}"
-		     {/present}
+		     <?php if(isset($data)): ?>
+		     data['postid']="<?php echo $data['postid']; ?>"
+		     <?php endif; ?>
 		    /* layer.msg(JSON.stringify(data.field)); */
 		    $.ajax({
 		    	url:url,
@@ -120,7 +123,7 @@
 		  		  
 		  upload.render({
 			   elem: '#cover'
-			  ,url: "{:url('imgUpload')}",
+			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
 			  ,done: function(res, index, upload){			  
 			    if(res.code == 0){		

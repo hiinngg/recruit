@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1513772608;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1513875125;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +82,8 @@
 	  			  $("ul#demo").find("a").after("<i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i> ")	  
 	  			  $("ul#demo").find("li").each(function(){
 	  				    var id = $(this).children("a").attr("href");
-	  				    $(this).children("a").attr("href","../course/courseByCate?id="+id);
+	  				   // $(this).children("a").attr("href","../course/courseByCate?id="+id);
+                      $(this).children("a").removeAttr("href");
 	  				    $(this).attr("id",id)
 	  			  })
 	  		}
@@ -101,7 +102,7 @@
 				 success:function(data){
 					 layer.closeAll();
 					 if(data.code==1){
-						 $("ul#demo").append("<li  pid='0'   id="+(data.cateid)+"><a href='../cproduct/search?id="+data.cateid+"'  target='aaa' ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li>");
+						 $("ul#demo").append("<li  pid='0'   id="+(data.cateid)+"><a   ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li>");
 					 }else{
 						 layer.msg(data)
 					 }
@@ -145,9 +146,9 @@ $("ul#demo ").on("click","li .add",function(){
 					 if(that.children("ul").length == 0){
 						 //表示要新增   i 以及 ul 标签
 						 that.prepend('<i class="layui-icon layui-tree-spread">&#xe625;</i>')
-						 that.append("<ul class='layui-show'><li  pid="+pid+"   id="+(data.cateid)+"><a href='../cproduct/search?id="+data.cateid+"'  target='aaa' ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li></ul>")
+						 that.append("<ul class='layui-show'><li  pid="+pid+"   id="+(data.cateid)+"><a    ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li></ul>")
 					 }else{
-						that.children("ul").append("<li pid="+pid+"    id="+(data.cateid)+"><a href='../cproduct/search?id="+data.cateid+"'  target='aaa' ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li>"); 
+						that.children("ul").append("<li pid="+pid+"    id="+(data.cateid)+"><a  ><cite>"+text+"</cite> </a><i  class='layui-icon select hide add' )'>&#xe608;</i> <i    class='layui-icon edit select hide'>&#xe642;</i> <i    class='layui-icon del select hide'>&#xe640;</i></li>");
 					 }
 				 }else{
 					 layer.msg(data)

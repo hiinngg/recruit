@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>职位预览</title>
+    <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
+</head>
+<style>
+ .sever{
+     margin-top:30px;
+
+ }
+
+
+</style>
+<body>
+<div class="layui-container">
+<p class="sever">公司名：{$data.cname}</p>
+<p class="sever">职位名：{$data.name}</p>
+<p class="sever">招聘人数：{$data.number}</p>
+<p class="sever">薪酬：{$data.salary_min} - {$data.salary_max}</p>
+<p class="sever">工作描述：</p>
+    <p>{$data.desc}</p>
+<p class="sever">待遇：
+{volist  name="data.treatment" id="vo"}
+
+  <span>{$vo}</span>
+
+    {/volist}
+</p>
+
+
+</div>
+
+
+<script src="/admin/layui/layui.js"></script>
+</body>
+</html>

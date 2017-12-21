@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513782368;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513874790;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -86,18 +86,22 @@ a {
 					<li class="layui-nav-item"><a href="#"
 						data-url="<?php echo url('company/companyList'); ?>">企业管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="http://www.qq.com">会员管理</a></li>
+				     data-url="<?php echo url('position/positionList'); ?>">职位管理</a></li>
+					<li class="layui-nav-item"><a href="#"
+						data-url="<?php echo url('user/userList'); ?>">会员管理</a></li>
 					<li class="layui-nav-item "><a class=""
 						href="javascript:;">页面设置</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a data-url="<?php echo url('page/pageList'); ?>" href="javascript:;">栏目编辑</a>
+								<a data-url="<?php echo url('page/pageList'); ?>" href="javascript:;">内容块编辑</a>
 							</dd>
 							<dd>
 								<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
 							</dd>
 						</dl>
-						</li>
+				   </li>
+					<li class="layui-nav-item"><a href="#"
+						data-url="<?php echo url('info/index'); ?>">站点信息</a></li>
 				</ul>
 			</div>
 		</div>

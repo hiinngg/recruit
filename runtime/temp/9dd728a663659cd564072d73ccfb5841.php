@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513772608;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513786363;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513873574;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513873793;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +48,6 @@ body,html{
      color:#1881EC;
 }
 /*index  */
-
-
 
 /*course  */
 #course{
@@ -106,10 +104,9 @@ body,html{
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
-      <li data-c="course"><a href="<?php echo url('course/courseList'); ?>">职学院</a></li>
-      <li data-c="job"><a href="<?php echo url('job/jobList'); ?>">找工作</a></li>
-      <li data-c="talent"><a href="<?php echo url('talent/talent'); ?>">找人才</a></li>
-      <li data-c='register'><a href="<?php echo url('companyadmin/index/login'); ?>">企业入口</a></li>
+      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
     </div><!-- /.navbar-collapse -->
@@ -117,53 +114,73 @@ body,html{
 </nav>
 
  
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="/static/images/ccc.jpg" width="1920px" style="height:550px;object-fit:cover;"  alt="...">
+    </div>
+    <div class="item">
+       <img src="/static/images/zzz.jpg" width="1920px" style="height:550px;object-fit:cover;" alt="...">
+    </div>
+    
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
 
 <div class="container sever">
-<h2 class="text-center">TITLE</h2>
-<p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+<h2 class="text-center"><?php echo $data['title']; ?></h2>
+<p><?php echo $data['content']; ?></p>
 </div>
 
 
 <div class="container sever">
 <h2 class="text-center">职造课程</h2>
-<div class="row sever">
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
+<div class="row sever row-center">
+ <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <div class="col-md-3 col-center">
+        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
+        <h4><?php echo $vo['name']; ?></h4>
+    </div>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+
 </div>
 </div>
 
-<p class="text-center sever">
+<!-- <p class="text-center sever">
 <a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p>
+</p> -->
 
 
 <div class="container sever">
 <h2 class="text-center">内推企业</h2>
 
 <div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide company-logo">Slide 1</div>
-        <div class="swiper-slide company-logo">Slide 2</div>
-        <div class="swiper-slide company-logo">Slide 3</div>
-        <div class="swiper-slide company-logo">Slide 4</div>
-        <div class="swiper-slide company-logo">Slide 5</div>
-        <div class="swiper-slide company-logo">Slide 6</div>
-        <div class="swiper-slide company-logo">Slide 7</div>
-        <div class="swiper-slide company-logo">Slide 8</div>
+    <div class="swiper-wrapper row-center">
+        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <div class="swiper-slide company-logo">
+            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
+        </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+
     </div>
 </div>
 
@@ -174,18 +191,18 @@ body,html{
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容</h4>
+<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
-      <p>文字内容文字内容</p>
+     <?php echo $footer['desc']; ?>
        </div>
 	   <div class="col-md-4 col-center">
-      <div style="background:#ffffff;width:150px;height:150px;">二维码</div>
+      <div style="background:#ffffff;width:150px;height:150px;">
+      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
+      </div>
       </div>
 	</div>
 	<h5 class='text-center'>Copyright@2013-2018 ZHONGSHAN ZMR Co.Ltd掌门人网络科技有限公司技术支持</h5>
@@ -281,8 +298,7 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
-	loop:true,
-	loopedSlides: 8,
+      freeMode:true
   })  
 
 

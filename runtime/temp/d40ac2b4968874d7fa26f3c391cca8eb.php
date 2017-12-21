@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1513772608;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1513875154;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,8 +74,10 @@
 					        layer.closeAll("loading")
 					    }
 					});
-			 });  			
-		<?php if(!isset($none)): ?>
+			 });
+
+
+            <?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
 		    //初始化table 
 			var tableIns = table.render({
@@ -84,9 +86,10 @@
 				        cols:[[
 				         {checkbox: true},
 				         {field: 'courseid', title: '编号' },
-				         {field: 'name', title: '职位名称' },
+				         {field: 'name', title: '课程名称' },
 				         {field: 'type', title: '授课形式',templet:"#typeTpl" },
 				         {field: 'price', title: '价格' },
+                         {field:'is_show',title:"首页显示",templet: '#show'},
 				         {field: 'status', title: '状态',templet: '#statusTpl' },
 				         {field: 'createtime', title: '创建时间' },
 				         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
@@ -134,19 +137,8 @@
 			  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
 			  var tr = obj.tr; //获得当前行 tr 的DOM对象	
 			  var dtd=$.Deferred();
-			  console.log(data)
-			  if(layEvent === 'detail'){ //查看
-				  layer.open({
-				      type: 2,
-				      title: '内容查看',
-				      shadeClose: true,
-				      shade: false,
-				      maxmin: true, //开启最大化最小化按钮
-				      area: ['893px', '600px'],
-				      content: "articlePreview?id="+data.postid
-				    });
 
-			  } else if(layEvent === 'del'){ //删除
+			 if(layEvent === 'del'){ //删除
 			    layer.confirm('确定删除该课程么', function(index){
 			    	  _ajax("<?php echo url('delCourse'); ?>",{courseid:data.courseid},dtd)
 					  dtd.done(function(){
@@ -183,11 +175,28 @@
 				 });
 				  })
 			
-			  }
+			  }else if(layEvent === 'show2off'){
+                 _ajax("<?php echo url('showChange'); ?>",{courseid:data.courseid,is_show:0},dtd)
+                 dtd.done(function(){
+                     $(tr).find("button.showoff").get(0).outerHTML=' <button class="layui-btn layui-btn-xs showon" lay-event="show2on">激活</button>'
+                     obj.update({
+                         is_show:0
+                     });
+                 })
+             }else if(layEvent === 'show2on'){
+                 _ajax("<?php echo url('showChange'); ?>",{courseid:data.courseid,is_show:1},dtd)
+                 dtd.done(function(){
+                     $(tr).find("button.showon").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs showoff" lay-event="show2off">撤销</button>'
+                     obj.update({
+                         is_show:1
+                     });
+                 })
+
+              }
 			});
-      
-				
-				function  _ajax(url,data,deferred){
+
+
+                function  _ajax(url,data,deferred){
 					var index = layer.load(2, {shade: false});
 					$.ajax({
 						url:url,
@@ -218,6 +227,13 @@
 		
 		
 	</script>
+<script type="text/html" id="show">
+    {{#  if(d.is_show== 1){ }}
+    <button class="layui-btn layui-btn-warm layui-btn-xs showoff" lay-event="show2off">撤销</button >
+    {{#  } else { }}
+        <button class="layui-btn layui-btn-xs showon" lay-event="show2on">激活</button>
+    {{#  } }}
+</script>
 <script type="text/html" id="bar">
   <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
   {{#  if(d.status== 1){ }}
@@ -227,7 +243,7 @@
   {{#  } }}
 
   <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
- 
+   
   <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
