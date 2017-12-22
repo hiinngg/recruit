@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\page\pagelist.html";i:1513905257;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1513905257;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>栏目管理</title>
+    <title>用戶列表</title>
     <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -27,7 +27,7 @@
 <?php if(isset($none)): ?>
 <div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
     <i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-    <p>这里一篇新闻都没有</p>
+    <p>这里一个职位都没有</p>
 </div>
 <?php else: ?>
 <table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
@@ -44,14 +44,12 @@
         var init= layer.load(2, {shade: false});
         var articleTable = table.render({
             elem:"#table",
-
-            url: "<?php echo url('pageList'); ?>",
+            url: "<?php echo url('UserList'); ?>",
             cols:[[
                 {checkbox: true},
-                {field: 'pageid', title: '编号' },
-                {field: 'column', title: '栏目名称' },
-                {field: 'title', title: '内容名称' },
-                {field: 'status', title: '状态',templet: '#statusTpl' },
+                {field: 'userid', title: '编号' },
+                {field: 'truename', title: '真实姓名' ,templet: '#nameTpl' },
+                {field: 'telphone', title: '手机号码',templet: '#telTpl'},
                 {field: 'createtime', title: '创建时间' },
                 {field: 'score', title: '操作', width:250, toolbar: '#bar'}
             ]],
@@ -80,13 +78,6 @@
 
 
         <?php endif; ?>
-
-
-
-
-
-
-
             table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
                 var data = obj.data; //获得当前行数据
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
@@ -101,7 +92,7 @@
                         shade: false,
                         maxmin: true, //开启最大化最小化按钮
                         area: ['893px', '600px'],
-                        content: "companyPreview?cid="+data.cid
+                        content: "positionPreview?poid="+data.poid
                     });
 
                 } else if(layEvent === 'del'){ //删除
@@ -119,31 +110,29 @@
                         shadeClose: true,
                         shade: false,
                         maxmin: true, //开启最大化最小化按钮
-                        area: ['893px', '600px'],
+
                         content: "editPage?pageid="+data.pageid
                     });
 
                 }else if(layEvent === 'change2on'){
-                    _ajax("<?php echo url('statusChange'); ?>",{cid:data.cid,status:1},dtd)
+                    _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,is_show:1},dtd)
                     dtd.done(function(){
                         $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
                         obj.update({
-                            status:1
+                            is_show:1
                         });
                     })
-
                 }else if(layEvent === 'change2off'){
-                    _ajax("<?php echo url('statusChange'); ?>",{cid:data.cid,status:0},dtd)
+                    _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,is_show:0},dtd)
                     dtd.done(function(){
                         $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
                         obj.update({
-                            status:0
+                            is_show:0
                         });
                     })
 
                 }
             });
-
             function  _ajax(url,data,deferred){
                 var index = layer.load(2, {shade: false});
                 $.ajax({
@@ -176,8 +165,8 @@
 
 </script>
 <script type="text/html" id="bar">
-    <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-    {{#  if(d.status == 1){ }}
+    <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
+    {{#  if(d.is_show == 1){ }}
     <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
     {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
@@ -187,11 +176,25 @@
     <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
-<script type="text/html" id="statusTpl">
-    {{#  if(d.status == 1){ }}
-    <span style="color:#5FB878;">发布中</span>
+<script type="text/html" id="nameTpl">
+    {{#  if(d.truename != ""){ }}
+    <span style="color:#5FB878;">{{#d.truename}}</span>
     {{#  } else { }}
-    <span style="color:#FFB800;">未发布</span>
+    <span style="color:#FFB800;">未填</span>
+    {{#  } }}
+</script>
+<script type="text/html" id="telTpl">
+    {{#  if(d.telphone !=""){ }}
+    <span style="color:#5FB878;">{{#telphone}}</span>
+    {{#  } else { }}
+    <span style="color:#FFB800;">未填</span>
+    {{#  } }}
+</script>
+<script type="text/html" id="statusTpl">
+    {{#  if(d.is_subsidy == 1){ }}
+    <span style="color:#5FB878;">是</span>
+    {{#  } else { }}
+    <span style="color:#FFB800;">否</span>
     {{#  } }}
 </script>
 </body>

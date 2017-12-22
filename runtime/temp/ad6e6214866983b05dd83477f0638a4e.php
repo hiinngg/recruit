@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513837679;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513826708;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513905258;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513911392;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,6 +109,7 @@ body,html{
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -154,23 +155,14 @@ body,html{
 
 <div class="container sever">
 <h2 class="text-center">职造课程</h2>
-<div class="row sever">
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
-<div class="col-md-3 col-center">
-  <img src="/static/images/icon.png" width="64px"  height="64px"  />
-  <p>Title Name</p>
-</div>
+<div class="row sever row-center">
+ <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <div class="col-md-3 col-center">
+        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
+        <h4><?php echo $vo['name']; ?></h4>
+    </div>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+
 </div>
 </div>
 
@@ -183,15 +175,13 @@ body,html{
 <h2 class="text-center">内推企业</h2>
 
 <div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide company-logo">Slide 1</div>
-        <div class="swiper-slide company-logo">Slide 2</div>
-        <div class="swiper-slide company-logo">Slide 3</div>
-        <div class="swiper-slide company-logo">Slide 4</div>
-        <div class="swiper-slide company-logo">Slide 5</div>
-        <div class="swiper-slide company-logo">Slide 6</div>
-        <div class="swiper-slide company-logo">Slide 7</div>
-        <div class="swiper-slide company-logo">Slide 8</div>
+    <div class="swiper-wrapper row-center">
+        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <div class="swiper-slide company-logo">
+            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
+        </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+
     </div>
 </div>
 
@@ -309,8 +299,7 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
-	loop:true,
-	loopedSlides: 8,
+      freeMode:true
   })  
 
 
@@ -391,8 +380,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="<?php echo url('course/courseDetail'); ?>"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */

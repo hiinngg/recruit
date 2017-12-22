@@ -1,9 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\nav\navlist.html";i:1513905257;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>导航管理</title>
+<title>新闻管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -15,6 +14,9 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
+		<button class="layui-btn layui-btn-normal add" data-url="{:url('addTalent')}">
+			<i class="layui-icon">&#xe654;</i>新增人才定制
+		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
 			<i class="layui-icon">&#xe640;</i>批量删除
 		</button> -->
@@ -24,55 +26,90 @@
 	</blockquote>
 		
 	
-    <?php if(isset($none)): ?>
+    {present name="none"}
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-			<p>这里一个导航都没有</p>			
+			<p>这里一点内容都没有</p>			
 		</div>
-		<?php else: ?>
+		{else/}
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
-	<?php endif; ?>
+	{/present}
     <script src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
 	var tranStatus={
 			'发布':1,
 			'不发布':0
-	};
+	}
 		layui.use([ 'table', 'layer','jquery','form' ], function() {
 			var $=layui.jquery;
 			var table = layui.table;
 			var layer=layui.layer;		
-			var form = layui.form;
-		<?php if(!isset($none)): ?>
+			var form = layui.form
+		{notpresent name="none"}
 			var init= layer.load(2, {shade: false});
-		var tableIns = table.render({
-			        elem:"#table",	
-			       
-			        url: "<?php echo url('nav/navList'); ?>",
+		var articleTable = table.render({
+			        elem:"#table",	      
+			        url: "{:url('talent/talentList')}",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'navid', title: '编号' },
-			         {field: 'name', title: '导航名称' },
-			         {field: 'column', title: '对应栏目' },
+			         {field: 'pageid', title: '编号'},
+			         {field: 'title', title: '标题' },
 			         {field: 'status', title: '状态',templet: '#statusTpl' },
+			         {field: 'created_at', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
-				   
+				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
 			        layer.close(init)
 			    }
 				});
-			 
-			 
-			<?php endif; ?>;
+			
+			{/notpresent}
+	
+			
+				$(".add").on("click",function(){			
+					var data = {
+							title:"新增人才定制",
+							href : $(this).attr("data-url")
+						}
+					window.parent.navtab.tabAdd(data)
+					
+				})
+			
+				
+              upload.render({
+			   elem: '.add'
+			  ,url: "{:url('imgUpload')}",
+			  field:"image"
+			  ,done: function(res, index, upload){			  
+			    if(res.code == 0){		
+			     $("input[name='label_img']").val(res.src.replace(/\\/g,'/'))
+			     if($(".img").children("img").length>0){
+			    	 $(".img").children("img").attr("src",res.src.replace(/\\/g,'/'))
+			     }else{
+			    	 $(".img").append('<img   style="object-fit:cover;"  width="200px" height="100px"  src="'+res.src.replace(/\\/g,'/')+'"  />')
+			     }
+			    }			    
+			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
+			    var item = this.item;
+			    
+			    //文件保存失败
+			    //do something
+			  }
+			});  
+				
+				
+				
+				
+				
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 					  var data = obj.data; //获得当前行数据
 					  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
 					  var tr = obj.tr; //获得当前行 tr 的DOM对象	
 					  var dtd=$.Deferred();
-
+					  console.log(data)
 					  if(layEvent === 'detail'){ //查看
 						  layer.open({
 						      type: 2,
@@ -86,54 +123,44 @@
 
 					  } else if(layEvent === 'del'){ //删除
 					    layer.confirm('确定删除该新闻么', function(index){
-					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd);
+					    	  _ajax("{:url('articleDel')}",{postid:data.postid},dtd)
 							  dtd.done(function(){
-								  obj.del();
+								  obj.del(); 
 								  layer.close(index);
 							  })
 					    });
 					  } else if(layEvent === 'edit'){ //编辑
-						 layer.prompt({title:"请输入新的导航名字",value:data.name},function(value,index,elem){
-
-                         layer.closeAll();
-                             _ajax("<?php echo url('nameChange'); ?>",{navid:data.navid,name:value},dtd);
-                             dtd.done(function(){
-                                 obj.update({
-                                     name:value
-                                 });
-                             })
-
-
-                      })
+						  layer.open({
+						      type: 2,
+						      title: '内容编辑',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "articleEdit?id="+data.postid
+						    });
 					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:1},dtd);
+						  _ajax("{:url('statusChange')}",{postid:data.postid,status:1},dtd)
 						  dtd.done(function(){
-							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>';
+							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
-									  status:1
+									  is_valid:1
 						       });
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("<?php echo url('statusChange'); ?>",{navid:data.navid,status:0},dtd);
+						  _ajax("{:url('statusChange')}",{postid:data.postid,status:0},dtd)
 						 dtd.done(function(){
-					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>';
+					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
-							status:0
+							is_valid:0
 						 });
 						  })
 					
-					  }else if(layEvent === 'moveUp'){
-						  
-					  _ajax("<?php echo url('sortChange'); ?>",{navid:data.navid,sortid:data.sortid},dtd);
-						 dtd.done(function() {
-                            tableIns.reload();
-
-                         })
-                      }
+					  }
 					});
-
+				
 				function  _ajax(url,data,deferred){
 					var index = layer.load(2, {shade: false});
 					$.ajax({
@@ -141,7 +168,7 @@
 						data:data,
 						type:"post",
 						success:function(data){
-							layer.close(index);
+							layer.close(index)
 							if(data==1){
 								deferred.resolve();
 							}else{
@@ -166,22 +193,14 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-
-
-  {{#  if(  d.LAY_INDEX   != 1){ }}
-  <button class="layui-btn layui-btn-xs on" lay-event="moveUp">上移</button>
-  {{#  } else { }}
-    
-  {{#  } }}
-
-
+  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
   {{#  if(d.status == 1){ }}
-  <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
+   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
   {{#  } }}
 
+  <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
  
   <!-- 这里同样支持 laytpl 语法，如： -->
 

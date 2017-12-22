@@ -108,6 +108,7 @@ body,html{
       {/volist}
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="{:url('index/user/index')}" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -304,8 +305,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="{:url('course/courseDetail')}"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */

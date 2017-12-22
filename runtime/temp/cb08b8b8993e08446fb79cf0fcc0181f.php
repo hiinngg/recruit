@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1513818370;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513826708;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1513909844;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513911392;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,12 +109,13 @@ body,html{
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- 
-<div class="container">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container sever">
 <h2 class='text-center'>找人才</h2>
 <p class="sever"><?php echo $data; ?></p>
 </div>
@@ -229,8 +230,7 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
-	loop:true,
-	loopedSlides: 8,
+      freeMode:true
   })  
 
 
@@ -311,8 +311,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="<?php echo url('course/courseDetail'); ?>"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */

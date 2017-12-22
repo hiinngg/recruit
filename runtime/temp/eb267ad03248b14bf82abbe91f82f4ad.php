@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1513816780;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513826708;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1513905258;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513905258;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -274,8 +274,7 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
-	loop:true,
-	loopedSlides: 8,
+      freeMode:true
   })  
 
 

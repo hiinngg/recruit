@@ -1,55 +1,41 @@
+<img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
 <div class="container sever">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist" id="course">
     <li ><a href="#" style="color:#000000;">课程分类</a></li>
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    {volist name="cate" id="vo"}
+    
+      <li role="presentation" class="{eq name="i"  value="1"}active{/eq}"><a href="#c{$key}"  role="tab" data-toggle="tab">{$vo}</a></li>
+    
+    {/volist}
+ 
   </ul>
   
 </div>
 
-    <h3 class="text-center">新上好课</h3>
+ 
    
   <!-- Tab panes -->
   <div class="tab-content container sever">
-    <div role="tabpanel row" class="tab-pane active" id="home">
-	    <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
+    {volist name="course" id="vo"}
+    
+    
+    
+        <div role="tabpanel row" class="tab-pane active" id="c{$key}">
+      <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
+    {volist name="vo" id="cour"}
+        <div class="col-md-3   course-item" data-id="{$cour.courseid}">
+	       <img src="{$cour.label_img}" alt="" style="width:216px;height:120px;"/>
+	       <h4  class="course-name">{$cour.name}</h4>
+	       <h5>{$cour.desc}</h5>
+	       <p>&yen;{$cour.price}</p>
 	    </div>
-      <div class="col-md-3 course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-	    
-	
-	   
-	    
+    {/volist}
+
     </div>
+    
+    {/volist}
+
     <div role="tabpanel" class="tab-pane" id="profile">2</div>
     <div role="tabpanel" class="tab-pane" id="messages">3</div>
     <div role="tabpanel" class="tab-pane" id="settings">4</div>

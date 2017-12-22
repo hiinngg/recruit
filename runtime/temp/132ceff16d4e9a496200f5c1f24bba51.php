@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1513816780;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1513905257;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,9 +185,9 @@
 <script type="text/html" id="bar">
   <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
   {{#  if(d.status == 1){ }}
-   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">激活</button>
+   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销</button>
   {{#  } else { }}
-    <button class="layui-btn layui-btn-xs on" lay-event="change2on">撤销</button>
+    <button class="layui-btn layui-btn-xs on" lay-event="change2on">激活</button>
   {{#  } }}
 
  

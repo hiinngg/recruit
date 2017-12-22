@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1513821809;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1513905257;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,21 @@
       <textarea name="desc" rows="4" placeholder="请填写课程简介" class="layui-textarea" value=""></textarea>
     </div>
   </div>
-  
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">导师</label>
+    <div class="layui-input-block">
+      <input type="text" name="teacher" required  lay-verify="required" placeholder="请输入导师名" autocomplete="off" class="layui-input" value="<?php echo isset($data['name'])?$data['name']: ''; ?>">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机号码</label>
+    <div class="layui-input-block">
+      <input type="text" name="tel" required  lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="<?php echo isset($data['name'])?$data['name']: ''; ?>">
+    </div>
+  </div>
+
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">目录</label>
     <div class="layui-input-block">
