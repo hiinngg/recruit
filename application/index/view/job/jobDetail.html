@@ -1,0 +1,53 @@
+
+<div class="container sever">
+    <div class="row row-center">
+        <div class="col-md-6 col-center">
+            <div class="text-left">
+                <h4>企业名称：{$data.fullname}</h4>
+                <h4 class="sever">岗位名称：{$data.name}</h4>
+                <h4 class="sever">岗位薪酬：{$data.salary_min}-{$data.salary_max}元</h4>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-center">
+         <button class="btn btn-default">点击报名</button>
+        </div>
+    </div>
+
+
+    <div class="text-center sever">
+        <h2>工作描述</h2>
+        <p class="sever">{$data.desc}</p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>岗位福利</h2>
+        <p class="sever">
+            {volist name="data.treatment" id="vo"}
+            <span>{$vo}</span>
+            {/volist}
+        </p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>工厂环境</h2>
+        <div class="swiper-container" id="jobDetail">
+            <div class="swiper-wrapper">
+
+                {volist name="data.position_pics" id="vo"}
+                <div class="swiper-slide "  style="width:300px;">
+
+                    <img   style="object-fit:cover;width:300px;height:150px;"   src="{$vo}"  />
+
+                </div>
+                {/volist}
+
+            </div>
+            <div class="swiper-button-prev"  style=""></div>
+            <div class="swiper-button-next" style="" ></div>
+        </div>
+
+    </div>
+
+
+</div>

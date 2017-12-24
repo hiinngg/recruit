@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513954410;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514134070;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,81 +114,76 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:550px;object-fit:cover;"  alt="...">
-    </div>
-    <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:550px;object-fit:cover;" alt="...">
-    </div>
-    
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-
-<div class="container sever">
-<h2 class="text-center"><?php echo $data['title']; ?></h2>
-<p><?php echo $data['content']; ?></p>
-</div>
-
-
-<div class="container sever">
-<h2 class="text-center">职造课程</h2>
-<div class="row sever row-center">
- <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="col-md-3 col-center">
-        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
-        <h4><?php echo $vo['name']; ?></h4>
-    </div>
-    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-</div>
-</div>
-
-<!-- <p class="text-center sever">
-<a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p> -->
-
-
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container sever" >
+<h2 class="text-center">个人信息填写</h2>
+    <form class="layui-form sever" action=""  >
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
         </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标职位：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标单位：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
 
-    </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="初中">
+                <input type="radio" name="sex" value="女" title="高中" checked>
+                <input type="radio" name="sex" value="男" title="大专">
+                <input type="radio" name="sex" value="男" title="本科">
+                <input type="radio" name="sex" value="男" title="硕士">
+                <input type="radio" name="sex" value="男" title="博士">
+
+            </div>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">自我评价</label>
+            <div class="layui-input-block">
+                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">工作经历</label>
+            <div class="layui-input-block">
+                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
 </div>
-
-</div>
-
-
-
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">

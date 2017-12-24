@@ -6,6 +6,13 @@ use think\Exception;
 
 class Register extends Common
 {
+     public  function   userRegister(){
+
+
+
+         return $this->fetch();
+     }
+
 
     public function companyReg()
     {

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513954410;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1513954046;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513954449;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,78 +114,51 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container">
+	<h3 class="text-center"><?php echo $data['name']; ?></h3>
+	<hr />
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:550px;object-fit:cover;"  alt="...">
+	<div class="row">
+	   <div class="col-md-6" style="padding-right:0;">
+	   <img src="<?php echo $data['label_img']; ?>" height="200px;" style="object-fit:contain;" width="100%" />
+	   </div>
+	   <div class="col-md-6 text-center col-center" style="height:200px;border:1px solid #b5b5b5;">
+	
+		    <p>价格：&yen;<?php echo $data['price']; ?></p>
+		    <p>课程简介：<?php echo $data['desc']; ?></p>
+		    <p>课程形式：<?php echo $data['type']; ?></p>
+	    <button type="button"  class="btn btn-default">马上报名</button>
+	   </div>
+	</div>
+	
+<hr />
+   <ul class="nav nav-tabs row-center" role="tablist" id="detail">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">课程介绍</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">课程目录</a></li>
+  </ul>
+<hr />
+</div>
+
+    <div class="tab-content  container ">
+    <div role="tabpanel row" class="tab-pane active" id="home">
+         <div class="col-md-6" style="padding-right:0;">
+         
+         </div>
+         <div class="col-md-6">
+         <p><?php echo $data['content']; ?></p>
+         </div>  
+     
     </div>
-    <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:550px;object-fit:cover;" alt="...">
-    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
     
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-
-<div class="container sever">
-<h2 class="text-center"><?php echo $data['title']; ?></h2>
-<p><?php echo $data['content']; ?></p>
-</div>
-
-
-<div class="container sever">
-<h2 class="text-center">职造课程</h2>
-<div class="row sever row-center">
- <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="col-md-3 col-center">
-        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
-        <h4><?php echo $vo['name']; ?></h4>
+    <p class="text-center">
+     <?php echo $data['menu']; ?>
+    </p>
+   </div>
     </div>
-    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-</div>
-</div>
-
-<!-- <p class="text-center sever">
-<a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p> -->
 
 
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
-        </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-
-    </div>
-</div>
-
-</div>
 
 
 
@@ -230,13 +203,13 @@ body,html{
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
-	        	  <input type="tel"  name="tel" class="form-control" placeholder="请输入手机号码" />
+	        	  <input type="text"  class="form-control" placeholder="请输入手机号码" />
 	        	</div>
         	</div>
         	
             <div class="form-group">
             <div class="col-md-8">
-            	<input type="text"  name="code" class="form-control" placeholder="请输入验证码" />
+            	<input type="text"  class="form-control" placeholder="请输入验证码" />
             </div>
 
              <div class="col-md-4">
@@ -245,7 +218,7 @@ body,html{
         	</div>
 
                 <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
-        	<button  type="submit"   class="center-block btn btn-default userRegister "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
+        	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
@@ -262,7 +235,7 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
+                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
@@ -403,28 +376,10 @@ $(".login").on("click",function(e){
     $(".userLogin").removeClass("hidden")
 
 })
-
- $(".userRegister").on("click",function(e){
-e.preventDefault();
-   location.href="../register/userRegister"
-})
-
   /**/
   
- /* 职位内页*/
-    var jobSwiper = new Swiper ('#jobDetail', {
-        slidesPerView:'auto',
-        spaceBetween : 20,
-
-        // 如果需要前进后退按钮
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-    })
-
-
+  
+  
 });
 
 

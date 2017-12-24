@@ -1,8 +1,9 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp6\wamp64\www\recruit\public/../application/companyadmin\view\position\positionlist.html";i:1513772608;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>人才管理</title>
+<title>普工需求管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -14,49 +15,44 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="{:url('addTalent')}">
-			<i class="layui-icon">&#xe654;</i>新增人才定制
-		</button>
-<!-- 		<button class="layui-btn layui-btn-danger">
-			<i class="layui-icon">&#xe640;</i>批量删除
-		</button> -->
+
 		<button class="layui-btn " onclick="refresh()">
 			刷新
 		</button>
 	</blockquote>
 		
 	
-    {present name="none"}
+    <?php if(isset($none)): ?>
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-			<p>这里一点内容都没有</p>			
+			<p>您还没有发布普工需求</p>			
 		</div>
-		{else/}
+		<?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
-	{/present}
+	<?php endif; ?>
     <script src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
 	var tranStatus={
 			'发布':1,
 			'不发布':0
 	}
-		layui.use([ 'table', 'layer','jquery','form',"upload" ], function() {
+		layui.use([ 'table', 'layer','jquery','form' ], function() {
 			var $=layui.jquery;
 			var table = layui.table;
 			var layer=layui.layer;		
-			var form = layui.form;
-			var upload = layui.upload;
-		{notpresent name="none"}
+			var form = layui.form
+		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
-		var talentTable = table.render({
-			        elem:"#table",	      
-			        url: "{:url('talent/talentList')}",
+		var articleTable = table.render({
+			        elem:"#table",	
+			       
+			        url: "<?php echo url('position/positionList'); ?>",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'pageid', title: '编号'},
-					{field: 'title', title: '标题' },
-					{field: 'status', title: '状态',templet: '#statusTpl' },
+			         {field: 'poid', title: '编号' },
+			         {field: 'name', title: '职位名称' },
+			         {field: 'status', title: '状态',templet: '#statusTpl' },
 			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
@@ -65,33 +61,29 @@
 			        layer.close(init)
 			    }
 				});
-			
-			{/notpresent}
+			 
+			 
+			 $(".articleSearch").on("click",function(){
+				 var keyword=$("input[name='keyword']").val();
+				 if(keyword==""){
+					 return;
+				 }
+				 articleTable.reload({
+					  where: { 
+					    keyword:keyword
+					  }
+					  ,page: {
+					    curr: 1 //重新从第 1 页开始
+					  }
+					});
+				 
+			 })
+			 
+			 
+			<?php endif; ?>
 	
-			
+	
 
-
-              upload.render({
-			   elem: '.add'
-			  ,url: "{:url('imgUpload')}",
-			  field:"image"
-			  ,done: function(res, index, upload){			  
-
-			     if(res==1){
-
-                   talentTable.reload();
-
-                  }
-			    
-			    //文件保存失败
-			    //do something
-			  }
-			});  
-				
-				
-				
-				
-				
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 					  var data = obj.data; //获得当前行数据
@@ -100,33 +92,37 @@
 					  var dtd=$.Deferred();
 					  console.log(data)
 					  if(layEvent === 'detail'){ //查看
-                          layer.photos({
-                              photos: {
-                                  "title": "人才定制", //相册标题
-                                  "id": data.pageid, //相册id
-                                  "start": 0, //初始显示的图片序号，默认0
-                                  "data": [   //相册包含的图片，数组格式
-                                      {
-                                          "pid": data.pageid, //图片id
-                                          "src": data.content, //原图地址
-                                      }
-                                  ]
-                              },
-                              tab: function(pic, layero){
-                                  console.log(pic) //当前图片的一些信息
-                              }
-                          });
+						  layer.open({
+						      type: 2,
+						      title: '内容查看',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "articlePreview?id="+data.postid
+						    });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该人才定制么', function(index){
-					    	  _ajax("{:url('talentDel')}",{pageid:data.pageid,path:data.content},dtd)
+					    layer.confirm('确定删除该需求么', function(index){
+					    	  _ajax("<?php echo url('positionDel'); ?>",{poid:data.poid},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
 								  layer.close(index);
 							  })
 					    });
+					  } else if(layEvent === 'edit'){ //编辑
+						  layer.open({
+						      type: 2,
+						      title: '内容编辑',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "positionEdit?poid="+data.poid
+						    });
+					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
@@ -135,7 +131,7 @@
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
@@ -179,7 +175,8 @@
 	</script>
 <script type="text/html" id="bar">
   <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
-  {{#  if(d.status == 1){ }}
+  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+  {{#  if(d.status== 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>

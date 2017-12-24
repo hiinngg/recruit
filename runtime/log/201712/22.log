@@ -12063,3 +12063,3408 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025001s ]
 [ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.026002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:48:24+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.pro.com/ [运行时间：0.801045s][吞吐率：1.25req/s] [内存消耗：4,255.18kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:05+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.245014s][吞吐率：4.08req/s] [内存消耗：4,242.89kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.020002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:10+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.216012s][吞吐率：4.63req/s] [内存消耗：4,213.87kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:30+08:00 ] 127.0.0.1 127.0.0.1 GET /index/talent/talent.html
+[ info ] www.pro.com/index/talent/talent.html [运行时间：0.242014s][吞吐率：4.13req/s] [内存消耗：4,240.44kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'talent',
+    2 => 'talent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Talent->talent[ D:\wamp6\wamp64\www\recruit\application\index\controller\Talent.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '找人才' LIMIT 1 [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:34+08:00 ] 127.0.0.1 127.0.0.1 GET /companyadmin/index/login.html
+[ info ] www.pro.com/companyadmin/index/login.html [运行时间：0.106007s][吞吐率：9.43req/s] [内存消耗：2,651.02kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'companyadmin',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\companyadmin\controller\Index->login[ D:\wamp6\wamp64\www\recruit\application\companyadmin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/companyadmin\view\index\login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:49:38+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.185010s][吞吐率：5.41req/s] [内存消耗：3,942.63kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.021002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:43+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.234014s][吞吐率：4.27req/s] [内存消耗：3,972.77kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:46+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index/index.html
+[ info ] www.pro.com/index/index/index.html [运行时间：0.275016s][吞吐率：3.64req/s] [内存消耗：3,983.84kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:49:49+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.220013s][吞吐率：4.55req/s] [内存消耗：3,972.77kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:53:08+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.266015s][吞吐率：3.76req/s] [内存消耗：3,972.75kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:53:09+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.259015s][吞吐率：3.86req/s] [内存消耗：3,972.75kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.025002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:53:10+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.200012s][吞吐率：5.00req/s] [内存消耗：3,972.75kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.017000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:53:45+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.191011s][吞吐率：5.24req/s] [内存消耗：3,942.63kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:53:45+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.pro.com/static/js/swiper.min.js.map [运行时间：0.223012s][吞吐率：4.48req/s] [内存消耗：2,073.36kb] [文件加载：35]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:54:12+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.267015s][吞吐率：3.75req/s] [内存消耗：4,213.92kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:12+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.pro.com/static/js/swiper.min.js.map [运行时间：0.067004s][吞吐率：14.92req/s] [内存消耗：2,073.36kb] [文件加载：35]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:54:16+08:00 ] 127.0.0.1 127.0.0.1 GET /index/talent/talent.html
+[ info ] www.pro.com/index/talent/talent.html [运行时间：0.223012s][吞吐率：4.48req/s] [内存消耗：4,240.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'talent',
+    2 => 'talent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Talent->talent[ D:\wamp6\wamp64\www\recruit\application\index\controller\Talent.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '找人才' LIMIT 1 [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:20+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.241013s][吞吐率：4.15req/s] [内存消耗：4,243.38kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:21+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.187011s][吞吐率：5.35req/s] [内存消耗：3,942.66kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:25+08:00 ] 127.0.0.1 127.0.0.1 GET /index/talent/talent.html
+[ info ] www.pro.com/index/talent/talent.html [运行时间：0.200011s][吞吐率：5.00req/s] [内存消耗：3,968.73kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'talent',
+    2 => 'talent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Talent->talent[ D:\wamp6\wamp64\www\recruit\application\index\controller\Talent.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '找人才' LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:27+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index/index.html
+[ info ] www.pro.com/index/index/index.html [运行时间：0.315018s][吞吐率：3.17req/s] [内存消耗：4,255.85kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.046003s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:34+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.245014s][吞吐率：4.08req/s] [内存消耗：3,972.88kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:37+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.174010s][吞吐率：5.75req/s] [内存消耗：3,942.66kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:41+08:00 ] 127.0.0.1 127.0.0.1 GET /index/talent/talent.html
+[ info ] www.pro.com/index/talent/talent.html [运行时间：0.191011s][吞吐率：5.24req/s] [内存消耗：3,968.73kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'talent',
+    2 => 'talent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Talent->talent[ D:\wamp6\wamp64\www\recruit\application\index\controller\Talent.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '找人才' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:51+08:00 ] 127.0.0.1 127.0.0.1 GET /companyadmin/index/login.html
+[ info ] www.pro.com/companyadmin/index/login.html [运行时间：0.044002s][吞吐率：22.73req/s] [内存消耗：2,651.20kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'companyadmin',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\companyadmin\controller\Index->login[ D:\wamp6\wamp64\www\recruit\application\companyadmin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/companyadmin\view\index\login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:54:56+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.pro.com/index/job/joblist.html [运行时间：0.165009s][吞吐率：6.06req/s] [内存消耗：3,942.66kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->JobList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:57+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.pro.com/index/course/courselist.html [运行时间：0.248014s][吞吐率：4.03req/s] [内存消耗：3,972.88kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.029001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:54:58+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index/index.html
+[ info ] www.pro.com/index/index/index.html [运行时间：0.277016s][吞吐率：3.61req/s] [内存消耗：3,983.63kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.021002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.241014s][吞吐率：4.15req/s] [内存消耗：2,593.63kb] [文件加载：40]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:55:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/login.html
+[ info ] www.pro.com/admin/index/login.html [运行时间：0.057004s][吞吐率：17.54req/s] [内存消耗：2,644.66kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->login[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:55:30+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/index/login.html
+[ info ] www.pro.com/admin/index/login.html [运行时间：0.160009s][吞吐率：6.25req/s] [内存消耗：3,743.41kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'http://www.pro.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'data' => 
+  array (
+    'username' => 'admin',
+    'password' => 'admin',
+  ),
+)
+[ info ] [ RUN ] app\admin\controller\Index->login[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_admin` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = '21232f297a57a5a743894a0e4a801fc3' LIMIT 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.075004s][吞吐率：13.33req/s] [内存消耗：2,914.63kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:55:32+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/course/index.html
+[ info ] www.pro.com/admin/course/index.html [运行时间：0.184011s][吞吐率：5.43req/s] [内存消耗：4,013.55kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'course',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Course->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\index.html [ array (
+  0 => 'tree',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_category` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_category` [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:51+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/course/courselist.html
+[ info ] www.pro.com/admin/course/courselist.html [运行时间：0.212013s][吞吐率：4.72req/s] [内存消耗：4,298.21kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html [ array (
+  0 => 'cates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_category` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_category` [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:51+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/course/coursebycate.html?page=1&limit=10
+[ info ] www.pro.com/admin/course/coursebycate.html?page=1&limit=10 [运行时间：0.145009s][吞吐率：6.90req/s] [内存消耗：3,857.73kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'course',
+    2 => 'coursebycate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Course->courseByCate[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_course` LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`status`,`createtime`,`is_show` FROM `re_course` ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.019002s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:54+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/company/companylist.html
+[ info ] www.pro.com/admin/company/companylist.html [运行时间：0.191011s][吞吐率：5.24req/s] [内存消耗：3,924.91kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'company',
+    2 => 'companylist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Company->companyList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Company.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\company\companylist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_company` LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:54+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/company/companylist.html?page=1&limit=10
+[ info ] www.pro.com/admin/company/companylist.html?page=1&limit=10 [运行时间：0.171010s][吞吐率：5.85req/s] [内存消耗：3,771.21kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'company',
+    2 => 'companylist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/company/companylist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Company->companyList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Company.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_company` LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `cid`,`name`,`fullname`,`contact`,`status`,`createtime` FROM `re_company` WHERE  ( `name` LIKE '%%' OR `fullname` LIKE '%%' ) ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:55+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html
+[ info ] www.pro.com/admin/position/positionlist.html [运行时间：0.118006s][吞吐率：8.47req/s] [内存消耗：2,665.84kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:55:56+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/position/positionlist.html?page=1&limit=10 [运行时间：0.169010s][吞吐率：5.92req/s] [内存消耗：3,773.32kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/position/positionlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_position` LIMIT 1 [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`cid`,`re_position`.`name`,`re_position`.`is_subsidy`,`re_position`.`createtime`,`re_position`.`is_show`,`re_company`.`name` AS `cname` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`status` = 1 ORDER BY `re_position`.`createtime`  desc LIMIT 0,10 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:55:57+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/userlist.html
+[ info ] www.pro.com/admin/user/userlist.html [运行时间：0.100006s][吞吐率：10.00req/s] [内存消耗：2,653.99kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'user',
+    2 => 'userlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\User->UserList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\User.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\user\userlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T22:55:57+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/userlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/user/userlist.html?page=1&limit=10 [运行时间：0.188011s][吞吐率：5.32req/s] [内存消耗：3,754.38kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'user',
+    2 => 'userlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/user/userlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\User->UserList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_user` LIMIT 1 [ RunTime:0.036002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_user` ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:56:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/info/index.html
+[ info ] www.pro.com/admin/info/index.html [运行时间：0.181010s][吞吐率：5.52req/s] [内存消耗：3,938.01kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'info',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Info->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Info.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\info\index.html [ array (
+  0 => 'data',
+  1 => 'pageid',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:56:04+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.157009s][吞吐率：6.37req/s] [内存消耗：4,187.26kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T22:56:06+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/team/teamlist.html
+[ info ] www.pro.com/admin/team/teamlist.html [运行时间：0.213012s][吞吐率：4.69req/s] [内存消耗：3,867.16kb] [文件加载：48]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'team',
+    2 => 'teamlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Team->teamList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Team.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '团队定制' LIMIT 1 [ RunTime:0.020001s ]
+[ error ] [0]模板文件不存在:D:\wamp6\wamp64\www\recruit\public/../application/admin\view\team\teamlist.html[D:\wamp6\wamp64\www\recruit\thinkphp\library\think\view\driver\Think.php:80]
+---------------------------------------------------------------
+[ 2017-12-22T23:20:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.065004s][吞吐率：15.38req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:20:27+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.158009s][吞吐率：6.33req/s] [内存消耗：4,183.77kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:20:28+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/addtalent.html
+[ info ] www.pro.com/admin/talent/addtalent.html [运行时间：0.065003s][吞吐率：15.38req/s] [内存消耗：2,613.02kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'addtalent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:20:31+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.049003s][吞吐率：20.41req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:20:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.142008s][吞吐率：7.04req/s] [内存消耗：3,926.33kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.017001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:20:41+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.079005s][吞吐率：12.66req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:20:43+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.158009s][吞吐率：6.33req/s] [内存消耗：4,183.43kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.022002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:21:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.063003s][吞吐率：15.87req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:21:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.166009s][吞吐率：6.02req/s] [内存消耗：4,183.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:22:05+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：1.008058s][吞吐率：0.99req/s] [内存消耗：2,818.65kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'content-length' => '496067',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.pro.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryBH3S62wHyNc4rlBk',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [2]imagejpeg(./image/admin/14b012f545a99e15ab76f45abb01db17.image/jpeg): failed to open stream: No such file or directory[D:\wamp6\wamp64\www\recruit\vendor\topthink\think-image\src\Image.php:127]
+---------------------------------------------------------------
+[ 2017-12-22T23:22:12+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：0.172010s][吞吐率：5.81req/s] [内存消耗：2,778.54kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Call to a member function isFile() on null[D:\wamp6\wamp64\www\recruit\vendor\topthink\think-image\src\Image.php:101]
+---------------------------------------------------------------
+[ 2017-12-22T23:22:49+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：0.073004s][吞吐率：13.70req/s] [内存消耗：2,777.80kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Call to a member function isFile() on null[D:\wamp6\wamp64\www\recruit\vendor\topthink\think-image\src\Image.php:101]
+---------------------------------------------------------------
+[ 2017-12-22T23:22:50+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.073005s][吞吐率：13.70req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:22:57+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.154009s][吞吐率：6.49req/s] [内存消耗：3,925.43kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:23:03+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：0.820047s][吞吐率：1.22req/s] [内存消耗：2,817.31kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'content-length' => '496067',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.pro.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryCBVKV9gAxzlRZ8FE',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [2]imagejpeg(./image/admin/eac39d225f02cb9e2d338e65a693fc65.image/jpeg): failed to open stream: No such file or directory[D:\wamp6\wamp64\www\recruit\vendor\topthink\think-image\src\Image.php:127]
+---------------------------------------------------------------
+[ 2017-12-22T23:26:59+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.094005s][吞吐率：10.64req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:27:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.152009s][吞吐率：6.58req/s] [内存消耗：3,925.43kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+  0 => 'none',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:05+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：0.983056s][吞吐率：1.02req/s] [内存消耗：4,024.65kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'content-length' => '496067',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.pro.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundarykDMtRJVvKsgsCAJA',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] INSERT INTO `re_page` (`column` , `title` , `content` , `status` , `createtime`) VALUES ('人才定制' , '人才定制' , './image/admin/9f736fb6fe230da478b39cc6c7c80ab0.jpeg' , '1' , '2017-12-22 23:27:05') [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:10+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.174010s][吞吐率：5.75req/s] [内存消耗：3,925.03kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.050003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:10+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/talent/talentlist.html?page=1&limit=10 [运行时间：0.179010s][吞吐率：5.59req/s] [内存消耗：3,765.47kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_page` WHERE  `column` = '人才定制' ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:16+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.049003s][吞吐率：20.41req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:27:18+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.149008s][吞吐率：6.71req/s] [内存消耗：3,924.89kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:18+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/talent/talentlist.html?page=1&limit=10 [运行时间：0.160009s][吞吐率：6.25req/s] [内存消耗：3,765.47kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_page` WHERE  `column` = '人才定制' ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:21+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/articlePreview?id=undefined
+[ info ] www.pro.com/admin/talent/articlePreview?id=undefined [运行时间：0.062003s][吞吐率：16.13req/s] [内存消耗：2,612.85kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'articlePreview',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'undefined',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:27:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.049002s][吞吐率：20.41req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:27:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.159009s][吞吐率：6.29req/s] [内存消耗：3,924.89kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:26+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/talent/talentlist.html?page=1&limit=10 [运行时间：0.150008s][吞吐率：6.67req/s] [内存消耗：3,765.47kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_page` WHERE  `column` = '人才定制' ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:37+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/talent/imgupload.html
+[ info ] www.pro.com/admin/talent/imgupload.html [运行时间：0.906052s][吞吐率：1.10req/s] [内存消耗：4,024.65kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'imgupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'content-length' => '496067',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.pro.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundary7GRszTvehIXKkB9W',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->imgUpload[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] INSERT INTO `re_page` (`column` , `title` , `content` , `status` , `createtime`) VALUES ('人才定制' , '人才定制' , './image/admin/cdd17f1db52e9d982a7a655bc3837759.jpeg' , '1' , '2017-12-22 23:27:37') [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:27:37+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/talent/talentlist.html?page=1&limit=10 [运行时间：0.138008s][吞吐率：7.25req/s] [内存消耗：3,766.03kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_page` WHERE  `column` = '人才定制' ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:11+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/index.html
+[ info ] www.pro.com/admin/index/index.html [运行时间：0.059004s][吞吐率：16.95req/s] [内存消耗：2,657.89kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html [ array (
+  0 => 'adminuser',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:28:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html
+[ info ] www.pro.com/admin/talent/talentlist.html [运行时间：0.155008s][吞吐率：6.45req/s] [内存消耗：3,924.88kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/talent/talentlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/talent/talentlist.html?page=1&limit=10 [运行时间：0.187011s][吞吐率：5.35req/s] [内存消耗：3,766.29kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'talent',
+    2 => 'talentlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/talent/talentlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Talent->talentList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Talent.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_page` WHERE  `column` = '人才定制' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_page` WHERE  `column` = '人才定制' ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.020002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:22+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/userlist.html
+[ info ] www.pro.com/admin/user/userlist.html [运行时间：0.058003s][吞吐率：17.24req/s] [内存消耗：2,654.11kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'user',
+    2 => 'userlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\User->UserList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\User.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\user\userlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:28:22+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/userlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/user/userlist.html?page=1&limit=10 [运行时间：0.157009s][吞吐率：6.37req/s] [内存消耗：3,754.38kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'user',
+    2 => 'userlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/user/userlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\User->UserList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_user` LIMIT 1 [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_user` ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html
+[ info ] www.pro.com/admin/position/positionlist.html [运行时间：0.053003s][吞吐率：18.87req/s] [内存消耗：2,666.01kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:28:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/position/positionlist.html?page=1&limit=10 [运行时间：0.196011s][吞吐率：5.10req/s] [内存消耗：3,773.32kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/position/positionlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_position` LIMIT 1 [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`cid`,`re_position`.`name`,`re_position`.`is_subsidy`,`re_position`.`createtime`,`re_position`.`is_show`,`re_company`.`name` AS `cname` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`status` = 1 ORDER BY `re_position`.`createtime`  desc LIMIT 0,10 [ RunTime:0.045002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:24+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/company/companylist.html
+[ info ] www.pro.com/admin/company/companylist.html [运行时间：0.138008s][吞吐率：7.25req/s] [内存消耗：3,925.22kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'company',
+    2 => 'companylist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Company->companyList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Company.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\company\companylist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_company` LIMIT 1 [ RunTime:0.017001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:24+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/company/companylist.html?page=1&limit=10
+[ info ] www.pro.com/admin/company/companylist.html?page=1&limit=10 [运行时间：0.155009s][吞吐率：6.45req/s] [内存消耗：3,771.21kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'company',
+    2 => 'companylist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/company/companylist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Company->companyList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Company.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_company` LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `cid`,`name`,`fullname`,`contact`,`status`,`createtime` FROM `re_company` WHERE  ( `name` LIKE '%%' OR `fullname` LIKE '%%' ) ORDER BY createtime desc LIMIT 0,10 [ RunTime:0.020002s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:31+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html
+[ info ] www.pro.com/admin/position/positionlist.html [运行时间：0.053003s][吞吐率：18.87req/s] [内存消耗：2,666.38kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/position/positionlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-22T23:28:31+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/position/positionlist.html?page=1&limit=10
+[ info ] www.pro.com/admin/position/positionlist.html?page=1&limit=10 [运行时间：0.155009s][吞吐率：6.45req/s] [内存消耗：3,773.32kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'position',
+    2 => 'positionlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'referer' => 'http://www.pro.com/admin/position/positionlist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Position->positionList[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `re_position` LIMIT 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`cid`,`re_position`.`name`,`re_position`.`is_subsidy`,`re_position`.`createtime`,`re_position`.`is_show`,`re_company`.`name` AS `cname` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`status` = 1 ORDER BY `re_position`.`createtime`  desc LIMIT 0,10 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-22T23:28:42+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/info/index.html
+[ info ] www.pro.com/admin/info/index.html [运行时间：0.146008s][吞吐率：6.85req/s] [内存消耗：3,938.08kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'info',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.pro.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=botjlte3pna9b0mkp3g95h3he6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Info->index[ D:\wamp6\wamp64\www\recruit\application\admin\controller\Info.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/admin\view\info\index.html [ array (
+  0 => 'data',
+  1 => 'pageid',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.019001s ]

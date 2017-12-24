@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1513860454;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513873793;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514044372;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +86,7 @@ body,html{
 
 </style>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -109,14 +109,36 @@ body,html{
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- 
-<div class="container">
-<h2 class='text-center'>找人才</h2>
-<p class="sever"><?php echo $data; ?></p>
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container sever">
+
+  <?php if(isset($talent)): ?>
+    <h2 class='text-center'>人才定制</h2>
+    <div class="row sever row-center">
+
+        <?php if(is_array($talent) || $talent instanceof \think\Collection || $talent instanceof \think\Paginator): $i = 0; $__LIST__ = $talent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <div class="col-md-3">
+            <img src="<?php echo $vo; ?>" style="width:300px;height:150px;" class="img-responsive" alt="">
+        </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+    </div>
+  <?php endif; if(isset($talent)): ?>
+    <h2 class='text-center'>团队定制</h2>
+    <div class="row sever row-center">
+
+        <?php if(is_array($team) || $team instanceof \think\Collection || $team instanceof \think\Paginator): $i = 0; $__LIST__ = $team;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <div class="col-md-3">
+            <img src="<?php echo $vo; ?>" style="width:300px;height:150px;" class="img-responsive" alt="">
+        </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+    </div>
+    <?php endif; ?>
+
 </div>
 
 
@@ -160,13 +182,13 @@ body,html{
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
-	        	  <input type="text"  class="form-control" placeholder="请输入手机号码" />
+	        	  <input type="tel"  name="tel" class="form-control" placeholder="请输入手机号码" />
 	        	</div>
         	</div>
         	
             <div class="form-group">
             <div class="col-md-8">
-            	<input type="text"  class="form-control" placeholder="请输入验证码" />
+            	<input type="text"  name="code" class="form-control" placeholder="请输入验证码" />
             </div>
 
              <div class="col-md-4">
@@ -175,7 +197,7 @@ body,html{
         	</div>
 
                 <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
-        	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
+        	<button  type="submit"   class="center-block btn btn-default userRegister "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
@@ -192,7 +214,7 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
+                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
@@ -310,8 +332,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="<?php echo url('course/courseDetail'); ?>"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */
@@ -333,10 +355,28 @@ $(".login").on("click",function(e){
     $(".userLogin").removeClass("hidden")
 
 })
+
+ $(".userRegister").on("click",function(e){
+e.preventDefault();
+   location.href="../register/userRegister"
+})
+
   /**/
   
-  
-  
+ /* 职位内页*/
+    var jobSwiper = new Swiper ('#jobDetail', {
+        slidesPerView:'auto',
+        spaceBetween : 20,
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+    })
+
+
 });
 
 

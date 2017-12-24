@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513954046;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp6\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513772608;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +7,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
-<title>后台通用模板-Layui</title>
+<title>企业管理系统</title>
 <style type="text/css">
 body, html {
 	height: 100%;
@@ -47,11 +47,11 @@ a {
 <body class="layui-layout-body ">
 	<div class="layui-layout layui-layout-admin ">
 		<div class="layui-header  ">
-			<div class="layui-logo">网站后台管理系统</div>
+			<div class="layui-logo">企业管理系统</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-right">
 				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="http://t.cn/RCzsdCq" class="layui-nav-img"> <?php echo $adminuser; ?>
+						src="http://t.cn/RCzsdCq" class="layui-nav-img"> <?php echo $companyname; ?>
 				</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -70,44 +70,27 @@ a {
 			<div class="layui-side-scroll">
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree" lay-filter="navtab">
-					<li class="layui-nav-item layui-this"><a href="#" data-url="">后台首页</a>
+					<li class="layui-nav-item layui-this"><a href="#" data-url="">企业资料</a>
 					</li>
-					<li class="layui-nav-item"><a href="#">课程管理</a>
-							<dl class="layui-nav-child">
-							<dd>
-								<a data-url="<?php echo url('course/index'); ?>" href="javascript:;">课程类目管理</a>
-							</dd>
-							<dd>
-								<a data-url="<?php echo url('course/courseList'); ?>" href="javascript:;">课程列表</a>
-							</dd>
-						</dl>
-						
-						</li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('company/companyList'); ?>">企业管理</a></li>
+						data-url="<?php echo url('talent/addTalent'); ?>">人才定制</a></li>
 					<li class="layui-nav-item"><a href="#"
-				     data-url="<?php echo url('position/positionList'); ?>">职位管理</a></li>
+						data-url="<?php echo url('team/addTeam'); ?>">团队定制</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('user/userList'); ?>">会员管理</a></li>
-					<li class="layui-nav-item "><a class=""
-						href="javascript:;">页面设置</a>
+						data-url="<?php echo url('position/addPosition'); ?>">普工招聘</a></li>
+						<li class="layui-nav-item "><a class=""
+						href="javascript:;">管理需求</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a data-url="<?php echo url('page/pageList'); ?>" href="javascript:;">内容块编辑</a>
+								<a data-url="<?php echo url('talent/talentList'); ?>" href="javascript:;">人才定制需求管理</a>
 							</dd>
 							<dd>
-								<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
-							</dd>
-								<dd>
-								<a data-url="<?php echo url('talent/talentList'); ?>" href="javascript:;">人才定制栏目</a>
+								<a data-url="<?php echo url('team/teamList'); ?>" href="javascript:;">团队定制需求管理</a>
 							</dd>
 							<dd>
-								<a data-url="<?php echo url('team/teamList'); ?>" href="javascript:;">团队定制栏目</a>
+								<a data-url="<?php echo url('position/positionList'); ?>" href="javascript:;">普工需求管理</a>
 							</dd>
-						</dl>
-				   </li>
-					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('info/index'); ?>">站点信息</a></li>
+						</dl></li>
 				</ul>
 			</div>
 		</div>
@@ -120,12 +103,12 @@ a {
 				<div id="navtab"  style="height: 100%; overflow:hidden;position:relative;" class="layui-tab" lay-allowClose="true" lay-filter="navtab">
 					<ul class="layui-tab-title"
 						style=" background: #ffffff; overflow:hidden;">
-						<li id="home" lay-id="home" class="layui-this">后台首页</li>
+						<li id="home" lay-id="home" class="layui-this">企业资料</li>
 					</ul>
 					<div class="layui-tab-content"
 						style=" ">
 						<div class="layui-tab-item layui-show" style="overflow:hidden;">
-							<iframe src="" style="width: 100%; height: 100%;"
+							<iframe src="<?php echo url('profile'); ?>" style="width: 100%; height: 100%;"
 								frameborder="0"></iframe>
 						</div>
 					</div>
@@ -152,7 +135,7 @@ a {
 			});
 
 			$(".layui-nav").find("[data-url]").on("click", function() {
-				if ($(this).text() == "后台首页") {
+				if ($(this).text() == "企业资料") {
 					element.tabChange('navtab', 'home');
 					return;
 				}

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513954410;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\jobdetail.html";i:1514132880;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,79 +115,58 @@ body,html{
 </nav>
 
  
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:550px;object-fit:cover;"  alt="...">
-    </div>
-    <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:550px;object-fit:cover;" alt="...">
-    </div>
-    
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-
 <div class="container sever">
-<h2 class="text-center"><?php echo $data['title']; ?></h2>
-<p><?php echo $data['content']; ?></p>
-</div>
+    <div class="row row-center">
+        <div class="col-md-6 col-center">
+            <div class="text-left">
+                <h4>企业名称：<?php echo $data['fullname']; ?></h4>
+                <h4 class="sever">岗位名称：<?php echo $data['name']; ?></h4>
+                <h4 class="sever">岗位薪酬：<?php echo $data['salary_min']; ?>-<?php echo $data['salary_max']; ?>元</h4>
+            </div>
 
-
-<div class="container sever">
-<h2 class="text-center">职造课程</h2>
-<div class="row sever row-center">
- <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="col-md-3 col-center">
-        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
-        <h4><?php echo $vo['name']; ?></h4>
-    </div>
-    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-</div>
-</div>
-
-<!-- <p class="text-center sever">
-<a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p> -->
-
-
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
         </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
+        <div class="col-md-6 col-center">
+         <button class="btn btn-default">点击报名</button>
+        </div>
+    </div>
+
+
+    <div class="text-center sever">
+        <h2>工作描述</h2>
+        <p class="sever"><?php echo $data['desc']; ?></p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>岗位福利</h2>
+        <p class="sever">
+            <?php if(is_array($data['treatment']) || $data['treatment'] instanceof \think\Collection || $data['treatment'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['treatment'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <span><?php echo $vo; ?></span>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+        </p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>工厂环境</h2>
+        <div class="swiper-container" id="jobDetail">
+            <div class="swiper-wrapper">
+
+                <?php if(is_array($data['position_pics']) || $data['position_pics'] instanceof \think\Collection || $data['position_pics'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['position_pics'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                <div class="swiper-slide "  style="width:300px;">
+
+                    <img   style="object-fit:cover;width:300px;height:150px;"   src="<?php echo $vo; ?>"  />
+
+                </div>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+
+            </div>
+            <div class="swiper-button-prev"  style=""></div>
+            <div class="swiper-button-next" style="" ></div>
+        </div>
 
     </div>
+
+
 </div>
-
-</div>
-
-
 
 
 <div class="container-fluid sever" style="background:#DFDFDF;">

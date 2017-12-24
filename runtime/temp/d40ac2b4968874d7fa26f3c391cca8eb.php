@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1513875154;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1513875191;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -243,7 +243,7 @@
   {{#  } }}
 
   <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
-   
+
   <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>

@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp6\wamp64\www\recruit\public/../application/companyadmin\view\position\editposition.html";i:1514127763;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,14 +70,14 @@
   <div class="layui-form-item">
     <label class="layui-form-label" >职位名称</label>
     <div class="layui-input-block" >
-      <input type="text" name="title" required  lay-verify="required" placeholder="请输入职位名称" autocomplete="off" class="layui-input" value="{$data.name??''}">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入职位名称" autocomplete="off" class="layui-input" value="<?php echo isset($data['name'])?$data['name']:''; ?>">
     </div>
   </div>
   
    <div class="layui-form-item">
     <label class="layui-form-label">招聘人数</label>
     <div class="layui-input-block">
-      <input type="number" name="number" required  lay-verify="required" placeholder="请输入招聘人数" autocomplete="off" class="layui-input" value="{$data.number??''}">
+      <input type="number" name="number" required  lay-verify="required" placeholder="请输入招聘人数" autocomplete="off" class="layui-input" value="<?php echo isset($data['number'])?$data['number']:''; ?>">
     </div>
   </div>
   
@@ -84,11 +85,11 @@
    <div class="layui-inline">
     <label class="layui-form-label">职位薪酬</label>
     <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" name="price_min" lay-verify="required"  placeholder="￥" autocomplete="off" class="layui-input" value="{$data.salary_min??''}">
+      <input type="text" name="price_min" lay-verify="required"  placeholder="￥" autocomplete="off" class="layui-input" value="<?php echo isset($data['salary_min'])?$data['salary_min']:''; ?>">
     </div>
     <div class="layui-form-mid">-</div>
     <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" name="price_max" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input"  value="{$data.salary_max??'' }">
+      <input type="text" name="price_max" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input"  value="<?php echo isset($data['salary_max'])?$data['salary_max']:''; ?>">
     </div>
   </div>
  </div>
@@ -101,10 +102,10 @@
    <div class="layui-form-item" style="width:70%;">
 
     <div class="layui-input-block treat" style="display:flex;flex-wrap:wrap;" >
-    {volist name="treat" id="vo"}
-      <input id="c{$i}" type="checkbox"  style="display:none; " name="treat"   value="{$vo}"  lay-ignore >
-      <label for="c{$i}"  >{$vo}</label>
-    {/volist}
+    <?php if(is_array($treat) || $treat instanceof \think\Collection || $treat instanceof \think\Paginator): $i = 0; $__LIST__ = $treat;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <input id="c<?php echo $i; ?>" type="checkbox"  style="display:none; " name="treat"   value="<?php echo $vo; ?>"  lay-ignore >
+      <label for="c<?php echo $i; ?>"  ><?php echo $vo; ?></label>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
 
       <label id="myprompt"><span class="fa fa-plus"></span></label>
     </div>
@@ -139,17 +140,17 @@
     <div class="swiper-wrapper">
     
     
-    {volist name="pics" id="vo"}
-    <div class="swiper-slide companyimg" id="image{$i}" style=""> 
-       <span class="fa fa-plus plus fa-2x {neq name="vo" value="$i"}hidden{/neq}" style="line-height:150px;"></span>
-	  <button class="layui-btn layui-btn-xs del {eq name="vo" value="$i"}hidden{/eq}" style="position:absolute;top:0;right:0;">删除</button>
-      {if condition="$vo neq $i"}
-       <img   style="object-fit:cover;width:100%;height:100%;"   src="{$vo}"  />
-      {/if}  
+    <?php if(is_array($pics) || $pics instanceof \think\Collection || $pics instanceof \think\Paginator): $i = 0; $__LIST__ = $pics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <div class="swiper-slide companyimg" id="image<?php echo $i; ?>" style=""> 
+       <span class="fa fa-plus plus fa-2x <?php if($vo != $i): ?>hidden<?php endif; ?>" style="line-height:150px;"></span>
+	  <button class="layui-btn layui-btn-xs del <?php if($vo == $i): ?>hidden<?php endif; ?>" style="position:absolute;top:0;right:0;">删除</button>
+      <?php if($vo != $i): ?>
+       <img   style="object-fit:cover;width:100%;height:100%;"   src="<?php echo $vo; ?>"  />
+      <?php endif; ?>  
      </div>  
    
     
-    {/volist} 
+    <?php endforeach; endif; else: echo "" ;endif; ?> 
     
     
   <!--       <div class="swiper-slide companyimg" id="image1" style="">
@@ -218,23 +219,23 @@
 		  var upload = layui.upload;
 		  var layer  = layui.layer;
 		
-		  {present name="data"}
+		  <?php if(isset($data)): ?>
 		  
 		  //格式化文本域的文字
-		  var desc="{$data.desc}";
+		  var desc="<?php echo $data['desc']; ?>";
 		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
 		  desc=desc.replace(reg,"\n");
 		  $("textarea[name='desc']").text(desc)
 		  
 		  //选择radio
-		  $(".radio[value='{$data.is_subsidy}']").prop("checked",true);
+		  $(".radio[value='<?php echo $data['is_subsidy']; ?>']").prop("checked",true);
            
 		  //选择待遇多选
 		  $("input[type='checkbox']").prop("checked",true)
 		  
           form.render()
 		  
-		  {/present}
+		  <?php endif; ?>
 	    $(".treat").children("input").css("display","none")
 	    //保存
 		form.on('submit(addPosition)', function(data){
@@ -272,12 +273,11 @@
 		//对提交数据的处理
 	    data.field['treat'] = treat
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
-		var url="{:url('addPosition')}";
+		var url="<?php echo url('addPosition'); ?>";
 		var data={data:data.field,image:images};
-		{present name="data"}
-		url="{:url('positionEdit')}"
-		data['poid']={$data.poid}
-		{/present}
+		<?php if(isset($data)): ?>
+		url="<?php echo url('positionEdit'); ?>"
+		data['poid']=<?php echo $data['poid']; endif; ?>
 		
 		
 		//提交给后台处理
@@ -318,7 +318,7 @@
 		  }) 
 		  upload.render({
 			   elem: '.companyimg',
-			  url: "{:url('imgUpload')}",
+			  url: "<?php echo url('imgUpload'); ?>",
 			  field:"image",
 			  multiple:true,
 	         before: function(obj){ 

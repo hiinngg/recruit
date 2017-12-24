@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513860454;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513873793;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513954046;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514133126;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +86,7 @@ body,html{
 
 </style>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -109,62 +109,49 @@ body,html{
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- <div class="container sever">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container sever">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist" id="course">
     <li ><a href="#" style="color:#000000;">课程分类</a></li>
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    
+      <li role="presentation" class="<?php if($i == '1'): ?>active<?php endif; ?>"><a href="#c<?php echo $key; ?>"  role="tab" data-toggle="tab"><?php echo $vo; ?></a></li>
+    
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+ 
   </ul>
   
 </div>
 
-    <h3 class="text-center">新上好课</h3>
+ 
    
   <!-- Tab panes -->
   <div class="tab-content container sever">
-    <div role="tabpanel row" class="tab-pane active" id="home">
-	    <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
+    <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    
+    
+    
+        <div role="tabpanel row" class="tab-pane active" id="c<?php echo $key; ?>">
+      <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
+    <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
+        <div class="col-md-3   course-item" data-id="<?php echo $cour['courseid']; ?>">
+	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:216px;height:120px;"/>
+	       <h4  class="course-name"><?php echo $cour['name']; ?></h4>
+	       <h5><?php echo $cour['desc']; ?></h5>
+	       <p>&yen;<?php echo $cour['price']; ?></p>
 	    </div>
-      <div class="col-md-3 course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-     <div class="col-md-3   course-item">
-	       <img src="" alt="" style="width:216px;height:120px;"/>
-	       <h4 class="course-name">Name</h4>
-	       <h5>简介 简介 简介</h5>
-	       <p>299</p>
-	    </div>
-	    
-	
-	   
-	    
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+
     </div>
+    
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+
     <div role="tabpanel" class="tab-pane" id="profile">2</div>
     <div role="tabpanel" class="tab-pane" id="messages">3</div>
     <div role="tabpanel" class="tab-pane" id="settings">4</div>
@@ -215,13 +202,13 @@ body,html{
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
-	        	  <input type="text"  class="form-control" placeholder="请输入手机号码" />
+	        	  <input type="tel"  name="tel" class="form-control" placeholder="请输入手机号码" />
 	        	</div>
         	</div>
         	
             <div class="form-group">
             <div class="col-md-8">
-            	<input type="text"  class="form-control" placeholder="请输入验证码" />
+            	<input type="text"  name="code" class="form-control" placeholder="请输入验证码" />
             </div>
 
              <div class="col-md-4">
@@ -230,7 +217,7 @@ body,html{
         	</div>
 
                 <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
-        	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
+        	<button  type="submit"   class="center-block btn btn-default userRegister "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
@@ -247,7 +234,7 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
+                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
@@ -365,8 +352,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="<?php echo url('course/courseDetail'); ?>"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */
@@ -388,10 +375,28 @@ $(".login").on("click",function(e){
     $(".userLogin").removeClass("hidden")
 
 })
+
+ $(".userRegister").on("click",function(e){
+e.preventDefault();
+   location.href="../register/userRegister"
+})
+
   /**/
   
-  
-  
+ /* 职位内页*/
+    var jobSwiper = new Swiper ('#jobDetail', {
+        slidesPerView:'auto',
+        spaceBetween : 20,
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+    })
+
+
 });
 
 

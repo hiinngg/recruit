@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html";i:1514016398;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="{:url('addTalent')}">
+		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="<?php echo url('addTalent'); ?>">
 			<i class="layui-icon">&#xe654;</i>新增人才定制
 		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
@@ -26,15 +27,15 @@
 	</blockquote>
 		
 	
-    {present name="none"}
+    <?php if(isset($none)): ?>
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
 			<p>这里一点内容都没有</p>			
 		</div>
-		{else/}
+		<?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
-	{/present}
+	<?php endif; ?>
     <script src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
 	var tranStatus={
@@ -47,11 +48,11 @@
 			var layer=layui.layer;		
 			var form = layui.form;
 			var upload = layui.upload;
-		{notpresent name="none"}
+		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
 		var talentTable = table.render({
 			        elem:"#table",	      
-			        url: "{:url('talent/talentList')}",
+			        url: "<?php echo url('talent/talentList'); ?>",
 			        cols:[[
 			         {checkbox: true},
 			         {field: 'pageid', title: '编号'},
@@ -66,14 +67,14 @@
 			    }
 				});
 			
-			{/notpresent}
+			<?php endif; ?>
 	
 			
 
 
               upload.render({
 			   elem: '.add'
-			  ,url: "{:url('imgUpload')}",
+			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
 			  ,done: function(res, index, upload){			  
 
@@ -119,14 +120,14 @@
 
 					  } else if(layEvent === 'del'){ //删除
 					    layer.confirm('确定删除该人才定制么', function(index){
-					    	  _ajax("{:url('talentDel')}",{pageid:data.pageid,path:data.content},dtd)
+					    	  _ajax("<?php echo url('talentDel'); ?>",{pageid:data.pageid,path:data.content},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
 								  layer.close(index);
 							  })
 					    });
 					  }else if(layEvent === 'change2on'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{pageid:data.pageid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
@@ -135,7 +136,7 @@
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{pageid:data.pageid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
