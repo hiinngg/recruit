@@ -15,7 +15,6 @@ class Register extends Common
             if (! Session::has("username")) {
                 return 0;
             }
-            
             $data=[
                 'userid'=>Db::name("user")->where("telphone",Session::get("username"))->value("userid"),
                 'sex'=>$post['data']['sex'],
@@ -29,15 +28,15 @@ class Register extends Common
                 'createtime'=>date("Y-m-d H:i:s")
             ];
             if(Db::name("resume")->insert($data)==1){
+                $resumeid =  Db::name('user')->getLastInsID();
+                Db::name("user")->where("userid",Db::name("user")->where("telphone",Session::get("username")
+                    ->update(['userpassword'=>md5($post['pwd']),'resumeid'=>$resumeid])));
                 return 1;
-                
             }
         }
         if (! Session::has("username")) {
             return $this->redirect("index/index");
         }
-        
-     
         return $this->fetch();
     }
 
@@ -71,7 +70,7 @@ class Register extends Common
             if (true !== $result) {
                 return "已存在该企业名称";
             }
-            
+
             $data = [
                 'name' => trim($post['data']['name']),
                 'password' => md5($post['data']['pwd']),

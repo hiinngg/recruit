@@ -38,11 +38,12 @@ body,html{
 	height:64px;
 	background:#ccc;
 }
-#mynav a{
+#mynav>ul>li>a{
    color:#000000;
    background:#ffffff;
+    border-bottom:2px solid #FFFFFF;
 }
-#mynav a:active,#mynav a:hover,#mynav a:focus,#mynav .active a{
+#mynav>ul>li>a:active,#mynav>ul>li>a:hover,#mynav>ul>li>a:focus,#mynav .active a{
      border-bottom:2px solid #1881EC;
      color:#1881EC;
 }
@@ -101,7 +102,7 @@ body,html{
 /* userreg */
 </style>
 <body>
-<nav class="navbar navbar-default" style="margin-bottom: 0;">
+<nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -122,39 +123,31 @@ body,html{
       {volist name="navlist" id="vo"}
       <li data-c="{$vo.c}"><a href="{$vo.column}">{$vo.name}</a></li>
       {/volist}
-      </ul>
-      
-      {if condition="session('?username') eq true"}
-       <div class="navbar-text navbar-right ">
-      
-      <span> 用户  {:session('username')}</span>
-         <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>           
-    
-       <span> ,你好</span>          
-       </div>
-       
-        <li  class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-       {else/}
-        <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      {/if} 
-      
+     </ul>
+
+        <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
+            {if condition="session('?username') eq true"}
+         <!--   <div class="navbar-text ">
+
+                <span> 用户  </span>
+
+            </div>-->
+
+            <li  class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:session('username')}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{:url('user/index')}">个人中心</a></li>
+                    <li><a href="{:url('user/logout')}">退出</a></li>
+                </ul>
+            </li>
+            {else/}
+            <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+            {/if}
+
+
+
+        </ul>
+
      
       <!--       <p class="navbar-text navbar-right "><a href="{:url('index/user/index')}" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
@@ -237,19 +230,20 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                     
-                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
+                         <label class="control-label hidden mylabel" for="tel">手机号码不能为空</label>
+                         <input type="text"  name="username"  class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入密码" />
+                         <label class="control-label hidden mylabel" for="tel">密码不能为空</label>
+                         <input type="password"  name="userpass" class="form-control" placeholder="请输入密码" />
                      </div>
                  </div>
 
                  <h5>还没有账号？现在去 <a href="#" class="reg">注册</a></h5>
-                 <button  type="submit" class="center-block btn btn-default"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
+                 <button  type="submit" class="center-block btn btn-default userlogin"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
              </form>
          </div>
      </div>
@@ -362,8 +356,8 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     				location.href="{:url('index/index')}"
     			},500)
     		  $btn.button('reset')
-    		
-    			
+
+
     	}
     }) 
     return false;
@@ -473,9 +467,62 @@ $(".login").on("click",function(e){
 		
 	}) 
 
-
-   
 })
+$(".userlogin").on("click",function(e){
+
+    e.preventDefault();
+    $username=$("input[name='username']");
+    $userpass=$("input[name='userpass']");
+    if( $username.val()==""){
+
+        $username.closest(".form-group").addClass("has-error");
+        $username.closest(".form-group").find("label").removeClass("hidden");
+        setTimeout(function(){
+            $username.closest(".form-group").removeClass("has-error");
+            $username.closest(".form-group").find("label").addClass("hidden");
+        },1500)
+        return;
+    }
+    if($userpass.val()==""){
+
+        $userpass.closest(".form-group").addClass("has-error");
+        $userpass.closest(".form-group").find("label").removeClass("hidden")
+        setTimeout(function(){
+            $userpass.closest(".form-group").removeClass("has-error");
+            $userpass.closest(".form-group").find("label").addClass("hidden")
+        },1500)
+        return;
+    }
+    $.ajax({
+        url: "{:url('user/login')}",
+        data:{username:$username.val(),userpass:$userpass.val()},
+        beforeSend:function(){
+            layer.load(2);
+        },
+        type:"POST",
+        success:function(data){
+            if(data.code==1){
+                layer.closeAll('loading');
+                layer.msg("登录成功");
+                setTimeout(function(){
+                    location.href="{:url('index/index')}";
+                },500)
+            }
+        },
+        complete:function(){
+            layer.closeAll('loading');
+        }
+
+
+    })
+
+
+
+
+})
+
+
+
 
   /*   用户注册  */
   laydate.render({
