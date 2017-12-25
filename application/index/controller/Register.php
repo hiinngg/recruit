@@ -2,17 +2,61 @@
 namespace app\index\controller;
 
 use think\Db;
-use think\Exception;
+use think\Session;
 
 class Register extends Common
 {
-     public  function   userRegister(){
 
+    public function userRegister()
+    {
+     
+        if ($this->request->isAjax()) {
+            $post = $this->request->post();
+            if (! Session::has("username")) {
+                return 0;
+            }
+            
+            $data=[
+                'userid'=>Db::name("user")->where("telphone",Session::get("username"))->value("userid"),
+                'sex'=>$post['data']['sex'],
+                'position'=>$post['data']['position'],
+                'graduated'=>$post['data']['graduated'],
+                'education'=>$post['data']['edu'],
+                'selfevaluation'=>$post['data']['selfevaluation'],
+                'experience'=>$post['data']['experience'],
+                'birthdate'=>$post['data']['date'],
+                'status'=>1,
+                'createtime'=>date("Y-m-d H:i:s")
+            ];
+            if(Db::name("resume")->insert($data)==1){
+                return 1;
+                
+            }
+        }
+        if (! Session::has("username")) {
+            return $this->redirect("index/index");
+        }
+        
+     
+        return $this->fetch();
+    }
 
-
-         return $this->fetch();
-     }
-
+    public function userBaseRegister()
+    {
+        $post = $this->request->post();
+        $data = [
+            'telphone' => $post['mobile'],
+            'status' => 1,
+            'createtime' => date("Y-m-d H:i:s")
+        ];
+        if (Db::name("user")->insert($data) == 1) {
+            Session::set("username", $post['mobile']);
+            return [
+                'code' => 1,
+                "userid" => Db::name('user')->getLastInsID()
+            ];
+        }
+    }
 
     public function companyReg()
     {

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513910552;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513911392;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513910552;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514185293;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,10 +83,26 @@ body,html{
  
  
 /*course  */
-
+ 
+/*userreg*/
+.userregform .layui-form-radio i:hover, .layui-form-radioed i{
+	color:#1881EC;
+}
+.userregform label{
+	white-space:nowrap;
+}
+ 
+ 
+/*userreg  */
+.mylabel{
+	font-weight:normal;
+	font-size:14px;
+	
+}
+/* userreg */
 </style>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -108,8 +124,40 @@ body,html{
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
-      <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
+      
+      <?php if(session('?username') == true): ?>
+       <div class="navbar-text navbar-right ">
+      
+      <span> 用户  <?php echo session('username'); ?></span>
+         <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>           
+    
+       <span> ,你好</span>          
+       </div>
+       
+    <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+       <?php else: ?>
+        <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <?php endif; ?> 
+      
+     
+      <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -202,13 +250,15 @@ body,html{
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
-	        	  <input type="text"  class="form-control" placeholder="请输入手机号码" />
+	        	<label class="control-label hidden mylabel" for="tel">手机号码不能为空</label>
+	        	  <input type="tel"  name="tel" id="tel" class="form-control" placeholder="请输入手机号码" />
 	        	</div>
         	</div>
         	
             <div class="form-group">
             <div class="col-md-8">
-            	<input type="text"  class="form-control" placeholder="请输入验证码" />
+            <label class="control-label hidden mylabel" for="code">验证码不能为空</label>
+            	<input type="text"  name="code" id="code" class="form-control" placeholder="请输入验证码" />
             </div>
 
              <div class="col-md-4">
@@ -217,7 +267,7 @@ body,html{
         	</div>
 
                 <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
-        	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
+        	<button  type="submit"   class="center-block btn btn-default userRegister "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
@@ -234,7 +284,8 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
+                     
+                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
@@ -277,10 +328,11 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /* /首页  */
 
-layui.use(['layer', 'form','upload'], function(){
+layui.use(['layer', 'form','upload','laydate'], function(){
   var layer = layui.layer
   ,form = layui.form;
    var upload= layui.upload;
+   var laydate=layui.laydate;
   
   /*企业注册  */
   $('#companyReg').modal({
@@ -314,6 +366,51 @@ layui.use(['layer', 'form','upload'], function(){
     	complete:function(){
     		layer.closeAll("loading")
     		  $btn.button('reset')
+    	}
+    }) 
+    return false;
+  });
+   
+   
+   
+   /* 用户注册 */
+   form.on('submit(userreg)', function(data){
+	   var $btn = $(data.elem).button('loading')
+     if(data.field.pwd!=data.field.pwd2){
+    	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
+    	
+    	 return false; 
+     }	
+	  data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+	  data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");  
+    $.ajax({
+    	url:"<?php echo url('register/userRegister'); ?>",
+    	data:{data:data.field},
+    	type:"post",
+    	beforeSend:function(){
+    		layer.load(2);
+    	},
+    	success:function(data){
+    		layer.closeAll("loading")
+    		if(data==1){
+    			layer.msg("保存成功!");
+    		}else if(data==0){
+    			layer.msg("请先登录");
+    		}
+    		
+    		else{
+    			layer.msg(data)
+    		}
+    		
+    	},
+    	complete:function(){
+    		layer.closeAll("loading")
+    		   setTimeout(function(){
+    				location.href="<?php echo url('index/index'); ?>"
+    			},500)
+    		  $btn.button('reset')
+    		
+    			
     	}
     }) 
     return false;
@@ -375,11 +472,80 @@ $(".login").on("click",function(e){
     $(".userLogin").removeClass("hidden")
 
 })
-  /**/
+
+ $(".userRegister").on("click",function(e){
+    e.preventDefault();
+    $tel=$("input[name='tel']");
+    $code=$("input[name='code']");
+    if($tel.val()==""){
+    	
+    	$tel.closest(".form-group").addClass("has-error");
+    	$tel.closest(".form-group").find("label").removeClass("hidden");
+    	setTimeout(function(){
+    		$tel.closest(".form-group").removeClass("has-error");
+    		$tel.closest(".form-group").find("label").addClass("hidden");
+    	},1500)
+    	return;
+    }
+    if($("input[name='code']").val()==""){
+    	
+    	 $code.closest(".form-group").addClass("has-error");
+    	 $code.closest(".form-group").find("label").removeClass("hidden")
+    	setTimeout(function(){
+    		 $code.closest(".form-group").removeClass("has-error");
+    		 $code.closest(".form-group").find("label").addClass("hidden")
+    	},1500)
+    	return;
+    }
+ 	$.ajax({
+		url: "<?php echo url('register/userBaseRegister'); ?>",
+		data:{mobile:$tel.val(),code:$code.val()},
+		beforeSend:function(){		
+			layer.load(2);
+		},
+		type:"POST",
+		success:function(data){
+	      if(data.code==1){
+	    	  layer.closeAll('loading');
+	    	  layer.msg("注册成功");
+	    	  setTimeout(function(){
+	    		  location.href="<?php echo url('register/userRegister'); ?>";
+	    	  },500)
+	      }
+		},
+		complete:function(){
+			 layer.closeAll('loading');
+		}
+		
+		
+	}) 
+
+
+   
+})
+
+  /*   用户注册  */
+  laydate.render({
+  elem: '#userdate'
+  ,format: 'yyyy-MM-dd'
+  });
+  /*  */
   
-  
-  
-});
+ /* 职位内页*/
+    var jobSwiper = new Swiper ('#jobDetail', {
+        slidesPerView:'auto',
+        spaceBetween : 20,
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+    })
+
+
+});//layui
 
 
 

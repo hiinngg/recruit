@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\jobdetail.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514172165;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,71 +112,92 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{:url('index/index')}" >logo</a>
+      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse " id="mynav">
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
-      <li  data-c="index" class="active"><a href="{:url('index/index')}">首页 <span class="sr-only">(current)</span></a></li>
-      {volist name="navlist" id="vo"}
-      <li data-c="{$vo.c}"><a href="{$vo.column}">{$vo.name}</a></li>
-      {/volist}
+      <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
+      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
-      
-      {if condition="session('?username') eq true"}
-       <div class="navbar-text navbar-right ">
-      
-      <span> 用户  {:session('username')}</span>
-         <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>           
-    
-       <span> ,你好</span>          
-       </div>
-       
-        <li  class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-       {else/}
-        <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      {/if} 
-      
-     
-      <!--       <p class="navbar-text navbar-right "><a href="{:url('index/user/index')}" class="navbar-link" >个人后台</a></p> -->
+      <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- {__CONTENT__}
+ 
+<div class="container sever">
+    <div class="row row-center">
+        <div class="col-md-6 col-center">
+            <div class="text-left">
+                <h4>企业名称：<?php echo $data['fullname']; ?></h4>
+                <h4 class="sever">岗位名称：<?php echo $data['name']; ?></h4>
+                <h4 class="sever">岗位薪酬：<?php echo $data['salary_min']; ?>-<?php echo $data['salary_max']; ?>元</h4>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-center">
+         <button class="btn btn-default">点击报名</button>
+        </div>
+    </div>
+
+
+    <div class="text-center sever">
+        <h2>工作描述</h2>
+        <p class="sever"><?php echo $data['desc']; ?></p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>岗位福利</h2>
+        <p class="sever">
+            <?php if(is_array($data['treatment']) || $data['treatment'] instanceof \think\Collection || $data['treatment'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['treatment'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <span><?php echo $vo; ?></span>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+        </p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>工厂环境</h2>
+        <div class="swiper-container" id="jobDetail">
+            <div class="swiper-wrapper">
+
+                <?php if(is_array($data['position_pics']) || $data['position_pics'] instanceof \think\Collection || $data['position_pics'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['position_pics'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                <div class="swiper-slide "  style="width:300px;">
+
+                    <img   style="object-fit:cover;width:300px;height:150px;"   src="<?php echo $vo; ?>"  />
+
+                </div>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+
+            </div>
+            <div class="swiper-button-prev"  style=""></div>
+            <div class="swiper-button-next" style="" ></div>
+        </div>
+
+    </div>
+
+
+</div>
+
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：{$footer.catchword}</h4>
+<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-     {$footer.desc}
+     <?php echo $footer['desc']; ?>
        </div>
 	   <div class="col-md-4 col-center">
       <div style="background:#ffffff;width:150px;height:150px;">
-      <img src="{$footer.label_img}" width="100%"  height="100%" />
+      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
       </div>
       </div>
 	</div>
@@ -262,10 +284,10 @@ body,html{
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
 /*common*/
-{present name="nav"}
+<?php if(isset($nav)): ?>
 $("#mynav").find("li").removeClass("active");
-$("#mynav").find("li[data-c='{$nav}']").addClass("active")
-{/present}
+$("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
+<?php endif; ?>
 
 /*common  */
 
@@ -302,7 +324,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	 return;
      }	  
     $.ajax({
-    	url:"{:url('companyReg')}",
+    	url:"<?php echo url('companyReg'); ?>",
     	data:{data:data.field,images:images},
     	type:"post",
     	beforeSend:function(){
@@ -323,56 +345,11 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
-   
-   
-   
-   /* 用户注册 */
-   form.on('submit(userreg)', function(data){
-	   var $btn = $(data.elem).button('loading')
-     if(data.field.pwd!=data.field.pwd2){
-    	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
-    	
-    	 return false; 
-     }	
-	  data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
-	  data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");  
-    $.ajax({
-    	url:"{:url('register/userRegister')}",
-    	data:{data:data.field},
-    	type:"post",
-    	beforeSend:function(){
-    		layer.load(2);
-    	},
-    	success:function(data){
-    		layer.closeAll("loading")
-    		if(data==1){
-    			layer.msg("保存成功!");
-    		}else if(data==0){
-    			layer.msg("请先登录");
-    		}
-    		
-    		else{
-    			layer.msg(data)
-    		}
-    		
-    	},
-    	complete:function(){
-    		layer.closeAll("loading")
-    		   setTimeout(function(){
-    				location.href="{:url('index/index')}"
-    			},500)
-    		  $btn.button('reset')
-    		
-    			
-    	}
-    }) 
-    return false;
-  });
     
   /* /企业注册*/
 	  upload.render({
 			   elem: '.companyimg',
-			  url: "{:url('imgUpload')}",
+			  url: "<?php echo url('imgUpload'); ?>",
 			  field:"image",
 			  multiple:true,
 	         before: function(obj){ 
@@ -451,7 +428,7 @@ $(".login").on("click",function(e){
     	return;
     }
  	$.ajax({
-		url: "{:url('register/userBaseRegister')}",
+		url: "<?php echo url('register/userBaseRegister'); ?>",
 		data:{mobile:$tel.val(),code:$code.val()},
 		beforeSend:function(){		
 			layer.load(2);
@@ -462,7 +439,7 @@ $(".login").on("click",function(e){
 	    	  layer.closeAll('loading');
 	    	  layer.msg("注册成功");
 	    	  setTimeout(function(){
-	    		  location.href="{:url('register/userRegister')}";
+	    		  location.href="<?php echo url('register/userRegister'); ?>";
 	    	  },500)
 	      }
 		},
@@ -480,7 +457,7 @@ $(".login").on("click",function(e){
   /*   用户注册  */
   laydate.render({
   elem: '#userdate'
-  ,format: 'yyyy-MM-dd'
+  ,format: 'yyyy年MM月dd日'
   });
   /*  */
   

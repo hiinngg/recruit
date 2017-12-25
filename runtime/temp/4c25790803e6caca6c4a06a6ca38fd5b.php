@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514184414;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514184504;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,71 +112,130 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{:url('index/index')}" >logo</a>
+      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse " id="mynav">
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
-      <li  data-c="index" class="active"><a href="{:url('index/index')}">首页 <span class="sr-only">(current)</span></a></li>
-      {volist name="navlist" id="vo"}
-      <li data-c="{$vo.c}"><a href="{$vo.column}">{$vo.name}</a></li>
-      {/volist}
+      <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
+      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       
-      {if condition="session('?username') eq true"}
-       <div class="navbar-text navbar-right ">
-      
-      <span> 用户  {:session('username')}</span>
-         <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>           
-    
-       <span> ,你好</span>          
-       </div>
-       
-        <li  class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-       {else/}
+      <?php if(session('?username') == true): ?>
+       <p class="navbar-text navbar-right ">用户  <?php echo session('username'); ?>,你好</p>
+       <?php else: ?>
         <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      {/if} 
+      <?php endif; ?> 
       
      
-      <!--       <p class="navbar-text navbar-right "><a href="{:url('index/user/index')}" class="navbar-link" >个人后台</a></p> -->
+      <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- {__CONTENT__}
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container sever" >
+<h2 class="text-center">个人信息填写</h2>
+    <form class="layui-form sever userregform"  >
+   
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码：</label>
+            <div class="layui-input-block">
+                <input type="password" name="pwd"   lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码：</label>
+            <div class="layui-input-block">
+                <input type="password" name="pwd2"  lay-verify="required" placeholder="请再次输入你的密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+           <div class="layui-form-item">
+            <label class="layui-form-label">出生日期：</label>
+            <div class="layui-input-block">
+                <input type="text" name="date" id="userdate"   lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" checked>
+                <input type="radio" name="sex" value="1" title="女" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标职位：</label>
+            <div class="layui-input-block">
+                <input type="text" name="position"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">毕业院校：</label>
+            <div class="layui-input-block">
+                <input type="text" name="graduated"  lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="edu" value="初中" title="初中">
+                <input type="radio" name="edu" value="高中" title="高中" checked>
+                <input type="radio" name="edu" value="大专" title="大专">
+                <input type="radio" name="edu" value="本科" title="本科">
+                <input type="radio" name="edu" value="硕士" title="硕士">
+                <input type="radio" name="edu" value="博士" title="博士">
+
+            </div>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">自我评价</label>
+            <div class="layui-input-block">
+                <textarea name="selfevaluation" placeholder="请输入自我评价" lay-verify="required" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">工作经历</label>
+            <div class="layui-input-block">
+                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+
+         <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>   
+        
+    </form>
+     
+
+</div>
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：{$footer.catchword}</h4>
+<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-     {$footer.desc}
+     <?php echo $footer['desc']; ?>
        </div>
 	   <div class="col-md-4 col-center">
       <div style="background:#ffffff;width:150px;height:150px;">
-      <img src="{$footer.label_img}" width="100%"  height="100%" />
+      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
       </div>
       </div>
 	</div>
@@ -262,10 +322,10 @@ body,html{
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
 /*common*/
-{present name="nav"}
+<?php if(isset($nav)): ?>
 $("#mynav").find("li").removeClass("active");
-$("#mynav").find("li[data-c='{$nav}']").addClass("active")
-{/present}
+$("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
+<?php endif; ?>
 
 /*common  */
 
@@ -302,7 +362,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	 return;
      }	  
     $.ajax({
-    	url:"{:url('companyReg')}",
+    	url:"<?php echo url('companyReg'); ?>",
     	data:{data:data.field,images:images},
     	type:"post",
     	beforeSend:function(){
@@ -331,13 +391,13 @@ layui.use(['layer', 'form','upload','laydate'], function(){
 	   var $btn = $(data.elem).button('loading')
      if(data.field.pwd!=data.field.pwd2){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
-    	
+    	 history.go(0)
     	 return false; 
      }	
 	  data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
 	  data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");  
     $.ajax({
-    	url:"{:url('register/userRegister')}",
+    	url:"<?php echo url('register/userRegister'); ?>",
     	data:{data:data.field},
     	type:"post",
     	beforeSend:function(){
@@ -348,7 +408,8 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     		if(data==1){
     			layer.msg("保存成功!");
     		}else if(data==0){
-    			layer.msg("请先登录");
+    		
+    			
     		}
     		
     		else{
@@ -358,12 +419,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	},
     	complete:function(){
     		layer.closeAll("loading")
-    		   setTimeout(function(){
-    				location.href="{:url('index/index')}"
-    			},500)
     		  $btn.button('reset')
-    		
-    			
     	}
     }) 
     return false;
@@ -372,7 +428,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
   /* /企业注册*/
 	  upload.render({
 			   elem: '.companyimg',
-			  url: "{:url('imgUpload')}",
+			  url: "<?php echo url('imgUpload'); ?>",
 			  field:"image",
 			  multiple:true,
 	         before: function(obj){ 
@@ -451,7 +507,7 @@ $(".login").on("click",function(e){
     	return;
     }
  	$.ajax({
-		url: "{:url('register/userBaseRegister')}",
+		url: "<?php echo url('register/userBaseRegister'); ?>",
 		data:{mobile:$tel.val(),code:$code.val()},
 		beforeSend:function(){		
 			layer.load(2);
@@ -462,7 +518,7 @@ $(".login").on("click",function(e){
 	    	  layer.closeAll('loading');
 	    	  layer.msg("注册成功");
 	    	  setTimeout(function(){
-	    		  location.href="{:url('register/userRegister')}";
+	    		  location.href="<?php echo url('register/userRegister'); ?>";
 	    	  },500)
 	      }
 		},

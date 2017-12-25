@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1513905258;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1513905258;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1513910885;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514165818;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,10 +83,21 @@ body,html{
  
  
 /*course  */
+ 
+/*userreg*/
+.userregform .layui-form-radio i:hover, .layui-form-radioed i{
+	color:#1881EC;
+}
+.userregform label{
+	white-space:nowrap;
+}
+ 
+ 
+/*userreg  */
 
 </style>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -109,23 +120,25 @@ body,html{
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
       <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- <div class="container">
-	<h3 class="text-center">课程题目</h3>
+ <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+<div class="container">
+	<h3 class="text-center"><?php echo $data['name']; ?></h3>
 	<hr />
 
 	<div class="row">
 	   <div class="col-md-6" style="padding-right:0;">
-	   <img src="" height="200px;" width="100%" />
+	   <img src="<?php echo $data['label_img']; ?>" height="200px;" style="object-fit:contain;" width="100%" />
 	   </div>
 	   <div class="col-md-6 text-center col-center" style="height:200px;border:1px solid #b5b5b5;">
 	
-		    <p>价格：xxx员</p>
-		    <p>课程简介：一句话说完</p>
-		    <p>课程形式：微信授课 直播授课 线下授课</p>
+		    <p>价格：&yen;<?php echo $data['price']; ?></p>
+		    <p>课程简介：<?php echo $data['desc']; ?></p>
+		    <p>课程形式：<?php echo $data['type']; ?></p>
 	    <button type="button"  class="btn btn-default">马上报名</button>
 	   </div>
 	</div>
@@ -144,20 +157,16 @@ body,html{
          
          </div>
          <div class="col-md-6">
-         <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-         内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容内容内容内容内容内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容
-         内容内容内容内容</p>
+         <p><?php echo $data['content']; ?></p>
          </div>  
      
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">3</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+    
+    <p class="text-center">
+     <?php echo $data['menu']; ?>
+    </p>
+   </div>
     </div>
 
 
@@ -205,13 +214,13 @@ body,html{
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
-	        	  <input type="text"  class="form-control" placeholder="请输入手机号码" />
+	        	  <input type="tel"  name="tel" class="form-control" placeholder="请输入手机号码" />
 	        	</div>
         	</div>
         	
             <div class="form-group">
             <div class="col-md-8">
-            	<input type="text"  class="form-control" placeholder="请输入验证码" />
+            	<input type="text"  name="code" class="form-control" placeholder="请输入验证码" />
             </div>
 
              <div class="col-md-4">
@@ -220,7 +229,7 @@ body,html{
         	</div>
 
                 <h5>有账号了？现在去 <a href="#" class="login">登录</a></h5>
-        	<button  type="submit" class="center-block btn btn-default   "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
+        	<button  type="submit"   class="center-block btn btn-default userRegister "  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">提交</button>
         	</form>
         </div>
     </div>
@@ -237,7 +246,7 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入手机号码" />
+                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
@@ -355,8 +364,8 @@ layui.use(['layer', 'form','upload'], function(){
   
   //点击进入课程内页
   $(".course-item").on("click",function(){
-	  
-	  location.href="<?php echo url('course/courseDetail'); ?>"
+	 var id=$(this).attr("data-id");
+	  location.href="../course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */
@@ -378,10 +387,28 @@ $(".login").on("click",function(e){
     $(".userLogin").removeClass("hidden")
 
 })
+
+ $(".userRegister").on("click",function(e){
+e.preventDefault();
+   location.href="../register/userRegister"
+})
+
   /**/
   
-  
-  
+ /* 职位内页*/
+    var jobSwiper = new Swiper ('#jobDetail', {
+        slidesPerView:'auto',
+        spaceBetween : 20,
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+    })
+
+
 });
 
 
