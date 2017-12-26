@@ -4,6 +4,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use app\admin\controller\Course;
+use think\Session;
 
 class Common extends Controller
 {
@@ -12,6 +13,9 @@ class Common extends Controller
 
     public function _initialize()
     {
+        if(Session::has("username")){
+            $this->assign("username",Db::name("user")->where("userid",Session::get("username"))->value("telphone"));
+        }
         $this->trans = [
             '课程列表' => ['url'=>\think\Url::build('course/courseList'),"m"=>"course"],
             "职位列表" => ['url'=>\think\Url::build('job/jobList'),"m"=>"job"],

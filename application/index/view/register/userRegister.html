@@ -6,13 +6,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">姓名：</label>
             <div class="layui-input-block">
-                <input type="text" name="name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="name" value="{$data.truename??''}"  lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
             </div>
         </div>
+        {notpresent name="data"}
         <div class="layui-form-item">
             <label class="layui-form-label">密码：</label>
             <div class="layui-input-block">
-                <input type="password" name="pwd"   lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <input type="password" name="pwd"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -21,12 +22,23 @@
                 <input type="password" name="pwd2"  lay-verify="required" placeholder="请再次输入你的密码" autocomplete="off" class="layui-input">
             </div>
         </div>
+        {/notpresent}
+
            <div class="layui-form-item">
             <label class="layui-form-label">出生日期：</label>
             <div class="layui-input-block">
-                <input type="text" name="date" id="userdate"   lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
+                <input type="text" name="date" id="userdate" value="{$data.birthdate??''}"  lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
             </div>
         </div>
+        {present name="data"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" {eq name="data.sex" value="0"}checked{/eq}>
+                <input type="radio" name="sex" value="1" title="女" {eq name="data.sex" value="1"}checked{/eq}>
+            </div>
+        </div>
+        {else/}
         <div class="layui-form-item">
             <label class="layui-form-label">性别：</label>
             <div class="layui-input-block">
@@ -34,20 +46,37 @@
                 <input type="radio" name="sex" value="1" title="女" >
             </div>
         </div>
+        {/present}
+
         <div class="layui-form-item">
             <label class="layui-form-label">目标职位：</label>
             <div class="layui-input-block">
-                <input type="text" name="position"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
+                <input type="text" name="position" value="{$data.position ??''}"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">毕业院校：</label>
             <div class="layui-input-block">
-                <input type="text" name="graduated"  lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
+                <input type="text" name="graduated"  value="{$data.education ??''}" lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
             </div>
         </div>
 
 
+
+        {present name="data"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="edu" value="初中" title="初中" {eq name="data.education" value="初中"}checked{/eq}>
+                <input type="radio" name="edu" value="高中" title="高中" {eq name="data.education" value="高中"}checked{/eq}>
+                <input type="radio" name="edu" value="大专" title="大专" {eq name="data.education" value="大专"}checked{/eq}>
+                <input type="radio" name="edu" value="本科" title="本科" {eq name="data.education" value="本科"}checked{/eq}>
+                <input type="radio" name="edu" value="硕士" title="硕士" {eq name="data.education" value="硕士"}checked{/eq}>
+                <input type="radio" name="edu" value="博士" title="博士" {eq name="data.education" value="博士"}checked{/eq}>
+
+            </div>
+        </div>
+        {else/}
         <div class="layui-form-item">
             <label class="layui-form-label">学历：</label>
             <div class="layui-input-block">
@@ -60,24 +89,31 @@
 
             </div>
         </div>
+        {/present}
+
+
 
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">自我评价</label>
             <div class="layui-input-block">
-                <textarea name="selfevaluation" placeholder="请输入自我评价" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea name="selfevaluation"  placeholder="请输入自我评价" lay-verify="required" class="layui-textarea">{$data.selfevaluation??''}</textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">工作经历</label>
             <div class="layui-input-block">
-                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea">{$data.experience??''}</textarea>
             </div>
         </div>
 
 
+{present name="data"}
+        <button class="layui-btn center-block" lay-submit lay-filter="editreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        {else/}
+        <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        {/present}
 
-         <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>   
         
     </form>
      

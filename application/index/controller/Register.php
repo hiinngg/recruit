@@ -15,7 +15,8 @@ class Register extends Common
                 return 0;
             }
             $data=[
-                'userid'=>Db::name("user")->where("telphone",Session::get("username"))->value("userid"),
+                'userid'=>Session::get("username"),
+                /*'truename'=>$post['data']['name'],*/
                 'sex'=>$post['data']['sex'],
                 'position'=>$post['data']['position'],
                 'graduated'=>$post['data']['graduated'],
@@ -28,7 +29,7 @@ class Register extends Common
             ];
             if(Db::name("resume")->insert($data)==1){
                 $resumeid =  Db::name('resume')->getLastInsID();
-               $a =  Db::name("user")->where("userid",Db::name("user")->where("telphone",Session::get("username"))->value("userid"))
+               $a =  Db::name("user")->where("userid",$data['userid'])
                     ->update(['userpassword'=>md5($post['data']['pwd']),'resumeid'=>$resumeid]);
                 return 1;
             }
@@ -37,6 +38,36 @@ class Register extends Common
             return $this->redirect("index/index");
         }
         return $this->fetch();
+    }
+    public function  editRegister(){
+        if ($this->request->isAjax()) {
+            $post = $this->request->post();
+            if (! Session::has("username")) {
+                return 0;
+            }
+            $data=[
+                'userid'=>Session::get("username"),
+                /*'truename'=>$post['data']['name'],*/
+                'sex'=>$post['data']['sex'],
+                'position'=>$post['data']['position'],
+                'graduated'=>$post['data']['graduated'],
+                'education'=>$post['data']['edu'],
+                'selfevaluation'=>$post['data']['selfevaluation'],
+                'experience'=>$post['data']['experience'],
+                'birthdate'=>$post['data']['date'],
+                'status'=>1,
+                'createtime'=>date("Y-m-d H:i:s")
+            ];
+            if(Db::name("resume")->where("userid",$data['userid'])->update($data)>=0){
+
+                return 1;
+            }
+        }
+
+      $data=Db::name('resume')->where("userid",Session::get("username"))->find();
+      $this->assign("data",$data);
+      return $this->fetch('userRegister');
+
     }
 
     public function userBaseRegister()
@@ -61,10 +92,11 @@ class Register extends Common
             'createtime' => date("Y-m-d H:i:s")
         ];
         if (Db::name("user")->insert($data) == 1) {
-            Session::set("username", $post['mobile']);
+            $userid=Db::name('user')->getLastInsID();
+            Session::set("username",$userid);
             return [
                 'code' => 1,
-                "userid" => Db::name('user')->getLastInsID()
+                "userid" => $userid
             ];
         }
     }

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\index.html";i:1513954046;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\index.html";i:1514299757;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -70,7 +70,7 @@ a {
 			<div class="layui-side-scroll">
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree" lay-filter="navtab">
-					<li class="layui-nav-item layui-this"><a href="#" data-url="">个人设置</a>
+					<li class="layui-nav-item layui-this"><a href="#" >个人设置</a>
 					</li>
 	
 					<li class="layui-nav-item"><a href="#"
@@ -98,8 +98,8 @@ a {
 					</ul>
 					<div class="layui-tab-content"
 						style=" ">
-						<div class="layui-tab-item layui-show" style="overflow:hidden;">
-							<iframe src="" style="width: 100%; height: 100%;"
+						<div class="layui-tab-item layui-show" style="overflow:scroll;">
+							<iframe src="<?php echo url('info'); ?>" scrolling="auto" style="width: 100%; height:100%;margin-bottom:30px;"
 								frameborder="0"></iframe>
 						</div>
 					</div>

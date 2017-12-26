@@ -126,7 +126,7 @@ body,html{
      </ul>
 
         <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
-            {if condition="session('?username') eq true"}
+            {present name="username"}
          <!--   <div class="navbar-text ">
 
                 <span> 用户  </span>
@@ -134,7 +134,7 @@ body,html{
             </div>-->
 
             <li  class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:session('username')}<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$username}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{:url('user/index')}">个人中心</a></li>
                     <li><a href="{:url('user/logout')}">退出</a></li>
@@ -142,7 +142,7 @@ body,html{
             </li>
             {else/}
             <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-            {/if}
+            {/present}
 
 
 
@@ -264,17 +264,23 @@ $("#mynav").find("li[data-c='{$nav}']").addClass("active")
 /*common  */
 
 $("#courseApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-id");
 $.ajax({
 	url:"{:url('course/apply')}",
+    data:{courseid:id},
+    type:"post",
 	success:function(data){
 		if(data==1){
-			
 			layer.msg("报名成功")
 		}else{
 			layer.msg(data)
 		}
 		
-	}
+	},
+    complete:function(){
+        $btn.button('reset')
+}
 	
 	
 })
@@ -379,6 +385,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"{:url('register/editRegister')}",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="{:url('index/index')}"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({

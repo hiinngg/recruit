@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513954046;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514294104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\register\userRegister.html";i:1514299572;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514299398;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -156,52 +156,126 @@ body,html{
 </nav>
 
  <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
-<div class="container sever">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="course">
-    <li ><a href="#" style="color:#000000;">课程分类</a></li>
-    <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    
-      <li role="presentation" class="<?php if($i == '1'): ?>active<?php endif; ?>"><a href="#c<?php echo $key; ?>"  role="tab" data-toggle="tab"><?php echo $vo; ?></a></li>
-    
-    <?php endforeach; endif; else: echo "" ;endif; ?>
- 
-  </ul>
-  
-</div>
-
- 
+<div class="container sever" >
+<h2 class="text-center">个人信息填写</h2>
+    <form class="layui-form sever userregform"  >
    
-  <!-- Tab panes -->
-  <div class="tab-content container sever">
-    <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    
-    
-    
-        <div role="tabpanel row" class="tab-pane active" id="c<?php echo $key; ?>">
-      <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
-    <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
-        <div class="col-md-3   course-item" data-id="<?php echo $cour['courseid']; ?>">
-	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:216px;height:120px;"/>
-	       <h4  class="course-name"><?php echo $cour['name']; ?></h4>
-	       <h5><?php echo $cour['desc']; ?></h5>
-	       <p>&yen;<?php echo $cour['price']; ?></p>
-	    </div>
-    <?php endforeach; endif; else: echo "" ;endif; ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" value="<?php echo isset($data['truename'])?$data['truename']:''; ?>"  lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <?php if(!isset($data)): ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码：</label>
+            <div class="layui-input-block">
+                <input type="password" name="pwd"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码：</label>
+            <div class="layui-input-block">
+                <input type="password" name="pwd2"  lay-verify="required" placeholder="请再次输入你的密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <?php endif; ?>
 
-    </div>
-    
-    <?php endforeach; endif; else: echo "" ;endif; ?>
+           <div class="layui-form-item">
+            <label class="layui-form-label">出生日期：</label>
+            <div class="layui-input-block">
+                <input type="text" name="date" id="userdate" value="<?php echo isset($data['birthdate'])?$data['birthdate']:''; ?>"  lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <?php if(isset($data)): ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" <?php if($data['sex'] == '0'): ?>checked<?php endif; ?>>
+                <input type="radio" name="sex" value="1" title="女" <?php if($data['sex'] == '1'): ?>checked<?php endif; ?>>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" checked>
+                <input type="radio" name="sex" value="1" title="女" >
+            </div>
+        </div>
+        <?php endif; ?>
 
-    <div role="tabpanel" class="tab-pane" id="profile">2</div>
-    <div role="tabpanel" class="tab-pane" id="messages">3</div>
-    <div role="tabpanel" class="tab-pane" id="settings">4</div>
-  </div>
-  
- 
-  
-  
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标职位：</label>
+            <div class="layui-input-block">
+                <input type="text" name="position" value="<?php echo isset($data['position'])?$data['position']:''; ?>"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">毕业院校：</label>
+            <div class="layui-input-block">
+                <input type="text" name="graduated"  value="<?php echo isset($data['education'])?$data['education']:''; ?>" lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
+            </div>
+        </div>
 
+
+
+        <?php if(isset($data)): ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="edu" value="初中" title="初中" <?php if($data['education'] == '初中'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="高中" title="高中" <?php if($data['education'] == '高中'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="大专" title="大专" <?php if($data['education'] == '大专'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="本科" title="本科" <?php if($data['education'] == '本科'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="硕士" title="硕士" <?php if($data['education'] == '硕士'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="博士" title="博士" <?php if($data['education'] == '博士'): ?>checked<?php endif; ?>>
+
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="edu" value="初中" title="初中">
+                <input type="radio" name="edu" value="高中" title="高中" checked>
+                <input type="radio" name="edu" value="大专" title="大专">
+                <input type="radio" name="edu" value="本科" title="本科">
+                <input type="radio" name="edu" value="硕士" title="硕士">
+                <input type="radio" name="edu" value="博士" title="博士">
+
+            </div>
+        </div>
+        <?php endif; ?>
+
+
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">自我评价</label>
+            <div class="layui-input-block">
+                <textarea name="selfevaluation"  placeholder="请输入自我评价" lay-verify="required" class="layui-textarea"><?php echo isset($data['selfevaluation'])?$data['selfevaluation']:''; ?></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">工作经历</label>
+            <div class="layui-input-block">
+                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea"><?php echo isset($data['experience'])?$data['experience']:''; ?></textarea>
+            </div>
+        </div>
+
+
+<?php if(isset($data)): ?>
+        <button class="layui-btn center-block" lay-submit lay-filter="editreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        <?php else: ?>
+        <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        <?php endif; ?>
+
+        
+    </form>
+     
+
+</div>
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
@@ -432,6 +506,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({

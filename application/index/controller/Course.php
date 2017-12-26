@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use think\Db;
+use think\Session;
 
 /**
  *
@@ -10,6 +11,8 @@ use think\Db;
  */
 class Course extends Common
 {
+    //0：线下授课  1：直播授课   2：微信授课
+    protected $tran=['线下授课','直播授课','微信授课'];
 
     public function courseList()
     {
@@ -32,9 +35,34 @@ class Course extends Common
 
     public function courseDetail($courseid)
     {
-       
-        $this->assign("data", Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img")->find());
+       $data=Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img")->find();
+       $data['type']=$this->tran[$data['type']];
+        $this->assign("data",$data );
         
         return $this->fetch();
+    }
+
+    public function apply(){
+
+        if(!Session::has("username")){
+            return "请先登录";
+        }
+        $post=$this->request->post();
+        if(Db::name('course_user')
+            ->where(['userid'=>Session::get("username"),'courseid'=>$post['courseid']])->find()){
+            return "你已报名该课程";
+        }
+        $data=[
+            'userid'=>Session::get("username"),
+            'courseid'=>$post['courseid'],
+            'status'=>1,
+            'createtime'=>date("Y-m-d H:i:s")
+        ];
+        if(Db::name("course_user")->insert($data)==1){
+            return 1;
+        }else{
+            return "报名失败";
+        }
+
     }
 }

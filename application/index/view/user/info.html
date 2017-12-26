@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>个人资料</title>
+    <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
+</head>
+<style>
+    .sever{
+        margin-top:30px;
+    }
+    .row-center{
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+    }
+</style>
+
+<body style="overflow-y:scroll;">
+
+<div class="layui-container"  style="display:flex;flex-direction: column ;justify-content:center;align-items: center;">
+    {present name="data"}
+    <div style="width:200px;height:200px;border-radius: 50%;">
+        <img src="{$user.avastar??'/static/images/avastar.png'}" style="widht:100%;height:100%;object-fit:cover;">
+    </div>
+
+  <div  style="margin-top:30px;text-align:center;line-height:1.75;">
+
+      <p><span>姓名：</span><span>11</span></p>
+      <p><span>性别：</span><span>{$data.sex}</span></p>
+      <p><span>出生日期：</span><span>{$data.birthdate}</span></p>
+      <p><span>目标职位：</span><span>{$data.position}</span></p>
+      <p><span>毕业院校：</span><span>{$data.graduated}</span></p>
+      <p><span>学历：</span><span>{$data.education}</span></p>
+      <p><span>自我评价：</span><span>{$data.selfevaluation}</span></p>
+      <p><span>工作经历：</span><span>{$data.experience}</span></p>
+       <a target="_parent" href="{:url('register/editRegister')}" class="layui-btn" style="margin-top:30px;">修改</a>
+  </div>
+
+
+{else/}
+
+    <p>你还没有详细的信息，<a  target="_parent" href="{:url('register/userRegister')}">马上去填写</a></p>
+    {/present}
+
+
+
+
+</div>
+
+<script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/admin/layui/layui.js"></script>
+<script>
+    window.onload=function(){
+
+    }
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>

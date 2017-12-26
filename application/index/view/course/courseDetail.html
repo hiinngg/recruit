@@ -12,14 +12,14 @@
 		    <p>价格：&yen;{$data.price}</p>
 		    <p>课程简介：{$data.desc}</p>
 		    <p>课程形式：{$data.type}</p>
-	    <button type="button"  class="btn btn-default" id="courseApply">马上报名</button>
+	    <button type="button"  class="btn btn-default" id="courseApply" data-loading-text="正在报名..." data-id="{$data.courseid}">马上报名</button>
 	   </div>
 	</div>
 	
 <hr />
    <ul class="nav nav-tabs row-center" role="tablist" id="detail">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">课程介绍</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">课程目录</a></li>
+    <li role="presentation"><a href="#profile" aria-contr报名ols="profile" role="tab" data-toggle="tab">课程目录</a></li>
   </ul>
 <hr />
 </div>
