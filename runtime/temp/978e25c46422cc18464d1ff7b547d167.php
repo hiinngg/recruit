@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513910552;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514199672;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513910552;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514285208;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +39,12 @@ body,html{
 	height:64px;
 	background:#ccc;
 }
-#mynav a{
+#mynav>ul>li>a{
    color:#000000;
    background:#ffffff;
+    border-bottom:2px solid #FFFFFF;
 }
-#mynav a:active,#mynav a:hover,#mynav a:focus,#mynav .active a{
+#mynav>ul>li>a:active,#mynav>ul>li>a:hover,#mynav>ul>li>a:focus,#mynav .active a{
      border-bottom:2px solid #1881EC;
      color:#1881EC;
 }
@@ -102,7 +103,7 @@ body,html{
 /* userreg */
 </style>
 <body>
-<nav class="navbar navbar-default" style="margin-bottom: 0;">
+<nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -122,37 +123,32 @@ body,html{
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
       <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
-      <?php endforeach; endif; else: echo "" ;endif; if(session('?username') == true): ?>
-       <div class="navbar-text navbar-right ">
-      
-      <span> 用户  <?php echo session('username'); ?></span>
-         <ul class="dropdown-menu">
-		   <li><a href="#">Action</a></li>
-		   <li><a href="#">Another action</a></li>
-		   <li><a href="#">Something else here</a></li>
-		   <li role="separator" class="divider"></li>
-		   <li><a href="#">Separated link</a></li>
-		 </ul>           
-    
-       <span> ,你好</span>          
-       </div>
-       
-        <li  class="dropdown navbar-right ">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-       <?php else: ?>
-        <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      <?php endif; ?> 
-      </ul>
+      <?php endforeach; endif; else: echo "" ;endif; ?>
+     </ul>
+
+        <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
+            <?php if(session('?username') == true): ?>
+         <!--   <div class="navbar-text ">
+
+                <span> 用户  </span>
+
+            </div>-->
+
+            <li  class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo session('username'); ?><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo url('user/index'); ?>">个人中心</a></li>
+                    <li><a href="<?php echo url('user/logout'); ?>">退出</a></li>
+                </ul>
+            </li>
+            <?php else: ?>
+            <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+            <?php endif; ?>
+
+
+
+        </ul>
+
      
       <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
@@ -281,19 +277,20 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                     
-                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
+                         <label class="control-label hidden mylabel" for="tel">手机号码不能为空</label>
+                         <input type="text"  name="username"  class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入密码" />
+                         <label class="control-label hidden mylabel" for="tel">密码不能为空</label>
+                         <input type="password"  name="userpass" class="form-control" placeholder="请输入密码" />
                      </div>
                  </div>
 
                  <h5>还没有账号？现在去 <a href="#" class="reg">注册</a></h5>
-                 <button  type="submit" class="center-block btn btn-default"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
+                 <button  type="submit" class="center-block btn btn-default userlogin"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
              </form>
          </div>
      </div>
@@ -313,7 +310,12 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
+$("#courseApply").on("click",function(){
+	
+	console.log("sdfds")
+})
 
+/*报名课程  */
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
@@ -406,8 +408,8 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     				location.href="<?php echo url('index/index'); ?>"
     			},500)
     		  $btn.button('reset')
-    		
-    			
+
+
     	}
     }) 
     return false;
@@ -508,6 +510,8 @@ $(".login").on("click",function(e){
 	    	  setTimeout(function(){
 	    		  location.href="<?php echo url('register/userRegister'); ?>";
 	    	  },500)
+	      }else{
+	    	  layer.msg(data.msg)
 	      }
 		},
 		complete:function(){
@@ -517,9 +521,64 @@ $(".login").on("click",function(e){
 		
 	}) 
 
-
-   
 })
+$(".userlogin").on("click",function(e){
+
+    e.preventDefault();
+    $username=$("input[name='username']");
+    $userpass=$("input[name='userpass']");
+    if( $username.val()==""){
+
+        $username.closest(".form-group").addClass("has-error");
+        $username.closest(".form-group").find("label").removeClass("hidden");
+        setTimeout(function(){
+            $username.closest(".form-group").removeClass("has-error");
+            $username.closest(".form-group").find("label").addClass("hidden");
+        },1500)
+        return;
+    }
+    if($userpass.val()==""){
+
+        $userpass.closest(".form-group").addClass("has-error");
+        $userpass.closest(".form-group").find("label").removeClass("hidden")
+        setTimeout(function(){
+            $userpass.closest(".form-group").removeClass("has-error");
+            $userpass.closest(".form-group").find("label").addClass("hidden")
+        },1500)
+        return;
+    }
+    $.ajax({
+        url: "<?php echo url('user/login'); ?>",
+        data:{username:$username.val(),userpass:$userpass.val()},
+        beforeSend:function(){
+            layer.load(2);
+        },
+        type:"POST",
+        success:function(data){
+            if(data==1){
+                layer.closeAll('loading');
+                layer.msg("登录成功");
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>";
+                },500)
+            }else{
+            	layer.msg(data)
+            }
+        },
+        complete:function(){
+            layer.closeAll('loading');
+        }
+
+
+    })
+
+
+
+
+})
+
+
+
 
   /*   用户注册  */
   laydate.render({
@@ -543,6 +602,8 @@ $(".login").on("click",function(e){
 
 
 });//layui
+
+/*报名课程  */
 
 
 

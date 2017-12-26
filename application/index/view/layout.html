@@ -1,4 +1,3 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513954046;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514211219;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,21 +112,21 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
+      <a class="navbar-brand" href="{:url('index/index')}" >logo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse " id="mynav">
  
      <ul class="nav navbar-nav "  style="display:inline-block;" >
-      <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
-      <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-      <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
-      <?php endforeach; endif; else: echo "" ;endif; ?>
+      <li  data-c="index" class="active"><a href="{:url('index/index')}">首页 <span class="sr-only">(current)</span></a></li>
+      {volist name="navlist" id="vo"}
+      <li data-c="{$vo.c}"><a href="{$vo.column}">{$vo.name}</a></li>
+      {/volist}
      </ul>
 
         <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
-            <?php if(session('?username') == true): ?>
+            {if condition="session('?username') eq true"}
          <!--   <div class="navbar-text ">
 
                 <span> 用户  </span>
@@ -135,87 +134,41 @@ body,html{
             </div>-->
 
             <li  class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo session('username'); ?><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:session('username')}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo url('user/index'); ?>">个人中心</a></li>
-                    <li><a href="<?php echo url('user/logout'); ?>">退出</a></li>
+                    <li><a href="{:url('user/index')}">个人中心</a></li>
+                    <li><a href="{:url('user/logout')}">退出</a></li>
                 </ul>
             </li>
-            <?php else: ?>
+            {else/}
             <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-            <?php endif; ?>
+            {/if}
 
 
 
         </ul>
 
      
-      <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
+      <!--       <p class="navbar-text navbar-right "><a href="{:url('index/user/index')}" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
-<div class="container sever">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="course">
-    <li ><a href="#" style="color:#000000;">课程分类</a></li>
-    <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    
-      <li role="presentation" class="<?php if($i == '1'): ?>active<?php endif; ?>"><a href="#c<?php echo $key; ?>"  role="tab" data-toggle="tab"><?php echo $vo; ?></a></li>
-    
-    <?php endforeach; endif; else: echo "" ;endif; ?>
- 
-  </ul>
-  
-</div>
-
- 
-   
-  <!-- Tab panes -->
-  <div class="tab-content container sever">
-    <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    
-    
-    
-        <div role="tabpanel row" class="tab-pane active" id="c<?php echo $key; ?>">
-      <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
-    <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
-        <div class="col-md-3   course-item" data-id="<?php echo $cour['courseid']; ?>">
-	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:216px;height:120px;"/>
-	       <h4  class="course-name"><?php echo $cour['name']; ?></h4>
-	       <h5><?php echo $cour['desc']; ?></h5>
-	       <p>&yen;<?php echo $cour['price']; ?></p>
-	    </div>
-    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-    </div>
-    
-    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-    <div role="tabpanel" class="tab-pane" id="profile">2</div>
-    <div role="tabpanel" class="tab-pane" id="messages">3</div>
-    <div role="tabpanel" class="tab-pane" id="settings">4</div>
-  </div>
-  
- 
-  
-  
-
+ {__CONTENT__}
 
 <div class="container-fluid sever" style="background:#DFDFDF;">
 <div class="container" style="height:100%;">
-<h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
+<h4 class="text-center">宣传口号：{$footer.catchword}</h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
           <div style="background:#ffffff;width:150px;height:150px;">视频</div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-     <?php echo $footer['desc']; ?>
+     {$footer.desc}
        </div>
 	   <div class="col-md-4 col-center">
       <div style="background:#ffffff;width:150px;height:150px;">
-      <img src="<?php echo $footer['label_img']; ?>" width="100%"  height="100%" />
+      <img src="{$footer.label_img}" width="100%"  height="100%" />
       </div>
       </div>
 	</div>
@@ -277,19 +230,20 @@ body,html{
 
                  <div class="form-group">
                      <div class="col-md-12">
-                     
-                         <input type="text"   class="form-control" placeholder="请输入手机号码" />
+                         <label class="control-label hidden mylabel" for="tel">手机号码不能为空</label>
+                         <input type="text"  name="username"  class="form-control" placeholder="请输入手机号码" />
                      </div>
                  </div>
 
                  <div class="form-group">
                      <div class="col-md-12">
-                         <input type="text"  class="form-control" placeholder="请输入密码" />
+                         <label class="control-label hidden mylabel" for="tel">密码不能为空</label>
+                         <input type="password"  name="userpass" class="form-control" placeholder="请输入密码" />
                      </div>
                  </div>
 
                  <h5>还没有账号？现在去 <a href="#" class="reg">注册</a></h5>
-                 <button  type="submit" class="center-block btn btn-default"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
+                 <button  type="submit" class="center-block btn btn-default userlogin"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
              </form>
          </div>
      </div>
@@ -302,14 +256,31 @@ body,html{
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
 /*common*/
-<?php if(isset($nav)): ?>
+{present name="nav"}
 $("#mynav").find("li").removeClass("active");
-$("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
-<?php endif; ?>
+$("#mynav").find("li[data-c='{$nav}']").addClass("active")
+{/present}
 
 /*common  */
 
+$("#courseApply").on("click",function(){
+$.ajax({
+	url:"{:url('course/apply')}",
+	success:function(data){
+		if(data==1){
+			
+			layer.msg("报名成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	}
+	
+	
+})
+})
 
+/*报名课程  */
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
@@ -342,7 +313,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	 return;
      }	  
     $.ajax({
-    	url:"<?php echo url('companyReg'); ?>",
+    	url:"{:url('companyReg')}",
     	data:{data:data.field,images:images},
     	type:"post",
     	beforeSend:function(){
@@ -377,7 +348,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
 	  data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
 	  data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");  
     $.ajax({
-    	url:"<?php echo url('register/userRegister'); ?>",
+    	url:"{:url('register/userRegister')}",
     	data:{data:data.field},
     	type:"post",
     	beforeSend:function(){
@@ -399,11 +370,11 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	complete:function(){
     		layer.closeAll("loading")
     		   setTimeout(function(){
-    				location.href="<?php echo url('index/index'); ?>"
+    				location.href="{:url('index/index')}"
     			},500)
     		  $btn.button('reset')
-    		
-    			
+
+
     	}
     }) 
     return false;
@@ -412,7 +383,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
   /* /企业注册*/
 	  upload.render({
 			   elem: '.companyimg',
-			  url: "<?php echo url('imgUpload'); ?>",
+			  url: "{:url('imgUpload')}",
 			  field:"image",
 			  multiple:true,
 	         before: function(obj){ 
@@ -491,7 +462,7 @@ $(".login").on("click",function(e){
     	return;
     }
  	$.ajax({
-		url: "<?php echo url('register/userBaseRegister'); ?>",
+		url: "{:url('register/userBaseRegister')}",
 		data:{mobile:$tel.val(),code:$code.val()},
 		beforeSend:function(){		
 			layer.load(2);
@@ -502,8 +473,10 @@ $(".login").on("click",function(e){
 	    	  layer.closeAll('loading');
 	    	  layer.msg("注册成功");
 	    	  setTimeout(function(){
-	    		  location.href="<?php echo url('register/userRegister'); ?>";
+	    		  location.href="{:url('register/userRegister')}";
 	    	  },500)
+	      }else{
+	    	  layer.msg(data.msg)
 	      }
 		},
 		complete:function(){
@@ -513,9 +486,64 @@ $(".login").on("click",function(e){
 		
 	}) 
 
-
-   
 })
+$(".userlogin").on("click",function(e){
+
+    e.preventDefault();
+    $username=$("input[name='username']");
+    $userpass=$("input[name='userpass']");
+    if( $username.val()==""){
+
+        $username.closest(".form-group").addClass("has-error");
+        $username.closest(".form-group").find("label").removeClass("hidden");
+        setTimeout(function(){
+            $username.closest(".form-group").removeClass("has-error");
+            $username.closest(".form-group").find("label").addClass("hidden");
+        },1500)
+        return;
+    }
+    if($userpass.val()==""){
+
+        $userpass.closest(".form-group").addClass("has-error");
+        $userpass.closest(".form-group").find("label").removeClass("hidden")
+        setTimeout(function(){
+            $userpass.closest(".form-group").removeClass("has-error");
+            $userpass.closest(".form-group").find("label").addClass("hidden")
+        },1500)
+        return;
+    }
+    $.ajax({
+        url: "{:url('user/login')}",
+        data:{username:$username.val(),userpass:$userpass.val()},
+        beforeSend:function(){
+            layer.load(2);
+        },
+        type:"POST",
+        success:function(data){
+            if(data==1){
+                layer.closeAll('loading');
+                layer.msg("登录成功");
+                setTimeout(function(){
+                    location.href="{:url('index/index')}";
+                },500)
+            }else{
+            	layer.msg(data)
+            }
+        },
+        complete:function(){
+            layer.closeAll('loading');
+        }
+
+
+    })
+
+
+
+
+})
+
+
+
 
   /*   用户注册  */
   laydate.render({
@@ -539,6 +567,8 @@ $(".login").on("click",function(e){
 
 
 });//layui
+
+/*报名课程  */
 
 
 
