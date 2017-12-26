@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\jobdetail.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514172165;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\jobdetail.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514199312;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,8 +124,40 @@ body,html{
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </ul>
-      <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
-      <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p>
+      
+      <?php if(session('?username') == true): ?>
+       <div class="navbar-text navbar-right ">
+      
+      <span> 用户  <?php echo session('username'); ?></span>
+         <ul class="dropdown-menu">
+		   <li><a href="#">Action</a></li>
+		   <li><a href="#">Another action</a></li>
+		   <li><a href="#">Something else here</a></li>
+		   <li role="separator" class="divider"></li>
+		   <li><a href="#">Separated link</a></li>
+		 </ul>           
+    
+       <span> ,你好</span>          
+       </div>
+       
+        <li  class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+       <?php else: ?>
+        <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+      <?php endif; ?> 
+      
+     
+      <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -345,6 +377,51 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+   
+   
+   
+   /* 用户注册 */
+   form.on('submit(userreg)', function(data){
+	   var $btn = $(data.elem).button('loading')
+     if(data.field.pwd!=data.field.pwd2){
+    	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
+    	
+    	 return false; 
+     }	
+	  data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+	  data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");  
+    $.ajax({
+    	url:"<?php echo url('register/userRegister'); ?>",
+    	data:{data:data.field},
+    	type:"post",
+    	beforeSend:function(){
+    		layer.load(2);
+    	},
+    	success:function(data){
+    		layer.closeAll("loading")
+    		if(data==1){
+    			layer.msg("保存成功!");
+    		}else if(data==0){
+    			layer.msg("请先登录");
+    		}
+    		
+    		else{
+    			layer.msg(data)
+    		}
+    		
+    	},
+    	complete:function(){
+    		layer.closeAll("loading")
+    		   setTimeout(function(){
+    				location.href="<?php echo url('index/index'); ?>"
+    			},500)
+    		  $btn.button('reset')
+    		
+    			
+    	}
+    }) 
+    return false;
+  });
     
   /* /企业注册*/
 	  upload.render({
@@ -457,7 +534,7 @@ $(".login").on("click",function(e){
   /*   用户注册  */
   laydate.render({
   elem: '#userdate'
-  ,format: 'yyyy年MM月dd日'
+  ,format: 'yyyy-MM-dd'
   });
   /*  */
   

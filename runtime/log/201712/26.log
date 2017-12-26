@@ -1,0 +1,837 @@
+---------------------------------------------------------------
+[ 2017-12-26T09:28:24+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.rec.com/ [运行时间：1.462084s][吞吐率：0.68req/s] [内存消耗：3,430.13kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=100895495.581271381692240300.1512715555321.0012; monitor_count=146',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp3\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.112007s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.047002s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.025002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:39+08:00 ] 127.0.0.1 127.0.0.1 GET /?
+[ info ] www.rec.com/? [运行时间：0.309018s][吞吐率：3.24req/s] [内存消耗：3,430.52kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; monitor_count=147; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp3\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:44+08:00 ] 127.0.0.1 127.0.0.1 GET /index/course/courselist.html
+[ info ] www.rec.com/index/course/courselist.html [运行时间：0.248014s][吞吐率：4.03req/s] [内存消耗：3,419.52kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/?',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; monitor_count=148; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Course->courseList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Course.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'course',
+  4 => 'cate',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.026002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:47+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.319019s][吞吐率：3.13req/s] [内存消耗：3,434.27kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=149',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.029001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.029001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:48+08:00 ] 127.0.0.1 127.0.0.1 GET /index/talent/talent.html
+[ info ] www.rec.com/index/talent/talent.html [运行时间：0.242014s][吞吐率：4.13req/s] [内存消耗：3,406.13kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'talent',
+    2 => 'talent',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=150',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Talent->talent[ D:\wamp3\wamp64\www\recruit\application\index\controller\Talent.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'talent',
+  4 => 'team',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '人才定制' [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `column` = '团队定制' [ RunTime:0.025002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:49+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.278016s][吞吐率：3.60req/s] [内存消耗：3,433.99kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=151',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.042002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:51+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/jobdetail.html?poid=3
+[ info ] www.rec.com/index/job/jobdetail.html?poid=3 [运行时间：0.231013s][吞吐率：4.33req/s] [内存消耗：3,430.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'jobdetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=152',
+)
+[ info ] [ PARAM ] array (
+  'poid' => '3',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobDetail[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\jobdetail.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.032001s ]
+[ sql ] [ SQL ] SELECT `re_position`.*,`re_company`.`position_pics`,`re_company`.`fullname` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`poid` = '3' LIMIT 1 [ RunTime:0.029002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:28:54+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.558032s][吞吐率：1.79req/s] [内存消耗：3,433.99kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=153',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.327019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:00+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.266015s][吞吐率：3.76req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=154',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.300017s][吞吐率：3.33req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.028001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.027002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.243014s][吞吐率：4.11req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.245014s][吞吐率：4.08req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.295017s][吞吐率：3.39req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.027002s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.578033s][吞吐率：1.73req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.044003s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.322018s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:01+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.251014s][吞吐率：3.98req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-26T09:29:02+08:00 ] 127.0.0.1 127.0.0.1 GET /index/job/joblist.html
+[ info ] www.rec.com/index/job/joblist.html [运行时间：0.535031s][吞吐率：1.87req/s] [内存消耗：3,434.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/index/talent/talent.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; __guid=100895495.581271381692240300.1512715555321.0012; PHPSESSID=pfh9frn8l7fjjirhoj3skc33u4; thinkphp_show_page_trace=0|0; monitor_count=155',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\index\controller\Job.php ]
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'position',
+  4 => 'companydata',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.020002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `re_position`.`poid`,`re_position`.`name`,`re_company`.`position_pics` FROM `re_position` `re_position` INNER JOIN `re_company` `re_company` ON `re_company`.`cid`=`re_position`.`cid` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.019002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.324018s ]

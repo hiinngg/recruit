@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514184680;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514199672;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,15 +122,37 @@ body,html{
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
       <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
-      <?php endforeach; endif; else: echo "" ;endif; ?>
-      </ul>
+      <?php endforeach; endif; else: echo "" ;endif; if(session('?username') == true): ?>
+       <div class="navbar-text navbar-right ">
       
-      <?php if(session('?username') == true): ?>
-       <p class="navbar-text navbar-right ">用户  <?php echo session('username'); ?>,你好</p>
+      <span> 用户  <?php echo session('username'); ?></span>
+         <ul class="dropdown-menu">
+		   <li><a href="#">Action</a></li>
+		   <li><a href="#">Another action</a></li>
+		   <li><a href="#">Something else here</a></li>
+		   <li role="separator" class="divider"></li>
+		   <li><a href="#">Separated link</a></li>
+		 </ul>           
+    
+       <span> ,你好</span>          
+       </div>
+       
+        <li  class="dropdown navbar-right ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
        <?php else: ?>
         <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
       <?php endif; ?> 
-      
+      </ul>
      
       <!--       <p class="navbar-text navbar-right "><a href="<?php echo url('index/user/index'); ?>" class="navbar-link" >个人后台</a></p> -->
     </div><!-- /.navbar-collapse -->

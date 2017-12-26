@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514185328;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514199444;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,17 +130,17 @@ body,html{
       
       <span> 用户  <?php echo session('username'); ?></span>
          <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>           
+		   <li><a href="#">Action</a></li>
+		   <li><a href="#">Another action</a></li>
+		   <li><a href="#">Something else here</a></li>
+		   <li role="separator" class="divider"></li>
+		   <li><a href="#">Separated link</a></li>
+		 </ul>           
     
        <span> ,你好</span>          
        </div>
        
-        <li  class="dropdown">
+        <li  class="dropdown navbar-right ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
