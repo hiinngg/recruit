@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\info.html";i:1514298999;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\info.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +27,12 @@
 <div class="layui-container"  style="display:flex;flex-direction: column ;justify-content:center;align-items: center;">
     <?php if(isset($data)): ?>
     <div style="width:200px;height:200px;border-radius: 50%;">
-        <img src="<?php echo isset($user['avastar'])?$user['avastar']:'/static/images/avastar.png'; ?>" style="widht:100%;height:100%;object-fit:cover;">
+        <img  class="change"  src="<?php echo isset($data['avastar'])?$data['avastar']: '/static/images/avastar.png'; ?>" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
     </div>
 
   <div  style="margin-top:30px;text-align:center;line-height:1.75;">
 
-      <p><span>姓名：</span><span>11</span></p>
+      <p><span>姓名：</span><span><?php echo $data['truename']; ?></span></p>
       <p><span>性别：</span><span><?php echo $data['sex']; ?></span></p>
       <p><span>出生日期：</span><span><?php echo $data['birthdate']; ?></span></p>
       <p><span>目标职位：</span><span><?php echo $data['position']; ?></span></p>
@@ -61,14 +61,27 @@
 
     }
 
-    layui.use('form', function(){
+    layui.use('upload', function(){
         var form = layui.form;
+        var upload = layui.upload
+        upload.render({
+			   elem: '.change',
+			  url: "<?php echo url('imgUpload'); ?>",
+			  field:"image",
+	         before: function(obj){ 
+					layer.load(2); 
+		      }
+			  ,done: function(res, index, upload){	
+				  layer.closeAll("loading")
+			    if(res.code == 0){
+	            history.go(0)		
+			    }			    
+			  }
+			}); 
+        
+        
+        
 
-        //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            return false;
-        });
     });
 </script>
 

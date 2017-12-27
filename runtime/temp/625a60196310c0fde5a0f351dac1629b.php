@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\index.html";i:1514299757;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\user\index.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -70,18 +70,18 @@ a {
 			<div class="layui-side-scroll">
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree" lay-filter="navtab">
-					<li class="layui-nav-item layui-this"><a href="#" >个人设置</a>
+					<li class="layui-nav-item layui-this"><a href="#"  data-url="">个人设置</a>
 					</li>
 	
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('company/companyList'); ?>">我的申请</a></li>
+						data-url="<?php echo url('user/myjobList'); ?>">我的申请</a></li>
 					<li class="layui-nav-item"><a href="#"
-				     data-url="<?php echo url('position/positionList'); ?>">我的课程</a></li>
+				     data-url="<?php echo url('user/myCourseList'); ?>">我的课程</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('user/userList'); ?>">我的综合能力评测</a></li>
+						data-url="<?php echo url('user/myEvaluationList'); ?>">我的综合能力评测</a></li>
 				
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('info/index'); ?>">设置</a></li>
+						data-url="<?php echo url('user/mySet'); ?>">设置</a></li>
 				</ul>
 			</div>
 		</div>
@@ -126,7 +126,7 @@ a {
 			});
 
 			$(".layui-nav").find("[data-url]").on("click", function() {
-				if ($(this).text() == "后台首页") {
+				if ($(this).text() == "个人设置") {
 					element.tabChange('navtab', 'home');
 					return;
 				}

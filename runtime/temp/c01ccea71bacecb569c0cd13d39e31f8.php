@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1514386747;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,11 +39,11 @@ html {
         <h1 class="title">我的生活</h1>
     </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-        <a class="tab-item active" href="{:url('index/index')}">
+        <a class="tab-item active" href="<?php echo url('index/index'); ?>">
 
             <span class="tab-label">首页</span>
         </a>
-        <a class="tab-item" href="{:url('course/courseList')}">
+        <a class="tab-item" href="<?php echo url('course/courseList'); ?>">
 
             <span class="tab-label">微课</span>
         </a>
@@ -67,12 +68,12 @@ html {
             </div>
        <h2 class="text-center">职造课程</h2>
    <div class="row content-padded row-center" style="margin:0;justify-content: space-around;">
-       {volist name="coursedata" id="vo"}
+       <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
        <div class="col-30 col-center">
-           <img src="{$vo.label_img}" width="70px"  height="40px"  style="object-fit:contain;" />
-           <h4 style="margin-top:10px;">{$vo.name}</h4>
+           <img src="<?php echo $vo['label_img']; ?>" width="70px"  height="40px"  style="object-fit:contain;" />
+           <h4 style="margin-top:10px;"><?php echo $vo['name']; ?></h4>
        </div>
-       {/volist}
+       <?php endforeach; endif; else: echo "" ;endif; ?>
 
 
 

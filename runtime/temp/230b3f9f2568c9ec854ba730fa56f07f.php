@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514044372;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514294104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514378382;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +155,7 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
 
   <?php if(isset($talent)): ?>
@@ -164,7 +164,7 @@ body,html{
 
         <?php if(is_array($talent) || $talent instanceof \think\Collection || $talent instanceof \think\Paginator): $i = 0; $__LIST__ = $talent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <div class="col-md-3">
-            <img src="<?php echo $vo; ?>" style="width:300px;height:150px;" class="img-responsive" alt="">
+            <img src="<?php echo $vo; ?>" style="width:350px;height:200px;" class="img-responsive" alt="">
         </div>
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
@@ -174,7 +174,7 @@ body,html{
 
         <?php if(is_array($team) || $team instanceof \think\Collection || $team instanceof \think\Paginator): $i = 0; $__LIST__ = $team;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <div class="col-md-3">
-            <img src="<?php echo $vo; ?>" style="width:300px;height:150px;" class="img-responsive" alt="">
+            <img src="<?php echo $vo; ?>" style="width:350px;height:200px;" class="img-responsive" alt="">
         </div>
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
@@ -313,6 +313,31 @@ $.ajax({
 })
 })
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
 /*报名课程  */
 
 /*首页  */
@@ -412,6 +437,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({

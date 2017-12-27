@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514131101;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514294104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514378382;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,16 +155,15 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
 <h2 class="text-center">找工作</h2>
 
 <div class="sever row">
-    <?php if(is_array($position) || $position instanceof \think\Collection || $position instanceof \think\Paginator): $i = 0; $__LIST__ = $position;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
     <div class="col-md-3 col-center col-md-offset-2" style="">
-        <img src="<?php echo $vo['position_pics']; ?>" width="210px"  height="120px"  alt="" />
-        <h4><a href="<?php echo url('jobDetail','poid='.$vo['poid']); ?>"><?php echo $vo['name']; ?></a></h4>
-        <button type="button" class="btn " style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
+        <img src="<?php echo $vo['content']; ?>" width="350px"  height="200px"  alt="" />
+        <button type="button" class="btn jobApply"   data-loading-text="正在报名..." data-pageid="<?php echo $vo['pageid']; ?>" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
     </div>
      <?php endforeach; endif; else: echo "" ;endif; ?>
 
@@ -321,6 +320,31 @@ $.ajax({
 })
 })
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
 /*报名课程  */
 
 /*首页  */
@@ -420,6 +444,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1513954410;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514299398;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514378382;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,10 +167,10 @@ body,html{
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:550px;object-fit:cover;"  alt="...">
+      <img src="/static/images/ccc.jpg" width="1920px" style="height:400px;object-fit:cover;"  alt="...">
     </div>
     <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:550px;object-fit:cover;" alt="...">
+       <img src="/static/images/zzz.jpg" width="1920px" style="height:400px;object-fit:cover;" alt="...">
     </div>
     
   </div>
@@ -360,6 +360,31 @@ $.ajax({
 	
 })
 })
+
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
 
 /*报名课程  */
 
