@@ -35,6 +35,37 @@ class Course extends Common
         }
 
     }
+    
+    public function courseUser($page="",$limit=""){
+        
+        if ($this->request->isAjax()) {
+        
+            if (! isset($count)) {
+                $this->count =Db::view("re_course_user","*")->view("re_course","name,createtime","re_course.courseid=re_course_user.courseid")
+            ->view("re_user","telphone","re_user.userid=re_course_user.userid")->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+        
+            $res=Db::view("re_course_user","*")->view("re_course","name,createtime","re_course.courseid=re_course_user.courseid")
+            ->view("re_user","telphone","re_user.userid=re_course_user.userid")
+            ->page($page, $limit)
+            ->order("re_course_user.createtime desc")
+            ->select();
+        
+            return [
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count ,
+                'data' => $res
+            ];
+        }
+        return $this->fetch();
+        
+        
+    }
+    
 
     /**
      * 课程管理页面
@@ -131,6 +162,7 @@ class Course extends Common
                 'menu' => $post['data']['menu'],
                 'cateid' => $post['data']['cates'],
                 'name' => trim($post['data']['name']),
+                'period' => trim($post['data']['period']),
                 'price' => $post['data']['price'],
                 'type' => $post['data']['type'],
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
@@ -200,6 +232,7 @@ class Course extends Common
                 'menu' => $post['data']['menu'],
                 'cateid' => $post['data']['cates'],
                 'name' => trim($post['data']['name']),
+                'period' => trim($post['data']['period']),
                 'price' => $post['data']['price'],
                 'type' => $post['data']['type'],
                 'teacher' =>$post['data']['teacher'],

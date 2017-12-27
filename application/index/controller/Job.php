@@ -3,6 +3,7 @@ namespace  app\index\controller;
 
 
 use think\Db;
+use think\Session;
 
 class Job extends Common{
     
@@ -10,7 +11,7 @@ class Job extends Common{
     public function  jobList(){
 
 
-        $res=Db::view("re_position","poid,name")->view("re_company","position_pics","re_company.cid=re_position.cid")
+/*         $res=Db::view("re_position","poid,name")->view("re_company","position_pics","re_company.cid=re_position.cid")
             ->where("re_position.is_show",1)->select();
 
         foreach ($res as $k=>$val){
@@ -19,11 +20,42 @@ class Job extends Common{
          $res[$k]['position_pics']=$arr[0];
 
         }
-        $this->assign("position",$res);
-        $this->assign("companydata",Db::name("company")->where("status",1)->field("cid,avastar")->select());
+        $this->assign("position",$res); */
+        $res=Db::name("page")->where(['column'=>'找工作','status'=>1])->field("pageid,content")->select();
+        $this->assign("data",$res);
+        $this->assign("companydata",Db::name("company")->where("status",1)->field("cid,avastar")->select()); 
+        
+       
+        
         return $this->fetch();
         
     }
+    
+    public  function apply(){
+        if(!Session::has("username")){
+            return "请先登录";
+        }
+        $post=$this->request->post();
+        if(Db::name('job_user')
+            ->where(['userid'=>Session::get("username"),'pageid'=>$post['pageid']])->find()){
+                return "你已申请该工作";
+        }
+        $data=[
+            'userid'=>Session::get("username"),
+            'pageid'=>$post['pageid'],
+            'status'=>0,
+            'createtime'=>date("Y-m-d H:i:s")
+        ];
+        if(Db::name("job_user")->insert($data)==1){
+            return 1;
+        }else{
+            return "申请失败";
+        }
+        
+        
+    }
+    
+    
 
     public  function   jobDetail($poid=""){
         if($poid!=""){

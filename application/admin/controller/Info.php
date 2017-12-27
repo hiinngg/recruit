@@ -63,4 +63,25 @@ class Info extends Common
             }
         }
     }
+    
+    public function videoUpload()
+    {
+        $file = request()->file('video');
+        if ($file) {
+            $info = $file->rule(function () {
+                return md5(uniqid());
+            })->move(ROOT_PATH . 'public' . DS . 'temp' . DS . 'admin');
+            if ($info) {
+                return [
+                    'code' => 0,
+                    'src' => "/temp/admin/" . $info->getFileName()
+                ];
+            } else {
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
+    }
+    
+    
 }

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514284848;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514162107;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +127,7 @@ body,html{
      </ul>
 
         <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
-            <?php if(session('?username') == true): ?>
+            <?php if(isset($username)): ?>
          <!--   <div class="navbar-text ">
 
                 <span> 用户  </span>
@@ -135,7 +135,7 @@ body,html{
             </div>-->
 
             <li  class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo session('username'); ?><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $username; ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo url('user/index'); ?>">个人中心</a></li>
                     <li><a href="<?php echo url('user/logout'); ?>">退出</a></li>
@@ -290,7 +290,55 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
+$("#courseApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-id");
+$.ajax({
+	url:"<?php echo url('course/apply'); ?>",
+    data:{courseid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("报名成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
+/*报名课程  */
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
@@ -389,6 +437,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({
@@ -577,6 +664,8 @@ $(".userlogin").on("click",function(e){
 
 
 });//layui
+
+/*报名课程  */
 
 
 

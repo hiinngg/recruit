@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514184414;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514284663;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514335697;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +127,7 @@ body,html{
      </ul>
 
         <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
-            <?php if(session('?username') == true): ?>
+            <?php if(isset($username)): ?>
          <!--   <div class="navbar-text ">
 
                 <span> 用户  </span>
@@ -135,7 +135,7 @@ body,html{
             </div>-->
 
             <li  class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo session('username'); ?><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $username; ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo url('user/index'); ?>">个人中心</a></li>
                     <li><a href="<?php echo url('user/logout'); ?>">退出</a></li>
@@ -163,13 +163,14 @@ body,html{
         <div class="layui-form-item">
             <label class="layui-form-label">姓名：</label>
             <div class="layui-input-block">
-                <input type="text" name="name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="name" value="<?php echo isset($data['truename'])?$data['truename']:''; ?>"  lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <?php if(!isset($data)): ?>
         <div class="layui-form-item">
             <label class="layui-form-label">密码：</label>
             <div class="layui-input-block">
-                <input type="password" name="pwd"   lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <input type="password" name="pwd"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -178,12 +179,23 @@ body,html{
                 <input type="password" name="pwd2"  lay-verify="required" placeholder="请再次输入你的密码" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <?php endif; ?>
+
            <div class="layui-form-item">
             <label class="layui-form-label">出生日期：</label>
             <div class="layui-input-block">
-                <input type="text" name="date" id="userdate"   lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
+                <input type="text" name="date" id="userdate" value="<?php echo isset($data['birthdate'])?$data['birthdate']:''; ?>"  lay-verify="required" placeholder="请选择出生年月" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <?php if(isset($data)): ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" <?php if($data['sex'] == '0'): ?>checked<?php endif; ?>>
+                <input type="radio" name="sex" value="1" title="女" <?php if($data['sex'] == '1'): ?>checked<?php endif; ?>>
+            </div>
+        </div>
+        <?php else: ?>
         <div class="layui-form-item">
             <label class="layui-form-label">性别：</label>
             <div class="layui-input-block">
@@ -191,20 +203,37 @@ body,html{
                 <input type="radio" name="sex" value="1" title="女" >
             </div>
         </div>
+        <?php endif; ?>
+
         <div class="layui-form-item">
             <label class="layui-form-label">目标职位：</label>
             <div class="layui-input-block">
-                <input type="text" name="position"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
+                <input type="text" name="position" value="<?php echo isset($data['position'])?$data['position']:''; ?>"   lay-verify="required" placeholder="请输入目标单位" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">毕业院校：</label>
             <div class="layui-input-block">
-                <input type="text" name="graduated"  lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
+                <input type="text" name="graduated"  value="<?php echo isset($data['graduated'])?$data['graduated']:''; ?>" lay-verify="required" placeholder="请输入毕业院校" autocomplete="off" class="layui-input">
             </div>
         </div>
 
 
+
+        <?php if(isset($data)): ?>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学历：</label>
+            <div class="layui-input-block">
+                <input type="radio" name="edu" value="初中" title="初中" <?php if($data['education'] == '初中'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="高中" title="高中" <?php if($data['education'] == '高中'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="大专" title="大专" <?php if($data['education'] == '大专'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="本科" title="本科" <?php if($data['education'] == '本科'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="硕士" title="硕士" <?php if($data['education'] == '硕士'): ?>checked<?php endif; ?>>
+                <input type="radio" name="edu" value="博士" title="博士" <?php if($data['education'] == '博士'): ?>checked<?php endif; ?>>
+
+            </div>
+        </div>
+        <?php else: ?>
         <div class="layui-form-item">
             <label class="layui-form-label">学历：</label>
             <div class="layui-input-block">
@@ -217,24 +246,31 @@ body,html{
 
             </div>
         </div>
+        <?php endif; ?>
+
+
 
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">自我评价</label>
             <div class="layui-input-block">
-                <textarea name="selfevaluation" placeholder="请输入自我评价" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea name="selfevaluation"  placeholder="请输入自我评价" lay-verify="required" class="layui-textarea"><?php echo isset($data['selfevaluation'])?$data['selfevaluation']:''; ?></textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">工作经历</label>
             <div class="layui-input-block">
-                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea name="experience" placeholder="请输入工作经历" lay-verify="required" class="layui-textarea"><?php echo isset($data['experience'])?$data['experience']:''; ?></textarea>
             </div>
         </div>
 
 
+<?php if(isset($data)): ?>
+        <button class="layui-btn center-block" lay-submit lay-filter="editreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        <?php else: ?>
+        <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>
+        <?php endif; ?>
 
-         <button class="layui-btn center-block" lay-submit lay-filter="userreg"   data-loading-text="正在提交..." style=" border-radius:20px;background:#1881EC;color:#ffffff;">立即提交</button>   
         
     </form>
      
@@ -348,7 +384,55 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
+$("#courseApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-id");
+$.ajax({
+	url:"<?php echo url('course/apply'); ?>",
+    data:{courseid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("报名成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
+/*报名课程  */
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
@@ -447,6 +531,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({
@@ -588,12 +711,14 @@ $(".userlogin").on("click",function(e){
         },
         type:"POST",
         success:function(data){
-            if(data.code==1){
+            if(data==1){
                 layer.closeAll('loading');
                 layer.msg("登录成功");
                 setTimeout(function(){
                     location.href="<?php echo url('index/index'); ?>";
                 },500)
+            }else{
+            	layer.msg(data)
             }
         },
         complete:function(){
@@ -633,6 +758,8 @@ $(".userlogin").on("click",function(e){
 
 
 });//layui
+
+/*报名课程  */
 
 
 

@@ -16,7 +16,7 @@ class Register extends Common
             }
             $data=[
                 'userid'=>Session::get("username"),
-                /*'truename'=>$post['data']['name'],*/
+                'truename'=>$post['data']['name'],
                 'sex'=>$post['data']['sex'],
                 'position'=>$post['data']['position'],
                 'graduated'=>$post['data']['graduated'],
@@ -47,7 +47,7 @@ class Register extends Common
             }
             $data=[
                 'userid'=>Session::get("username"),
-                /*'truename'=>$post['data']['name'],*/
+                'truename'=>$post['data']['name'],
                 'sex'=>$post['data']['sex'],
                 'position'=>$post['data']['position'],
                 'graduated'=>$post['data']['graduated'],

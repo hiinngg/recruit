@@ -63,6 +63,21 @@ function matchImage($new,$old){
     return $new;
 }
 
+function transFile($path){
+    if(!strstr($path, "/temp/")){
+        return $path;
+    }
+    $newimg = str_replace("/temp/admin/", "/image/user/", $path);
+    $arr=explode('/', $path);
+/*     $datefloder = './cert/'.$arr[2];
+    if (!file_exists($datefloder)) {
+        mkdir($datefloder);
+    } */
+    if(rename(".".$path, ".".$newimg)) {
+        return $newimg;
+    }
+
+}
 
 function delDir($path){
     $dir = ".".$path;

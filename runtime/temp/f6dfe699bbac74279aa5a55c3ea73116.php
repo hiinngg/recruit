@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1513905257;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1514338057;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +37,12 @@
     <label class="layui-form-label">课程价格</label>
     <div class="layui-input-block">
       <input type="number" name="price" required  lay-verify="required" placeholder="请输入课程价格" autocomplete="off" class="layui-input" value="<?php echo isset($data['price'])?$data['price']:''; ?>">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">课程学时</label>
+    <div class="layui-input-block">
+      <input type="text" name="period" required  lay-verify="required" placeholder="请输入课程学时" autocomplete="off" class="layui-input" value="<?php echo isset($data['price'])?$data['price']:''; ?>">
     </div>
   </div>
 

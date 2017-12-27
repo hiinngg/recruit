@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\info\index.html";i:1513905257;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\info\index.html";i:1514366790;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 
 <body style="overflow:scroll;">
 
-	<form class="layui-form" action=""  style="width:70%;">
+	<form class="layui-form"  action=""  style="width:70%;">
   <div class="layui-form-item">
     <label class="layui-form-label">宣传口号</label>
     <div class="layui-input-block">
@@ -30,9 +30,13 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">视频链接</label>
+    <label class="layui-form-label">宣传视频</label>
     <div class="layui-input-block">
-      <input type="text" name="link" required  lay-verify="required" placeholder="请输入视频链接" autocomplete="off" class="layui-input" value="<?php echo isset($data['link'])?$data['link']: ''; ?>">
+    <!--   <input type="text" name="link" required  lay-verify="required" placeholder="请输入视频链接" autocomplete="off" class="layui-input" value="<?php echo isset($data['link'])?$data['link']: ''; ?>"> -->
+       	<input type="text"  hidden name="label_img" value="<?php echo isset($data['label_img'])?$data['label_img']:''; ?>" />
+       	<button class="layui-btn video" >
+	    <i class="layui-icon">&#xe67c;</i>上传
+	    </button>
     </div>
   </div>
   <div class="layui-form-item layui-form-text">
@@ -57,7 +61,7 @@
   
   <div class="label_img layui-form-item">
     <label class="layui-form-label">二维码</label>
- 	<button type="button" class="layui-btn " id="cover">
+ 	<button  class="layui-btn  " id="cover">
  	<input type="text"  hidden name="label_img" value="<?php echo isset($data['label_img'])?$data['label_img']:''; ?>" />
 	<i class="layui-icon">&#xe67c;</i>上传
 	</button>
@@ -65,7 +69,7 @@
 
 	<div class="img" style="margin:15px 0 0 110px;position:relative;">
 	<?php if(isset($data)): ?>
-         <img  src="<?php echo isset($data['label_img'])?$data['label_img']:''; ?>" style="object-fit:cover;">	
+         <img  src="<?php echo isset($data['label_img'])?$data['label_img']:''; ?>" style="object-fit:cover;width:128px;height:128px;">	
     <?php endif; ?>			   
 	</div>	
 
@@ -139,7 +143,7 @@
 		    return false;
 		  });
 		  		  
-		  upload.render({
+		   upload.render({
 			   elem: '#cover'
 			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
@@ -149,7 +153,7 @@
 			     if($(".img").children("img").length>0){
 			    	 $(".img").children("img").attr("src",res.src.replace(/\\/g,'/'))
 			     }else{
-			    	 $(".img").append('<img   style="object-fit:cover;"    src="'+res.src.replace(/\\/g,'/')+'"  />')
+			    	 $(".img").append('<img   style="object-fit:cover; width:128px;height:128px;"    src="'+res.src.replace(/\\/g,'/')+'"  />')
 			     }
 			    }			    
 			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
@@ -158,8 +162,27 @@
 			    //文件保存失败
 			    //do something
 			  }
-			});      
-			   
+			});   
+		/*   upload.render({
+			   elem: '.video'
+			  ,url: "<?php echo url('videoUpload'); ?>",
+			  field:"video",
+			  accept:"file"
+		     ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+			    layer.load(2); //上传loading
+		       }
+			  ,done: function(res, index, upload){			  
+			    if(res.code == 0){	
+			    	layer.closeAll('loading')
+			       console.log("上传成功")
+			    }			    
+			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
+			    var item = this.item;
+			    
+			    //文件保存失败
+			    //do something
+			  }
+			});  */
 		  
 		  
 		});

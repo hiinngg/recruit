@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html";i:1513927379;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\talent\talentlist.html";i:1514162107;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新闻管理</title>
+<title>人才管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -15,7 +15,7 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add" data-url="<?php echo url('addTalent'); ?>">
+		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="<?php echo url('addTalent'); ?>">
 			<i class="layui-icon">&#xe654;</i>新增人才定制
 		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
@@ -42,22 +42,23 @@
 			'发布':1,
 			'不发布':0
 	}
-		layui.use([ 'table', 'layer','jquery','form' ], function() {
+		layui.use([ 'table', 'layer','jquery','form',"upload" ], function() {
 			var $=layui.jquery;
 			var table = layui.table;
 			var layer=layui.layer;		
-			var form = layui.form
+			var form = layui.form;
+			var upload = layui.upload;
 		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
-		var articleTable = table.render({
+		var talentTable = table.render({
 			        elem:"#table",	      
 			        url: "<?php echo url('talent/talentList'); ?>",
 			        cols:[[
 			         {checkbox: true},
 			         {field: 'pageid', title: '编号'},
-			         {field: 'title', title: '标题' },
-			         {field: 'status', title: '状态',templet: '#statusTpl' },
-			         {field: 'created_at', title: '创建时间' },
+					{field: 'title', title: '标题' },
+					{field: 'status', title: '状态',templet: '#statusTpl' },
+			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
 				   page:true,
@@ -69,31 +70,19 @@
 			<?php endif; ?>
 	
 			
-				$(".add").on("click",function(){			
-					var data = {
-							title:"新增人才定制",
-							href : $(this).attr("data-url")
-						}
-					window.parent.navtab.tabAdd(data)
-					
-				})
-			
-				
+
+
               upload.render({
 			   elem: '.add'
 			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
 			  ,done: function(res, index, upload){			  
-			    if(res.code == 0){		
-			     $("input[name='label_img']").val(res.src.replace(/\\/g,'/'))
-			     if($(".img").children("img").length>0){
-			    	 $(".img").children("img").attr("src",res.src.replace(/\\/g,'/'))
-			     }else{
-			    	 $(".img").append('<img   style="object-fit:cover;"  width="200px" height="100px"  src="'+res.src.replace(/\\/g,'/')+'"  />')
-			     }
-			    }			    
-			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
-			    var item = this.item;
+
+			     if(res==1){
+
+                   talentTable.reload();
+
+                  }
 			    
 			    //文件保存失败
 			    //do something
@@ -112,50 +101,46 @@
 					  var dtd=$.Deferred();
 					  console.log(data)
 					  if(layEvent === 'detail'){ //查看
-						  layer.open({
-						      type: 2,
-						      title: '内容查看',
-						      shadeClose: true,
-						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
-						      content: "articlePreview?id="+data.postid
-						    });
+                          layer.photos({
+                              photos: {
+                                  "title": "人才定制", //相册标题
+                                  "id": data.pageid, //相册id
+                                  "start": 0, //初始显示的图片序号，默认0
+                                  "data": [   //相册包含的图片，数组格式
+                                      {
+                                          "pid": data.pageid, //图片id
+                                          "src": data.content, //原图地址
+                                      }
+                                  ]
+                              },
+                              tab: function(pic, layero){
+                                  console.log(pic) //当前图片的一些信息
+                              }
+                          });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该新闻么', function(index){
-					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd)
+					    layer.confirm('确定删除该人才定制么', function(index){
+					    	  _ajax("<?php echo url('talentDel'); ?>",{pageid:data.pageid,path:data.content},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
 								  layer.close(index);
 							  })
 					    });
-					  } else if(layEvent === 'edit'){ //编辑
-						  layer.open({
-						      type: 2,
-						      title: '内容编辑',
-						      shadeClose: true,
-						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
-						      content: "articleEdit?id="+data.postid
-						    });
-					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{pageid:data.pageid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
-									  is_valid:1
+									  status:1
 						       });
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{pageid:data.pageid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
-							is_valid:0
+							status:0
 						 });
 						  })
 					

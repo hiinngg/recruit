@@ -286,6 +286,31 @@ $.ajax({
 })
 })
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"{:url('job/apply')}",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
 /*报名课程  */
 
 /*首页  */
