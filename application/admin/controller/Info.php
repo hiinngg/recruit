@@ -63,7 +63,18 @@ class Info extends Common
             }
         }
     }
-    
+
+
+    /*
+     *
+     * 注意:需要修改php.ini中对上传文件大小限制的修改
+     * “max_execution_time =" 数值改为 1200
+       “max_input_time =  ”   数值改为 1200
+       “memory_limit =   ”    数值改为 256
+       “post_max_size = ”   100M（开发环境）
+       “upload_max_filesize = ” 100M（开发环境）
+     *
+     * */
     public function videoUpload()
     {
         $file = request()->file('video');
@@ -74,7 +85,8 @@ class Info extends Common
             if ($info) {
                 return [
                     'code' => 0,
-                    'src' => "/temp/admin/" . $info->getFileName()
+                    'src' => "/temp/admin/" . $info->getFileName(),
+                    'filename'=>$info->getInfo()
                 ];
             } else {
                 // 上传失败获取错误信息

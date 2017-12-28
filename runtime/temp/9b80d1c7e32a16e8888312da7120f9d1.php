@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1513874763;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 <?php if(isset($none)): ?>
 <div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
     <i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-    <p>这里一个职位都没有</p>
+    <p>这里一点内容都没有</p>
 </div>
 <?php else: ?>
 <table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
@@ -92,46 +92,31 @@
                         shade: false,
                         maxmin: true, //开启最大化最小化按钮
                         area: ['893px', '600px'],
-                        content: "positionPreview?poid="+data.poid
+                        content: "info?userid="+data.userid
                     });
 
-                } else if(layEvent === 'del'){ //删除
-                    layer.confirm('确定删除该新闻么', function(index){
-                        _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd)
-                        dtd.done(function(){
-                            obj.del();
-                            layer.close(index);
-                        })
-                    });
-                } else if(layEvent === 'edit'){ //编辑
-                    layer.open({
+                }else if(layEvent === 'eval'){
+                	  layer.open({
+                          type: 2,
+                          title: '内容查看',
+                          shadeClose: true,
+                          shade: false,
+                          maxmin: true, //开启最大化最小化按钮
+                          area: ['893px', '600px'],
+                          content: "evalbyuse?userid="+data.userid
+                      });
+                }
+                else if(layEvent === 'addeval'){
+              	  layer.open({
                         type: 2,
-                        title: '内容编辑',
+                        title: '内容查看',
                         shadeClose: true,
                         shade: false,
                         maxmin: true, //开启最大化最小化按钮
-
-                        content: "editPage?pageid="+data.pageid
+                        area: ['893px', '600px'],
+                        content: "addeval?userid="+data.userid
                     });
-
-                }else if(layEvent === 'change2on'){
-                    _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,is_show:1},dtd)
-                    dtd.done(function(){
-                        $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
-                        obj.update({
-                            is_show:1
-                        });
-                    })
-                }else if(layEvent === 'change2off'){
-                    _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,is_show:0},dtd)
-                    dtd.done(function(){
-                        $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
-                        obj.update({
-                            is_show:0
-                        });
-                    })
-
-                }
+              }
             });
             function  _ajax(url,data,deferred){
                 var index = layer.load(2, {shade: false});
@@ -166,26 +151,25 @@
 </script>
 <script type="text/html" id="bar">
     <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
-    {{#  if(d.is_show == 1){ }}
-    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
-    {{#  } else { }}
-    <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
-    {{#  } }}
 
+    <button class="layui-btn layui-btn-warm layui-btn-xs " lay-event="eval">评测管理</button>
+ 
+    <button class="layui-btn  layui-btn-xs " lay-event="addeval">上传评测</button>
 
     <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
 <script type="text/html" id="nameTpl">
-    {{#  if(d.truename != ""){ }}
-    <span style="color:#5FB878;">{{#d.truename}}</span>
+    {{#  if(!d.truename||d.truename == ""){ }}
+<span style="color:#FFB800;">未填</span>
+   
     {{#  } else { }}
-    <span style="color:#FFB800;">未填</span>
+     <span style="color:#5FB878;">{{d.truename}}</span>
     {{#  } }}
 </script>
 <script type="text/html" id="telTpl">
     {{#  if(d.telphone !=""){ }}
-    <span style="color:#5FB878;">{{#telphone}}</span>
+    <span style="color:#5FB878;">{{d.telphone}}</span>
     {{#  } else { }}
     <span style="color:#FFB800;">未填</span>
     {{#  } }}

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1513954046;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -97,7 +97,13 @@ a {
 							</dd>
 							<dd>
 								<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
+								
 							</dd>
+							
+								<dd>
+								<a data-url="<?php echo url('job/jobList'); ?>" href="javascript:;">找工作栏目</a>
+							</dd>
+							
 								<dd>
 								<a data-url="<?php echo url('talent/talentList'); ?>" href="javascript:;">人才定制栏目</a>
 							</dd>
@@ -108,6 +114,10 @@ a {
 				   </li>
 					<li class="layui-nav-item"><a href="#"
 						data-url="<?php echo url('info/index'); ?>">站点信息</a></li>
+						<li class="layui-nav-item"><a href="#"
+						data-url="<?php echo url('course/courseUser'); ?>">课程报名列表</a></li>
+						<li class="layui-nav-item"><a href="#"
+						data-url="<?php echo url('job/jobUser'); ?>">工作申请列表</a></li>
 				</ul>
 			</div>
 		</div>

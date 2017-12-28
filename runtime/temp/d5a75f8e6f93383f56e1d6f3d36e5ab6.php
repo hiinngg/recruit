@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1513954046;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514294104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1514465825;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +155,7 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist" id="course">
@@ -178,11 +178,11 @@ body,html{
     
     
     
-        <div role="tabpanel row" class="tab-pane active" id="c<?php echo $key; ?>">
+        <div role="tabpanel row" class="tab-pane <?php if($i == '1'): ?>active<?php endif; ?>" id="c<?php echo $key; ?>">
       <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
     <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
         <div class="col-md-3   course-item" data-id="<?php echo $cour['courseid']; ?>">
-	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:216px;height:120px;"/>
+	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:350px;height:200px;"/>
 	       <h4  class="course-name"><?php echo $cour['name']; ?></h4>
 	       <h5><?php echo $cour['desc']; ?></h5>
 	       <p>&yen;<?php echo $cour['price']; ?></p>
@@ -333,6 +333,31 @@ $.ajax({
 })
 })
 
+
+$(".jobApply").on("click",function(){
+    var $btn = $(this).button('loading')
+var id=$(this).attr("data-pageid");
+$.ajax({
+	url:"<?php echo url('job/apply'); ?>",
+    data:{pageid:id},
+    type:"post",
+	success:function(data){
+		if(data==1){
+			layer.msg("申请成功")
+		}else{
+			layer.msg(data)
+		}
+		
+	},
+    complete:function(){
+        $btn.button('reset')
+}
+	
+	
+})
+})
+
+
 /*报名课程  */
 
 /*首页  */
@@ -432,6 +457,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+
+    form.on('submit(editreg)', function(data){
+        var $btn = $(data.elem).button('loading')
+        data.field['experience']=data.field['experience'].replace(/\n|\r\n/g,"<br>");
+        data.field['selfevaluation']=data.field['selfevaluation'].replace(/\n|\r\n/g,"<br>");
+        $.ajax({
+            url:"<?php echo url('register/editRegister'); ?>",
+            data:{data:data.field},
+            type:"post",
+            beforeSend:function(){
+                layer.load(2);
+            },
+            success:function(data){
+                layer.closeAll("loading")
+                if(data==1){
+                    layer.msg("保存成功!");
+                }else if(data==0){
+                    layer.msg("请先登录");
+                }
+
+                else{
+                    layer.msg(data)
+                }
+
+            },
+            complete:function(){
+                layer.closeAll("loading")
+                setTimeout(function(){
+                    location.href="<?php echo url('index/index'); ?>"
+                },500)
+                $btn.button('reset')
+
+
+            }
+        })
+        return false;
+    });
+
+
     
   /* /企业注册*/
 	  upload.render({
