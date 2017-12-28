@@ -21,7 +21,7 @@
     
     
     
-        <div role="tabpanel row" class="tab-pane active" id="c{$key}">
+        <div role="tabpanel row" class="tab-pane {eq name="i"  value="1"}active{/eq}" id="c{$key}">
       <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
     {volist name="vo" id="cour"}
         <div class="col-md-3   course-item" data-id="{$cour.courseid}">

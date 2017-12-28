@@ -6,6 +6,7 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
 	<title>首页</title>
 </head>
 <style>
@@ -24,6 +25,9 @@ html {
     justify-content:center;
     align-items:center;
 }
+.item-title p{
+	margin:0;
+}
 
 
 </style>
@@ -38,7 +42,7 @@ html {
         <h1 class="title">我的生活</h1>
     </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-       <a class="tab-item active" href="{:url('index/index')}">
+        <a class="tab-item " href="{:url('index/index')}">
 
             <span class="tab-label">首页</span>
         </a>
@@ -46,7 +50,7 @@ html {
 
             <span class="tab-label">微课</span>
         </a>
-        <a class="tab-item" href="{:url('position/jobList')}">
+        <a class="tab-item active" href="{:url('position/jobList')}">
 
             <span class="tab-label">找工作</span>
         </a>
@@ -65,18 +69,61 @@ html {
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-       <h2 class="text-center">职造课程</h2>
-   <div class="row content-padded row-center" style="margin:0;justify-content: space-around;">
-       {volist name="coursedata" id="vo"}
-       <div class="col-30 col-center">
-           <img src="{$vo.label_img}" width="146px"  height="103px"  style="object-fit:contain;" />
-           <h4 style="margin-top:10px;">{$vo.name}</h4>
-       </div>
-       {/volist}
 
 
+<div class="container sever">
+    <div class="row row-center">
+        <div class="col-50 col-center">
+            <div class="text-left">
+                <h4>企业名称：{$data.fullname}</h4>
+                <h4 class="sever">岗位名称：{$data.name}</h4>
+                <h4 class="sever">岗位薪酬：{$data.salary_min}-{$data.salary_max}元</h4>
+            </div>
 
-   </div>
+        </div>
+        <div class="col-50 col-center">
+      <p><a href="#" class="button button-dark">点击报名</a></p>
+        </div>
+    </div>
+
+
+    <div class="text-center sever">
+        <h2>工作描述</h2>
+        <p class="sever">{$data.desc}</p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>岗位福利</h2>
+        <p class="sever">
+            {volist name="data.treatment" id="vo"}
+            <span>{$vo}</span>
+            {/volist}
+        </p>
+    </div>
+
+    <div class="text-center sever">
+        <h2>工厂环境</h2>
+        <div class="swiper-container" id="jobDetail">
+            <div class="swiper-wrapper">
+
+                {volist name="data.position_pics" id="vo"}
+                <div class="swiper-slide row-center"  style="width:300px;">
+
+                    <img   style="object-fit:cover;width:300px;height:150px;"   src="{$vo}"  />
+
+                </div>
+                {/volist}
+
+            </div>
+            <div class="swiper-button-prev"  style=""></div>
+            <div class="swiper-button-next" style="" ></div>
+        </div>
+
+    </div>
+
+
+</div>
+
 
 
     </div>
@@ -87,12 +134,29 @@ html {
 
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script src="/static/js/swiper.min.js"></script>
 <script>
 
+
 $(function(){
-	$.init();
-    $.config = {router: false}	
+	  $.init();
+	    $.config = {router: false}
+	  
+	    var jobSwiper = new Swiper ('#jobDetail', {
+
+	     
+
+	        // 如果需要前进后退按钮
+	        navigation: {
+	            nextEl: '.swiper-button-next',
+	            prevEl: '.swiper-button-prev',
+	        },
+
+	    })	
 });
+  
+    
+    
     
 </script>
 </body>

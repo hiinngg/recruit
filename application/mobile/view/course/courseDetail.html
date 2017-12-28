@@ -73,43 +73,10 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <h3 class="text-center" style="margin-top:0;">课程分类</h3>
+    
+    
+    
    
-        
-        
-        <div class="buttons-tab" style="overflow: scroll;">
-        
-             
-         {volist name="cate" id="vo"}
-       <a href="#tab{$key}" class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo}</a>
-        {/volist}
-
-
-        </div>
-        <div class="content-block">
-            <div class="tabs">
-       {volist name="course" id="vo"}
-    
-    
-    
-       <div id="tab{$key}" class="row  tab {eq name="i"  value="1"}active{/eq}">
-      <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
-    {volist name="vo" id="cour"}
-        <div class="col-50   course-item" data-id="{$cour.courseid}">
-	       <img src="{$cour.label_img}" alt="" style="width:146px;height:103px;"/>
-	       <p  class="course-name">{$cour.name}</p>
-	       <p>{$cour.desc}</p>
-	       <p>&yen;{$cour.price}</p>
-	    </div>
-	
-    {/volist}
-
-    </div>
-    
-    {/volist}
-
-            </div>
-        </div>
 
 
 

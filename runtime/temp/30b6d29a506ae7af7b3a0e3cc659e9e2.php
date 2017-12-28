@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1514440601;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,19 +47,19 @@
          <h1 class="title">我的生活</h1>
      </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-       <a class="tab-item " href="{:url('index/index')}">
+       <a class="tab-item " href="<?php echo url('index/index'); ?>">
 
             <span class="tab-label">首页</span>
         </a>
-        <a class="tab-item active" href="{:url('course/courseList')}">
+        <a class="tab-item active" href="<?php echo url('course/courseList'); ?>">
 
             <span class="tab-label">微课</span>
         </a>
-        <a class="tab-item" href="{:url('position/jobList')}">
+        <a class="tab-item" href="<?php echo url('position/jobList'); ?>">
 
             <span class="tab-label">找工作</span>
         </a>
-        <a class="tab-item" href="{:url('user/index')}">
+        <a class="tab-item" href="<?php echo url('user/index'); ?>">
             <span class="tab-label">我的</span>
         </a>
     </nav>
@@ -80,33 +81,33 @@
         <div class="buttons-tab" style="overflow: scroll;">
         
              
-         {volist name="cate" id="vo"}
-       <a href="#tab{$key}" class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo}</a>
-        {/volist}
+         <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+       <a href="#tab<?php echo $key; ?>" class="tab-link <?php if($i == '1'): ?>active<?php endif; ?> button"><?php echo $vo; ?></a>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
 
 
         </div>
         <div class="content-block">
             <div class="tabs">
-       {volist name="course" id="vo"}
+       <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
     
     
     
-       <div id="tab{$key}" class="row  tab {eq name="i"  value="1"}active{/eq}">
-      <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
-    {volist name="vo" id="cour"}
-        <div class="col-50   course-item" data-id="{$cour.courseid}">
-	       <img src="{$cour.label_img}" alt="" style="width:146px;height:103px;"/>
-	       <p  class="course-name">{$cour.name}</p>
-	       <p>{$cour.desc}</p>
-	       <p>&yen;{$cour.price}</p>
+       <div id="tab<?php echo $key; ?>" class="row  tab <?php if($i == '1'): ?>active<?php endif; ?>">
+      <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
+    <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
+        <div class="col-50   course-item" data-id="<?php echo $cour['courseid']; ?>">
+	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:146px;height:103px;"/>
+	       <p  class="course-name"><?php echo $cour['name']; ?></p>
+	       <p><?php echo $cour['desc']; ?></p>
+	       <p>&yen;<?php echo $cour['price']; ?></p>
 	    </div>
 	
-    {/volist}
+    <?php endforeach; endif; else: echo "" ;endif; ?>
 
     </div>
     
-    {/volist}
+    <?php endforeach; endif; else: echo "" ;endif; ?>
 
             </div>
         </div>
