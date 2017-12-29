@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1514335008;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1514534468;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514534751;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/hover-min.css" />
 <title>招聘网站</title>
 </head>
 <style>
@@ -30,6 +31,17 @@ body,html{
 .sever{
 	margin-top:30px;
 }
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+
+
 /*common  */
 
 /* index */
@@ -51,6 +63,16 @@ body,html{
 /*index  */
 
 /*course  */
+.hvr-sweep-to-top:before{
+	z-index:10;
+	background:#000000;
+	opacity:0.5;
+	-webkit-transition-duration: .2s;
+    transition-duration: .2s;
+}
+
+
+
 #course{
   border:0;	
 }
@@ -155,7 +177,7 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container">
 	<h3 class="text-center"><?php echo $data['name']; ?></h3>
 	<hr />
@@ -169,7 +191,7 @@ body,html{
 		    <p>价格：&yen;<?php echo $data['price']; ?></p>
 		    <p>课程简介：<?php echo $data['desc']; ?></p>
 		    <p>课程形式：<?php echo $data['type']; ?></p>
-	    <button type="button"  class="btn btn-default" id="courseApply" data-loading-text="正在报名..." data-id="<?php echo $data['courseid']; ?>">马上报名</button>
+	    <button type="button"  class="btn btn-default courseApply"  data-loading-text="正在报名..." data-id="<?php echo $data['courseid']; ?>">马上报名</button>
 	   </div>
 	</div>
 	
@@ -311,7 +333,8 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
-$("#courseApply").on("click",function(){
+$(".courseApply").on("click",function(e){
+	e.stopPropagation();
     var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
@@ -357,6 +380,17 @@ $.ajax({
 	
 })
 })
+
+
+
+$(".coursehover").hover(function(){
+	$(this).children("button").removeClass("hidden")
+	
+},function(){
+	$(this).children("button").addClass("hidden")
+	
+})
+
 
 
 /*报名课程  */

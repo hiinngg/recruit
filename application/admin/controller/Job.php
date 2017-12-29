@@ -31,9 +31,16 @@ class Job extends Common{
         return $this->fetch();
     }
     
+    public function addJob(){
+        
+        
+        return $this->fetch("editJob");
+    }
+    
+    
     public function imgUpload()
     {
-        $image = \think\Image::open(request()->file('image'));
+      /*   $image = \think\Image::open(request()->file('image'));
     
         $pathname='/image/admin/'.md5(uniqid()).".".$image->type();
     
@@ -48,9 +55,10 @@ class Job extends Common{
         ];
         if(Db::name("page")->insert($data)==1){
             return 1;
-        }
+        } */
     
-        /*  if ($file) {
+       $file = request()->file('image');
+          if ($file) {
          $info = $file->rule(function () {
          return md5(uniqid());
          })->move(ROOT_PATH . 'public' . DS . 'temp' . DS . 'admin');
@@ -63,7 +71,7 @@ class Job extends Common{
          // 上传失败获取错误信息
          echo $file->getError();
          }
-         }*/
+         }
     }
     
     public function statusChange(){

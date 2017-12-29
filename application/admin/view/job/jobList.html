@@ -14,7 +14,7 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="{:url('addTalent')}">
+		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="{:url('addjob')}">
 			<i class="layui-icon">&#xe654;</i>新增工作定制
 		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
@@ -71,7 +71,7 @@
 			
 
 
-              upload.render({
+      /*         upload.render({
 			   elem: '.add'
 			  ,url: "{:url('imgUpload')}",
 			  field:"image"
@@ -86,8 +86,17 @@
 			    //文件保存失败
 			    //do something
 			  }
-			});  
+			});   */
 				
+			
+	 	  	$(".add").on("click",function(){			
+				var data = {
+						title:"新增工作定制",
+						href : $(this).attr("data-url")
+					}
+				window.parent.navtab.tabAdd(data)
+				
+	   })
 				
 				
 				

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editPosition.html";i:1513816780;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editPosition.html";i:1514162107;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -261,8 +261,14 @@
 			if($(this).find("img").length>0){
 				images.push($(this).find("img").attr("src"));
 			}
-			
+
+
 		})
+
+        if (images === undefined ||images.length == 0) {
+            layer.msg("请上传环境照片",{icon:5,shift:6})
+            return false;
+        }
 		
 		//对提交数据的处理
 	    data.field['treat'] = treat

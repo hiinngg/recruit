@@ -32,19 +32,29 @@
 
 
 <div class="container sever">
-<h2 class="text-center">{$data.title}</h2>
-<p>{$data.content}</p>
+<h2 class="text-center">标题标题</h2>
+<p class="line-indent">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
 </div>
 
 
 <div class="container sever">
 <h2 class="text-center">职造课程</h2>
-<div class="row sever row-center">
+<div class=" sever row-center  " style="">
  {volist name="coursedata" id="vo"}
-    <div class="col-md-3 col-center">
-        <img src="{$vo.label_img}" width="300px"  height="150px"  style="object-fit: cover;" />
-        <h4>{$vo.name}</h4>
+    <div class="course-item"  style="width:380px;padding:0 15px;" data-id="{$vo.courseid}">
+    <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
+     <img  class="" src="{$vo.label_img}" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
+     <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="{$vo.courseid}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
+    </div>    
+        <h3>{$vo.name}</h3>
+        <p class="text-nowrap">{$vo.desc}</p>
+        <p>
+        <span class="fa fa-eye"></span>
+        <span>292</span>
+        <span class="pull-right">{$vo.price}元</span>
+        </p>
     </div>
+
     {/volist}
 
 </div>

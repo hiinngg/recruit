@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\joblist.html";i:1514341698;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\joblist.html";i:1514542409;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="<?php echo url('addTalent'); ?>">
+		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="<?php echo url('addjob'); ?>">
 			<i class="layui-icon">&#xe654;</i>新增工作定制
 		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
@@ -72,7 +72,7 @@
 			
 
 
-              upload.render({
+      /*         upload.render({
 			   elem: '.add'
 			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
@@ -87,8 +87,17 @@
 			    //文件保存失败
 			    //do something
 			  }
-			});  
+			});   */
 				
+			
+	 	  	$(".add").on("click",function(){			
+				var data = {
+						title:"新增工作定制",
+						href : $(this).attr("data-url")
+					}
+				window.parent.navtab.tabAdd(data)
+				
+	   })
 				
 				
 				

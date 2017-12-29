@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\companyreg.html";i:1513909848;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\companyreg.html";i:1514363395;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +155,7 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <h2  class="text-center sever">企业注册</h2>
 <div class="container ">
 <form  class="layui-form sever" >

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514343474;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514343490;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514537971;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514534751;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/hover-min.css" />
 <title>招聘网站</title>
 </head>
 <style>
@@ -30,6 +31,17 @@ body,html{
 .sever{
 	margin-top:30px;
 }
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+
+
 /*common  */
 
 /* index */
@@ -51,6 +63,16 @@ body,html{
 /*index  */
 
 /*course  */
+.hvr-sweep-to-top:before{
+	z-index:10;
+	background:#000000;
+	opacity:0.5;
+	-webkit-transition-duration: .2s;
+    transition-duration: .2s;
+}
+
+
+
 #course{
   border:0;	
 }
@@ -155,16 +177,35 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:550px;object-fit:cover;" alt="...">
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
 <h2 class="text-center">找工作</h2>
 
-<div class="sever row">
+<div class="sever  col-center">
     <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="col-md-3 col-center col-md-offset-2" style="">
-        <img src="<?php echo $vo['content']; ?>" width="350px"  height="200px"  alt="" />
-        <button type="button" class="btn jobApply"   data-loading-text="正在报名..." data-pageid="<?php echo $vo['pageid']; ?>" style="background:#000000; color:#ffffff;margin:15px;">申请工作</button>
-    </div>
+    <div class="sever media " style="width:900px;border:1px solid #c2c2c2;justify-content:flex-start;border-radius:5px;">
+  <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="<?php echo $vo['content']; ?>"  width="350px"  height="200px" alt="...">
+    </a>
+  </div>
+  <div class="media-body media-middle " style="position:relative; ">
+  <div style="width:70%;display:inline-block;">
+     <p style="line-height:1.75;"><span style="margin-right:15px;">企业</span><span>xxxxxxxxxxxxx</span></p>
+      <p style="line-height:1.75;"><span style="margin-right:15px;">岗位</span><span>xxxxxxxxxxxxx</span></p>
+         <p style="line-height:1.75;"><span style="margin-right:15px;">地点</span><span>xxxxxxxxxxxxx</span></p>
+            <p style="line-height:1.75;"><span style="margin-right:15px;">职责</span><span>xxxxxxxxxxxxx</span></p>
+  </div>
+
+<div style="width:20%;display:inline-block;" >
+<button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-pageid="<?php echo $vo['pageid']; ?>" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
+</div>
+ 
+  </div>
+</div>
+        
+<!--        -->
+  
      <?php endforeach; endif; else: echo "" ;endif; ?>
 
 </div>
@@ -297,7 +338,8 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
-$("#courseApply").on("click",function(){
+$(".courseApply").on("click",function(e){
+	e.stopPropagation();
     var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
@@ -343,6 +385,17 @@ $.ajax({
 	
 })
 })
+
+
+
+$(".coursehover").hover(function(){
+	$(this).children("button").removeClass("hidden")
+	
+},function(){
+	$(this).children("button").addClass("hidden")
+	
+})
+
 
 
 /*报名课程  */
