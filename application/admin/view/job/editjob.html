@@ -109,11 +109,8 @@
 			} 
 	
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
-
-	    console.log(data.field)
-	    return false;
 	    
-	     var url="{:url('addCourse')}";
+	     var url="{:url('addJob')}";
 	     var data={data:data.field}
 		     {present name="data"}
 	     url="{:url('editCourse')}"
@@ -127,13 +124,16 @@
 		    	 layer.load(2, {shade: false});
 		    	},
 		    	success:function(data){
-		    		layer.closeAll()
+		    		layer.closeAll('loading')
 		    		if(data==1){
 		    			layer.msg("保存成功",{ time: 700 },function(){
 		    			  history.go(0)
 		    			})
 		    		}
-		    	}		    
+		    	},
+           complete:function(){
+                layer.closeAll("loading")
+            }
 		    }) 
 		    return false;
 		  });

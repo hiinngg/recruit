@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html";i:1514601696;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,19 +47,19 @@
          <h1 class="title">我的生活</h1>
      </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-       <a class="tab-item " href="{:url('index/index')}">
+       <a class="tab-item " href="<?php echo url('index/index'); ?>">
 
             <span class="tab-label">首页</span>
         </a>
-        <a class="tab-item active" href="{:url('course/courseList')}">
+        <a class="tab-item active" href="<?php echo url('course/courseList'); ?>">
 
             <span class="tab-label">微课</span>
         </a>
-        <a class="tab-item" href="{:url('position/jobList')}">
+        <a class="tab-item" href="<?php echo url('position/jobList'); ?>">
 
             <span class="tab-label">找工作</span>
         </a>
-        <a class="tab-item" href="{:url('user/index')}">
+        <a class="tab-item" href="<?php echo url('user/index'); ?>">
             <span class="tab-label">我的</span>
         </a>
     </nav>
@@ -75,20 +76,20 @@
         </div>
 
         <div class="container">
-            <h3 class="text-center">{$data.name}</h3>
+            <h3 class="text-center"><?php echo $data['name']; ?></h3>
             <hr />
 
             <div class="row">
                 <div class="col-100" style="padding-right:0;">
-                    <img src="{$data.label_img}" height="200px;" style="object-fit:contain;" width="100%" />
+                    <img src="<?php echo $data['label_img']; ?>" height="200px;" style="object-fit:contain;" width="100%" />
                 </div>
                 <div class="col-100 text-center col-center" style="">
 
-                    <p>价格：&yen;{$data.price}</p>
-                    <p>课程简介：{$data.desc}</p>
-                    <p>课程形式：{$data.type}</p>
+                    <p>价格：&yen;<?php echo $data['price']; ?></p>
+                    <p>课程简介：<?php echo $data['desc']; ?></p>
+                    <p>课程形式：<?php echo $data['type']; ?></p>
 
-                    <p><a href="#" class="button button-dark courseApply" data-id="{$data.courseid}">马上报名</a></p>
+                    <p><a href="#" class="button button-dark courseApply" data-id="<?php echo $data['courseid']; ?>">马上报名</a></p>
 
                 </div>
             </div>
@@ -110,14 +111,14 @@
 
                             </div>
                             <div class="col-md-50">
-                                <p>{$data.content}</p>
+                                <p><?php echo $data['content']; ?></p>
                             </div>
                         </div>
                     </div>
                     <div id="tab2" class="tab">
                         <div class="content-block">
                             <p class="text-center">
-                                {$data.menu}
+                                <?php echo $data['menu']; ?>
                             </p>
                         </div>
                     </div>
@@ -144,7 +145,7 @@ $(function(){
         e.stopPropagation();
         var id=$(this).attr("data-id");
         $.ajax({
-            url:"{:url('course/apply')}",
+            url:"<?php echo url('course/apply'); ?>",
             data:{courseid:id},
             beforeSend:function(){
 

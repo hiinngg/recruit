@@ -8,14 +8,14 @@ class Job extends Common{
     public function jobList($page = "", $limit = "")
     {
         if (! isset($count)) {
-            $this->count = Db::name("page")->where("column", "找工作")->count();
+            $this->count = Db::name("page")->count();
             if ($this->count == 0) {
                 $this->assign("none", "none");
             }
         }
         if ($this->request->isAjax()) {
             // $res = json_decode(httpGet("http://www.layui.com/demo/table/user?page={$this->request->get('page')}&limit={$this->request->get('limit')}"));
-            $result = Db::name("page")->where("column", "找工作")
+            $result = Db::name("job")
             ->order("createtime desc")
             ->page($page, $limit)
             ->select();
@@ -32,9 +32,28 @@ class Job extends Common{
     }
     
     public function addJob(){
-        
-        
-        return $this->fetch("editJob");
+
+        if($this->request->isAjax()){
+            $post = $this->request->post();
+            $data=[
+                'name'=>$post['data']['name'],
+                'cname'=>$post['data']['cname'],
+                'location'=>$post['data']['location'],
+                'desc'=>$post['data']['desc'],
+                'pic'=>transOneImage($post['data']['pic'],'/image/admin'),
+                'status'=>1,
+                'createtime'=>date("Y-m-d H:i:s")
+            ];
+            delDir("/temp/admin");
+            if(Db::name("job")->insert($data)==1){
+                return 1;
+            }
+
+        }
+
+
+
+        return $this->fetch("editjob");
     }
     
     

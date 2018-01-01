@@ -15,7 +15,7 @@
  * curl
  */
 define('HTTP', 'http://');
-define('DOMAIN', '192.168.6.104');
+define('DOMAIN', '119.23.25.24');
 define('APPID', 'wx572619f18a92ca3e');
 define('APPSECRET', 'a74348b1003be4ad5abe49e70eb632c1');
 

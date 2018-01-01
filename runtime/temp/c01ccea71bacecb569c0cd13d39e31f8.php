@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1514386747;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1514465825;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -39,19 +39,19 @@ html {
         <h1 class="title">我的生活</h1>
     </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-        <a class="tab-item active" href="<?php echo url('index/index'); ?>">
+       <a class="tab-item active" href="<?php echo url('index/index'); ?>">
 
             <span class="tab-label">首页</span>
         </a>
-        <a class="tab-item" href="<?php echo url('course/courseList'); ?>">
+        <a class="tab-item " href="<?php echo url('course/courseList'); ?>">
 
             <span class="tab-label">微课</span>
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="<?php echo url('position/jobList'); ?>">
 
             <span class="tab-label">找工作</span>
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="<?php echo url('user/index'); ?>">
             <span class="tab-label">我的</span>
         </a>
     </nav>
@@ -70,7 +70,7 @@ html {
    <div class="row content-padded row-center" style="margin:0;justify-content: space-around;">
        <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
        <div class="col-30 col-center">
-           <img src="<?php echo $vo['label_img']; ?>" width="70px"  height="40px"  style="object-fit:contain;" />
+           <img src="<?php echo $vo['label_img']; ?>" width="146px"  height="103px"  style="object-fit:contain;" />
            <h4 style="margin-top:10px;"><?php echo $vo['name']; ?></h4>
        </div>
        <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -84,11 +84,17 @@ html {
 </div>
 
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+
+
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 <script>
-    $.init();
-    $.config = {router: false}
+
+$(function(){
+	$.init();
+    $.config = {router: false}	
+});
+    
 </script>
 </body>
 </html>

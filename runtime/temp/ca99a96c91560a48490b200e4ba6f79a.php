@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\editjob.html";i:1514543778;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\job\editjob.html";i:1514704070;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,11 +110,8 @@
 			} 
 	
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
-
-	    console.log(data.field)
-	    return false;
 	    
-	     var url="<?php echo url('addCourse'); ?>";
+	     var url="<?php echo url('addJob'); ?>";
 	     var data={data:data.field}
 		     <?php if(isset($data)): ?>
 	     url="<?php echo url('editCourse'); ?>"
@@ -128,13 +125,16 @@
 		    	 layer.load(2, {shade: false});
 		    	},
 		    	success:function(data){
-		    		layer.closeAll()
+		    		layer.closeAll('loading')
 		    		if(data==1){
 		    			layer.msg("保存成功",{ time: 700 },function(){
 		    			  history.go(0)
 		    			})
 		    		}
-		    	}		    
+		    	},
+           complete:function(){
+                layer.closeAll("loading")
+            }
 		    }) 
 		    return false;
 		  });

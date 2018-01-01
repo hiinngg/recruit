@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1514465825;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1514599129;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514599129;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/hover-min.css" />
 <title>招聘网站</title>
 </head>
 <style>
@@ -30,6 +31,17 @@ body,html{
 .sever{
 	margin-top:30px;
 }
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+
+
 /*common  */
 
 /* index */
@@ -51,6 +63,16 @@ body,html{
 /*index  */
 
 /*course  */
+.hvr-sweep-to-top:before{
+	z-index:10;
+	background:#000000;
+	opacity:0.5;
+	-webkit-transition-duration: .2s;
+    transition-duration: .2s;
+}
+
+
+
 #course{
   border:0;	
 }
@@ -181,12 +203,19 @@ body,html{
         <div role="tabpanel row" class="tab-pane <?php if($i == '1'): ?>active<?php endif; ?>" id="c<?php echo $key; ?>">
       <h3 class="text-center" style="margin-bottom:30px;"><?php echo $cate[$key]; ?></h3>
     <?php if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
-        <div class="col-md-3   course-item" data-id="<?php echo $cour['courseid']; ?>">
-	       <img src="<?php echo $cour['label_img']; ?>" alt="" style="width:350px;height:200px;"/>
-	       <h4  class="course-name"><?php echo $cour['name']; ?></h4>
-	       <h5><?php echo $cour['desc']; ?></h5>
-	       <p>&yen;<?php echo $cour['price']; ?></p>
-	    </div>
+           <div class="course-item"  style="width:380px;padding:0 15px;" data-id="<?php echo $cour['courseid']; ?>">
+    <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
+     <img  class="" src="<?php echo $cour['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
+     <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $cour['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
+    </div>    
+        <h3><?php echo $cour['name']; ?></h3>
+        <p class="text-nowrap"><?php echo $cour['desc']; ?></p>
+        <p>
+        <span class="fa fa-eye"></span>
+        <span>292</span>
+        <span class="pull-right"><?php echo $cour['price']; ?>元</span>
+        </p>
+    </div>
     <?php endforeach; endif; else: echo "" ;endif; ?>
 
     </div>
@@ -310,7 +339,8 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
-$("#courseApply").on("click",function(){
+$(".courseApply").on("click",function(e){
+	e.stopPropagation();
     var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
@@ -356,6 +386,17 @@ $.ajax({
 	
 })
 })
+
+
+
+$(".coursehover").hover(function(){
+	$(this).children("button").removeClass("hidden")
+	
+},function(){
+	$(this).children("button").addClass("hidden")
+	
+})
+
 
 
 /*报名课程  */

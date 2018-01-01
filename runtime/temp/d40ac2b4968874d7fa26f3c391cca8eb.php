@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1513875191;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1514706655;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,13 +147,14 @@
 					  })
 			    });
 			  } else if(layEvent === 'edit'){ //编辑
-				  layer.open({
+				 layer.open({
 				      type: 2,
 				      title: '课程编辑',
 				      shadeClose: true,
 				      shade: false,
 				      maxmin: true, //开启最大化最小化按钮
-				      area: ['893px', '600px'],
+				      area: ['893px', '500px'],
+                      moveOut: true,
 				      content: "editCourse?courseid="+data.courseid
 				    });
 			    

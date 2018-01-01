@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1514600516;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,19 +39,19 @@ html {
         <h1 class="title">我的生活</h1>
     </header>-->
     <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-       <a class="tab-item " href="{:url('index/index')}">
+       <a class="tab-item " href="<?php echo url('index/index'); ?>">
 
             <span class="tab-label">首页</span>
         </a>
-        <a class="tab-item " href="{:url('course/courseList')}">
+        <a class="tab-item " href="<?php echo url('course/courseList'); ?>">
 
             <span class="tab-label">微课</span>
         </a>
-        <a class="tab-item" href="{:url('position/jobList')}">
+        <a class="tab-item" href="<?php echo url('position/jobList'); ?>">
 
             <span class="tab-label">找工作</span>
         </a>
-        <a class="tab-item  active" href="{:url('user/index')}">
+        <a class="tab-item  active" href="<?php echo url('user/index'); ?>">
             <span class="tab-label">我的</span>
         </a>
     </nav>
@@ -64,7 +65,7 @@ html {
             <!-- Slider -->
         <div class="row-center" style="width:100%;height:226px;background:#ccc;">
         <div  style="">
-        <img src="{$data.avastar}"  alt=""  style="width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
+        <img src="<?php echo $data['avastar']; ?>"  alt=""  style="width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
         </div>
         </div>
         
@@ -78,20 +79,20 @@ html {
     <div class="tabs">
       <div id="tab1" class="tab active">
         <div class="content-block">
-        {present name="none"}
+        <?php if(isset($none)): ?>
             <p class="text-center">你还没有填写简历,<a href="#" data-popup=".popup-about" class="open-popup  popup-about"  >马上去填写</a></p>
-            {else/}         
-	      <p><span>姓名：</span><span>{$data.truename}</span></p>
-	      <p><span>性别：</span><span>{$data.sex==0?'男':"女"}</span></p>
-	      <p><span>出生日期：</span><span>{$data.birthdate}</span></p>
-	      <p><span>目标职位：</span><span>{$data.position}</span></p>
-	      <p><span>毕业院校：</span><span>{$data.graduated}</span></p>
-	      <p><span>学历：</span><span>{$data.education}</span></p>
-	      <p><span>自我评价：</span><span>{$data.selfevaluation}</span></p>
-	      <p><span>工作经历：</span><span>{$data.experience}</span></p>
+            <?php else: ?>         
+	      <p><span>姓名：</span><span><?php echo $data['truename']; ?></span></p>
+	      <p><span>性别：</span><span><?php echo $data['sex']==0?'男':"女"; ?></span></p>
+	      <p><span>出生日期：</span><span><?php echo $data['birthdate']; ?></span></p>
+	      <p><span>目标职位：</span><span><?php echo $data['position']; ?></span></p>
+	      <p><span>毕业院校：</span><span><?php echo $data['graduated']; ?></span></p>
+	      <p><span>学历：</span><span><?php echo $data['education']; ?></span></p>
+	      <p><span>自我评价：</span><span><?php echo $data['selfevaluation']; ?></span></p>
+	      <p><span>工作经历：</span><span><?php echo $data['experience']; ?></span></p>
 	          <p><a href="#" class="button button-dark  open-popup  popup-about">修改简历</a></p>
 	      
-        {/present}
+        <?php endif; ?>
         
       
         </div>
@@ -108,14 +109,14 @@ html {
                         </div>
                     </li>
 
-                    {volist name="courselist"  id="vo"}
+                    <?php if(is_array($courselist) || $courselist instanceof \think\Collection || $courselist instanceof \think\Paginator): $i = 0; $__LIST__ = $courselist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <li class="item-content">
                         <div class="item-inner">
-                            <div class="item-title">{$vo.orderid}</div>
+                            <div class="item-title"><?php echo $vo['orderid']; ?></div>
                             <div class="item-after">点击查看详情</div>
                         </div>
                     </li>
-                    {/volist}
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
 
                 </ul>
             </div>
@@ -134,14 +135,14 @@ html {
         </div>
       </li>
       
-      {volist name="courselist"  id="vo"}
+      <?php if(is_array($courselist) || $courselist instanceof \think\Collection || $courselist instanceof \think\Paginator): $i = 0; $__LIST__ = $courselist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
           <li class="item-content">
         <div class="item-inner">
-          <div class="item-title">{$vo.orderid}</div>
+          <div class="item-title"><?php echo $vo['orderid']; ?></div>
           <div class="item-after">点击查看详情</div>
         </div>
       </li>
-      {/volist}
+      <?php endforeach; endif; else: echo "" ;endif; ?>
   
     </ul>
   </div> 
@@ -176,7 +177,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">姓名</div>
             <div class="item-input">
-              <input type="text" name="name" required placeholder="请输入你的姓名"  value="{$data.truename??''}">
+              <input type="text" name="name" required placeholder="请输入你的姓名"  value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
             </div>
           </div>
         </div>
@@ -188,7 +189,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">密码</div>
             <div class="item-input">
-              <input type="password" name="pwd" required placeholder="请输入你的密码" value="{$data.truename??''}">
+              <input type="password" name="pwd" required placeholder="请输入你的密码" value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
             </div>
           </div>
         </div>
@@ -199,7 +200,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">确认密码</div>
             <div class="item-input">
-              <input type="password" name="pwd2" required placeholder="请再次输入你的密码" value="{$data.truename??''}">
+              <input type="password" name="pwd2" required placeholder="请再次输入你的密码" value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
             </div>
           </div>
         </div>
@@ -210,7 +211,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">生日</div>
             <div class="item-input">
-              <input type="date" name="date" required placeholder="请输入出生日期" value="{$data.birthdate??''}">
+              <input type="date" name="date" required placeholder="请输入出生日期" value="<?php echo isset($data['birthdate'])?$data['birthdate']:''; ?>">
             </div>
           </div>
         </div>
@@ -235,7 +236,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">目标职业</div>
             <div class="item-input">
-              <input required name="position" type="text" placeholder="请输入你的目标职位" value="{$data.position??''}">
+              <input required name="position" type="text" placeholder="请输入你的目标职位" value="<?php echo isset($data['position'])?$data['position']:''; ?>">
             </div>
           </div>
         </div>
@@ -246,7 +247,7 @@ html {
           <div class="item-inner">
             <div class="item-title label">毕业院校</div>
             <div class="item-input">
-              <input required name="graduated" type="text" placeholder="请输入你的毕业院校" value="{$data.graduated??''}">
+              <input required name="graduated" type="text" placeholder="请输入你的毕业院校" value="<?php echo isset($data['graduated'])?$data['graduated']:''; ?>">
             </div>
           </div>
         </div>
@@ -315,18 +316,18 @@ html {
 <script>
 $(function(){
 
-	{present name="data"}
-	$("select[name='sex']").val("{$data.sex}").change()
-	$("select[name='edu']").val("{$data.education}").change()
+	<?php if(isset($data)): ?>
+	$("select[name='sex']").val("<?php echo $data['sex']; ?>").change()
+	$("select[name='edu']").val("<?php echo $data['education']; ?>").change()
 	
-		  var desc="{$data.experience}";
-		  var menu="{$data.selfevaluation}";
+		  var desc="<?php echo $data['experience']; ?>";
+		  var menu="<?php echo $data['selfevaluation']; ?>";
 		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
 		  desc=desc.replace(reg,"\n");
 		  menu=menu.replace(reg,"\n");
 		  $("textarea[name='experience']").text(desc)
 		  $("textarea[name='selfevaluation']").text(menu)
-	{/present}
+	<?php endif; ?>
 	
 		  
 		
@@ -362,7 +363,7 @@ $(function(){
     data['selfevaluation']=$("textarea[name='selfevaluation']").val().replace(/\n|\r\n/g,"<br>")
     $.ajax({
     	
-    	url:"{:url('editinfo')}",
+    	url:"<?php echo url('editinfo'); ?>",
     	data:{data:data},
     	type:"post",
     	beforeSend:function(){
@@ -372,7 +373,7 @@ $(function(){
     		$.hidePreloader();
     		if(data==1){
     	     $.toast("保存成功");
-    	     location.href="{:url('user/index')}"
+    	     location.href="<?php echo url('user/index'); ?>"
     		}else{
     			$.toast(data);
     		}

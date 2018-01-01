@@ -6,6 +6,7 @@
  * Time: 22:53
  */
 namespace app\mobile\controller;
+use think\Cookie;
 use think\Db;
 use think\Session;
 
@@ -49,16 +50,13 @@ class Course extends Common
 
     public function apply(){
 
-        if(!Session::has("username")){
-            return "请先登录";
-        }
         $post=$this->request->post();
         if(Db::name('course_user')
-            ->where(['userid'=>Session::get("username"),'courseid'=>$post['courseid']])->find()){
+            ->where(['userid'=>Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid"),'courseid'=>$post['courseid']])->find()){
             return "你已报名该课程";
         }
         $data=[
-            'userid'=>Session::get("username"),
+            'userid'=>Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid"),
             'courseid'=>$post['courseid'],
             'status'=>1,
             'createtime'=>date("Y-m-d H:i:s")

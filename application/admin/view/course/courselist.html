@@ -146,13 +146,14 @@
 					  })
 			    });
 			  } else if(layEvent === 'edit'){ //编辑
-				  layer.open({
+				 layer.open({
 				      type: 2,
 				      title: '课程编辑',
 				      shadeClose: true,
 				      shade: false,
 				      maxmin: true, //开启最大化最小化按钮
-				      area: ['893px', '600px'],
+				      area: ['893px', '500px'],
+                      moveOut: true,
 				      content: "editCourse?courseid="+data.courseid
 				    });
 			    

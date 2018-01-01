@@ -36,7 +36,7 @@
 </style>
 
 <body style="margin:0;">
-<dv class="page">
+<div class="page">
     <!-- <header class="bar bar-nav">
          <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
              <span class="icon icon-left"></span>
@@ -126,8 +126,17 @@
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script> 
 <script>
 $(function(){
-	$.init();
-    $.config = {router: false}	
+
+    $(".course-item").on("click",function(){
+        var id=$(this).attr("data-id");
+        location.href="../course/courseDetail?courseid="+id;
+
+    })
+
+
+    $.config = {router: false}
+    $.init();
+
 });
 </script>
 </body>

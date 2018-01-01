@@ -1,0 +1,2095 @@
+---------------------------------------------------------------
+[ 2017-12-30T10:11:00+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.pro.com/ [运行时间：0.605035s][吞吐率：1.65req/s] [内存消耗：2,685.88kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:11:00+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/index/index.html
+[ info ] www.pro.com/mobile/index/index.html [运行时间：0.058004s][吞吐率：17.24req/s] [内存消耗：2,401.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:12:38+08:00 ] 192.168.31.175 192.168.31.175 GET /
+[ info ] 192.168.31.175/ [运行时间：0.619035s][吞吐率：1.62req/s] [内存消耗：4,456.31kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.158009s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img`,`price`,`desc` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:13:08+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.pro.com/ [运行时间：0.063004s][吞吐率：15.87req/s] [内存消耗：2,685.89kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:13:08+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/index/index.html
+[ info ] www.pro.com/mobile/index/index.html [运行时间：0.041003s][吞吐率：24.39req/s] [内存消耗：2,401.15kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:14:41+08:00 ] 192.168.31.175 192.168.31.175 GET /
+[ info ] 192.168.31.175/ [运行时间：0.061004s][吞吐率：16.39req/s] [内存消耗：2,685.79kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:14:41+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/index/index.html
+[ info ] 192.168.31.175/mobile/index/index.html [运行时间：0.037002s][吞吐率：27.03req/s] [内存消耗：2,401.23kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:15:01+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.pro.com/ [运行时间：0.048003s][吞吐率：20.83req/s] [内存消耗：2,685.89kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:15:01+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/index/index.html
+[ info ] www.pro.com/mobile/index/index.html [运行时间：0.039002s][吞吐率：25.64req/s] [内存消耗：2,401.15kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:16:02+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.pro.com/ [运行时间：0.062003s][吞吐率：16.13req/s] [内存消耗：2,685.89kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:16:02+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/index/index.html
+[ info ] www.pro.com/mobile/index/index.html [运行时间：0.040002s][吞吐率：25.00req/s] [内存消耗：2,401.15kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.pro.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:16:06+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/common/gettokenid?code=081S4iYl1i2Ymm0sDmYl1ZlmYl1S4iYg&state=0
+[ info ] 192.168.31.175/mobile/common/gettokenid?code=081S4iYl1i2Ymm0sDmYl1ZlmYl1S4iYg&state=0 [运行时间：1.729099s][吞吐率：0.58req/s] [内存消耗：3,744.17kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'common',
+    2 => 'gettokenid',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'code' => '081S4iYl1i2Ymm0sDmYl1ZlmYl1S4iYg',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.080004s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.036002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_user` WHERE  `openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.052003s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:07+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/index
+[ info ] 192.168.31.175/mobile/index [运行时间：0.232013s][吞吐率：4.31req/s] [内存消耗：4,162.49kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.045002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.038003s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.032002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:21+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/index
+[ info ] 192.168.31.175/mobile/index [运行时间：0.167010s][吞吐率：5.99req/s] [内存消耗：3,908.77kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.050003s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:26+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.243013s][吞吐率：4.12req/s] [内存消耗：4,198.86kb] [文件加载：48]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:26+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.137008s][吞吐率：7.30req/s] [内存消耗：3,928.84kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.025001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:29+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.166009s][吞吐率：6.02req/s] [内存消耗：4,202.93kb] [文件加载：48]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:29+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.146008s][吞吐率：6.85req/s] [内存消耗：3,924.63kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.027002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:35+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.236014s][吞吐率：4.24req/s] [内存消耗：4,225.36kb] [文件加载：48]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:36+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.212012s][吞吐率：4.72req/s] [内存消耗：3,941.20kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.029001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:43+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/index/index.html
+[ info ] 192.168.31.175/mobile/index/index.html [运行时间：0.129007s][吞吐率：7.75req/s] [内存消耗：3,922.63kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:16:44+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/index/index.html
+[ info ] 192.168.31.175/mobile/index/index.html [运行时间：0.140008s][吞吐率：7.14req/s] [内存消耗：3,908.49kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:01+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.139008s][吞吐率：7.19req/s] [内存消耗：3,943.06kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.022002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:02+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.162009s][吞吐率：6.17req/s] [内存消耗：3,928.96kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:44+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.036002s][吞吐率：27.78req/s] [内存消耗：2,417.13kb] [文件加载：38]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-30T10:17:45+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/common/gettokenid?code=0610dsb32jTYYL021Uc32z7zb320dsbM&state=0
+[ info ] 192.168.31.175/mobile/common/gettokenid?code=0610dsb32jTYYL021Uc32z7zb320dsbM&state=0 [运行时间：0.311017s][吞吐率：3.22req/s] [内存消耗：3,744.13kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'common',
+    2 => 'gettokenid',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'code' => '0610dsb32jTYYL021Uc32z7zb320dsbM',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_user` WHERE  `openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:46+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/index
+[ info ] 192.168.31.175/mobile/index [运行时间：0.131007s][吞吐率：7.63req/s] [内存消耗：3,908.40kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:51+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.255015s][吞吐率：3.92req/s] [内存消耗：3,943.38kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://192.168.31.175/mobile/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.090005s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.061003s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.051003s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:51+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.116007s][吞吐率：8.62req/s] [内存消耗：3,928.79kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.019002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:53+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.158009s][吞吐率：6.33req/s] [内存消耗：3,938.82kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.049003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:54+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.138008s][吞吐率：7.25req/s] [内存消耗：3,924.52kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:57+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.211012s][吞吐率：4.74req/s] [内存消耗：3,955.32kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.063003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.024002s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:17:57+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.187011s][吞吐率：5.35req/s] [内存消耗：3,941.09kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:08+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/index/index.html
+[ info ] 192.168.31.175/mobile/index/index.html [运行时间：0.152008s][吞吐率：6.58req/s] [内存消耗：3,922.59kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://192.168.31.175/mobile/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:08+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/index/index.html
+[ info ] 192.168.31.175/mobile/index/index.html [运行时间：0.138008s][吞吐率：7.25req/s] [内存消耗：3,908.28kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'coursedata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.024001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:11+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.133008s][吞吐率：7.52req/s] [内存消耗：3,942.80kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://192.168.31.175/mobile/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:11+08:00 ] 192.168.31.175 192.168.31.122 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.124007s][吞吐率：8.06req/s] [内存消耗：3,928.79kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1200(0x26060132) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:50+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.136007s][吞吐率：7.35req/s] [内存消耗：3,938.82kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:53+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/position/joblist.html
+[ info ] 192.168.31.175/mobile/position/joblist.html [运行时间：0.206012s][吞吐率：4.85req/s] [内存消耗：3,924.63kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'position',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Position->jobList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Position.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\position\joblist.html [ array (
+  0 => 'position',
+  1 => 'subsidy',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `poid`,`name`,`treatment`,`salary_min`,`salary_max`,`is_subsidy` FROM `re_position` WHERE  `re_position`.`is_show` = 1 [ RunTime:0.085005s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:58+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.206012s][吞吐率：4.85req/s] [内存消耗：3,955.31kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.038002s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:18:58+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.176010s][吞吐率：5.68req/s] [内存消耗：3,941.20kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.020002s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:19:51+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.178010s][吞吐率：5.62req/s] [内存消耗：4,211.38kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:21:13+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.216012s][吞吐率：4.63req/s] [内存消耗：4,212.86kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.025002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:27:47+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.231013s][吞吐率：4.33req/s] [内存消耗：4,212.70kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.042002s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:27:49+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.219012s][吞吐率：4.57req/s] [内存消耗：3,941.34kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.030001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.020002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.039002s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.029002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:27:53+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.135008s][吞吐率：7.41req/s] [内存消耗：3,943.15kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.026001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:27:53+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.130008s][吞吐率：7.69req/s] [内存消耗：3,929.05kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/position/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:32:18+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courselist.html
+[ info ] 192.168.31.175/mobile/course/courselist.html [运行时间：0.158009s][吞吐率：6.33req/s] [内存消耗：4,185.05kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'cate',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1 [ RunTime:0.023002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:32:20+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.161010s][吞吐率：6.21req/s] [内存消耗：4,187.39kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.022002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:35:25+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.172010s][吞吐率：5.81req/s] [内存消耗：4,187.91kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.029002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:36:09+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.153008s][吞吐率：6.54req/s] [内存消耗：4,187.81kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.021001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:37:45+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.165009s][吞吐率：6.06req/s] [内存消耗：4,187.90kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:38:15+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.187010s][吞吐率：5.35req/s] [内存消耗：4,187.77kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.041002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.046003s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:41:27+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.162010s][吞吐率：6.17req/s] [内存消耗：4,189.13kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:45:02+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/course/courseDetail?courseid=1
+[ info ] 192.168.31.175/mobile/course/courseDetail?courseid=1 [运行时间：0.181010s][吞吐率：5.52req/s] [内存消耗：4,191.35kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courseDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseDetail[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\course\coursedetail.html [ array (
+  0 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`price`,`type`,`desc`,`menu`,`content`,`label_img` FROM `re_course` WHERE  `courseid` = 1 LIMIT 1 [ RunTime:0.029002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:45:04+08:00 ] 192.168.31.175 192.168.31.175 POST /mobile/course/apply.html
+[ info ] 192.168.31.175/mobile/course/apply.html [运行时间：0.267015s][吞吐率：3.75req/s] [内存消耗：3,835.04kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'apply',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'content-length' => '10',
+  'accept' => '*/*',
+  'origin' => 'http://192.168.31.175',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'referer' => 'http://192.168.31.175/mobile/course/courseDetail?courseid=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'courseid' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->apply[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `userid` FROM `re_user` WHERE  `openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_course_user` WHERE  `userid` = 17  AND `courseid` = 1 LIMIT 1 [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `userid` FROM `re_user` WHERE  `openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.023002s ]
+[ sql ] [ SQL ] INSERT INTO `re_course_user` (`userid` , `courseid` , `status` , `createtime`) VALUES (17 , 1 , '1' , '2017-12-30 10:45:04') [ RunTime:0.026002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:45:09+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.507029s][吞吐率：1.97req/s] [内存消耗：3,959.46kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'referer' => 'http://192.168.31.175/mobile/course/courseDetail?courseid=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.068004s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.144008s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.051003s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.133007s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.045003s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:45:09+08:00 ] 192.168.31.175 192.168.31.175 GET /mobile/user/index.html
+[ info ] 192.168.31.175/mobile/user/index.html [运行时间：0.218012s][吞吐率：4.59req/s] [内存消耗：3,945.13kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.31.175',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1711300 MicroMessenger/6.5.7 Language/zh_CN webview/15145996957672382 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://192.168.31.175/mobile/course/courseDetail?courseid=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp6\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.042003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.031001s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.037002s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:54:42+08:00 ] ::1 ::1 GET /
+[ info ] localhost/ [运行时间：0.475027s][吞吐率：2.11req/s] [内存消耗：4,165.77kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'pgv_pvi=8346048512; color=Green color',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img`,`price`,`desc` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.020001s ]
+---------------------------------------------------------------
+[ 2017-12-30T10:54:43+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] 127.0.0.1/ [运行时间：0.784045s][吞吐率：1.28req/s] [内存消耗：4,165.43kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp6\wamp64\www\recruit\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html [ array (
+  0 => 'navlist',
+  1 => 'footer',
+  2 => 'nav',
+  3 => 'data',
+  4 => 'coursedata',
+  5 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_nav` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_nav` WHERE  `status` = '1' ORDER BY `sortid` [ RunTime:0.021002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.023001s ]
+[ sql ] [ SQL ] SELECT `content`,`pageid` FROM `re_page` WHERE  `column` = '站点信息' LIMIT 1 [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SELECT `title`,`content` FROM `re_page` WHERE  `column` = '首页介绍' LIMIT 1 [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img`,`price`,`desc` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.020001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.021001s ]

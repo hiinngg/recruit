@@ -54,8 +54,10 @@
 			        url: "{:url('job/jobList')}",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'pageid', title: '编号'},
-					{field: 'title', title: '标题' },
+			         {field: 'jobid', title: '编号'},
+					{field: 'name', title: '岗位名称' },
+					{field: 'cname', title: '公司名称' },
+					{field: 'location', title: '工作地' },
 					{field: 'status', title: '状态',templet: '#statusTpl' },
 			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
@@ -135,7 +137,7 @@
 							  })
 					    });
 					  }else if(layEvent === 'change2on'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:1},dtd)
+						  _ajax("{:url('statusChange')}",{jobid:data.jobid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
@@ -144,7 +146,7 @@
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("{:url('statusChange')}",{pageid:data.pageid,status:0},dtd)
+						  _ajax("{:url('statusChange')}",{jobid:data.pageid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
@@ -187,7 +189,6 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
   {{#  if(d.status == 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}

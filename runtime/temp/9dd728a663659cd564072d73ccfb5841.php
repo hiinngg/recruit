@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514378382;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514599129;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514599129;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/hover-min.css" />
 <title>招聘网站</title>
 </head>
 <style>
@@ -30,6 +31,17 @@ body,html{
 .sever{
 	margin-top:30px;
 }
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+
+
 /*common  */
 
 /* index */
@@ -51,6 +63,16 @@ body,html{
 /*index  */
 
 /*course  */
+.hvr-sweep-to-top:before{
+	z-index:10;
+	background:#000000;
+	opacity:0.5;
+	-webkit-transition-duration: .2s;
+    transition-duration: .2s;
+}
+
+
+
 #course{
   border:0;	
 }
@@ -189,19 +211,29 @@ body,html{
 
 
 <div class="container sever">
-<h2 class="text-center"><?php echo $data['title']; ?></h2>
-<p><?php echo $data['content']; ?></p>
+<h2 class="text-center">标题标题</h2>
+<p class="line-indent">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
 </div>
 
 
 <div class="container sever">
 <h2 class="text-center">职造课程</h2>
-<div class="row sever row-center">
+<div class=" sever row-center  " style="">
  <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="col-md-3 col-center">
-        <img src="<?php echo $vo['label_img']; ?>" width="300px"  height="150px"  style="object-fit: cover;" />
-        <h4><?php echo $vo['name']; ?></h4>
+    <div class="course-item"  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
+    <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
+     <img  class="" src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
+     <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $vo['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
+    </div>    
+        <h3><?php echo $vo['name']; ?></h3>
+        <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
+        <p>
+        <span class="fa fa-eye"></span>
+        <span>292</span>
+        <span class="pull-right"><?php echo $vo['price']; ?>元</span>
+        </p>
     </div>
+
     <?php endforeach; endif; else: echo "" ;endif; ?>
 
 </div>
@@ -338,7 +370,8 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
-$("#courseApply").on("click",function(){
+$(".courseApply").on("click",function(e){
+	e.stopPropagation();
     var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
@@ -384,6 +417,17 @@ $.ajax({
 	
 })
 })
+
+
+
+$(".coursehover").hover(function(){
+	$(this).children("button").removeClass("hidden")
+	
+},function(){
+	$(this).children("button").addClass("hidden")
+	
+})
+
 
 
 /*报名课程  */

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\info\index.html";i:1514470298;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp6\wamp64\www\recruit\public/../application/admin\view\info\index.html";i:1514599129;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,13 +33,13 @@
     <label class="layui-form-label">宣传视频</label>
     <div class="layui-input-block">
     <!--   <input type="text" name="link" required  lay-verify="required" placeholder="请输入视频链接" autocomplete="off" class="layui-input" value="<?php echo isset($data['link'])?$data['link']: ''; ?>"> -->
-      <!-- 	<input type="text"  hidden name="label_img" value="<?php echo isset($data['label_img'])?$data['label_img']:''; ?>" />-->
+       	<input type="text"  hidden name="video" value="<?php echo isset($data['video'])?$data['video']:''; ?>" />
        	<button type="button" class="layui-btn video" >
 	    <i class="layui-icon">&#xe67c;</i>上传
 	    </button>
         <p id="videostatus" style="color:#5FB878;margin-top:15px;"></p>
     </div>
-  </div>
+  </div>  
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-block">
@@ -183,7 +183,9 @@
 			  ,done: function(res, index, upload){			  
 			    if(res.code == 0){	
 			    	layer.closeAll('loading')
+			         $("input[name='video']").val(res.src.replace(/\\/g,'/')) 
                     $("#videostatus").text(res.filename.name+"已成功保存")
+                    
 			    }			    
 			    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
 			    var item = this.item;

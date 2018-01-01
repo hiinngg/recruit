@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514378382;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514378382;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1514599129;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514599129;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/hover-min.css" />
 <title>招聘网站</title>
 </head>
 <style>
@@ -30,6 +31,17 @@ body,html{
 .sever{
 	margin-top:30px;
 }
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+
+
 /*common  */
 
 /* index */
@@ -51,6 +63,16 @@ body,html{
 /*index  */
 
 /*course  */
+.hvr-sweep-to-top:before{
+	z-index:10;
+	background:#000000;
+	opacity:0.5;
+	-webkit-transition-duration: .2s;
+    transition-duration: .2s;
+}
+
+
+
 #course{
   border:0;	
 }
@@ -168,7 +190,10 @@ body,html{
         </div>
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
-  <?php endif; if(isset($talent)): ?>
+  <?php endif; ?>
+
+<hr />
+    <?php if(isset($talent)): ?>
     <h2 class='text-center'>团队定制</h2>
     <div class="row sever row-center">
 
@@ -290,7 +315,8 @@ $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 
 /*common  */
 
-$("#courseApply").on("click",function(){
+$(".courseApply").on("click",function(e){
+	e.stopPropagation();
     var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
@@ -336,6 +362,17 @@ $.ajax({
 	
 })
 })
+
+
+
+$(".coursehover").hover(function(){
+	$(this).children("button").removeClass("hidden")
+	
+},function(){
+	$(this).children("button").addClass("hidden")
+	
+})
+
 
 
 /*报名课程  */
