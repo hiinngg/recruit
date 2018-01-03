@@ -21,7 +21,7 @@ class Job extends Common{
 
         }
         $this->assign("position",$res); */
-        $res=Db::name("page")->where(['column'=>'找工作','status'=>1])->field("pageid,content")->select();
+        $res=Db::name("job")->where('status',1)->select();
         $this->assign("data",$res);
         $this->assign("companydata",Db::name("company")->where("status",1)->field("cid,avastar")->select()); 
         
@@ -37,12 +37,12 @@ class Job extends Common{
         }
         $post=$this->request->post();
         if(Db::name('job_user')
-            ->where(['userid'=>Session::get("username"),'pageid'=>$post['pageid']])->find()){
+            ->where(['userid'=>Session::get("username"),'jobid'=>$post['jobid']])->find()){
                 return "你已申请该工作";
         }
         $data=[
             'userid'=>Session::get("username"),
-            'pageid'=>$post['pageid'],
+            'jobid'=>$post['jobid'],
             'status'=>0,
             'createtime'=>date("Y-m-d H:i:s")
         ];

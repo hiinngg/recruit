@@ -60,6 +60,7 @@ class Page extends  Common{
                 'content'=> $post['data']['content']
             ];
         if(Db::name("page")->where("pageid",$post['pageid'])->update($data)>=0){
+            
            return 1;
         }
 

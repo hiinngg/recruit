@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514534653;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514534751;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514864266;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514886644;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -229,7 +229,7 @@ body,html{
         <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
         <p>
         <span class="fa fa-eye"></span>
-        <span>292</span>
+        <span><?php echo $vo['pageview']; ?></span>
         <span class="pull-right"><?php echo $vo['price']; ?>元</span>
         </p>
     </div>
@@ -268,7 +268,12 @@ body,html{
 <h4 class="text-center">宣传口号：<?php echo $footer['catchword']; ?></h4>
 	<div class="row row-center">
 	   <div class="col-md-4 col-center" style="border-right:1px solid #ffffff;">
-          <div style="background:#ffffff;width:150px;height:150px;">视频</div>
+          <div style="background:#ffffff;width:150px;height:150px;position:relative;line-height:150px;">
+       <video  src="<?php echo $footer['myvideo']; ?>"  width="150px" height="150px"  >
+       您的浏览器不支持在线播放视频
+       </video>
+       <span id="footvideo" class="fa fa-play-circle fa-3x" style="position:absolute;color:#ffffff;cursor:pointer;top: 50%;left: 50%;transform: translate(-50%, -50%);"></span> 
+         </div>
         </div>
 	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
      <?php echo $footer['desc']; ?>
@@ -368,6 +373,20 @@ $("#mynav").find("li").removeClass("active");
 $("#mynav").find("li[data-c='<?php echo $nav; ?>']").addClass("active")
 <?php endif; ?>
 
+$("#footvideo").on("click",function(event){
+	var that=$(this)
+	layer.open({
+		  type: 2,
+		  title: false,
+		  area: ['630px', '360px'],
+		  shade: 0.8,
+		  closeBtn: 0,
+		  shadeClose: true,
+		  content: that.parent().children("video").attr("src")
+		});
+})
+
+
 /*common  */
 
 $(".courseApply").on("click",function(e){
@@ -393,18 +412,20 @@ $.ajax({
 	
 })
 })
-
+  $('#addjob').modal({
+	  'show':false,
+  })
 
 $(".jobApply").on("click",function(){
-    var $btn = $(this).button('loading')
-var id=$(this).attr("data-pageid");
+var $btn = $(this).button('loading')
+var id=$(this).attr("data-jobid");
 $.ajax({
 	url:"<?php echo url('job/apply'); ?>",
-    data:{pageid:id},
+    data:{jobid:id},
     type:"post",
 	success:function(data){
 		if(data==1){
-			layer.msg("申请成功")
+			$('#addjob').modal('toggle')
 		}else{
 			layer.msg(data)
 		}
@@ -603,7 +624,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
   //点击进入课程内页
   $(".course-item").on("click",function(){
 	 var id=$(this).attr("data-id");
-	  location.href="../course/courseDetail?courseid="+id;
+	  location.href="../../index/course/courseDetail?courseid="+id;
 	  
   })
   /* 课程 */

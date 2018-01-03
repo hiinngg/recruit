@@ -15,7 +15,7 @@
  * curl
  */
 define('HTTP', 'http://');
-define('DOMAIN', '119.23.25.24');
+define('DOMAIN', 'recruit.zszmr.com');
 define('APPID', 'wx572619f18a92ca3e');
 define('APPSECRET', 'a74348b1003be4ad5abe49e70eb632c1');
 
@@ -83,6 +83,22 @@ function transFile($path){
         return $newimg;
     }
 
+}
+
+function TransVideo($path){
+    if(!strstr($path, "/temp/")){
+        return $path;
+    }
+    $newimg = str_replace("/temp/admin", "/image/admin", $path);
+    $arr=explode('/', $path);
+    /*     $datefloder = './cert/'.$arr[2];
+     if (!file_exists($datefloder)) {
+     mkdir($datefloder);
+     } */
+    if(rename(".".$path, ".".$newimg)) {
+        return $newimg;
+    }
+    
 }
 
 function delDir($path){

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1513905258;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1514865764;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -73,12 +73,12 @@ a {
 					<li class="layui-nav-item layui-this"><a href="#" data-url="">企业资料</a>
 					</li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('talent/addTalent'); ?>">人才定制</a></li>
+						data-url="<?php echo url('talent/talentList'); ?>">人才定制管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('team/addTeam'); ?>">团队定制</a></li>
+						 data-url="<?php echo url('team/teamList'); ?>">团队定制管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="<?php echo url('position/addPosition'); ?>">普工招聘</a></li>
-						<li class="layui-nav-item "><a class=""
+						data-url="<?php echo url('position/positionList'); ?>">普工招聘管理</a></li>
+				<!-- 		<li class="layui-nav-item "><a class=""
 						href="javascript:;">管理需求</a>
 						<dl class="layui-nav-child">
 							<dd>
@@ -90,7 +90,7 @@ a {
 							<dd>
 								<a data-url="<?php echo url('position/positionList'); ?>" href="javascript:;">普工需求管理</a>
 							</dd>
-						</dl></li>
+						</dl></li> -->
 				</ul>
 			</div>
 		</div>

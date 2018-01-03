@@ -192,6 +192,17 @@
                      });
                  })
 
+              }else if(layEvent === "user"){
+     			 layer.open({
+				      type: 2,
+				      title: '学员管理',
+				      shadeClose: true,
+				      shade: false,
+				      maxmin: true, //开启最大化最小化按钮
+				      area: ['893px', '500px'],
+                     moveOut: true,
+				      content: "mycourse?courseid="+data.courseid
+				    });
               }
 			});
 
@@ -236,6 +247,7 @@
 </script>
 <script type="text/html" id="bar">
   <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+  <button class="layui-btn layui-btn-xs" lay-event="user">学员管理</button>
   {{#  if(d.status== 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
   {{#  } else { }}

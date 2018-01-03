@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新闻管理</title>
+<link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
+</head>
+<style type="text/css">
+.flex-row {
+	display: flex;
+	align-items: center;
+}
+</style>
+
+<body  style="scroll-x:scroll;">
+	<blockquote class="layui-elem-quote flex-row">
+<!-- 		<input style="width: 200px; margin-right: 15px;" type="text"
+			name="keyword" placeholder="请输入新闻名" autocomplete="off"
+			class="layui-input">
+		<button class="layui-btn articleSearch" >
+			<i class="layui-icon">&#xe615;</i>查询
+		</button> -->
+<!-- 		<button class="layui-btn layui-btn-danger">
+			<i class="layui-icon">&#xe640;</i>批量删除
+		</button> -->
+		<button class="layui-btn " onclick="refresh()">
+			刷新
+		</button>
+	</blockquote>
+		
+	
+    {present name="none"}
+	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
+			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
+			<p>这里一点内容都没有</p>			
+		</div>
+		{else/}
+		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
+	    </table>
+	{/present}
+    <script src="/admin/layui/layui.js"></script>
+	<script type="text/javascript">
+	var tranStatus={
+			'发布':1,
+			'不发布':0
+	}
+		layui.use([ 'table', 'layer','jquery','form' ], function() {
+			var $=layui.jquery;
+			var table = layui.table;
+			var layer=layui.layer;		
+			var form = layui.form
+		{notpresent name="none"}
+			var init= layer.load(2, {shade: false});
+		var articleTable = table.render({
+			        elem:"#table",	
+			       
+			        url: "{:url('user/myCourseList')}",
+			        cols:[[
+			         {checkbox: true},
+			         {field: 'orderid', title: '编号'},
+			         {field: 'name', title: '课程名称' },
+			         {field: 'type', title: '授课形式',templet: '#typeTpl' },
+			         {field: 'period', title: '学习时间' },
+			         {field: 'sche', title: '课程安排',minWidth:'120', templet: '#scheTpl'},
+			         {field: 'oper', title: '反馈',toolbar: '#bar' },	         
+			        ]],
+				   page:true,
+				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+			        layer.close(init)
+			    }
+				});
+			 
+			 
+			 $(".articleSearch").on("click",function(){
+				 var keyword=$("input[name='keyword']").val();
+				 if(keyword==""){
+					 return;
+				 }
+				 articleTable.reload({
+					  where: { 
+					    keyword:keyword
+					  }
+					  ,page: {
+					    curr: 1 //重新从第 1 页开始
+					  }
+					});
+				 
+			 })
+			 
+			 
+			{/notpresent}
+
+			
+				
+
+
+				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+					  var data = obj.data; //获得当前行数据
+					  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+					  var tr = obj.tr; //获得当前行 tr 的DOM对象	
+					  var dtd=$.Deferred();
+					  console.log(data)
+					  if(layEvent === 'detail'){ //查看
+	/* 					  layer.open({
+						      type: 2,
+						      title: '内容查看',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "articlePreview?id="+data.postid
+						    }); */
+                         if(!data.feedback||data.feedbabk==""){
+                        	 data.feedback="暂无反馈信息"
+                         }
+						  layer.open({
+							  title:"反馈信息",
+							  type: 1,
+							  skin: 'layui-layer-rim', //加上边框
+							  area: ['420px', '240px'], //宽高
+							  content:"<p style='text-align:left;text-indent:2em;padding:15px;'>"+data.feedback+"</p>" 
+							});
+					  } else if(layEvent === 'del'){ //删除
+					    layer.confirm('确定删除该新闻么', function(index){
+					    	  _ajax("{:url('articleDel')}",{postid:data.postid},dtd)
+							  dtd.done(function(){
+								  obj.del(); 
+								  layer.close(index);
+							  })
+					    });
+					  } else if(layEvent === 'edit'){ //编辑
+						  layer.open({
+						      type: 2,
+						      title: '内容编辑',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "articleEdit?id="+data.postid
+						    });
+					    
+					  }else if(layEvent === 'change2on'){
+						  _ajax("{:url('statusChange')}",{postid:data.postid,status:1},dtd)
+						  dtd.done(function(){
+							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
+								  obj.update({
+									  is_valid:1
+						       });
+						  })
+							
+					  }else if(layEvent === 'change2off'){
+						  _ajax("{:url('statusChange')}",{postid:data.postid,status:0},dtd)
+						 dtd.done(function(){
+					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
+						  obj.update({
+							is_valid:0
+						 });
+						  })
+					
+					  }else if(layEvent === "sche"){
+						  layer.open({
+							  title:"课程安排",
+							  type: 1,
+							  skin: 'layui-layer-rim', //加上边框
+							  area: ['420px', '240px'], //宽高
+							  content:"<div style='text-align:left;text-indent:2em;padding:15px;'>"+
+                                       "<p>导师："+data.teacher+"</p>"+
+							          "<p>联系方式："+data.contact+"</p>"+
+							          "</div>" 
+							});
+					  }
+					});
+				
+				function  _ajax(url,data,deferred){
+					var index = layer.load(2, {shade: false});
+					$.ajax({
+						url:url,
+						data:data,
+						type:"post",
+						success:function(data){
+							layer.close(index)
+							if(data==1){
+								deferred.resolve();
+							}else{
+								layer.msg("操作失败");
+							}
+							
+						}
+						
+					})
+					
+					
+				}
+				 
+		});
+	
+	function refresh(){
+		history.go(0)
+	}
+	
+
+		
+		
+	</script>
+<script type="text/html" id="bar">
+  <button class="layui-btn layui-btn-xs" lay-event="detail">反馈信息</button>
+
+
+</script>
+<script type="text/html" id="scheTpl">
+<button class="layui-btn layui-btn-xs" lay-event="sche">课程安排</button>
+</script>
+
+<script type="text/html" id="typeTpl">
+  {{#  if(d.type==0){ }}
+    <span style="color:#5FB878;">线下授课</span>
+
+   {{# } else if(d.type==1){ }} 
+      <span style="color:#5FB878;">直播授课</span>
+
+  {{#  } else { }} 
+      <span style="color:#5FB878;">微信授课</span>
+  {{#  } }}
+</script>
+</body>
+
+</html>

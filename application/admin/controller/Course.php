@@ -19,12 +19,48 @@ class Course extends Common
         if (! empty($res)) {
             $this->assign("data", $res);
         }
-         $this->assign("courselist",Db::name("course")->where("status",1)->field("courseid,name")->select());      
+        $this->assign("courselist", Db::name("course")->where("status", 1)
+            ->field("courseid,name")
+            ->select());
         return $this->fetch();
     }
 
+    public function editfeedback()
+    {
+       $post = $this->request->post();
+   return Db::name("course_user")->where("orderid", $post['orderid'])->update([
+            "feedback"=>$post['text']
+        ]);
+    }
 
-    public function showChange(){
+    public function myCourse($courseid = "", $page = "", $limit = "")
+    {
+        if ($this->request->isAjax()) {
+            
+            if (! isset($count)) {
+                $this->count = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+            
+            $res = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")
+                ->page($page, $limit)
+                ->order("re_course_user.createtime desc")
+                ->select();
+            
+            return [
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count,
+                'data' => $res
+            ];
+        }
+        return $this->fetch();
+    }
+
+    public function showChange()
+    {
         $post = $this->request->post();
         if (Db::name('course')->where("courseid", $post['courseid'])->update([
             'is_show' => $post['is_show']
@@ -33,39 +69,36 @@ class Course extends Common
         } else {
             return 0;
         }
-
     }
-    
-    public function courseUser($page="",$limit=""){
-        
+
+    public function courseUser($page = "", $limit = "")
+    {
         if ($this->request->isAjax()) {
-        
+            
             if (! isset($count)) {
-                $this->count =Db::view("re_course_user","*")->view("re_course","name,createtime","re_course.courseid=re_course_user.courseid")
-            ->view("re_user","telphone","re_user.userid=re_course_user.userid")->count();
+                $this->count = Db::view("re_course_user", "*")->view("re_course", "name,createtime", "re_course.courseid=re_course_user.courseid")
+                    ->view("re_user", "telphone", "re_user.userid=re_course_user.userid")
+                    ->count();
                 if ($this->count == 0) {
                     $this->assign("none", "none");
                 }
             }
-        
-            $res=Db::view("re_course_user","*")->view("re_course","name,createtime","re_course.courseid=re_course_user.courseid")
-            ->view("re_user","telphone","re_user.userid=re_course_user.userid")
-            ->page($page, $limit)
-            ->order("re_course_user.createtime desc")
-            ->select();
-        
+            
+            $res = Db::view("re_course_user", "*")->view("re_course", "name,createtime", "re_course.courseid=re_course_user.courseid")
+                ->view("re_user", "telphone", "re_user.userid=re_course_user.userid")
+                ->page($page, $limit)
+                ->order("re_course_user.createtime desc")
+                ->select();
+            
             return [
                 'code' => 0,
                 'msg' => "",
-                "count" => $this->count ,
+                "count" => $this->count,
                 'data' => $res
             ];
         }
         return $this->fetch();
-        
-        
     }
-    
 
     /**
      * 课程管理页面
@@ -168,8 +201,9 @@ class Course extends Common
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
                 'label_img' => transOneImage($post['data']['label_img'], "/image/admin"),
                 'content' => $post['data']['content'],
-                'teacher' =>$post['data']['teacher'],
-                'contact'=>$post['data']['contact'],
+                'teacher' => $post['data']['teacher'],
+                
+                'contact' => $post['data']['contact'],
                 'createtime' => date("Y-m-d H:i:s"),
                 'status' => 1
             ];
@@ -235,8 +269,8 @@ class Course extends Common
                 'period' => trim($post['data']['period']),
                 'price' => $post['data']['price'],
                 'type' => $post['data']['type'],
-                'teacher' =>$post['data']['teacher'],
-                'contact'=>$post['data']['contact'],
+                'teacher' => $post['data']['teacher'],
+                'contact' => $post['data']['contact'],
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
                 'label_img' => transOneImage(matchImage($post['data']['label_img'], $old_data['label_img']), "/image/admin"),
                 'content' => $post['data']['content'],

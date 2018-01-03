@@ -20,6 +20,7 @@ class Info extends Common
     {
         $post = $this->request->post();
         $post['data']["label_img"] = transOneImage($post['data']['label_img'], "/image/admin");
+        $post['data']["myvideo"] = TransVideo($post['data']['myvideo']);
         $data = [
             'column' => "站点信息",
             "title" => "站点信息",
@@ -28,6 +29,7 @@ class Info extends Common
             'createtime' => date("Y-m-d H:i:s")
         ];
         if (Db::name("page")->insert($data) == 1) {
+            delDir("/temp/admin");
             return 1;
         }
     }
@@ -35,11 +37,15 @@ class Info extends Common
     public function editInfo(){
         
         $post = $this->request->post();
+        
+        $content=json_decode(Db::name("page")->where("pageid",$post['pageid'])->value("content"),true);
         $post['data']["label_img"] = transOneImage($post['data']['label_img'], "/image/admin");
+        $post['data']["myvideo"] = TransVideo(matchImage($post['data']['myvideo'], $content['myvideo']));
         $data = [
             'content' => json_encode($post['data'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK)
         ];
         if (Db::name("page")->where("pageid",$post['pageid'])->update($data) >= 0) {
+            delDir("/temp/admin");
             return 1;
         }
         

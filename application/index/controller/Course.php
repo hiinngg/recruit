@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use think\Db;
 use think\Session;
+use think\Cookie;
 
 /**
  *
@@ -16,7 +17,7 @@ class Course extends Common
 
     public function courseList()
     {
-        $course = Db::view("re_course", "courseid,label_img,name,desc,price,cateid")->view("re_category", [
+        $course = Db::view("re_course", "courseid,label_img,name,desc,price,cateid,pageview")->view("re_category", [
             'name' => "catename"
         ], "re_category.cateid=re_course.cateid")
             ->where("re_course.status", 1)
@@ -35,6 +36,10 @@ class Course extends Common
 
     public function courseDetail($courseid)
     {
+      if(!Session::has("flag")){
+          Session::set("flag",1);
+           Db::name("course")->where("courseid",$courseid)->setInc('pageview');
+       }   
        $data=Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img")->find();
        $data['type']=$this->tran[$data['type']];
         $this->assign("data",$data );
@@ -55,6 +60,7 @@ class Course extends Common
         $data=[
             'userid'=>Session::get("username"),
             'courseid'=>$post['courseid'],
+            'feedback'=>'',
             'status'=>1,
             'createtime'=>date("Y-m-d H:i:s")
         ];

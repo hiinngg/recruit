@@ -58,6 +58,7 @@ class Course extends Common
         $data=[
             'userid'=>Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid"),
             'courseid'=>$post['courseid'],
+            'feedback'=>'',
             'status'=>1,
             'createtime'=>date("Y-m-d H:i:s")
         ];

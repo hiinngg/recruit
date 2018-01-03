@@ -32,11 +32,11 @@
     <label class="layui-form-label">宣传视频</label>
     <div class="layui-input-block">
     <!--   <input type="text" name="link" required  lay-verify="required" placeholder="请输入视频链接" autocomplete="off" class="layui-input" value="{$data.link ?? ''}"> -->
-       	<input type="text"  hidden name="video" value="{$data.video??''}" />
+       	<input type="text"  hidden="hidden" name="myvideo" value="{$data.video??''}" />
        	<button type="button" class="layui-btn video" >
 	    <i class="layui-icon">&#xe67c;</i>上传
 	    </button>
-        <p id="videostatus" style="color:#5FB878;margin-top:15px;"></p>
+        <p id="videostatus" style="color:#5FB878;margin-top:15px;">{$data.videoname ??''}</p>
     </div>
   </div>  
   <div class="layui-form-item layui-form-text">
@@ -135,9 +135,14 @@
 				layer.msg("请上传二维码",{icon:5,shift:6})
 				return false;
 			}
+	 		if( $("#videostatus").text()==""){
+	 			layer.msg("请上传视频",{icon:5,shift:6})
+				return false;
+	 		}
+
 	 		
 		data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
-		
+		data.field['videoname']= $("#videostatus").text();
 	     var url="{:url('addInfo')}";
 	     var data={data:data.field}
 		     {present  name="data"}
@@ -145,6 +150,10 @@
 		     data['pageid']="{$pageid}"
 		     {/present}
 		    /* layer.msg(JSON.stringify(data.field)); */
+		    
+		   
+		    
+		    
 		    $.ajax({
 		    	url:url,
 		    	data:data,
@@ -171,18 +180,11 @@
 			  accept:"video"
 		     ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
 			    layer.load(2); //上传loading
-		       },
-                choose:function(obj){
-
-                obj.preview(function(index, file, result){
-                    console.log(file); //得到文件对象
-                });
-
-                  }
+		       } 
 			  ,done: function(res, index, upload){			  
 			    if(res.code == 0){	
 			    	layer.closeAll('loading')
-			         $("input[name='video']").val(res.src.replace(/\\/g,'/')) 
+			         $("input[name='myvideo']").val(res.src.replace(/\\/g,'/')) 
                     $("#videostatus").text(res.filename.name+"已成功保存")
                     
 			    }			    

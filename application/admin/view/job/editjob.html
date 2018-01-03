@@ -84,17 +84,11 @@
 		  var layer  = layui.layer;
 		  
 		  {present name="data"}
-		  $("select[name='cates']").val("{$data.cateid}").change();
-		  $("select[name='type']").val("{$data.type}").change();
-		  linkStatus("{$data.type}")
-		  
+
 		  var desc="{$data.desc}";
-		  var menu="{$data.menu}";
 		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
 		  desc=desc.replace(reg,"\n");
-		  menu=menu.replace(reg,"\n");
 		  $("textarea[name='desc']").text(desc)
-		  $("textarea[name='menu']").text(menu)
 		  
 		  form.render()
 		  {/present}
@@ -113,8 +107,8 @@
 	     var url="{:url('addJob')}";
 	     var data={data:data.field}
 		     {present name="data"}
-	     url="{:url('editCourse')}"
-		     data['courseid']="{$data.courseid}"
+	         url="{:url('editJob')}"
+		     data['jobid']="{$data.jobid}"
 		     {/present}
 		    $.ajax({
 		    	url:url,
