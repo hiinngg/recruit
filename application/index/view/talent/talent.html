@@ -1,29 +1,14 @@
 <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
 
-  {present  name="talent" }
+ 
     <h2 class='text-center'>人才定制</h2>
-    <div class="row sever row-center">
+    <p>{$talent}</p>
 
-        {volist name="talent"  id="vo"}
-        <div class="col-md-3">
-            <img src="{$vo}" style="width:350px;height:200px;" class="img-responsive" alt="">
-        </div>
-        {/volist}
-    </div>
-  {/present}
 
 <hr />
-    {present  name="talent" }
+   
     <h2 class='text-center'>团队定制</h2>
-    <div class="row sever row-center">
-
-        {volist name="team"  id="vo"}
-        <div class="col-md-3">
-            <img src="{$vo}" style="width:350px;height:200px;" class="img-responsive" alt="">
-        </div>
-        {/volist}
-    </div>
-    {/present}
+  <p>{$team}</p>
 
 </div>

@@ -123,7 +123,7 @@
                     });
 
                 }else if(layEvent === 'change2on'){
-                    _ajax("{:url('statusChange')}",{cid:data.cid,status:1},dtd)
+                    _ajax("{:url('statusChange')}",{pageid:data.pageid,status:1},dtd)
                     dtd.done(function(){
                         $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
                         obj.update({
@@ -132,7 +132,7 @@
                     })
 
                 }else if(layEvent === 'change2off'){
-                    _ajax("{:url('statusChange')}",{cid:data.cid,status:0},dtd)
+                    _ajax("{:url('statusChange')}",{pageid:data.pageid,status:0},dtd)
                     dtd.done(function(){
                         $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
                         obj.update({

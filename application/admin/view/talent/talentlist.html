@@ -65,7 +65,35 @@
 			var layer=layui.layer;		
 			var form = layui.form;
      
-				
+			  form.on('submit(formDemo)', function(data){
+	                if(ue.getContent()==""){
+	                    layer.msg("请编辑内容",{icon:5,shift:6})
+	                    return false;
+	                }
+	                var url="{:url('editPage')}";
+	                var data={data:data.field}
+	                {present name="data"}
+	                data['pageid']="{$data.pageid}"
+	                {/present}
+	                    $.ajax({
+	                        url:url,
+	                        data:data,
+	                        type:"POST",
+	                        beforeSend:function(){
+	                            layer.load(2, {shade: false});
+	                        },
+	                        success:function(data){
+	                            layer.closeAll()
+	                            if(data==1){
+	                                layer.msg("保存成功",{ time: 700 },function(){
+	                                    history.go(0)
+	                                })
+	                            }
+	                        }
+	                    })
+	                    return false;
+	                });
+
 				
 		})		
 

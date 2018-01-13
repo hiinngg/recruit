@@ -19,28 +19,58 @@
         justify-content:center;
 
     }
+  .col-center{
+
+        display:flex;
+  	   flex-direction:column;
+        align-items:center;
+        justify-content:center;
+
+    }
 </style>
 
 <body style="overflow-y:scroll;">
 
-<div class="layui-container"  style="display:flex;flex-direction: column ;justify-content:center;align-items: center;">
+<div class="layui-container-fluid"  style="/* display:flex;flex-direction: column ;justify-content:center;align-items: center; */">
     {present name="data"}
-    <div style="width:200px;height:200px;border-radius: 50%;">
+    <div class="layui-row">
+	    <div class="layui-col-md3  col-center" >
+         <img   src="{$data.avastar ?? '/static/images/avastar.png'}" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
+         <button class="layui-btn sever change">点击上传头像</button>
+         
+      <div  class="sever" style="text-align:left;">
+	      <p><span>姓名：</span><span>{$data.truename}</span></p>
+	      <p><span>性别：</span><span>{$data.sex}</span></p>
+	      <p><span>出生日期：</span><span>{$data.birthdate}</span></p>
+	      <p><span>目标职位：</span><span>{$data.position}</span></p>
+	      <p><span>毕业院校：</span><span>{$data.graduated}</span></p>
+	      <p><span>学历：</span><span>{$data.education}</span></p>
+      </div> 
+
+    <a target="_parent" href="{:url('register/editRegister')}" class="layui-btn sever" >修改</a>
+        </div>
+
+	    <div class="layui-col-md9">
+        <p style="font-size:24px;">自我评价</p>
+        <p style="font-size:16px;margin-top:15px;">{$data.selfevaluation}</p>
+        <p class="sever" style="font-size:24px;">工作经历</p>
+        <p style="font-size:16px;margin-top:15px;">{$data.experience}</p>
+ 
+
+        </div>
+    </div>
+    
+    
+    
+  <!--   <div style="width:200px;height:200px;border-radius: 50%;">
         <img  class="change"  src="{$data.avastar ?? '/static/images/avastar.png'}" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
     </div>
 
   <div  style="margin-top:30px;text-align:center;line-height:1.75;">
 
-      <p><span>姓名：</span><span>{$data.truename}</span></p>
-      <p><span>性别：</span><span>{$data.sex}</span></p>
-      <p><span>出生日期：</span><span>{$data.birthdate}</span></p>
-      <p><span>目标职位：</span><span>{$data.position}</span></p>
-      <p><span>毕业院校：</span><span>{$data.graduated}</span></p>
-      <p><span>学历：</span><span>{$data.education}</span></p>
-      <p><span>自我评价：</span><span>{$data.selfevaluation}</span></p>
-      <p><span>工作经历：</span><span>{$data.experience}</span></p>
-       <a target="_parent" href="{:url('register/editRegister')}" class="layui-btn" style="margin-top:30px;">修改</a>
-  </div>
+
+
+  </div> -->
 
 
 {else/}

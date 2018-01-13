@@ -38,13 +38,13 @@ class Course extends Common
         if ($this->request->isAjax()) {
             
             if (! isset($count)) {
-                $this->count = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")->count();
+                $this->count = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")->where('re_course_user.courseid',$courseid)->count();
                 if ($this->count == 0) {
                     $this->assign("none", "none");
                 }
             }
             
-            $res = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")
+            $res = Db::view("re_course_user", "*")->view("re_user", "telphone", "re_user.userid=re_course_user.userid")->where('re_course_user.courseid',$courseid)
                 ->page($page, $limit)
                 ->order("re_course_user.createtime desc")
                 ->select();
@@ -56,6 +56,7 @@ class Course extends Common
                 'data' => $res
             ];
         }
+        $this->assign('courseid',$courseid);
         return $this->fetch();
     }
 
@@ -202,8 +203,7 @@ class Course extends Common
                 'label_img' => transOneImage($post['data']['label_img'], "/image/admin"),
                 'content' => $post['data']['content'],
                 'teacher' => $post['data']['teacher'],
-                
-                'contact' => $post['data']['contact'],
+                'contact' => $post['data']['tel'],
                 'createtime' => date("Y-m-d H:i:s"),
                 'status' => 1
             ];
@@ -270,7 +270,7 @@ class Course extends Common
                 'price' => $post['data']['price'],
                 'type' => $post['data']['type'],
                 'teacher' => $post['data']['teacher'],
-                'contact' => $post['data']['contact'],
+                'contact' => $post['data']['tel'],
                 'desc' => mb_substr($post['data']['desc'], 0, 30, 'UTF-8'),
                 'label_img' => transOneImage(matchImage($post['data']['label_img'], $old_data['label_img']), "/image/admin"),
                 'content' => $post['data']['content'],

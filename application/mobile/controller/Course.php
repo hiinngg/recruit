@@ -9,6 +9,7 @@ namespace app\mobile\controller;
 use think\Cookie;
 use think\Db;
 use think\Session;
+use app\common\controller\Category;
 
 /**
  *
@@ -20,22 +21,15 @@ class Course extends Common
     //0：线下授课  1：直播授课   2：微信授课
     protected $tran=['线下授课','直播授课','微信授课'];
 
-    public function courseList()
+    public function courseList($cateid="")
     {
-        $course = Db::view("re_course", "courseid,label_img,name,desc,price,cateid")->view("re_category", [
-            'name' => "catename"
-        ], "re_category.cateid=re_course.cateid")
-            ->where("re_course.status", 1)
-            ->select();
-        $cate = [];
-        $data = [];
-        foreach ($course as $val) {
-            $data[$val['cateid']][] = $val;
-
-            $cate[$val['cateid']] = $val['catename'];
-        }
-        $this->assign("course", $data);
-        $this->assign("cate", $cate);
+       $cate=new Category(Db::name("category")->select()); 
+        $tree=$cate->getmenu();
+        $sel_cateid=$cateid==""?$tree[0]['cateid']:$cateid;
+        $this->assign("course",$this->catedetail($sel_cateid));
+        $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
+        $this->assign("cateid",$sel_cateid);
+        $this->assign("cates",$tree);
         return $this->fetch();
     }
 
@@ -47,6 +41,24 @@ class Course extends Common
 
         return $this->fetch();
     }
+    
+    public function catedetail($cateid,$page=1){
+        $course = Db::view("re_course", "courseid,label_img,name,desc,price,cateid,pageview")->view("re_category", [
+            'name' => "catename"
+        ], "re_category.cateid=re_course.cateid")
+        ->where(['re_course.status'=>1,'re_course.cateid'=>$cateid])
+        ->page($page,4)
+        ->select();
+        /*   $cate = [];
+         $data = [];
+         foreach ($course as $val) {
+         $data[$val['cateid']][] = $val;
+    
+         $cate[$val['cateid']] = $val['catename'];
+         }  */
+        return  $course;
+    }
+    
 
     public function apply(){
 

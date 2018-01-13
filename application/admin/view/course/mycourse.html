@@ -51,6 +51,9 @@
 			var init= layer.load(2, {shade: false});
 		var articleTable = table.render({
 			        elem:"#table",	
+			        where:{
+			        	courseid:{$courseid}
+			        },
 			        url: "{:url('mycourse')}",
 			        cols:[[
 			         {checkbox: true},

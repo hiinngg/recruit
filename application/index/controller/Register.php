@@ -3,6 +3,8 @@ namespace app\index\controller;
 
 use think\Db;
 use think\Session;
+use think\exception\HttpException;
+
 
 class Register extends Common
 {
@@ -65,6 +67,8 @@ class Register extends Common
         }
 
       $data=Db::name('resume')->where("userid",Session::get("username"))->find();
+      $data['selfevaluation']=str_replace("<br/>", "\n",$data['selfevaluation']);
+      $data['experience']=str_replace("<br>", "\n",$data['experience']);
       $this->assign("data",$data);
       return $this->fetch('userRegister');
 
@@ -80,7 +84,7 @@ class Register extends Common
         ]);
         if (true !== $result) {
             return [
-                'code' => 0,
+               'code' => 0,
                'msg'=>"该手机号已被注册"
             ];
         }
@@ -100,6 +104,72 @@ class Register extends Common
             ];
         }
     }
+    
+    
+  public function  editcprofile(){
+      if(!Session::has("cid")){
+         $this->redirect("companyadmin/index/login");
+      }
+      if ($this->request->isAjax()) {
+      
+          $post = $this->request->post();
+          
+          
+          $result = $this->validate([
+              'name' => $post['data']['name']
+          ], [
+              'name' => "unique:company,name,".Session::get("cid")
+          ]);
+          if (true !== $result) {
+              return "已存在该企业名称";
+          }
+      
+          $data = [
+              'name' => trim($post['data']['name']),
+              'contact' => trim($post['data']['tel']),
+          ];
+      
+         // if (($post['data']['fullName'] != "") && (isset($post['images']))) {
+            
+              if (isset($post['images']['image4'])) {
+                  // 有企业logo
+                  $data['avastar'] = transOneImage($post['images']['image4'], "/image/company");
+                  unset($post['images']['image4']);
+              }
+              
+              if(isset($post['images'])){
+                  $pics = json_decode(Db::name("company")->where("cid",Session::get("cid"))->value("pics"),true);
+                  foreach ($post['images'] as $k => $val) {
+                      //array_push($pics, transOneImage($val, "/image/company"));
+                      $pics[$k]= transOneImage(matchImage($val, $pics[$k]), "/image/company");
+                  }
+                  $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+              }
+             
+      
+              // 成为内推企业
+              $data['fullname'] = trim($post['data']['fullName']);
+            
+         // }
+      
+          if (Db::name("company")->where("cid",Session::get("cid"))->update($data) <0) {
+              return "新增失败";
+          }
+      
+          return 1;
+      }
+
+      $res = Db::name("company")->where("cid", Session::get("cid"))->find();
+      if (isset($res['pics'])) {
+      
+          $res['pics'] = json_decode($res['pics'],true);
+      }
+
+      $this->assign("data", $res);
+      return $this->fetch("companyreg");
+            
+  }
+    
 
     public function companyReg()
     {
@@ -131,7 +201,8 @@ class Register extends Common
                     unset($post['images']['image4']);
                 }
                 foreach ($post['images'] as $k => $val) {
-                    array_push($pics, transOneImage($val, "/image/company"));
+                   //array_push($pics, transOneImage($val, "/image/company"));
+                    $pics[$k]= transOneImage($val, "/image/company");
                 }
                 
                 // 成为内推企业

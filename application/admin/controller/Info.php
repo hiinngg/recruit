@@ -79,6 +79,8 @@ class Info extends Common
        “memory_limit =   ”    数值改为 256
        “post_max_size = ”   100M（开发环境）
        “upload_max_filesize = ” 100M（开发环境）
+                   还要改php文件夹里面的
+       
      *
      * */
     public function videoUpload()

@@ -1,30 +1,56 @@
 <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
 <div class="container sever">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="course">
-    <li ><a href="#" style="color:#000000;">课程分类</a></li>
-    {volist name="cate" id="vo"}
-    
-      <li role="presentation" class="{eq name="i"  value="1"}active{/eq}"><a href="#c{$key}"  role="tab" data-toggle="tab">{$vo}</a></li>
-    
-    {/volist}
- 
-  </ul>
+
+  
+       <nav class="navbar navbar-default navbar-mobile bootsnav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="course">
+                    <ul class="nav navbar-nav "  data-in="fadeInDown" data-out="fadeOutUp">
+                    {volist name="cates" id="vo"}
+                    <li  {present name="vo.children"}class="dropdown"{/present} >
+                    <a href="{:url('course/courselist','cateid='.$vo.cateid)}"  {present name="vo.children"}class="dropdown-toggle" data-toggle="dropdown"{/present} >{$vo.name}</a>            
+                     {present name="vo.children"}
+                      <ul class="dropdown-menu">
+		               {volist name="vo.children" id="vo1"}
+	                    <li  {present name="vo1.children"}class="dropdown"{/present} >
+	                    <a href="{:url('course/courselist','cateid='.$vo1.cateid)}"  {present name="vo1.children"}class="dropdown-toggle" data-toggle="dropdown"{/present} >{$vo1.name}</a>               	               
+	                     {present name="vo1.children"}
+	                        <ul class="dropdown-menu multi-dropdown">
+		                  {volist name="vo1.children" id="vo2"}
+                           <li  {present name="vo2.children"}class="dropdown"{/present} >
+                            <a href="{:url('course/courselist','cateid='.$vo2.cateid)}" >{$vo2.name}</a>
+                           </li>                              
+                           {/volist} 
+                            </li>
+                           </ul> 
+		                 {/present} 	                    
+	                   {/volist}
+	                   </ul>
+	                  </li>
+	                 {/present}                 
+                    {/volist}
+                    </ul>
+                </div>
+            </nav>
+  
+  
+  
   
 </div>
 
  
    
   <!-- Tab panes -->
-  <div class="tab-content container sever">
-    {volist name="course" id="vo"}
+  <div  id="courselist" class=" container sever">
+ 
     
-    
-    
-        <div role="tabpanel row" class="tab-pane {eq name="i"  value="1"}active{/eq}" id="c{$key}">
-      <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
-    {volist name="vo" id="cour"}
-           <div class="course-item"  style="width:380px;padding:0 15px;" data-id="{$cour.courseid}">
+    <h2 class="text-center" style="margin-bottom:30px;">{$catename}</h2>
+    {volist name="course" id="cour"}
+   <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="{$cour.courseid}">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="{$cour.label_img}" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="{$cour.courseid}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
@@ -37,16 +63,20 @@
         <span class="pull-right">{$cour.price}元</span>
         </p>
     </div>
-    {/volist}
-
-    </div>
     
     {/volist}
 
-    <div role="tabpanel" class="tab-pane" id="profile">2</div>
-    <div role="tabpanel" class="tab-pane" id="messages">3</div>
-    <div role="tabpanel" class="tab-pane" id="settings">4</div>
+    </div>
+   
+  {eq name=":count($course)" value="6"}
+  <div  class="row-center">
+   <button type="button" data-currentpage="1" data-cateid="{$cateid}"   style="border-radius:15px;font-size:18px;"   class='center-block btn btn-default sever  loadmore'>更多课程</button>
+   <p class="loading text-center hidden sever"  style="font-size:18px;padding:6px 12px;"><i class="fa fa-spinner fa-spin"></i></p>
   </div>
+  {/eq}
+
+
+
   
  
   

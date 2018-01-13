@@ -13,5 +13,14 @@ class Cprofile extends Common
     }
 
     public function editCprofile()
-    {}
+    {
+        $res = Db::name("company")->where("cid", $this->companyid)->find();
+        if (isset($res['pics'])) {
+            
+            $res['pics'] = json_decode($res['pics']);
+        }
+        $this->assign("data", $res);
+        $this->view->engine->layout("../../index/view/layout");
+        return $this->fetch("index@register/companyreg");
+    }
 }

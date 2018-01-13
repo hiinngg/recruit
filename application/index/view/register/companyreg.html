@@ -5,13 +5,16 @@
     <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;">企业名称：</label>
     <div class="layui-input-block" style="width:320px;">
-      <input type="text" name="name" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="name"  required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  value="{$data.name??''}">
     </div>
   </div>
-   <div class="layui-form-item">
+  
+  {notpresent name="data"}
+
+  <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;">登录密码：</label>
     <div class="layui-input-block"  style="width:320px;" >
-      <input type="password" name="pwd" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="password" name="pwd" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  >
     </div>
   </div>
      <div class="layui-form-item">
@@ -20,10 +23,15 @@
       <input type="password" name="pwd2" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
     </div>
   </div>
+  
+  {/notpresent}
+  
+  
+   
    <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;display:inline-block;">HR联系电话：</label>
     <div class="layui-input-block" style="width:320px;display:inline-block;margin-left:0;">
-      <input type="text" name="tel" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="tel" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  value="{$data.contact??''}">
     </div>
   </div>
 
@@ -33,36 +41,79 @@
 <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;display:inline-block;">公司全称：</label>
     <div class="layui-input-block" style="width:320px;display:inline-block;margin-left:0;">
-      <input type="text" name="fullName" required  placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="fullName" required  placeholder="请输入" autocomplete="off" class="layui-input"  value="{$data.fullname??''}">
     </div>
 </div>
 
-<p style="margin-left:15px;">企业logo:</p>
-<div style="border:1px solid #c2c2c2; width:128px;height:64px;cursor:pointer;position:relative;margin-left:25px;" class="text-center companyimg" id="image4">
-<span class="fa fa-plus plus  " style="line-height:64px;"></span>
+
+
+
+<p style="margin-left:15px;">企业logo(建议尺寸:128px*64px):</p>
+<div style="border:1px solid #c2c2c2; width:128px;height:64px;cursor:pointer;position:relative;margin:25px;" class="text-center companyimg" id="image4">
+
+{present name="data.avastar"}
+<span class="fa fa-plus plus  hidden" style="line-height:64px;"></span>
+<img style="object-fit:cover;width:100%;height:100%;" src="{$data.avastar}">
+{else/}
+<span class="fa fa-plus plus" style="line-height:64px;"></span>
+{/present}
 </div>
 
 
-<p style="margin-left:15px;">办公室照片：</p>
+<p style="margin-left:15px;">办公室照片(建议尺寸:300px*150px)：</p>
 
 <div class="sever row-center" style="justify-content:flex-start;margin-left:15px;">
+
 <div style="border:1px solid #c2c2c2; width:300px;height:150px;cursor:pointer;position:relative;" class="text-center companyimg" id="image1">
-<span class="fa fa-plus plus fa-2x " style="line-height:150px;"></span>
+{present name="data.pics['image1']"}
+<span class="fa fa-plus plus fa-2x hidden" style="line-height:150px;display:block;"></span>
+<span  class="hidden" style="display:block;">企业门口</span>
+<img style="object-fit:cover;width:100%;height:100%;" src="{$data.pics['image1']}">
+{else/}
+<span class="fa fa-plus plus fa-2x " style="line-height:150px;display:block;"></span>
+<span style="display:block;">企业门口</span>
+
+{/present}
+
+
+
 </div>
 
 
 <div style="border:1px solid #c2c2c2; width:300px;height:150px;cursor:pointer;position:relative;margin-left:25px;" class="text-center companyimg" id="image2">
-<span class="fa fa-plus plus fa-2x " style="line-height:150px;"></span>
+{present name="data.pics['image2']"}
+<span class="fa fa-plus plus fa-2x hidden" style="line-height:150px;display:block;"></span>
+<span  class="hidden" style="display:block;">办公环境</span>
+<img style="object-fit:cover;width:100%;height:100%;" src="{$data.pics['image2']}">
+{else/}
+<span class="fa fa-plus plus fa-2x " style="line-height:150px;display:block;"></span>
+<span style="display:block;">办公环境</span>
+
+{/present}
 </div>
 
 <div style="border:1px solid #c2c2c2; width:300px;height:150px;cursor:pointer;position:relative;margin-left:25px;" class="text-center companyimg" id="image3">
-<span class="fa fa-plus plus fa-2x " style="line-height:150px;"></span>
+{present name="data.pics['image3']"}
+<span class="fa fa-plus plus fa-2x hidden" style="line-height:150px;display:block;"></span>
+<span  class="hidden" style="display:block;">办公环境</span>
+<img style="object-fit:cover;width:100%;height:100%;" src="{$data.pics['image3']}">
+{else/}
+<span class="fa fa-plus plus fa-2x " style="line-height:150px;display:block;"></span>
+<span style="display:block;">办公环境</span>
+
+{/present}
 </div>
 </div>
 
 </div>
 
+
+{present  name="data"}
+<p class="text-center"> <a class="sever btn btn-primary text-center submit"   data-loading-text="正在提交..." lay-submit lay-filter="companyRegupdate" style="width:150px;border-radius:15px;background:#1881Ec;">提交</a></p>
+{else/}
 <p class="text-center"> <a class="sever btn btn-primary text-center submit"   data-loading-text="正在提交..." lay-submit lay-filter="companyReg" style="width:150px;border-radius:15px;background:#1881Ec;">提交</a></p>
+{/present}
+
 
 </form>
 </div>

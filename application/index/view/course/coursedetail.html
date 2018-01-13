@@ -4,16 +4,31 @@
 	<hr />
 
 	<div class="row">
-	   <div class="col-md-6" style="padding-right:0;">
+	   <div class="col-md-4" style="padding-right:0;">
 	   <img src="{$data.label_img}" height="200px;" style="object-fit:contain;" width="100%" />
 	   </div>
-	   <div class="col-md-6 text-center col-center" style="height:200px;border:1px solid #b5b5b5;">
-	
-		    <p>价格：&yen;{$data.price}</p>
-		    <p>课程简介：{$data.desc}</p>
-		    <p>课程形式：{$data.type}</p>
-	    <button type="button"  class="btn btn-default courseApply"  data-loading-text="正在报名..." data-id="{$data.courseid}">马上报名</button>
+	   <div class="col-md-5 col-center" style="height:200px;align-items:flex-start;">
+	   <dl class="dl-horizontal "  >
+	       <dt>课程形式</dt>
+	       <dd>{$data.type}</dd>
+	       <dt style="margin-top:15px;">课程简介</dt>
+	       <dd style="margin-top:15px;">{$data.desc}</dd>
+       </dl>
+	   
+		  <!--   -->
 	   </div>
+	   
+	   <div class="col-md-3 col-center"  style="justify-content:space-between;height:200px;">
+	   <ul>
+	   <li>    <h3>&yen;&nbsp;{$data.price}元 </h3></li>
+	   <li>    <small >已有339人报名</small></li>
+	   </ul>
+	   
+	
+	
+	    <button type="button"  class="btn-lg btn btn-default courseApply"  data-loading-text="正在报名..." data-id="{$data.courseid}">马上报名</button>
+	   </div>
+	   
 	</div>
 	
 <hr />
@@ -25,18 +40,16 @@
 </div>
 
     <div class="tab-content  container ">
-    <div role="tabpanel row" class="tab-pane active" id="home">
-         <div class="col-md-6" style="padding-right:0;">
-         
-         </div>
-         <div class="col-md-6">
+    <div role="tabpanel" class="tab-pane active" id="home">
+   
+       
          <p>{$data.content}</p>
-         </div>  
+      
      
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
     
-    <p class="text-center">
+    <p class="text-left">
      {$data.menu}
     </p>
    </div>

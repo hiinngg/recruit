@@ -1,66 +1,133 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
-    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
-    <title>首页</title>
-</head>
-<style>
-    html {
-        font-family:-apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+{extend name="indexlayout" /}
+{block name="csslink"}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{/block}
+{block name="nav-course"}active{/block}
+{block name="title"}微课{/block}
+{block name="css"}
+.course-item p,h4{
+margin:0;
+}
+{/block}
+{block name="content"}
+<div class="content-padded">
+<p></p>
+</div>  
 
-    }
-    .row-center{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-    .col-center{
-        display:flex;
-        flex-direction: column;
-        justify-content:center;
-        align-items:center;
-    }
-    .course-item p{
-	    margin:0;
-    	white-space:nowrap; 
-		text-overflow:ellipsis; 
-		-o-text-overflow:ellipsis; 
-		overflow: hidden; 
-    }
+<div class="buttons-tab fixed-tab" style="overflow: scroll;">
+
+<a href="#" class="tab-link button">职造课程</a>
+{volist name="cates" id="vo"}
+<a href="#tab{$key}"  data-cateid="{$vo.cateid}"   data-currentpage={eq name="i"  value="1"}"1"{else/}"0"{/eq}  class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo.name}</a>
+{/volist}
+ </div>
+ 
+<div class="center-block sever">
+	<div class="tabs">
+	   <div id="tab0" class="tab row active infinite-scroll courselist">
+		     {volist name="course" id="vo"}
+	      <div class="col-50 course-item">
+	          <img src="{$vo.label_img}" style="object-fit:cover;width:100%;height:8rem;" />
+	       <h4>{$vo.name}</h4>
+	       <p class="text-nowrap">{$vo.desc}</p>
+	       <p>
+	       <span class="fa fa-eye"></span>
+	       <span>{$vo.pageview}</span>
+	       <span class="pull-right">{$vo.price}元</span>
+	       </p>
+		   </div>
+		       {/volist}
+	   
+	   
+	   </div>
+	   <div id="tab1" class="tab row  infinite-scroll courselist"></div>
+	   <div id="tab2" class="tab  row  infinite-scroll courselist"></div>
+	</div>
+</div> 
+ 
+ 
+ 
+{/block}
+{block name="script"}
+
+$(document).on("pageInit", function() {
+      //多个标签页下的无限滚动
+      var loading = false;
+      // 每次加载添加多少条目
+      var itemsPerLoad = 20;
+      // 最多可加载的条目
+      var maxItems = 100;
+      function addItems(number, lastIndex,viewdata) {
+      var num=viewdata.length;
+        // 生成新条目的HTML
+        var html = '';
+        for (var i =0; i <= num; i++) {
+          html += '<div class="col-50 course-item">'+
+	          '<img src="{$vo.label_img}" style="object-fit:cover;width:100%;height:8rem;" />'+
+	       '<h4>'+viewdata[i]["name"]+'</h4>'+
+	       '<p class="text-nowrap">'+viewdata[i]["desc"]+'</p>'+
+	       '<p>'+
+	       '<span class="fa fa-eye"></span>'+
+	       '<span>'+viewdata[i]['pageview']+'</span>'+
+	       '<span class="pull-right">'+viewdata[i]['price']+'元</span>'+
+	       '</p>'+
+		   '</div>';
+        }
+        // 添加新条目
+        $('.courselist').append(html);
+      }
+      $(page).on('infinite', function() {
+        // 如果正在加载，则退出
+        if (loading) return;
+        // 设置flag
+        loading = true;
+        var tabIndex = 0;
+        if($(this).find('.infinite-scroll.active').attr('id') == "tab2"){
+          tabIndex = 0;
+        }
+        if($(this).find('.infinite-scroll.active').attr('id') == "tab3"){
+          tabIndex = 1;
+        }
+        lastIndex = $('.list-container').eq(tabIndex).find('li').length;
+        // 模拟1s的加载过程
+        setTimeout(function() {
+          // 重置加载flag
+          loading = false;
+          if (lastIndex >= maxItems) {
+            // 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));多个无线滚动请自行根据自己代码逻辑判断注销时机
+            // 删除加载提示符
+            $('.infinite-scroll-preloader').eq(tabIndex).hide();
+            return;
+          }
+          addItems(itemsPerLoad,lastIndex);
+          // 更新最后加载的序号
+          lastIndex =  $('.list-container').eq(tabIndex).find('li').length;
+          $.refreshScroller();
+        }, 1000);
+      });
+  });
 
 
-</style>
 
-<body style="margin:0;">
-<div class="page">
-    <!-- <header class="bar bar-nav">
-         <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
-             <span class="icon icon-left"></span>
-             返回
-         </a>
-         <h1 class="title">我的生活</h1>
-     </header>-->
-    <nav class="bar bar-tab" style="background:#000000;color:#ffffff;">
-       <a class="tab-item " href="{:url('index/index')}">
-
-            <span class="tab-label">首页</span>
-        </a>
-        <a class="tab-item active" href="{:url('course/courseList')}">
-
-            <span class="tab-label">微课</span>
-        </a>
-        <a class="tab-item" href="{:url('position/jobList')}">
-
-            <span class="tab-label">找工作</span>
-        </a>
-        <a class="tab-item" href="{:url('user/index')}">
-            <span class="tab-label">我的</span>
-        </a>
-    </nav>
+$(".tab-link").on("click",function(){
+var targetdom=$(this).attr("href");
+var $cateid=$(this).attr("data-cateid");
+var $page=parseInt($(this).attr("data-currentpage"));
+	$.ajax({
+	url:"{:url('course/catedetail')}",
+	data:{cateid:$cateid,page:$page},
+	beforeSend:function(){
+	 $.showPreloader();
+	},
+	success:function(data){
+	
+	},
+	complete:function(){
+	$.hidePreloader();
+	}
+	})
+})
+{/block}
     <div class="content " style="background:#ffffff;">
 
         <!-- Slider -->
@@ -76,12 +143,12 @@
    
         
         
-        <div class="buttons-tab" style="overflow: scroll;">
+        <div class="buttons-tab fixed-tab" style="overflow: scroll;">
         
              
-         {volist name="cate" id="vo"}
+       {volist name="cate" id="vo"}
        <a href="#tab{$key}" class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo}</a>
-        {/volist}
+       {/volist}
 
 
         </div>
@@ -100,7 +167,6 @@
 	       <p>{$cour.desc}</p>
 	       <p>&yen;{$cour.price}</p>
 	    </div>
-	
     {/volist}
 
     </div>
@@ -110,20 +176,8 @@
             </div>
         </div>
 
-
-
-
-
     </div>
 
-
-
-
-<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-
-
-<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script> 
 <script>
 $(function(){
 

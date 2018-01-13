@@ -55,8 +55,7 @@ class Page extends  Common{
             $content->imageDel();
             $content->imageTrans();
             $post['data']['content'] = $content->getContent();
-            $data=[
-                'title'=>$post['data']['name'],
+            $data=[    
                 'content'=> $post['data']['content']
             ];
         if(Db::name("page")->where("pageid",$post['pageid'])->update($data)>=0){
@@ -70,5 +69,24 @@ class Page extends  Common{
         $this->assign("data",Db::name("page")->where("pageid",$pageid)->find());
         return $this->fetch();
     }
+    
+    
+    public function statusChange()
+    {
+        $post = $this->request->post();
+        if (Db::name('page')->where("pageid", $post['pageid'])->update([
+            'status' => $post['status']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    
+    
+    
+    
+    
 
 }
