@@ -18,97 +18,86 @@ margin:0;
 
 <a href="#" class="tab-link button">职造课程</a>
 {volist name="cates" id="vo"}
-<a href="#tab{$key}"  data-cateid="{$vo.cateid}"   data-currentpage={eq name="i"  value="1"}"1"{else/}"0"{/eq}  class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo.name}</a>
+<a href="#tab{$key}"  data-cateid="{$vo.cateid}"    class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo.name}</a>
 {/volist}
  </div>
- 
-<div class="center-block sever">
+
 	<div class="tabs">
-	   <div id="tab0" class="tab row active infinite-scroll courselist">
-		     {volist name="course" id="vo"}
-	      <div class="col-50 course-item">
-	          <img src="{$vo.label_img}" style="object-fit:cover;width:100%;height:8rem;" />
-	       <h4>{$vo.name}</h4>
-	       <p class="text-nowrap">{$vo.desc}</p>
-	       <p>
-	       <span class="fa fa-eye"></span>
-	       <span>{$vo.pageview}</span>
-	       <span class="pull-right">{$vo.price}元</span>
-	       </p>
-		   </div>
-		       {/volist}
-	   
-	   
-	   </div>
+	   <div id="tab0"    class="tab row active  infinite-scroll courselist">
+           <div class="list-block">
+               <ul class="list-container">
+                   <li class="item-content"><div class="item-inner"><div class="item-title">条目</div></div></li>
+
+                   <li class="item-content"><div class="item-inner"><div class="item-title">条目</div></div></li>
+               </ul>
+           </div>
+           <!-- 加载提示符 -->
+           <div class="infinite-scroll-preloader">
+               <div class="preloader">
+               </div>
+           </div>
+
+         </div>
+
+
 	   <div id="tab1" class="tab row  infinite-scroll courselist"></div>
 	   <div id="tab2" class="tab  row  infinite-scroll courselist"></div>
 	</div>
-</div> 
- 
- 
- 
+
+
+
+
 {/block}
 {block name="script"}
 
-$(document).on("pageInit", function() {
-      //多个标签页下的无限滚动
-      var loading = false;
-      // 每次加载添加多少条目
-      var itemsPerLoad = 20;
-      // 最多可加载的条目
-      var maxItems = 100;
-      function addItems(number, lastIndex,viewdata) {
-      var num=viewdata.length;
-        // 生成新条目的HTML
-        var html = '';
-        for (var i =0; i <= num; i++) {
-          html += '<div class="col-50 course-item">'+
-	          '<img src="{$vo.label_img}" style="object-fit:cover;width:100%;height:8rem;" />'+
-	       '<h4>'+viewdata[i]["name"]+'</h4>'+
-	       '<p class="text-nowrap">'+viewdata[i]["desc"]+'</p>'+
-	       '<p>'+
-	       '<span class="fa fa-eye"></span>'+
-	       '<span>'+viewdata[i]['pageview']+'</span>'+
-	       '<span class="pull-right">'+viewdata[i]['price']+'元</span>'+
-	       '</p>'+
-		   '</div>';
-        }
-        // 添加新条目
-        $('.courselist').append(html);
-      }
-      $(page).on('infinite', function() {
-        // 如果正在加载，则退出
-        if (loading) return;
-        // 设置flag
-        loading = true;
-        var tabIndex = 0;
-        if($(this).find('.infinite-scroll.active').attr('id') == "tab2"){
-          tabIndex = 0;
-        }
-        if($(this).find('.infinite-scroll.active').attr('id') == "tab3"){
-          tabIndex = 1;
-        }
-        lastIndex = $('.list-container').eq(tabIndex).find('li').length;
-        // 模拟1s的加载过程
-        setTimeout(function() {
-          // 重置加载flag
-          loading = false;
-          if (lastIndex >= maxItems) {
-            // 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));多个无线滚动请自行根据自己代码逻辑判断注销时机
-            // 删除加载提示符
-            $('.infinite-scroll-preloader').eq(tabIndex).hide();
-            return;
-          }
-          addItems(itemsPerLoad,lastIndex);
-          // 更新最后加载的序号
-          lastIndex =  $('.list-container').eq(tabIndex).find('li').length;
-          $.refreshScroller();
-        }, 1000);
-      });
-  });
-
-
-
+$(document).on("pageInit", function(e, pageId, page) {
+console.log(page)
+//多个标签页下的无限滚动
+var loading = false;
+// 每次加载添加多少条目
+var itemsPerLoad = 20;
+// 最多可加载的条目
+var maxItems = 100;
+var lastIndex = $('.list-container li')[0].length;
+function addItems(number, lastIndex) {
+// 生成新条目的HTML
+var html = '';
+for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+html += '<li class="item-content" onClick="alert(1)"><div class="item-inner"><div class="item-title">新条目</div></div></li>';
+}
+// 添加新条目
+$('.infinite-scroll.active .list-container').append(html);
+}
+$(page[0]).find(".infinite-scroll").on('infinite', function() {
+// 如果正在加载，则退出
+if (loading) return;
+// 设置flag
+loading = true;
+var tabIndex = 0;
+if($(this).find('.infinite-scroll.active').attr('id') == "tab2"){
+tabIndex = 0;
+}
+if($(this).find('.infinite-scroll.active').attr('id') == "tab3"){
+tabIndex = 1;
+}
+lastIndex = $('.list-container').eq(tabIndex).find('li').length;
+// 模拟1s的加载过程
+setTimeout(function() {
+// 重置加载flag
+loading = false;
+if (lastIndex >= maxItems) {
+// 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));多个无线滚动请自行根据自己代码逻辑判断注销时机
+// 删除加载提示符
+$('.infinite-scroll-preloader').eq(tabIndex).hide();
+return;
+}
+addItems(itemsPerLoad,lastIndex);
+// 更新最后加载的序号
+lastIndex =  $('.list-container').eq(tabIndex).find('li').length;
+$.refreshScroller();
+}, 1000);
+});
+});
 $(".tab-link").on("click",function(){
 var targetdom=$(this).attr("href");
 var $cateid=$(this).attr("data-cateid");
@@ -140,12 +129,12 @@ var $page=parseInt($(this).attr("data-currentpage"));
             <div class="swiper-pagination"></div>
         </div>
         <h3 class="text-center" style="margin-top:0;">课程分类</h3>
-   
-        
-        
+
+
+
         <div class="buttons-tab fixed-tab" style="overflow: scroll;">
-        
-             
+
+
        {volist name="cate" id="vo"}
        <a href="#tab{$key}" class="tab-link {eq name="i"  value="1"}active{/eq} button">{$vo}</a>
        {/volist}
@@ -155,9 +144,9 @@ var $page=parseInt($(this).attr("data-currentpage"));
         <div class="content-block">
             <div class="tabs">
        {volist name="course" id="vo"}
-    
-    
-    
+
+
+
        <div id="tab{$key}" class="row  tab {eq name="i"  value="1"}active{/eq}">
       <h3 class="text-center" style="margin-bottom:30px;">{$cate[$key]}</h3>
     {volist name="vo" id="cour"}
@@ -170,7 +159,7 @@ var $page=parseInt($(this).attr("data-currentpage"));
     {/volist}
 
     </div>
-    
+
     {/volist}
 
             </div>
