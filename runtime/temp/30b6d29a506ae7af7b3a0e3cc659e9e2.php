@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516012238;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516011592;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    {block name="csslink"}{/block}
+    
 </head>
 <style>
 body,html{
@@ -61,9 +62,17 @@ overflow: hidden;
 	text-align:center;
   }
   
-{block name="css"}
 
-{/block}
+.course-item p,h4{
+margin:0;
+}
+.cate-item{
+color:#000000;
+}
+.cate-item:hover,.cate-item:active,.cate-item:focus{
+color:#1881EC;
+}
+
 
 </style>
 <body style="height:100vh;">
@@ -74,22 +83,54 @@ overflow: hidden;
   <div class="weui-tab">
     <div class="weui-tab__panel" style="width:100%;">
      <div class="content" style="width:100%;">
-     {block name="content"}
-     {/block}
+     
+<div class="content-padded"   style="height:30px;">
+<p></p>
+</div>  
+
+<div class="swiper-container sever" id="cates"  style="border-bottom:1px solid #eee;padding:0 15px;">
+
+    <div class="swiper-wrapper">
+       <div class="swiper-slide" style="width:auto;line-height:2;">
+         <a href="#" style="margin:0;color:#1881Ec;">职造课程</a>
+       </div>
+    <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <div class="swiper-slide" style="width:auto;line-height:2;">
+	        <div class="weui-navbar__item weui_bar__item_on" style="padding:0;">
+	                   <?php echo $vo['name']; ?>
+	        </div>
+        </div>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+    </div>
+</div>
+	<div class="tabs">
+	   <div id="tab0"    class="tab row active  infinite-scroll courselist">
+       
+         </div>
+
+
+	   <div id="tab1" class="tab row  infinite-scroll courselist"></div>
+	   <div id="tab2" class="tab  row  infinite-scroll courselist"></div>
+	</div>
+
+
+
+
+
      </div>
     </div>
     <div class="weui-tabbar" style="position:fixed;">
-        <a href="{:url('index/index')}" class="weui-tabbar__item  {block name='nav-index'}{/block}" >
+        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
-        <a href="{:url('course/courselist')}" class="weui-tabbar__item {block name='nav-course'}{/block}">
+        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item weui-bar__item_on">
 
             <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item {block name='nav-position'}{/block}">
+        <a href="javascript:;" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item {block name='nav-user'}{/block}">
+        <a href="javascript:;" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
@@ -113,13 +154,30 @@ overflow: hidden;
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
-{block name="scriptlink"}{/block}
+
 <script>
 
 
-{block name="script"}
 
-{/block}
+
+var cates = new Swiper('#cates',{
+slidesPerView :'auto',
+spaceBetween : 20,
+})
+
+var loading = false;  //状态标记
+$(document.body).infinite().on("infinite", function() {
+  if(loading) return;
+  loading = true;
+  setTimeout(function() {
+    $("#list").append("<p> 我是新加载的内容 </p>");
+    loading = false;
+  }, 1500);   //模拟延迟
+});
+
+
+
+
 
 
 

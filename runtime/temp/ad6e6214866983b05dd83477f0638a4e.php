@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1514864266;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1514886644;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1515464291;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1515656670;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
 <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/static/css/hover-min.css" />
+<link rel="stylesheet" href="/static/css/bootsnav.css" />
+
 <title>招聘网站</title>
 </head>
 <style>
@@ -79,7 +81,7 @@ body,html{
  #course a{
   	border:0;
  	color:#000000;
- 	background:#ffffff;
+
  }  
  #course a:active,#course a:hover,#course a:focus, #course .active a{
 	color:#1881EC;
@@ -123,6 +125,7 @@ body,html{
 	
 }
 /* userreg */
+
 </style>
 <body>
 <nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
@@ -211,8 +214,7 @@ body,html{
 
 
 <div class="container sever">
-<h2 class="text-center">标题标题</h2>
-<p class="line-indent">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+<p><?php echo $data; ?></p>
 </div>
 
 
@@ -366,7 +368,31 @@ body,html{
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/bootsnav.js"></script>
 <script>
+
+
+function viewdata(initdata){
+	var html="";
+	 for(key in initdata  ){
+		 
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
+			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
+			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
+			'</div>'+
+			'<h3>'+initdata[key]['name']+'</h3>'+
+			'<p class="text-nowrap">'+initdata[key]['desc']+'</p>'+
+			'<p>'+
+			'<span class="fa fa-eye"></span>'+
+			'<span>'+initdata[key]['pageview']+'</span>'+
+			'<span class="pull-right">'+initdata[key]['price']+'元</span>'+
+			'</p></div>'	 
+	 }
+	
+   $("#courselist").append(html);
+
+}
 /*common*/
 <?php if(isset($nav)): ?>
 $("#mynav").find("li").removeClass("active");
@@ -440,16 +466,14 @@ $.ajax({
 })
 
 
-
-$(".coursehover").hover(function(){
-	$(this).children("button").removeClass("hidden")
-	
-},function(){
-	$(this).children("button").addClass("hidden")
-	
-})
-
-
+$("#courselist").on({
+	mouseenter:function(){
+		$(this).children("button").removeClass("hidden")
+	},
+	mouseleave:function(){
+		$(this).children("button").addClass("hidden")
+	}
+},'.coursehover')
 
 /*报名课程  */
 
@@ -482,7 +506,12 @@ layui.use(['layer', 'form','upload','laydate'], function(){
      if(data.field.pwd!=data.field.pwd2){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
     	 return;
-     }	  
+     }
+   if(JSON.stringify(images) == "{}"){
+	   layer.msg("请上传公司图片",{icon:5,shift:6});
+   } 
+
+
     $.ajax({
     	url:"<?php echo url('companyReg'); ?>",
     	data:{data:data.field,images:images},
@@ -505,6 +534,45 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     }) 
     return false;
   });
+   
+   
+   //企业资料更新
+   form.on('submit(companyRegupdate)', function(data){
+	   var $btn = $(data.elem).button('loading')
+	   
+/*      if(data.field.pwd!=data.field.pwd2){
+    	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
+    	 return;
+     } */
+ /*   if(JSON.stringify(images) == "{}"){
+	   layer.msg("请上传公司图片",{icon:5,shift:6});
+   }  */
+    $.ajax({
+    	url:"<?php echo url('editcprofile'); ?>",
+    	data:{data:data.field,images:images},
+    	type:"post",
+    	beforeSend:function(){
+    		layer.load(2);
+    	},
+    	success:function(data){
+    		if(data==1){
+    		layer.msg("更新成功",function(){
+    			location.href="<?php echo url('companyadmin/index/index'); ?>"    			
+    		})
+    		
+    		}else{
+    			layer.msg(data)
+    		}
+    		
+    	},
+    	complete:function(){
+    		layer.closeAll("loading")
+    		  $btn.button('reset')
+    	}
+    }) 
+    return false;
+  }); 
+   
    
    
    
@@ -608,7 +676,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
 			    	if($(item).children("img").length>0){
 			    		$(item).children("img").attr("src",'/temp/'+res.src.replace(/\\/g,'/'));
 			    	}else{
-			    	  	$(item).children("span.plus").addClass("hidden")
+			    	  	$(item).children("span").addClass("hidden")
 				    	$(item).children("span.del").removeClass("hidden")
 				    	$(item).removeClass("companyimg")
 				    	$(item).append('<img   style="object-fit:cover;width:100%;height:100%;"   src="/temp/'+res.src.replace(/\\/g,'/')+'"  />')
@@ -622,7 +690,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
   /* 课程 */
   
   //点击进入课程内页
-  $(".course-item").on("click",function(){
+  $("#courselist").on("click",".course-item",function(){
 	 var id=$(this).attr("data-id");
 	  location.href="../../index/course/courseDetail?courseid="+id;
 	  
@@ -776,9 +844,64 @@ $(".userlogin").on("click",function(e){
     })
 
 
+    $(".loadmore").on("click",function(){
+    	$load=$(this).next();
+    	$text=$(this);
+    	$load.removeClass("hidden")
+    	$text.addClass("hidden")
+    	page=parseInt($(this).attr("data-currentpage"))
+    	cateid=$(this).attr("data-cateid")
+    	$.ajax({
+    		url:"<?php echo url('course/catedetail'); ?>",
+    		data:{cateid:cateid,page:page+1},
+    		success:function(data){
+    			if(data.length<6){
+    				$text.parent().addClass("hidden")
+    			}else{
+    				$text.attr("data-currentpage",page+2)
+    				$load.addClass("hidden")
+    				$text.removeClass("hidden")
+    			}
+    			viewdata(data)
+    		},
+    		complete:function(){
+    			$load.addClass("hidden")
+    			$text.removeClass("hidden")
+    		}
+    	})
+      })
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
 });//layui
 
 /*报名课程  */
+
+/*加载更多  职学院*/
+
+    
+    
+    
+/*加载更多  职学院 */
+  
+    
+  
+   
+     
+      
+    
+       
+        
+        
+        
+
 
 
 

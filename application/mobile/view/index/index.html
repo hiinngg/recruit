@@ -11,8 +11,11 @@ height:4rem;
 .course-item p,h4{
 margin:0;
 }
+.course-item{
+width:45%;
+}
 {/block}
-{block name="nav-index"}active{/block}
+{block name='nav-index'}weui-bar__item_on{/block}
 {block name="content"}
     <div class="swiper-container" id="coursel" >
             <div class="swiper-wrapper">
@@ -21,15 +24,14 @@ margin:0;
                     <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                 </div>
                 <div class="swiper-pagination"></div>
-            </div>
-            
-		     <div class="content-padded">
+            </div>           
+		     <div class="content-padded" style="padding:15px;">
 		            <p>{$data}</p>
 		    </div>    
        <h2 class="text-center ">职造课程</h2>
-       <div class="row  " style="margin:0;">
+       <div class="row-center" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
       {volist name="coursedata" id="vo"}
-      <div class="col-50 course-item">
+      <div class=" course-item">
           <img src="{$vo.label_img}" style="object-fit:cover;width:100%;height:8rem;" />
        <h4>{$vo.name}</h4>
        <p class="text-nowrap">{$vo.desc}</p>
@@ -38,8 +40,8 @@ margin:0;
        <span>{$vo.pageview}</span>
        <span class="pull-right">{$vo.price}元</span>
        </p>
-	   </div>
-	       {/volist}
+	  </div>
+	  {/volist}
 	  </div>
 
 	<div class="container sever">
