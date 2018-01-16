@@ -1,8 +1,9 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1514853472;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>工作管理</title>
+<title>企业管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css" />
 </head>
 <style type="text/css">
@@ -14,8 +15,11 @@
 
 <body  style="scroll-x:scroll;">
 	<blockquote class="layui-elem-quote flex-row">
-		<button class="layui-btn layui-btn-normal add"  style="margin-right:20px;" data-url="{:url('addjob')}">
-			<i class="layui-icon">&#xe654;</i>新增工作定制
+		<input style="width: 200px; margin-right: 15px;" type="text"
+			name="keyword" placeholder="请输入企业名" autocomplete="off"
+			class="layui-input">
+		<button class="layui-btn search" >
+			<i class="layui-icon">&#xe615;</i>查询
 		</button>
 <!-- 		<button class="layui-btn layui-btn-danger">
 			<i class="layui-icon">&#xe640;</i>批量删除
@@ -23,46 +27,38 @@
 		<button class="layui-btn " onclick="refresh()">
 			刷新
 		</button>
-		
-		
-		
 	</blockquote>
 		
 	
-    {present name="none"}
+    <?php if(isset($none)): ?>
 	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
 			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-			<p>这里一点内容都没有</p>			
+			<p>这里一篇新闻都没有</p>			
 		</div>
-		{else/}
+		<?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
-	{/present}
+	<?php endif; ?>
     <script src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
-	var tranStatus={
-			'发布':1,
-			'不发布':0
-	}
-		layui.use([ 'table', 'layer','jquery','form',"upload" ], function() {
+		layui.use([ 'table', 'layer','jquery','form' ], function() {
 			var $=layui.jquery;
 			var table = layui.table;
 			var layer=layui.layer;		
-			var form = layui.form;
-			var upload = layui.upload;
-		{notpresent name="none"}
+			var form = layui.form
+		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
-		var talentTable = table.render({
-			        elem:"#table",	      
-			        url: "{:url('job/jobList')}",
+		var articleTable = table.render({
+			        elem:"#table",	
+			       
+			        url: "<?php echo url('companyList'); ?>",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'jobid', title: '编号'},
-					{field: 'name', title: '岗位名称' },
-					{field: 'cname', title: '公司名称' },
-					{field: 'location', title: '工作地' },
-					{field: 'catename', title: '职位类别' },
-					{field: 'status', title: '状态',templet: '#statusTpl' },
+			         {field: 'cid', title: '编号' },
+			         {field: 'name', title: '名称' },
+			         {field: 'fullname', title: '公司全称' },
+			         {field: 'contact', title: '联系人电话' },
+			         {field: 'status', title: '状态',templet: '#statusTpl' },
 			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
@@ -71,75 +67,71 @@
 			        layer.close(init)
 			    }
 				});
+			 
+			 
+			 $(".search").on("click",function(){
+				 var keyword=$("input[name='keyword']").val();
+				 if(keyword==""){
+					 return;
+				 }
+				 articleTable.reload({
+					  where: { 
+					    keyword:keyword
+					  }
+					  ,page: {
+					    curr: 1 //重新从第 1 页开始
+					  }
+					});
+				 
+			 })
+			 
+			 
+			<?php endif; ?>
+	
 			
-			{/notpresent}
-	
-$(".addcate").on("click",function(){
-	
-	
-	
-	
-})
-
-      /*         upload.render({
-			   elem: '.add'
-			  ,url: "{:url('imgUpload')}",
-			  field:"image"
-			  ,done: function(res, index, upload){			  
-
-			     if(res==1){
-
-                   talentTable.reload();
-
-                  }
-			    
-			    //文件保存失败
-			    //do something
-			  }
-			});   */
-				
 			
-	 	  	$(".add").on("click",function(){			
-				var data = {
-						title:"新增工作定制",
-						href : $(this).attr("data-url")
-					}
-				window.parent.navtab.tabAdd(data)
+			
 				
-	   })
-				
-				
-				
-				
+
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 					  var data = obj.data; //获得当前行数据
 					  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
 					  var tr = obj.tr; //获得当前行 tr 的DOM对象	
 					  var dtd=$.Deferred();
-			
-					  if(layEvent === 'edit'){ //查看
-							 layer.open({
-							      type: 2,
-							      title: '工作编辑',
-							      shadeClose: true,
-							      shade: false,
-							      maxmin: true, //开启最大化最小化按钮
-							      area: ['893px', '500px'],
-			                      moveOut: true,
-							      content: "editJob?jobid="+data.jobid
-							    });
+					  console.log(data)
+					  if(layEvent === 'detail'){ //查看
+						  layer.open({
+						      type: 2,
+						      title: '内容查看',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "companyPreview?cid="+data.cid
+						    });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该工作定制么', function(index){
-					    	  _ajax("{:url('jobDel')}",{jobid:data.jobid},dtd)
+					    layer.confirm('确定删除该新闻么', function(index){
+					    	  _ajax("<?php echo url('articleDel'); ?>",{postid:data.postid},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
 								  layer.close(index);
 							  })
 					    });
+					  } else if(layEvent === 'edit'){ //编辑
+						  layer.open({
+						      type: 2,
+						      title: '内容编辑',
+						      shadeClose: true,
+						      shade: false,
+						      maxmin: true, //开启最大化最小化按钮
+						      area: ['893px', '600px'],
+						      content: "articleEdit?id="+data.postid
+						    });
+					    
 					  }else if(layEvent === 'change2on'){
-						  _ajax("{:url('statusChange')}",{jobid:data.jobid,status:1},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{cid:data.cid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
 								  obj.update({
@@ -148,7 +140,7 @@ $(".addcate").on("click",function(){
 						  })
 							
 					  }else if(layEvent === 'change2off'){
-						  _ajax("{:url('statusChange')}",{jobid:data.jobid,status:0},dtd)
+						  _ajax("<?php echo url('statusChange'); ?>",{cid:data.cid,status:0},dtd)
 						 dtd.done(function(){
 					     $(tr).find("button.off").get(0).outerHTML='<button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>'
 						  obj.update({
@@ -191,23 +183,22 @@ $(".addcate").on("click",function(){
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
   {{#  if(d.status == 1){ }}
-   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
+   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销</button>
   {{#  } else { }}
-    <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
+    <button class="layui-btn layui-btn-xs on" lay-event="change2on">激活</button>
   {{#  } }}
 
-  <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
  
   <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
 <script type="text/html" id="statusTpl">
   {{#  if(d.status == 1){ }}
-    <span style="color:#5FB878;">发布中</span>
+    <span style="color:#5FB878;">内推企业</span>
   {{#  } else { }}
-     <span style="color:#FFB800;">未发布</span>
+     <span style="color:#FFB800;">普通企业</span>
   {{#  } }}
 </script>
 </body>

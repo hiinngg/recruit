@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516095866;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516093091;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516098521;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516093091;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,7 +63,7 @@ overflow: hidden;
   }
   
 
-.course-item p,h4{
+.job-item p,h4{
 margin:0;
 }
 .cate-item{
@@ -79,12 +79,10 @@ display:none;
 color:#1881ec;
 background:#ffffff;
 }
-.course-item p,h4{
+.job-item p,h4{
 margin:0;
 }
-.course-item{
-width:45%;
-}
+
 
 
 
@@ -98,15 +96,15 @@ width:45%;
     <div class="weui-tab__panel" style="width:100%;">
      <div class="content" style="width:100%;">
      
-<div class="content-padded"   style="height:30px;">
-<p></p>
-</div>  
+<div>
+<img src="/static/images/zzz.jpg" style="width:100%;object-fit:contain;" alt="" />
+</div> 
 
-<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;">
+<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;padding-top:0;">
 
     <div class="swiper-container" id="cates" style="border-bottom:1px solid #eee;" >
    <div class="swiper-wrapper weui-navbar"  > 
-    <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <?php if(is_array($jobcates) || $jobcates instanceof \think\Collection || $jobcates instanceof \think\Paginator): $i = 0; $__LIST__ = $jobcates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 	         <a href='#tab<?php echo $vo['cateid']; ?>'   data-cateid="<?php echo $vo['cateid']; ?>" class="swiper-slide weui-navbar__item  <?php if($i == '1'): ?>weui-bar__item--on<?php endif; ?>"  style="flex:0 0 auto;width:auto;padding:13px 5px;">
                 <?php echo $vo['name']; ?>
              </a>   
@@ -117,12 +115,31 @@ width:45%;
  
 	
 <div class="weui-tab__bd" style="">
-<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+<?php if(is_array($jobcates) || $jobcates instanceof \think\Collection || $jobcates instanceof \think\Paginator): $i = 0; $__LIST__ = $jobcates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
   <div id="tab<?php echo $vo['cateid']; ?>" class="weui-tab__bd-item   <?php if($i == '1'): ?> weui-tab__bd-item--active<?php endif; ?>  " style="">
-      <h2 class="text-center" style="margin:15px 0;"><?php echo $vo['name']; ?></h2>
       <!-- cate name -->
       
-      <div class="row-center courses" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class="job-item "  style="display:flex;width:100%;margin:13px 0;">
+      
+      <div style="flex-grow:3;">
+       <h3>文案经理</h3>
+       <div  style="display:flex;width:100%;">
+       <p style="flex-grow:1;" >工作职责:</p>
+       <p style="flex-grow:2;">djvbfdvbjhhjfvjhfbvjhbfhfb hdsvdfvfdbvfdbfdhbdgbdf</p>
+       </div>
+      </div>
+      <div class="text-center" style="flex-grow:1;" >
+	      <p>
+	      <span class="fa fa-map-marker"></span>
+	      <span>中山小榄</span>
+	      </p>
+	      <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>
+      </div>
+      
+      </div>
+      
+      
       
 	  </div><!-- item -->
       
@@ -153,11 +170,11 @@ width:45%;
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
-        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item weui-bar__item_on">
+        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
             <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
         </a>
-        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
+        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item weui-bar__item_on">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
         <a href="javascript:;" class="weui-tabbar__item ">
@@ -198,7 +215,7 @@ $(function(){
 function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
-	html+=  '<div class=" course-item">'+
+	html+=  '<div class=" job-item">'+
 		    ' <img src="'+initdata[key]['label_img']+'" style="object-fit:cover;width:100%;height:8rem;" />'+
 			'<h4>'+initdata[key]['name']+'</h4>'+
 			'<p class="text-nowrap">'+initdata[key]['desc']+'</p>'+
@@ -217,37 +234,8 @@ function viewdata(obj,initdata,invoke){
 
 }
 
-//切换选项卡事件
-$(".weui-navbar a").on("click",function(){
-var that=$(this);
-var cateid=$(this).attr("data-cateid");
-$.ajax({
-url:"<?php echo url('course/catedetail'); ?>",
-data:{cateid:cateid,page:1},
-beforeSend:function(){
-$(that.attr("href")).find(".nomore").addClass("hidden")
-$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
-$.showLoading();
-},
-success:function(data){
-if(data.length == 0){
-$(that.attr("href")).find(".nomore").removeClass("hidden")
-   return;
-}
-if(data.length == 4){
-$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
-}
-viewdata($(that.attr("href")).find(".courses"),data,true)
-},
-complete:function(){
-$.hideLoading();
-}
 
-})
-})
 
-//页面初始化时
-$(".weui-navbar a.weui-bar__item--on").trigger("click")
 
 //初始化分类列表
 var cates = new Swiper('#cates',{
@@ -260,7 +248,7 @@ $(".loadmore").on("click",function(){
     	page=parseInt($(this).attr("data-currentpage"))
     	cateid=$(this).attr("data-cateid")
     	$.ajax({
-    		url:"<?php echo url('course/catedetail'); ?>",
+    		url:"<?php echo url('job/catedetail'); ?>",
     		data:{cateid:cateid,page:page+1},
     		beforeSend:function(){
     		that.parent().next().removeClass("hidden")

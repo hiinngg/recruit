@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516011592;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516093091;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -142,7 +142,7 @@ width:45%;
 
             <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item ">
+        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
         <a href="javascript:;" class="weui-tabbar__item ">

@@ -13344,3 +13344,126 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.025001s ]
 [ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = 1 LIMIT 0,4 [ RunTime:0.023002s ]
 [ sql ] [ SQL ] SELECT `name` FROM `re_category` WHERE  `cateid` = 1 LIMIT 1 [ RunTime:0.327018s ]
+---------------------------------------------------------------
+[ 2018-01-15T18:32:10+08:00 ] 192.168.6.106 192.168.6.100 GET /mobile/index/index.html
+[ info ] 192.168.6.106/mobile/index/index.html [运行时间：1.996114s][吞吐率：0.50req/s] [内存消耗：3,387.36kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.6.106',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060133) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.6.106/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'coursedata',
+  2 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.339020s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.920053s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `title` = '首页介绍' LIMIT 1 [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img`,`price`,`desc`,`pageview` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.324019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.320018s ]
+---------------------------------------------------------------
+[ 2018-01-15T18:32:11+08:00 ] 192.168.6.106 192.168.6.100 GET /mobile/index/index.html
+[ info ] 192.168.6.106/mobile/index/index.html [运行时间：4.413253s][吞吐率：0.23req/s] [内存消耗：3,387.36kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.6.106',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060133) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.6.106/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Index->index[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'coursedata',
+  2 => 'companydata',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.930053s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_page` [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SELECT `content` FROM `re_page` WHERE  `title` = '首页介绍' LIMIT 1 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:3.330190s ]
+[ sql ] [ SQL ] SELECT `courseid`,`name`,`label_img`,`price`,`desc`,`pageview` FROM `re_course` WHERE  `is_show` = '1' [ RunTime:0.022002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_company` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `cid`,`avastar` FROM `re_company` WHERE  `status` = '1' [ RunTime:0.025001s ]
+---------------------------------------------------------------
+[ 2018-01-15T18:32:14+08:00 ] 192.168.6.106 192.168.6.100 GET /mobile/course/courselist.html
+[ info ] 192.168.6.106/mobile/course/courselist.html [运行时间：1.393080s][吞吐率：0.72req/s] [内存消耗：3,421.33kb] [文件加载：46]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '192.168.6.106',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; MI 5 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060133) NetType/WIFI Language/zh_CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/sharpp,*/*;q=0.8',
+  'referer' => 'http://192.168.6.106/mobile/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'course',
+  1 => 'catename',
+  2 => 'cateid',
+  3 => 'cates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_category` [ RunTime:0.021001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_category` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = 1 LIMIT 0,4 [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `re_category` WHERE  `cateid` = 1 LIMIT 1 [ RunTime:1.225070s ]

@@ -9,17 +9,71 @@ class Job extends Common
     public function jobList($page = "", $limit = "")
     {
         if (! isset($count)) {
-            $this->count = Db::name("page")->count();
+            $this->count =Db::view("re_job","*")->view("re_jobcate",["name"=>"catename"],"re_jobcate.cateid=re_job.cate")->count();
             if ($this->count == 0) {
                 $this->assign("none", "none");
             }
         }
         if ($this->request->isAjax()) {
             // $res = json_decode(httpGet("http://www.layui.com/demo/table/user?page={$this->request->get('page')}&limit={$this->request->get('limit')}"));
-            $result = Db::name("job")->order("createtime desc")
-                ->page($page, $limit)
-                ->select();
+  
             
+           $result = Db::view("re_job","*")->view("re_jobcate",["name"=>"catename"],"re_jobcate.cateid=re_job.cate")->order("createtime desc")    
+                   ->page($page, $limit)
+                   ->select();
+            return json([
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count,
+                "data" => $result
+            ]);
+        }
+        
+        return $this->fetch();
+    }
+    
+    public function addcate($name){
+        $data=[
+            'name'=>$name,
+            'createtime'=>date("Y-m-d H:i:s")
+        ];
+        if(Db::name("jobcate")->insert($data)==1){
+            return 1;
+        }
+
+    }
+    
+    public  function  editcate($name,$cateid){
+        $data=[
+            'name'=>$name,
+     
+        ];
+        if(Db::name("jobcate")->where('cateid',$cateid)->update($data)>=0){
+            return 1;
+        }
+    }
+    public  function catedel(){
+        $post=$this->request->post();
+        if(Db::name("jobcate")->where("cateid",$post['cateid'])->delete()==1){
+            return 1;
+        }
+        
+    }
+    
+    
+    public function  jobcate($page = "", $limit = ""){
+        if (! isset($count)) {
+            $this->count = Db::name("jobcate")->count();
+            if ($this->count == 0) {
+                $this->assign("none", "none");
+            }
+        }
+        if ($this->request->isAjax()) {
+            // $res = json_decode(httpGet("http://www.layui.com/demo/table/user?page={$this->request->get('page')}&limit={$this->request->get('limit')}"));
+            $result = Db::name("jobcate")->order("createtime desc")
+            ->page($page, $limit)
+            ->select();
+        
             return json([
                 'code' => 0,
                 'msg' => "",
@@ -41,6 +95,7 @@ class Job extends Common
                 'cname' => $post['data']['cname'],
                 'location' => $post['data']['location'],
                 'desc' => $post['data']['desc'],
+                'cate'=>$post['data']['cate'],
                 'pic' => transOneImage(matchImage($post['data']['pic'], $old_img), '/image/admin'),
             ];
             
@@ -50,6 +105,7 @@ class Job extends Common
         }
         $this->assign("data", Db::name("job")->where("jobid", $jobid)
             ->find());
+        $this->assign("catelist",Db::name("jobcate")->select());
         return $this->fetch('editjob');
     }
 
@@ -64,6 +120,7 @@ class Job extends Common
                 'desc' => $post['data']['desc'],
                 'pic' => transOneImage($post['data']['pic'], '/image/admin'),
                 'status' => 1,
+                'cate'=>$post['data']['cate'],
                 'createtime' => date("Y-m-d H:i:s")
             ];
             delDir("/temp/admin");
@@ -71,7 +128,7 @@ class Job extends Common
                 return 1;
             }
         }
-        
+        $this->assign("catelist",Db::name("jobcate")->select());
         return $this->fetch("editjob");
     }
 

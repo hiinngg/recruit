@@ -1,8 +1,8 @@
 {extend name="indexlayout" /}
-{block name="nav-course"}weui-bar__item_on{/block}
-{block name="title"}微课{/block}
+{block name="nav-job"}weui-bar__item_on{/block}
+{block name="title"}找工作{/block}
 {block name="css"}
-.course-item p,h4{
+.job-item p,h4{
 margin:0;
 }
 .cate-item{
@@ -18,24 +18,22 @@ display:none;
 color:#1881ec;
 background:#ffffff;
 }
-.course-item p,h4{
+.job-item p,h4{
 margin:0;
 }
-.course-item{
-width:45%;
-}
+
 
 {/block}
 {block name="content"}
-<div class="content-padded"   style="height:30px;">
-<p></p>
-</div>  
+<div>
+<img src="/static/images/zzz.jpg" style="width:100%;object-fit:contain;" alt="" />
+</div> 
 
-<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;">
+<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;padding-top:0;">
 
     <div class="swiper-container" id="cates" style="border-bottom:1px solid #eee;" >
    <div class="swiper-wrapper weui-navbar"  > 
-    {volist name="cates" id="vo"}
+    {volist name="jobcates" id="vo"}
 	         <a href='#tab{$vo.cateid}'   data-cateid="{$vo.cateid}" class="swiper-slide weui-navbar__item  {eq name="i"  value="1"}weui-bar__item--on{/eq}"  style="flex:0 0 auto;width:auto;padding:13px 5px;">
                 {$vo.name}
              </a>   
@@ -46,12 +44,31 @@ width:45%;
  
 	
 <div class="weui-tab__bd" style="">
-{volist name="cates"  id="vo"}
+{volist name="jobcates"  id="vo"}
   <div id="tab{$vo.cateid}" class="weui-tab__bd-item   {eq name="i"  value="1"} weui-tab__bd-item--active{/eq}  " style="">
-      <h2 class="text-center" style="margin:15px 0;">{$vo.name}</h2>
       <!-- cate name -->
       
-      <div class="row-center courses" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class="job-item "  style="display:flex;width:100%;margin:13px 0;">
+      
+      <div style="flex-grow:3;">
+       <h3>文案经理</h3>
+       <div  style="display:flex;width:100%;">
+       <p style="flex-grow:1;" >工作职责:</p>
+       <p style="flex-grow:2;">djvbfdvbjhhjfvjhfbvjhbfhfb hdsvdfvfdbvfdbfdhbdgbdf</p>
+       </div>
+      </div>
+      <div class="text-center" style="flex-grow:1;" >
+	      <p>
+	      <span class="fa fa-map-marker"></span>
+	      <span>中山小榄</span>
+	      </p>
+	      <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>
+      </div>
+      
+      </div>
+      
+      
       
 	  </div><!-- item -->
       
@@ -86,7 +103,7 @@ $(function(){
 function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
-	html+=  '<div class=" course-item">'+
+	html+=  '<div class=" job-item">'+
 		    ' <img src="'+initdata[key]['label_img']+'" style="object-fit:cover;width:100%;height:8rem;" />'+
 			'<h4>'+initdata[key]['name']+'</h4>'+
 			'<p class="text-nowrap">'+initdata[key]['desc']+'</p>'+
@@ -105,37 +122,8 @@ function viewdata(obj,initdata,invoke){
 
 }
 
-//切换选项卡事件
-$(".weui-navbar a").on("click",function(){
-var that=$(this);
-var cateid=$(this).attr("data-cateid");
-$.ajax({
-url:"{:url('course/catedetail')}",
-data:{cateid:cateid,page:1},
-beforeSend:function(){
-$(that.attr("href")).find(".nomore").addClass("hidden")
-$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
-$.showLoading();
-},
-success:function(data){
-if(data.length == 0){
-$(that.attr("href")).find(".nomore").removeClass("hidden")
-   return;
-}
-if(data.length == 4){
-$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
-}
-viewdata($(that.attr("href")).find(".courses"),data,true)
-},
-complete:function(){
-$.hideLoading();
-}
 
-})
-})
 
-//页面初始化时
-$(".weui-navbar a.weui-bar__item--on").trigger("click")
 
 //初始化分类列表
 var cates = new Swiper('#cates',{
@@ -148,7 +136,7 @@ $(".loadmore").on("click",function(){
     	page=parseInt($(this).attr("data-currentpage"))
     	cateid=$(this).attr("data-cateid")
     	$.ajax({
-    		url:"{:url('course/catedetail')}",
+    		url:"{:url('job/catedetail')}",
     		data:{cateid:cateid,page:page+1},
     		beforeSend:function(){
     		that.parent().next().removeClass("hidden")

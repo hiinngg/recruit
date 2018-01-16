@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\editjob.html";i:1516091463;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,19 +30,19 @@
   <div class="layui-form-item">
     <label class="layui-form-label">企业名称</label>
     <div class="layui-input-block">
-      <input type="text" name="cname" required  lay-verify="required" placeholder="请输入企业名称" autocomplete="off" class="layui-input" value="{$data.cname ?? ''}">
+      <input type="text" name="cname" required  lay-verify="required" placeholder="请输入企业名称" autocomplete="off" class="layui-input" value="<?php echo isset($data['cname'])?$data['cname']: ''; ?>">
     </div>
   </div>
 <div class="layui-form-item">
     <label class="layui-form-label">岗位名称</label>
     <div class="layui-input-block">
-      <input type="text" name="name" required  lay-verify="required" placeholder="请输入岗位名称" autocomplete="off" class="layui-input" value="{$data.name??''}">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入岗位名称" autocomplete="off" class="layui-input" value="<?php echo isset($data['name'])?$data['name']:''; ?>">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">地点</label>
     <div class="layui-input-block">
-      <input type="text" name="location" required  lay-verify="required" placeholder="请输入工作地点" autocomplete="off" class="layui-input" value="{$data.location??''}">
+      <input type="text" name="location" required  lay-verify="required" placeholder="请输入工作地点" autocomplete="off" class="layui-input" value="<?php echo isset($data['location'])?$data['location']:''; ?>">
     </div>
   </div>
   <div class="layui-form-item">
@@ -56,9 +57,9 @@
     <div class="layui-input-block">
       <select name="cate" lay-verify="required">
         <option value=""></option>
-       {volist name="catelist" id="vo"}
-        <option value="{$vo.cateid}">{$vo.name}</option>
-       {/volist}
+       <?php if(is_array($catelist) || $catelist instanceof \think\Collection || $catelist instanceof \think\Paginator): $i = 0; $__LIST__ = $catelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <option value="<?php echo $vo['cateid']; ?>"><?php echo $vo['name']; ?></option>
+       <?php endforeach; endif; else: echo "" ;endif; ?>
       </select>
     </div>
   </div>
@@ -69,13 +70,13 @@
   <div class="label_img layui-form-item">
     <label class="layui-form-label">企业图片</label>
  	<button type="button" class="layui-btn " id="cover">
- 	<input type="text"  hidden name="pic" value="{$data.pic??''}" />
+ 	<input type="text"  hidden name="pic" value="<?php echo isset($data['pic'])?$data['pic']:''; ?>" />
 	<i class="layui-icon">&#xe67c;</i>上传
 	</button>
 	<div class="img" style="margin:15px 0 0 110px;position:relative;">
-	{present name="data"}
-         <img  src="{$data.pic??''}" width='200px' height='100px' style="object-fit:cover;">	
-    {/present}			   
+	<?php if(isset($data)): ?>
+         <img  src="<?php echo isset($data['pic'])?$data['pic']:''; ?>" width='200px' height='100px' style="object-fit:cover;">	
+    <?php endif; ?>			   
 	</div>	
   </div>
   
@@ -98,15 +99,15 @@
 		  var upload = layui.upload;
 		  var layer  = layui.layer;
 		  
-		  {present name="data"}
-          $("select[name='cate']").val("{$data.cate}").change()
-		  var desc="{$data.desc}";
+		  <?php if(isset($data)): ?>
+          $("select[name='cate']").val("<?php echo $data['cate']; ?>").change()
+		  var desc="<?php echo $data['desc']; ?>";
 		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
 		  desc=desc.replace(reg,"\n");
 		  $("textarea[name='desc']").text(desc)
 		  
 		  form.render()
-		  {/present}
+		  <?php endif; ?>
 
 
 
@@ -119,12 +120,12 @@
 	
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
 	    
-	     var url="{:url('addJob')}";
+	     var url="<?php echo url('addJob'); ?>";
 	     var data={data:data.field}
-		     {present name="data"}
-	         url="{:url('editJob')}"
-		     data['jobid']="{$data.jobid}"
-		     {/present}
+		     <?php if(isset($data)): ?>
+	         url="<?php echo url('editJob'); ?>"
+		     data['jobid']="<?php echo $data['jobid']; ?>"
+		     <?php endif; ?>
 		    $.ajax({
 		    	url:url,
 		    	data:data,
@@ -149,7 +150,7 @@
 		  		  
 		  upload.render({
 			   elem: '#cover'
-			  ,url: "{:url('imgUpload')}",
+			  ,url: "<?php echo url('imgUpload'); ?>",
 			  field:"image"
 			  ,done: function(res, index, upload){			  
 			    if(res.code == 0){		

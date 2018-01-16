@@ -26,9 +26,6 @@ class Course extends Common
        $cate=new Category(Db::name("category")->select()); 
         $tree=$cate->getmenu();
         $sel_cateid=$cateid==""?$tree[0]['cateid']:$cateid;
-        $this->assign("course",$this->catedetail($sel_cateid));
-        $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
-        $this->assign("cateid",$sel_cateid);
         $this->assign("cates",$tree);
         return $this->fetch();
     }

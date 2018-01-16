@@ -4,21 +4,12 @@ namespace  app\mobile\controller;
 
 use think\Db;
 
-class Position  extends  Common{
+class Job  extends  Common{
     
     
     public  function  jobList(){
         
-        $res=Db::name("position")->field("poid,name,treatment,salary_min,salary_max,is_subsidy")
-         ->where("re_position.is_show",1)->select();
-        $subsidy=[];
-         foreach ($res as $k=>$val){
-        if($val['is_subsidy']==1){
-            array_push($subsidy, $val);
-        }
-         }
-         $this->assign("position",$res);
-         $this->assign("subsidy",$subsidy);
+       $this->assign("jobcates",Db::name("jobcate")->select());
        return  $this->fetch();
     }
     public function jobDetail($poid){
