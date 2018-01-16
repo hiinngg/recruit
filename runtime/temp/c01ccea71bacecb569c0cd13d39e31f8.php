@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1515897373;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1515897373;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516104906;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516104906;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,8 +6,10 @@
 	    <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 	<title>小猫直聘</title>
-	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
-
+<!-- 	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -42,6 +44,9 @@ body,html{
 	-o-text-overflow:ellipsis; 
 	overflow: hidden; 
 }
+.weui-bar__item_on P{
+	color:#1881EC !important;
+}
   .course-item p{
    margin:0;
   	white-space:nowrap; 
@@ -49,6 +54,17 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
+  .content{
+	margin-top:35px;
+  }
+  
+  .weui-tabbar__label{
+	font-size:16px;
+  }
+  .text-center{
+	text-align:center;
+  }
+  
 
 .company-logo{
 width:8rem; 
@@ -57,41 +73,21 @@ height:4rem;
 .course-item p,h4{
 margin:0;
 }
+.course-item{
+width:45%;
+}
 
 
 </style>
-<body>
-   <div class="page-group">
-        <!-- 单个page ,第一个.page默认被展示-->
-        <div class="page">
-            <!-- 标题栏 -->
-            <header class="bar bar-nav">
-              <h1 class="title">标题</h1>  
-               <span class="icon icon-menu pull-right"></span>
-            </header>
-
-            <!-- 工具栏 -->
-            <nav class="bar bar-tab">
-		     <nav class="bar bar-tab" style="color:#1881EC;">		 
-		      <a class="tab-item  external  active" href="<?php echo url('index/index'); ?>">
-		           <span class="tab-label">首页</span>
-		      </a>
-		      <a class="tab-item external " href="<?php echo url('course/courseList'); ?>">
-		            <span class="tab-label">微课</span>
-		      </a>
-	          <a class="tab-item external " href="<?php echo url('position/jobList'); ?>">
-              <span class="tab-label">找工作</span>
-              </a>
-
-	          <a class="tab-item external  " href="<?php echo url('user/index'); ?>">
-	            <span class="tab-label">我的</span>
-	          </a>
-		    </nav>
-            </nav>
-
-            <!-- 这里是页面内容区 -->
-            <div class="content">
-                <div class="content-block" style="margin-top:0;">
+<body style="height:100vh;">
+<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<span class="fa fa-list" style="margin-right:10px;"></span>
+</div>
+  <div class="weui-tab">
+    <div class="weui-tab__panel" style="width:100%;">
+     <div class="content" style="width:100%;">
+     
     <div class="swiper-container" id="coursel" >
             <div class="swiper-wrapper">
                     <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
@@ -99,15 +95,14 @@ margin:0;
                     <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                 </div>
                 <div class="swiper-pagination"></div>
-            </div>
-            
-		     <div class="content-padded">
+            </div>           
+		     <div class="content-padded" style="padding:15px;">
 		            <p><?php echo $data; ?></p>
 		    </div>    
        <h2 class="text-center ">职造课程</h2>
-       <div class="row  " style="margin:0;">
+       <div class="row-center" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
       <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-      <div class="col-50 course-item">
+      <div class=" course-item">
           <img src="<?php echo $vo['label_img']; ?>" style="object-fit:cover;width:100%;height:8rem;" />
        <h4><?php echo $vo['name']; ?></h4>
        <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
@@ -116,8 +111,8 @@ margin:0;
        <span><?php echo $vo['pageview']; ?></span>
        <span class="pull-right"><?php echo $vo['price']; ?>元</span>
        </p>
-	   </div>
-	       <?php endforeach; endif; else: echo "" ;endif; ?>
+	  </div>
+	  <?php endforeach; endif; else: echo "" ;endif; ?>
 	  </div>
 
 	<div class="container sever">
@@ -136,22 +131,29 @@ margin:0;
 	</div>
    
    
-</div>
-            </div>
-        </div>
 
-        <!-- 其他的单个page内联页（如果有） -->
-       
-       
-       
-
+     </div>
     </div>
+    <div class="weui-tabbar" style="position:fixed;">
+        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  weui-bar__item_on" >
+            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+        </a>
+        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
-    <!-- popup, panel 等放在这里 -->
-    
-    
-    
-    
+            <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
+        </a>
+        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
+            <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item ">
+            <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
+        </a>
+    </div>
+</div>
+  
+  
+  
+  
  <!--    <div class="panel-overlay"></div>
     Left Panel with Reveal effect
     <div class="panel panel-left panel-reveal">
@@ -162,12 +164,15 @@ margin:0;
             <p><a href="#" class="close-panel">关闭</a></p>
         </div>
     </div>  -->
-<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
-
+<!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
+   <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+<script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="/static/js/swiper.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script>
-$(function(){
+
+
 
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
@@ -182,9 +187,9 @@ $(function(){
     
 
 
-$.init();
 
-});
+
+
 </script>
 </body>
 </html>   

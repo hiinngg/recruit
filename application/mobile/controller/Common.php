@@ -12,12 +12,12 @@ class Common  extends Controller{
 
     public function _initialize()
     {
-        // 判断cookie值
+      /*  // 判断cookie值
         if (!Cookie::has("rec_openid")) {
             //             Cookie::forever("rec_openid", 'oDCE6wb4LsMznXwcxM1Uj2WzljOI');//
             //             return;
             $this->gettokenid();
-        } 
+        } */
     
         //  $cus = Db::table('customer')->where('openid', "oDCE6wYQTw6YbagLtsuUX5kYytVc")->find();
     

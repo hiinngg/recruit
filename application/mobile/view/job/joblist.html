@@ -21,7 +21,26 @@ background:#ffffff;
 .job-item p,h4{
 margin:0;
 }
-
+.job-item{
+display:flex;
+width:100%;
+margin:13px 0;
+height:80px;
+background: #FFFFFF;
+}
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+}
 
 {/block}
 {block name="content"}
@@ -43,33 +62,13 @@ margin:0;
    </div> 
  
 	
-<div class="weui-tab__bd" style="">
+<div class="weui-tab__bd" style="background: #FAFAFA;">
 {volist name="jobcates"  id="vo"}
   <div id="tab{$vo.cateid}" class="weui-tab__bd-item   {eq name="i"  value="1"} weui-tab__bd-item--active{/eq}  " style="">
       <!-- cate name -->
       
       <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
-      <div class="job-item "  style="display:flex;width:100%;margin:13px 0;">
-      
-      <div style="flex-grow:3;">
-       <h3>文案经理</h3>
-       <div  style="display:flex;width:100%;">
-       <p style="flex-grow:1;" >工作职责:</p>
-       <p style="flex-grow:2;">djvbfdvbjhhjfvjhfbvjhbfhfb hdsvdfvfdbvfdbfdhbdgbdf</p>
-       </div>
-      </div>
-      <div class="text-center" style="flex-grow:1;" >
-	      <p>
-	      <span class="fa fa-map-marker"></span>
-	      <span>中山小榄</span>
-	      </p>
-	      <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>
-      </div>
-      
-      </div>
-      
-      
-      
+
 	  </div><!-- item -->
       
       
@@ -97,21 +96,40 @@ margin:0;
 
 $(function(){
 
+  function text(obj){
+
+	el = obj.get(0);
+	s = obj.text();
+	n = el.offsetHeight;
+		for (i = 0; i < s.length; i++) {
+		el.innerHTML = s.substr(0, i);
+			if (n < el.scrollHeight) {
+			el.style.overflow = 'hidden';
+			el.innerHTML = s.substr(0, i - 3) + '...';
+			break;
+			}
+		}
+	}
+
 
 
 //渲染数据
 function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
-	html+=  '<div class=" job-item">'+
-		    ' <img src="'+initdata[key]['label_img']+'" style="object-fit:cover;width:100%;height:8rem;" />'+
-			'<h4>'+initdata[key]['name']+'</h4>'+
-			'<p class="text-nowrap">'+initdata[key]['desc']+'</p>'+
-			'<p>'+
-			'<span class="fa fa-eye"></span>'+
-			'<span>'+initdata[key]['pageview']+'</span>'+
-			'<span class="pull-right">'+initdata[key]['price']+'元</span>'+
-			'</p></div>'	 
+	html+='<div class="job-item "  >'+
+	         '<div style="flex-grow:3;">'+
+		       '<h3>'+initdata[key]['name']+'</h3>'+
+			   '<div  style="display:flex;width:100%;">'+
+			     '<p style="flex-grow:1;white-space: nowrap;" >工作职责：</p>'+
+			     '<p  class="text-hide" style="flex-grow:2;height:50px;">'+initdata[key]['desc']+'</p>'+
+		      '</div>'+
+	         '</div>'+
+	         '<div class="text-center" style="flex-grow:1;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
+		       '<p class="text-hide"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>'+
+	         '</div>'+
+           '</div>';
 	 }
 	 
 	 if(invoke){
@@ -122,7 +140,35 @@ function viewdata(obj,initdata,invoke){
 
 }
 
+$(".weui-navbar a").on("click",function(){
+var that=$(this);
+var cateid=$(this).attr("data-cateid");
+$.ajax({
+url:"{:url('job/catedetail')}",
+data:{cateid:cateid,page:1},
+beforeSend:function(){
+$(that.attr("href")).find(".nomore").addClass("hidden")
+$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
+$.showLoading();
+},
+success:function(data){
+if(data.length == 0){
+$(that.attr("href")).find(".nomore").removeClass("hidden")
+return;
+}
+if(data.length == 4){
+$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
+}
+viewdata($(that.attr("href")).find(".jobs"),data,true)
+},
+complete:function(){
+$.hideLoading();
+}
 
+})
+})
+
+$(".weui-navbar a.weui-bar__item--on").trigger("click")
 
 
 //初始化分类列表
