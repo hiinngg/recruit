@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1515464291;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1515464093;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,89 +180,20 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
+<div class="container sever">
+
  
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:400px;object-fit:cover;"  alt="...">
-    </div>
-    <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:400px;object-fit:cover;" alt="...">
-    </div>
-    
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <h2 class='text-center'>人才定制</h2>
+    <p><?php echo $talent; ?></p>
 
 
-
-<div class="container sever">
-<p><?php echo $data; ?></p>
-</div>
-
-
-<div class="container sever">
-<h2 class="text-center">职造课程</h2>
-<div class=" sever row-center  " style="">
- <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="course-item"  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
-    <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
-     <img  class="" src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
-     <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $vo['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
-    </div>    
-        <h3><?php echo $vo['name']; ?></h3>
-        <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
-        <p>
-        <span class="fa fa-eye"></span>
-        <span><?php echo $vo['pageview']; ?></span>
-        <span class="pull-right"><?php echo $vo['price']; ?>元</span>
-        </p>
-    </div>
-
-    <?php endforeach; endif; else: echo "" ;endif; ?>
+<hr />
+   
+    <h2 class='text-center'>团队定制</h2>
+  <p><?php echo $team; ?></p>
 
 </div>
-</div>
-
-<!-- <p class="text-center sever">
-<a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p> -->
-
-
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
-        </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-
-    </div>
-</div>
-
-</div>
-
-
 
 
 <div class="container-fluid sever" style="background:#DFDFDF;">

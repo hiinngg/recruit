@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516093091;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516167354;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,10 +16,10 @@
 
 </head>
 <style>
-body,html{
-	font-family:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-	color:#333;
-	font-size:16px;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+
 }
 .row-center{
 	display:flex;
@@ -81,7 +81,9 @@ width:45%;
 </style>
 <body style="height:100vh;">
 <div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span >首页</span>
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+
 <span class="fa fa-list" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
@@ -145,7 +147,7 @@ width:45%;
         <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item ">
+        <a href="<?php echo url('user/index'); ?>" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>

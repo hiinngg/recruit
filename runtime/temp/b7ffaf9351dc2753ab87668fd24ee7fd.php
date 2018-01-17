@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516098521;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516093091;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516182219;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516182213;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,10 +13,10 @@
     
 </head>
 <style>
-body,html{
-	font-family:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-	color:#333;
-	font-size:16px;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+
 }
 .row-center{
 	display:flex;
@@ -61,6 +61,22 @@ overflow: hidden;
   .text-center{
 	text-align:center;
   }
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
   
 
 .job-item p,h4{
@@ -82,6 +98,14 @@ background:#ffffff;
 .job-item p,h4{
 margin:0;
 }
+.job-item{
+display:flex;
+width:100%;
+overflow:hidden;
+margin:13px 0;
+height:80px;
+background: #FFFFFF;
+}
 
 
 
@@ -89,7 +113,9 @@ margin:0;
 </style>
 <body style="height:100vh;">
 <div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span >首页</span>
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+
 <span class="fa fa-list" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
@@ -114,33 +140,13 @@ margin:0;
    </div> 
  
 	
-<div class="weui-tab__bd" style="">
+<div class="weui-tab__bd" style="background: #FAFAFA;">
 <?php if(is_array($jobcates) || $jobcates instanceof \think\Collection || $jobcates instanceof \think\Paginator): $i = 0; $__LIST__ = $jobcates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
   <div id="tab<?php echo $vo['cateid']; ?>" class="weui-tab__bd-item   <?php if($i == '1'): ?> weui-tab__bd-item--active<?php endif; ?>  " style="">
       <!-- cate name -->
       
-      <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
-      <div class="job-item "  style="display:flex;width:100%;margin:13px 0;">
-      
-      <div style="flex-grow:3;">
-       <h3>文案经理</h3>
-       <div  style="display:flex;width:100%;">
-       <p style="flex-grow:1;" >工作职责:</p>
-       <p style="flex-grow:2;">djvbfdvbjhhjfvjhfbvjhbfhfb hdsvdfvfdbvfdbfdhbdgbdf</p>
-       </div>
-      </div>
-      <div class="text-center" style="flex-grow:1;" >
-	      <p>
-	      <span class="fa fa-map-marker"></span>
-	      <span>中山小榄</span>
-	      </p>
-	      <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>
-      </div>
-      
-      </div>
-      
-      
-      
+      <div class=" jobs" style="margin:0;width:100%;">
+
 	  </div><!-- item -->
       
       
@@ -177,7 +183,7 @@ margin:0;
         <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item weui-bar__item_on">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item ">
+        <a href="<?php echo url('user/index'); ?>" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
@@ -209,21 +215,40 @@ margin:0;
 
 $(function(){
 
+  function text(obj){
+
+	el = obj.get(0);
+	s = obj.text();
+	n = el.offsetHeight;
+		for (i = 0; i < s.length; i++) {
+		el.innerHTML = s.substr(0, i);
+			if (n < el.scrollHeight) {
+			el.style.overflow = 'hidden';
+			el.innerHTML = s.substr(0, i - 3) + '...';
+			break;
+			}
+		}
+	}
+
 
 
 //渲染数据
 function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
-	html+=  '<div class=" job-item">'+
-		    ' <img src="'+initdata[key]['label_img']+'" style="object-fit:cover;width:100%;height:8rem;" />'+
-			'<h4>'+initdata[key]['name']+'</h4>'+
-			'<p class="text-nowrap">'+initdata[key]['desc']+'</p>'+
-			'<p>'+
-			'<span class="fa fa-eye"></span>'+
-			'<span>'+initdata[key]['pageview']+'</span>'+
-			'<span class="pull-right">'+initdata[key]['price']+'元</span>'+
-			'</p></div>'	 
+	html+='<div class="job-item "  >'+
+	         '<div style="width:75%;">'+
+		       '<h3 style="color:#1881ec;">'+initdata[key]['name']+'</h3>'+
+			   '<div  style="display:flex;width:100%;">'+
+			     '<p style="width:33%;white-space: nowrap;font-weight:700;" >工作职责：</p>'+
+			     '<p  class="texts-hide" style="width:66%;height:50px;width:auto;">'+initdata[key]['desc']+'</p>'+
+		      '</div>'+
+	         '</div>'+
+	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
+		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="padding:0 1.2em;">点击报名</a>'+
+	         '</div>'+
+           '</div>';
 	 }
 	 
 	 if(invoke){
@@ -234,7 +259,35 @@ function viewdata(obj,initdata,invoke){
 
 }
 
+$(".weui-navbar a").on("click",function(){
+var that=$(this);
+var cateid=$(this).attr("data-cateid");
+$.ajax({
+url:"<?php echo url('job/catedetail'); ?>",
+data:{cateid:cateid,page:1},
+beforeSend:function(){
+$(that.attr("href")).find(".nomore").addClass("hidden")
+$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
+$.showLoading();
+},
+success:function(data){
+if(data.length == 0){
+$(that.attr("href")).find(".nomore").removeClass("hidden")
+return;
+}
+if(data.length == 4){
+$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
+}
+viewdata($(that.attr("href")).find(".jobs"),data,true)
+},
+complete:function(){
+$.hideLoading();
+}
 
+})
+})
+
+$(".weui-navbar a.weui-bar__item--on").trigger("click")
 
 
 //初始化分类列表
@@ -260,7 +313,7 @@ $(".loadmore").on("click",function(){
     			     that.parent().next().addClass("hidden")
     			   return;
     			}
-    			if(data.length == 4){
+    			if(data.length > 0){
     				that.parent().removeClass("hidden")
     			}
     		    that.parent().next().addClass("hidden")

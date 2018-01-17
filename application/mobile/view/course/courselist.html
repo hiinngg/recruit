@@ -160,7 +160,7 @@ $(".loadmore").on("click",function(){
     			     that.parent().next().addClass("hidden")
     			   return;
     			}
-    			if(data.length == 4){
+    			if(data.length > 0){
     				that.parent().removeClass("hidden")
     			}
     		    that.parent().next().addClass("hidden")

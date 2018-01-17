@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1515464291;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514858572;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,87 +180,92 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+ <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
+<div class="container sever">
+<h2 class="text-center">找工作</h2>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:400px;object-fit:cover;"  alt="...">
-    </div>
-    <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:400px;object-fit:cover;" alt="...">
-    </div>
-    
+<div class="sever  col-center">
+    <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <div class="sever media " style="width:900px;border:1px solid #c2c2c2;justify-content:flex-start;border-radius:5px;">
+  <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="<?php echo $vo['pic']; ?>"  width="350px"  height="200px" alt="...">
+    </a>
+  </div>
+  <div class="media-body media-middle " style="position:relative; ">
+  <div style="width:70%;display:inline-block;">
+     <p style="line-height:1.75;"><span style="margin-right:15px;">企业</span><span><?php echo $vo['cname']; ?></span></p>
+      <p style="line-height:1.75;"><span style="margin-right:15px;">岗位</span><span><?php echo $vo['name']; ?></span></p>
+         <p style="line-height:1.75;"><span style="margin-right:15px;">地点</span><span><?php echo $vo['location']; ?></span></p>
+            <p style="line-height:1.75;"><span style="margin-right:15px;">职责</span><span><?php echo $vo['desc']; ?></span></p>
   </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div style="width:20%;display:inline-block;" >
+<button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-jobid="<?php echo $vo['jobid']; ?>" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
 </div>
-
-
-
-<div class="container sever">
-<p><?php echo $data; ?></p>
+ 
+  </div>
 </div>
-
-
-<div class="container sever">
-<h2 class="text-center">职造课程</h2>
-<div class=" sever row-center  " style="">
- <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="course-item"  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
-    <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
-     <img  class="" src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
-     <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $vo['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
-    </div>    
-        <h3><?php echo $vo['name']; ?></h3>
-        <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
-        <p>
-        <span class="fa fa-eye"></span>
-        <span><?php echo $vo['pageview']; ?></span>
-        <span class="pull-right"><?php echo $vo['price']; ?>元</span>
-        </p>
-    </div>
-
-    <?php endforeach; endif; else: echo "" ;endif; ?>
+        
+<!--        -->
+  
+     <?php endforeach; endif; else: echo "" ;endif; ?>
 
 </div>
-</div>
+<!--<button type="button"  c class='center-block btn btn-default'>更多工作</button>-->
 
-<!-- <p class="text-center sever">
-<a href="" class="btn btn-default text-center" style="border-radius:15px;">更多课程</a>
-</p> -->
 
 
 <div class="container sever">
 <h2 class="text-center">内推企业</h2>
+    <div class="swiper-container sever" id="company-list">
+        <div class="swiper-wrapper row-center">
+            <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <div class="swiper-slide company-logo">
+                <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
+            </div>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
 
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
         </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-
     </div>
+
 </div>
 
 </div>
+
+
+<div class="modal fade"  role="dialog" id="addjob" style="">
+ <div class="modal-dislog" style=" position:absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);">
+     <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="text-center text-success">申请成功！</h4>
+        </div>
+        <div class="modal-body">
+        
+        <p class="text-center text-success"><span class="fa fa-check-circle fa-3x"></span></p>
+        <p class="text-center">您的工作申请已提交</p>
+        <p class="text-center">职造师稍后会与您联系！</p>
+        <p class="text-center">Thankyou</p>
+          
+        </div>
+<!--         <div class="modal-footer">
+        <a type="button" href="<?php echo url('index/index'); ?>" class="btn btn-default">返回首页</a>
+        <a type="button" href="<?php echo url('companyadmin/index/login'); ?>" class="btn btn-primary">马上登陆</a>
+        <button></button>
+        </div>  --> 
+     
+    </div>
+
+ </div>
+
+</div> 
+
+
+
+
+
+
 
 
 

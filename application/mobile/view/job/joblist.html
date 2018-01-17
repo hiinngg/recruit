@@ -24,23 +24,12 @@ margin:0;
 .job-item{
 display:flex;
 width:100%;
+overflow:hidden;
 margin:13px 0;
 height:80px;
 background: #FFFFFF;
 }
-.texts-hide{
-display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;
-word-wrap:break-word;
-}
-.text-hide{
-overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-word-wrap:break-word;
-}
+
 
 {/block}
 {block name="content"}
@@ -67,7 +56,7 @@ word-wrap:break-word;
   <div id="tab{$vo.cateid}" class="weui-tab__bd-item   {eq name="i"  value="1"} weui-tab__bd-item--active{/eq}  " style="">
       <!-- cate name -->
       
-      <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class=" jobs" style="margin:0;width:100%;">
 
 	  </div><!-- item -->
       
@@ -118,16 +107,16 @@ function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
 	html+='<div class="job-item "  >'+
-	         '<div style="flex-grow:3;">'+
-		       '<h3>'+initdata[key]['name']+'</h3>'+
+	         '<div style="width:75%;">'+
+		       '<h3 style="color:#1881ec;">'+initdata[key]['name']+'</h3>'+
 			   '<div  style="display:flex;width:100%;">'+
-			     '<p style="flex-grow:1;white-space: nowrap;" >工作职责：</p>'+
-			     '<p  class="text-hide" style="flex-grow:2;height:50px;">'+initdata[key]['desc']+'</p>'+
+			     '<p style="width:33%;white-space: nowrap;font-weight:700;" >工作职责：</p>'+
+			     '<p  class="texts-hide" style="width:66%;height:50px;width:auto;">'+initdata[key]['desc']+'</p>'+
 		      '</div>'+
 	         '</div>'+
-	         '<div class="text-center" style="flex-grow:1;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
-		       '<p class="text-hide"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>'+
+	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
+		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="padding:0 1.2em;">点击报名</a>'+
 	         '</div>'+
            '</div>';
 	 }
@@ -194,7 +183,7 @@ $(".loadmore").on("click",function(){
     			     that.parent().next().addClass("hidden")
     			   return;
     			}
-    			if(data.length == 4){
+    			if(data.length > 0){
     				that.parent().removeClass("hidden")
     			}
     		    that.parent().next().addClass("hidden")

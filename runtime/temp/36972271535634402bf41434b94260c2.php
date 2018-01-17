@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1516149951;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -60,7 +61,7 @@ a {
 							<a href="">安全设置</a>
 						</dd>
 					</dl></li>
-				<li class="layui-nav-item"><a href="{:url('index/logout')}">退出</a>
+				<li class="layui-nav-item"><a href="<?php echo url('index/logout'); ?>">退出</a>
 				</li>
 			</ul>
 		</div>
@@ -72,22 +73,22 @@ a {
 					<li class="layui-nav-item layui-this"><a href="#" data-url="">企业资料</a>
 					</li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="{:url('talent/talentList')}">人才定制管理</a></li>
+						data-url="<?php echo url('talent/talentList'); ?>">人才定制管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						 data-url="{:url('team/teamList')}">团队定制管理</a></li>
+						 data-url="<?php echo url('team/teamList'); ?>">团队定制管理</a></li>
 					<li class="layui-nav-item"><a href="#"
-						data-url="{:url('position/positionList')}">普工招聘管理</a></li>
+						data-url="<?php echo url('position/positionList'); ?>">普工招聘管理</a></li>
 				<!-- 		<li class="layui-nav-item "><a class=""
 						href="javascript:;">管理需求</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a data-url="{:url('talent/talentList')}" href="javascript:;">人才定制需求管理</a>
+								<a data-url="<?php echo url('talent/talentList'); ?>" href="javascript:;">人才定制需求管理</a>
 							</dd>
 							<dd>
-								<a data-url="{:url('team/teamList')}" href="javascript:;">团队定制需求管理</a>
+								<a data-url="<?php echo url('team/teamList'); ?>" href="javascript:;">团队定制需求管理</a>
 							</dd>
 							<dd>
-								<a data-url="{:url('position/positionList')}" href="javascript:;">普工需求管理</a>
+								<a data-url="<?php echo url('position/positionList'); ?>" href="javascript:;">普工需求管理</a>
 							</dd>
 						</dl></li> -->
 				</ul>
@@ -107,7 +108,7 @@ a {
 					<div class="layui-tab-content"
 						style=" ">
 						<div class="layui-tab-item layui-show" style="overflow:hidden;">
-							<iframe src="{:url('profile')}" style="width: 100%; height: 100%;"
+							<iframe src="<?php echo url('profile'); ?>" style="width: 100%; height: 100%;"
 								frameborder="0"></iframe>
 						</div>
 					</div>

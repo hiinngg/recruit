@@ -12,10 +12,10 @@
     {block name="csslink"}{/block}
 </head>
 <style>
-body,html{
-	font-family:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-	color:#333;
-	font-size:16px;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+
 }
 .row-center{
 	display:flex;
@@ -60,6 +60,22 @@ overflow: hidden;
   .text-center{
 	text-align:center;
   }
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
   
 {block name="css"}
 
@@ -68,7 +84,9 @@ overflow: hidden;
 </style>
 <body style="height:100vh;">
 <div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span >首页</span>
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+
 <span class="fa fa-list" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
@@ -89,7 +107,7 @@ overflow: hidden;
         <a href="{:url('job/joblist')}" class="weui-tabbar__item {block name='nav-job'}{/block}">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item {block name='nav-user'}{/block}">
+        <a href="{:url('user/index')}" class="weui-tabbar__item {block name='nav-user'}{/block}">
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
