@@ -1,6 +1,87 @@
-{extend name="indexlayout" /}
-{block name="nav-user"}weui-bar__item_on{/block}
-{block name="css"}
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516195605;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516194261;}*/ ?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>小猫直聘</title>
+<!-- 	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+</head>
+<style>
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+
+}
+.row-center{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.col-center{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+.sever{
+	margin-top:30px;
+}
+.hidden{
+    display:none;
+}
+.line-indent{
+	text-indent:2em;
+}
+.text-nowrap{
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
+.weui-bar__item_on P{
+	color:#1881EC !important;
+}
+  .course-item p{
+   margin:0;
+  	white-space:nowrap; 
+text-overflow:ellipsis; 
+-o-text-overflow:ellipsis; 
+overflow: hidden; 
+  }
+  .content{
+	margin-top:35px;
+  }
+  
+  .weui-tabbar__label{
+	font-size:16px;
+  }
+  .text-center{
+	text-align:center;
+  }
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
+  
+
 
 .weui-navbar:after,.weui-navbar__item:after,.hidden{
 display:none; 
@@ -26,10 +107,22 @@ z-index:1001;
 .cl-active{
 color:#1881EC;
 }
-{/block}
-{block name="content"}
+
+
+</style>
+<body style="height:100vh;">
+<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span >首页</span>
+<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+
+<span class="fa fa-list" style="margin-right:10px;"></span>
+</div>
+  <div class="weui-tab">
+    <div class="weui-tab__panel" style="width:100%;">
+     <div class="content" style="width:100%;">
+     
 <div class="wrap" style="position:relative;width:100%;height:226px; background-image: url(/static/images/user.png);background-size:cover;">
-  <img src="{$data.avastar}"  style="position:absolute;z-index:10;top:50%;left:50%;margin-top:-73px;margin-left:-73px; width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
+  <img src="<?php echo $data['avastar']; ?>"  style="position:absolute;z-index:10;top:50%;left:50%;margin-top:-73px;margin-left:-73px; width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
 </div>
 <div class="weui-tab">
   <div class="weui-navbar" style="border-bottom:1px solid #eee;">
@@ -48,9 +141,9 @@ color:#1881EC;
     <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
      
        <div style="padding:0 15px;">
-        {present name="none"}
+        <?php if(isset($none)): ?>
             <p class="text-center sever">你还没有填写简历,<a href="#" href="javascript:;" class="open-popup" data-target="#resume"  >马上去填写</a></p>
-            {else/}   
+            <?php else: ?>   
             
           <div class="weui-panel weui-panel_access">
        <!--  <div class="weui-panel__hd">文字组合列表</div> -->
@@ -59,48 +152,48 @@ color:#1881EC;
 		    <div class="weui-cell__bd">
 		      <p>姓名</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.truename}</div>
+		    <div class="weui-cell__ft"><?php echo $data['truename']; ?></div>
 		  </div>
 		   <div class="weui-cell">
 		    <div class="weui-cell__bd">
 		      <p>性别</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.sex==0?'男':"女"}</div>
+		    <div class="weui-cell__ft"><?php echo $data['sex']==0?'男':"女"; ?></div>
 		  </div>
 		  <div class="weui-cell">
 		    <div class="weui-cell__bd">
 		      <p>出生日期</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.birthdate}</div>
+		    <div class="weui-cell__ft"><?php echo $data['birthdate']; ?></div>
 		 </div>
 		  <div class="weui-cell">
 		    <div class="weui-cell__bd">
 		      <p>目标职位</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.position}</div>
+		    <div class="weui-cell__ft"><?php echo $data['position']; ?></div>
 		 </div>
 		   <div class="weui-cell">
 		    <div class="weui-cell__bd">
 		      <p>毕业院校</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.graduated}</div>
+		    <div class="weui-cell__ft"><?php echo $data['graduated']; ?></div>
 		 </div>
 		   <div class="weui-cell">
 		    <div class="weui-cell__bd">
 		      <p>学历</p>
 		    </div>
-		    <div class="weui-cell__ft">{$data.education}</div>
+		    <div class="weui-cell__ft"><?php echo $data['education']; ?></div>
 		 </div>
 		</div><!-- cells -->
 		
 		 <div class="weui-panel__bd">
           <div class="weui-media-box weui-media-box_text">
             <h4 class="weui-media-box__title">自我评价</h4>
-            <p class="weui-media-box__desc">{$data.selfevaluation}</p>
+            <p class="weui-media-box__desc"><?php echo $data['selfevaluation']; ?></p>
           </div>
           <div class="weui-media-box weui-media-box_text">
             <h4 class="weui-media-box__title">工作经历</h4>
-            <p class="weui-media-box__desc">{$data.experience}</p>
+            <p class="weui-media-box__desc"><?php echo $data['experience']; ?></p>
           </div>
         </div>
       </div><!-- panel -->
@@ -109,7 +202,7 @@ color:#1881EC;
       
 	  
 	      
-        {/present}
+        <?php endif; ?>
        </div>
      <div id="resume" class="weui-popup__container"  style="z-index:1001;">
   <div class="weui-popup__overlay"></div>
@@ -123,13 +216,13 @@ color:#1881EC;
   <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text"  name="name"  placeholder="请输入姓名" value="{$data.truename??''}">
+          <input class="weui-input" type="text"  name="name"  placeholder="请输入姓名" value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
         </div>
   </div>
   <div class="weui-cell">
     <div class="weui-cell__hd"><label for="" class="weui-label">出生年月</label></div>
     <div class="weui-cell__bd">
-      <input class="weui-input" type="date" name="date" value="{$data.birthdate??''}">
+      <input class="weui-input" type="date" name="date" value="<?php echo isset($data['birthdate'])?$data['birthdate']:''; ?>">
     </div>
   </div>
   
@@ -147,13 +240,13 @@ color:#1881EC;
  <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">目标职业</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text" name="position"  placeholder="请输入职业" value="{$data.position??''}">
+          <input class="weui-input" type="text" name="position"  placeholder="请输入职业" value="<?php echo isset($data['position'])?$data['position']:''; ?>">
         </div>
   </div>
   <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">毕业院校</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text"  name="graduated" placeholder="请输入院校名" value="{$data.graduated??''}">
+          <input class="weui-input" type="text"  name="graduated" placeholder="请输入院校名" value="<?php echo isset($data['graduated'])?$data['graduated']:''; ?>">
         </div>
   </div>
   
@@ -285,8 +378,49 @@ color:#1881EC;
   </div>
 </div>
 
-{/block}
-{block name="script"}
+
+     </div>
+    </div>
+    <div class="weui-tabbar" style="position:fixed;">
+        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
+            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+        </a>
+        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
+
+            <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
+        </a>
+        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
+            <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
+        </a>
+        <a href="<?php echo url('user/index'); ?>" class="weui-tabbar__item weui-bar__item_on">
+            <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
+        </a>
+    </div>
+</div>
+  
+  
+  
+  
+ <!--    <div class="panel-overlay"></div>
+    Left Panel with Reveal effect
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>这是一个侧栏</p>
+            <p></p>
+            Click on link with "close-panel" class will close panel
+            <p><a href="#" class="close-panel">关闭</a></p>
+        </div>
+    </div>  -->
+<!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
+   <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+<script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="/static/js/swiper.min.js"></script>
+
+<script>
+
+
+
 $(function(){
 $(".status").on("click",function(){
     $(this).toggleClass("cl-active");
@@ -326,7 +460,7 @@ $(".loaditem1").on("click",function(){
 var that=$(this);
 var cateid=$(this).attr("data-cateid");
 $.ajax({
-url:"{:url('job/catedetail')}",
+url:"<?php echo url('job/catedetail'); ?>",
 data:{cateid:cateid,page:1},
 beforeSend:function(){
 $(that.attr("href")).find(".nomore").addClass("hidden")
@@ -354,18 +488,18 @@ $.hideLoading();
 
 
 
-	{present name="data"}
-	$("select[name='sex']").val("{$data.sex}").change()
-	$("select[name='edu']").val("{$data.education}").change()
+	<?php if(isset($data)): ?>
+	$("select[name='sex']").val("<?php echo $data['sex']; ?>").change()
+	$("select[name='edu']").val("<?php echo $data['education']; ?>").change()
 	
-		  var desc="{$data.experience}";
-		  var menu="{$data.selfevaluation}";
+		  var desc="<?php echo $data['experience']; ?>";
+		  var menu="<?php echo $data['selfevaluation']; ?>";
 		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
 		  desc=desc.replace(reg,"\n");
 		  menu=menu.replace(reg,"\n");
 		  $("textarea[name='experience']").text(desc)
 		  $("textarea[name='selfevaluation']").text(menu)
-	{/present}
+	<?php endif; ?>
 	
 
 
@@ -402,7 +536,7 @@ $.hideLoading();
     data['selfevaluation']=$("textarea[name='selfevaluation']").val().replace(/\n|\r\n/g,"<br>")
     $.ajax({
     	
-    	url:"{:url('editinfo')}",
+    	url:"<?php echo url('editinfo'); ?>",
     	data:{data:data},
     	type:"post",
     	beforeSend:function(){
@@ -413,7 +547,7 @@ $.hideLoading();
     		if(data==1){
     	     $.toast("保存成功",500);
     	      setTimeout(function(){
-    	            window.location.href="{:url('user/index')}"
+    	            window.location.href="<?php echo url('user/index'); ?>"
     	     },500)
     
     		}else{
@@ -436,6 +570,17 @@ $.hideLoading();
 
 
 })
-{/block}
 
 
+
+
+
+</script>
+</body>
+</html>   
+   
+   
+   
+ 
+    <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+    

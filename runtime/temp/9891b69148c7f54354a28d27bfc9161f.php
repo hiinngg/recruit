@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516109558;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516104906;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516193262;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516194261;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,10 +13,10 @@
     
 </head>
 <style>
-body,html{
-	font-family:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-	color:#333;
-	font-size:16px;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+
 }
 .row-center{
 	display:flex;
@@ -31,6 +31,9 @@ body,html{
 }
 .sever{
 	margin-top:30px;
+}
+.hidden{
+    display:none;
 }
 .line-indent{
 	text-indent:2em;
@@ -61,6 +64,22 @@ overflow: hidden;
   .text-center{
 	text-align:center;
   }
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
   
 
 .job-item p,h4{
@@ -85,30 +104,21 @@ margin:0;
 .job-item{
 display:flex;
 width:100%;
+overflow:hidden;
 margin:13px 0;
 height:80px;
 background: #FFFFFF;
 }
-.texts-hide{
-display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;
-word-wrap:break-word;
-}
-.text-hide{
-overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-word-wrap:break-word;
-}
+
 
 
 
 </style>
 <body style="height:100vh;">
 <div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<span >首页</span>
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+
 <span class="fa fa-list" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
@@ -138,7 +148,7 @@ word-wrap:break-word;
   <div id="tab<?php echo $vo['cateid']; ?>" class="weui-tab__bd-item   <?php if($i == '1'): ?> weui-tab__bd-item--active<?php endif; ?>  " style="">
       <!-- cate name -->
       
-      <div class=" jobs" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class=" jobs" style="margin:0;width:100%;">
 
 	  </div><!-- item -->
       
@@ -176,7 +186,7 @@ word-wrap:break-word;
         <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item weui-bar__item_on">
             <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item ">
+        <a href="<?php echo url('user/index'); ?>" class="weui-tabbar__item ">
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
@@ -230,16 +240,16 @@ function viewdata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){ 
 	html+='<div class="job-item "  >'+
-	         '<div style="flex-grow:3;">'+
-		       '<h3>'+initdata[key]['name']+'</h3>'+
+	         '<div style="width:75%;">'+
+		       '<h3 style="color:#1881ec;">'+initdata[key]['name']+'</h3>'+
 			   '<div  style="display:flex;width:100%;">'+
-			     '<p style="flex-grow:1;white-space: nowrap;" >工作职责：</p>'+
-			     '<p  class="text-hide" style="flex-grow:2;height:50px;">'+initdata[key]['desc']+'</p>'+
+			     '<p style="width:33%;white-space: nowrap;font-weight:700;" >工作职责：</p>'+
+			     '<p  class="texts-hide" style="width:66%;height:50px;width:auto;">'+initdata[key]['desc']+'</p>'+
 		      '</div>'+
 	         '</div>'+
-	         '<div class="text-center" style="flex-grow:1;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
-		       '<p class="text-hide"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="white-space:nowrap;">点击报名</a>'+
+	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
+		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="padding:0 1.2em;">点击报名</a>'+
 	         '</div>'+
            '</div>';
 	 }
@@ -306,7 +316,7 @@ $(".loadmore").on("click",function(){
     			     that.parent().next().addClass("hidden")
     			   return;
     			}
-    			if(data.length == 4){
+    			if(data.length > 0){
     				that.parent().removeClass("hidden")
     			}
     		    that.parent().next().addClass("hidden")
