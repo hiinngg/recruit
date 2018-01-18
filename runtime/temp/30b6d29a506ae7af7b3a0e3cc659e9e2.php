@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516153481;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516167354;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516153481;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516182213;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,6 +61,22 @@ overflow: hidden;
   .text-center{
 	text-align:center;
   }
+.texts-hide{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
   
 
 .course-item p,h4{

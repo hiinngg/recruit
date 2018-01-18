@@ -1,0 +1,541 @@
+---------------------------------------------------------------
+[ 2018-01-18T08:52:17+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/courselist.html
+[ info ] www.rec.com/mobile/course/courselist.html [运行时间：0.256014s][吞吐率：3.91req/s] [内存消耗：3,594.69kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'cates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.119007s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_category` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_category` [ RunTime:0.024002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:17+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.rec.com/static/js/swiper.min.js.map [运行时间：0.024002s][吞吐率：41.66req/s] [内存消耗：1,638.00kb] [文件加载：30]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-18T08:52:29+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/courselist.html
+[ info ] www.rec.com/mobile/course/courselist.html [运行时间：0.172010s][吞吐率：5.81req/s] [内存消耗：3,342.30kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'courselist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Course->courseList[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html [ array (
+  0 => 'cates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_category` [ RunTime:0.023002s ]
+[ sql ] [ SQL ] SELECT * FROM `re_category` [ RunTime:0.023001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:29+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/catedetail.html?cateid=1&page=1
+[ info ] www.rec.com/mobile/course/catedetail.html?cateid=1&page=1 [运行时间：0.172010s][吞吐率：5.81req/s] [内存消耗：3,241.88kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '1',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.025002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = '1' LIMIT 0,4 [ RunTime:0.025001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:29+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.rec.com/static/js/swiper.min.js.map [运行时间：0.016001s][吞吐率：62.50req/s] [内存消耗：1,637.99kb] [文件加载：30]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-18T08:52:29+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/catedetail.html?cateid=1&page=1
+[ info ] www.rec.com/mobile/course/catedetail.html?cateid=1&page=1 [运行时间：0.133008s][吞吐率：7.52req/s] [内存消耗：3,241.88kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '1',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.041002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = '1' LIMIT 0,4 [ RunTime:0.030002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:31+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/catedetail.html?cateid=2&page=1
+[ info ] www.rec.com/mobile/course/catedetail.html?cateid=2&page=1 [运行时间：0.130007s][吞吐率：7.69req/s] [内存消耗：3,238.96kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '2',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = '2' LIMIT 0,4 [ RunTime:0.026002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:32+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/catedetail.html?cateid=3&page=1
+[ info ] www.rec.com/mobile/course/catedetail.html?cateid=3&page=1 [运行时间：0.140008s][吞吐率：7.14req/s] [内存消耗：3,238.96kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '3',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.038002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = '3' LIMIT 0,4 [ RunTime:0.026001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:32+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/course/catedetail.html?cateid=1&page=1
+[ info ] www.rec.com/mobile/course/catedetail.html?cateid=1&page=1 [运行时间：0.148008s][吞吐率：6.76req/s] [内存消耗：3,241.88kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'course',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '1',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Course->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Course.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040003s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course` [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SELECT `re_course`.`courseid`,`re_course`.`label_img`,`re_course`.`name`,`re_course`.`desc`,`re_course`.`price`,`re_course`.`cateid`,`re_course`.`pageview`,`re_category`.`name` AS `catename` FROM `re_course` `re_course` INNER JOIN `re_category` `re_category` ON `re_category`.`cateid`=`re_course`.`cateid` WHERE  `re_course`.`status` = 1  AND `re_course`.`cateid` = '1' LIMIT 0,4 [ RunTime:0.027002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:34+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/job/joblist.html
+[ info ] www.rec.com/mobile/job/joblist.html [运行时间：0.115007s][吞吐率：8.70req/s] [内存消耗：3,306.26kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'job',
+    2 => 'joblist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/mobile/course/courselist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\Job->jobList[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Job.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html [ array (
+  0 => 'jobcates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_jobcate` [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SELECT * FROM `re_jobcate` [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:34+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.rec.com/static/js/swiper.min.js.map [运行时间：0.014001s][吞吐率：71.42req/s] [内存消耗：1,637.99kb] [文件加载：30]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-18T08:52:34+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/job/catedetail.html?cateid=5&page=1
+[ info ] www.rec.com/mobile/job/catedetail.html?cateid=5&page=1 [运行时间：0.196012s][吞吐率：5.10req/s] [内存消耗：3,225.60kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'job',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '5',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Job->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Job.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_job` [ RunTime:0.042002s ]
+[ sql ] [ SQL ] SELECT `re_job`.*,`re_jobcate`.`name` AS `catename` FROM `re_job` `re_job` INNER JOIN `re_jobcate` `re_jobcate` ON `re_jobcate`.`cateid`=`re_job`.`cate` WHERE  `re_job`.`status` = 1  AND `re_job`.`cate` = '5' LIMIT 0,4 [ RunTime:0.088005s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:36+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/job/catedetail.html?cateid=7&page=1
+[ info ] www.rec.com/mobile/job/catedetail.html?cateid=7&page=1 [运行时间：0.334020s][吞吐率：2.99req/s] [内存消耗：3,229.75kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'job',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '7',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Job->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Job.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.154009s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_job` [ RunTime:0.114007s ]
+[ sql ] [ SQL ] SELECT `re_job`.*,`re_jobcate`.`name` AS `catename` FROM `re_job` `re_job` INNER JOIN `re_jobcate` `re_jobcate` ON `re_jobcate`.`cateid`=`re_job`.`cate` WHERE  `re_job`.`status` = 1  AND `re_job`.`cate` = '7' LIMIT 0,4 [ RunTime:0.026001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:37+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/job/catedetail.html?cateid=6&page=1
+[ info ] www.rec.com/mobile/job/catedetail.html?cateid=6&page=1 [运行时间：0.124007s][吞吐率：8.06req/s] [内存消耗：3,225.60kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'job',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '6',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Job->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Job.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_job` [ RunTime:0.025001s ]
+[ sql ] [ SQL ] SELECT `re_job`.*,`re_jobcate`.`name` AS `catename` FROM `re_job` `re_job` INNER JOIN `re_jobcate` `re_jobcate` ON `re_jobcate`.`cateid`=`re_job`.`cate` WHERE  `re_job`.`status` = 1  AND `re_job`.`cate` = '6' LIMIT 0,4 [ RunTime:0.025002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:37+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/job/catedetail.html?cateid=7&page=1
+[ info ] www.rec.com/mobile/job/catedetail.html?cateid=7&page=1 [运行时间：0.090005s][吞吐率：11.11req/s] [内存消耗：3,229.75kb] [文件加载：43]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'job',
+    2 => 'catedetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/mobile/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'cateid' => '7',
+  'page' => '1',
+)
+[ info ] [ RUN ] app\mobile\controller\Job->catedetail[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\Job.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_job` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `re_job`.*,`re_jobcate`.`name` AS `catename` FROM `re_job` `re_job` INNER JOIN `re_jobcate` `re_jobcate` ON `re_jobcate`.`cateid`=`re_job`.`cate` WHERE  `re_job`.`status` = 1  AND `re_job`.`cate` = '7' LIMIT 0,4 [ RunTime:0.019001s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:43+08:00 ] 127.0.0.1 127.0.0.1 GET /mobile/user/index.html
+[ info ] www.rec.com/mobile/user/index.html [运行时间：0.197011s][吞吐率：5.08req/s] [内存消耗：3,402.70kb] [文件加载：45]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'mobile',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516236670152832 webdebugger port/9974',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.rec.com/mobile/job/joblist.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\mobile\controller\User->index[ D:\wamp3\wamp64\www\recruit\application\mobile\controller\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html [ array (
+  0 => 'courselist',
+  1 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_user` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `re_user`.*,`re_resume`.* FROM `re_user` `re_user` INNER JOIN `re_resume` `re_resume` ON `re_resume`.`userid`=`re_user`.`userid` WHERE  `re_user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' LIMIT 1 [ RunTime:0.026001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_course_user` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT `course_user`.*,`course`.`name`,`course`.`type`,`course`.`period`,`course`.`teacher`,`course`.`contact`,`user`.* FROM `re_course_user` `course_user` INNER JOIN `re_course` `course` ON `course`.`courseid`=`course_user`.`courseid` INNER JOIN `re_user` `user` ON `user`.`userid`=`course_user`.`userid` WHERE  `user`.`openid` = 'oNnLYsk8-NJdJmW7xQY6rScC1268' ORDER BY course_user.createtime desc [ RunTime:0.028002s ]
+---------------------------------------------------------------
+[ 2018-01-18T08:52:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/swiper.min.js.map
+[ info ] www.rec.com/static/js/swiper.min.js.map [运行时间：0.023002s][吞吐率：43.47req/s] [内存消耗：1,637.99kb] [文件加载：30]
+[ info ] [ LANG ] D:\wamp3\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'js',
+    2 => 'swiper.min.js.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
