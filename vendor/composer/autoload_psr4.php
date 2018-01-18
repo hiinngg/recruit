@@ -9,4 +9,7 @@ return array(
     'think\\composer\\' => array($vendorDir . '/topthink/think-installer/src'),
     'think\\' => array($baseDir . '/thinkphp/library/think', $vendorDir . '/topthink/think-image/src'),
     'app\\' => array($baseDir . '/application'),
+    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
+    'Symfony\\Component\\OptionsResolver\\' => array($vendorDir . '/symfony/options-resolver'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
 );

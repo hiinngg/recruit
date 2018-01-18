@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516167354;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516267283;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +19,9 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
-
+    box-sizing:border-box;
+	margin:0;
+	padding:0;
 }
 .row-center{
 	display:flex;
@@ -34,6 +36,9 @@ body {
 }
 .sever{
 	margin-top:30px;
+}
+.hidden{
+    display:none;
 }
 .line-indent{
 	text-indent:2em;
@@ -64,6 +69,25 @@ overflow: hidden;
   .text-center{
 	text-align:center;
   }
+.texts-hide{
+	width:100%;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+word-wrap:break-word;
+word-break: break-all;
+}
+.text-hide{
+	width:100%;
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+word-wrap:break-word;
+word-break: break-all;
+
+}
+
   
 
 .company-logo{
@@ -79,15 +103,15 @@ width:45%;
 
 
 </style>
-<body style="height:100vh;">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
-<span >首页</span>
-<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<body style="overflow:hidden;height:100vh;">
+<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
-<span class="fa fa-list" style="margin-right:10px;"></span>
+<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<span >首页</span>
+<span class="fa fa-list menu" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;">
+    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
      <div class="content" style="width:100%;">
      
     <div class="swiper-container" id="coursel" >
@@ -136,7 +160,7 @@ width:45%;
 
      </div>
     </div>
-    <div class="weui-tabbar" style="position:fixed;">
+    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  weui-bar__item_on" >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
@@ -189,7 +213,23 @@ width:45%;
     
 
 
-
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "企业后台",
+		    onClick: function() {
+		      window.location.href="<?php echo url('company/login'); ?>"
+		    }
+		  },{
+		    text: "删除",
+		    onClick: function() {
+		      //do something
+		    }
+		  }]
+		});
+	
+})
 
 
 </script>

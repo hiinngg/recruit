@@ -16,6 +16,15 @@ class ComposerStaticIniteac25264917b50404e34a078bb27995f
         array (
             'app\\' => 4,
         ),
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\OptionsResolver\\' => 34,
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -32,9 +41,28 @@ class ComposerStaticIniteac25264917b50404e34a078bb27995f
         array (
             0 => __DIR__ . '/../..' . '/application',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Symfony\\Component\\OptionsResolver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/options-resolver',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
     );
 
     public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'ImageOptimizer' => 
+            array (
+                0 => __DIR__ . '/..' . '/ps/image-optimizer/src',
+            ),
+        ),
         'D' => 
         array (
             'Detection' => 

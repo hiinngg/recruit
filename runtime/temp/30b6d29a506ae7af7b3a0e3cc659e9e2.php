@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516153481;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516182213;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516265453;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516267283;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +16,9 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
-
+    box-sizing:border-box;
+	margin:0;
+	padding:0;
 }
 .row-center{
 	display:flex;
@@ -31,6 +33,9 @@ body {
 }
 .sever{
 	margin-top:30px;
+}
+.hidden{
+    display:none;
 }
 .line-indent{
 	text-indent:2em;
@@ -62,6 +67,7 @@ overflow: hidden;
 	text-align:center;
   }
 .texts-hide{
+	width:100%;
 display: -webkit-box;
 -webkit-box-orient: vertical;
 -webkit-line-clamp: 3;
@@ -70,6 +76,7 @@ word-wrap:break-word;
 word-break: break-all;
 }
 .text-hide{
+	width:100%;
 overflow: hidden;
 text-overflow:ellipsis;
 white-space: nowrap;
@@ -77,7 +84,9 @@ word-wrap:break-word;
 word-break: break-all;
 
 }
+
   
+
 
 .course-item p,h4{
 margin:0;
@@ -104,23 +113,24 @@ width:45%;
 
 
 
-</style>
-<body style="height:100vh;">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
-<span >首页</span>
-<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 
-<span class="fa fa-list" style="margin-right:10px;"></span>
+</style>
+<body style="overflow:hidden;height:100vh;">
+<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+
+<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<span >首页</span>
+<span class="fa fa-list menu" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;">
+    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
      <div class="content" style="width:100%;">
      
 <div class="content-padded"   style="height:30px;">
 <p></p>
 </div>  
 
-<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;">
+<div class="weui-tab" id='page-infinite-navbar' style="min-height:100%;">
 
     <div class="swiper-container" id="cates" style="border-bottom:1px solid #eee;" >
    <div class="swiper-wrapper weui-navbar"  > 
@@ -134,7 +144,7 @@ width:45%;
    </div> 
  
 	
-<div class="weui-tab__bd" style="">
+<div class="weui-tab__bd" style="overflow:hidden;">
 <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
   <div id="tab<?php echo $vo['cateid']; ?>" class="weui-tab__bd-item   <?php if($i == '1'): ?> weui-tab__bd-item--active<?php endif; ?>  " style="">
       <h2 class="text-center" style="margin:15px 0;"><?php echo $vo['name']; ?></h2>
@@ -167,7 +177,7 @@ width:45%;
 
      </div>
     </div>
-    <div class="weui-tabbar" style="position:fixed;">
+    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
@@ -312,7 +322,23 @@ $(".loadmore").on("click",function(){
   
 
 
-
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "企业后台",
+		    onClick: function() {
+		      window.location.href="<?php echo url('company/login'); ?>"
+		    }
+		  },{
+		    text: "删除",
+		    onClick: function() {
+		      //do something
+		    }
+		  }]
+		});
+	
+})
 
 
 </script>

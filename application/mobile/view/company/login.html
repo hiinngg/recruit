@@ -1,0 +1,82 @@
+{extend name="indexlayout" /}
+{block name="css"}
+.bg:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;;
+    opacity: 0.5;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+{/block}
+{block name="content"}
+<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/login.png');background-size:cover;min-height:100vh; width:100%;overflow:hidden;">
+
+<div style="position:absolute;z-index:1; border-radius:20px; top: 40%;left: 50%;transform: translate(-50%, -50%);width:80%;background:#ffffff;margin:0 auto;padding:15px;">
+<p class="text-center">企业入口</p>
+	<div class="weui-cells weui-cells_form">
+	 <div class="weui-cell" style="background:#eee;border-radius:10px;">
+	  
+	    <div class="weui-cell__bd" >
+	      <input class="weui-input"  name="username" type="text"  placeholder="用户名">
+	    </div>
+	  </div>
+	   <div class="weui-cell" style="background:#eee;margin-top:10px;border-radius:10px;">
+	 
+	    <div class="weui-cell__bd" >
+	      <input class="weui-input" name="userpass" type="password"  placeholder="密码">
+	    </div>
+	  </div>
+	</div>
+	<div class="sever text-center">
+	<a href="javascript:;"  class=" weui-btn weui-btn_mini  weui-btn_plain-default login">登录</a>
+	<p >还没有账号，去 <a style="color:#1881EC;" href="{:url('company/reg')}">注册</a></p>
+    </div>
+	
+	</div>
+</div>
+{/block}
+{block name="script"}
+$(function(){
+$(".login").on("click",function(){
+if($("input[name='username']").val()==""||$("input[name='userpass']").val()==""){
+	$.toptip('请输入用户名或密码', 'error');
+	return;
+}
+$.ajax({
+  url:"{:url('company/login')}",
+  data:{username:$("input[name='username']").val(),userpass:$("input[name='userpass']").val()},
+  type:"post",
+  beforeSend:function(){
+      $.showLoading()
+  },
+  success:function(data){
+	  if(data==1){
+	  $.toptip('登录成功', 'success');
+	  setTimeout(function(){
+	   location.href="{:url('company/index')}"
+	  },1000)
+	
+	  }else{
+	   $.toptip('用户名或密码错误', 'error');
+	  }
+  },
+  complete:function(){
+   $.hideLoading()
+  }
+
+
+})
+
+
+})
+
+
+
+})
+
+{/block}

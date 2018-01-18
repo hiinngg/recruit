@@ -30,6 +30,25 @@ class User extends Common{
         $this->assign("data",$res); 
         return $this->fetch();
     }
+    
+    public  function jobuser(){
+        
+        $data=Db::view("job_user","*")->view("user","userid","user.userid=job_user.userid")->view("job","name","job.jobid=job_user.jobid")->where(['user.openid'=>Cookie::get("rec_openid")])->select();
+        return $data;
+        
+        
+    }
+    public  function courseuser(){
+    
+        $data=Db::view("course_user","*")->view("user","userid","user.userid=course_user.userid")->view("course","name,teacher,contact","course.courseid=course_user.courseid")->where(['user.openid'=>Cookie::get("rec_openid")])->select();
+        return $data;
+    
+    
+    }
+    
+    
+    
+    
     public function  editinfo(){
         $post = $this->request->post();
         $data=[

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516184594;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516182213;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516261760;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516267283;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +16,9 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
-
+    box-sizing:border-box;
+	margin:0;
+	padding:0;
 }
 .row-center{
 	display:flex;
@@ -31,6 +33,9 @@ body {
 }
 .sever{
 	margin-top:30px;
+}
+.hidden{
+    display:none;
 }
 .line-indent{
 	text-indent:2em;
@@ -62,6 +67,7 @@ overflow: hidden;
 	text-align:center;
   }
 .texts-hide{
+	width:100%;
 display: -webkit-box;
 -webkit-box-orient: vertical;
 -webkit-line-clamp: 3;
@@ -70,6 +76,7 @@ word-wrap:break-word;
 word-break: break-all;
 }
 .text-hide{
+	width:100%;
 overflow: hidden;
 text-overflow:ellipsis;
 white-space: nowrap;
@@ -77,6 +84,7 @@ word-wrap:break-word;
 word-break: break-all;
 
 }
+
   
 
 
@@ -98,21 +106,22 @@ background:#ffffff;
     width: 100%;
     height: 100%;
 }
-.weui-toptips{
-z-index:1001;
+
+.cl-active{
+color:#1881EC;
 }
 
 
 </style>
-<body style="height:100vh;">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
-<span >首页</span>
-<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<body style="overflow:hidden;height:100vh;">
+<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
-<span class="fa fa-list" style="margin-right:10px;"></span>
+<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<span >首页</span>
+<span class="fa fa-list menu" style="margin-right:10px;"></span>
 </div>
   <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;">
+    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
      <div class="content" style="width:100%;">
      
 <div class="wrap" style="position:relative;width:100%;height:226px; background-image: url(/static/images/user.png);background-size:cover;">
@@ -123,10 +132,10 @@ z-index:1001;
     <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
       我的简历
     </a>
-    <a class="loaditem  weui-navbar__item" href="#tab2">
+    <a class="loaditem  weui-navbar__item"  data-url="<?php echo url('user/jobuser'); ?>"  href="#tab2">
       我的申请
     </a>
-        <a class="loaditem weui-navbar__item" href="#tab3">
+        <a class="loaditem weui-navbar__item"  data-url="<?php echo url('user/courseuser'); ?>" href="#tab3">
       我的课程
     </a>
  
@@ -294,48 +303,62 @@ z-index:1001;
      
 
     </div>
-    <div id="tab2" class="weui-tab__bd-item"   style="background:#eee;position:relative;">
-      
-      <div class="item row-center text-center"  style="width:100%;height:35px;background:#ffffff;margin:15px 0;justify-content:space-around;">
-       <p style="width:33%;">时间</p>
-       <p style="width:33%;">课程名称</p>
-       <p style="width:33%;">详情</p>
-      </div>
+    <div id="tab2" class="weui-tab__bd-item"   style="background:#eee;position:relative;overflow: hidden;">
+
+
+        <div class="item row-center text-center"  style="width:100%;height:35px;background:#ffffff;margin:15px 0;justify-content:space-around;">
+            <p style="width:33%;">时间</p>
+            <p style="width:33%;">申请职位</p>
+            <p style="width:33%;">详情</p>
+        </div>
+
+        <div class="item my-items">
     
-    <div class="item my-items">
-     <div class="item col-center "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">
-     <div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">
-	       <p style="width:33%;">2017/12/12</p>
-	       <p class="text-hide" style="width:33%;">231231232131设计课程</p>
-	       <p class="status" style="width:33%;">查看</p>
-     </div>
-     <div  class="col-center " style="background:#eee;width:100%;align-items:flex-start;padding:13px;">
-     	 <p>dsvbhbvfbvhfbvf</p>
-         
-          <p>dfvdbvfdbhdfb</p>
-     </div>
-     
-    </div>
-     <div class="item row-center text-center"  style="width:100%;height:35px;position:relative;background:#ffffff;margin:15px 0;justify-content:space-around;">
-       <p style="width:33%;">2017/12/12</p>
-       <p class="text-hide" style="width:33%;">231231232131设计课程</p>
-       <p class="status" style="width:33%;">查看</p>
-     
-       
-    </div>
+        </div>
+      
+        <div class="text-center  hidden">
+      <a href="javascript:;"  data-currentpage="1"    style="margin-top:15px;"  class="weui-btn weui-btn_mini weui-btn_default loadmore">更多课程</a>
+     </div><!-- loadmore -->
+
+	<div class="weui-loadmore hidden loading">
+	  <i class="weui-loading"></i>
+	  <span class="weui-loadmore__tips">正在加载</span>
+	</div><!-- loading -->
+	
+	<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
+	  <span class="weui-loadmore__tips" style="background:#eee;">暂无更多数据</span>
+	</div><!-- no more -->
+      
+      
+    </div><!-- 我的申请 -->
     
-       
- 
-      
-      </div>
-     
-      
-      
-    </div>
-    
-       <div id="tab3" class="weui-tab__bd-item">
-      <h1>页面三</h1>
-    </div>
+       <div id="tab3" class="weui-tab__bd-item" style="background:#eee;position:relative;overflow: hidden;">
+
+           <div class="item row-center text-center"  style="width:100%;height:35px;background:#ffffff;margin:15px 0;justify-content:space-around;">
+               <p style="width:33%;">时间</p>
+               <p style="width:33%;">课程名称</p>
+               <p style="width:33%;">详情</p>
+           </div>
+
+           <div class="item my-items">
+            
+           </div>
+           
+           
+     <div class="text-center  hidden">
+      <a href="javascript:;"  data-currentpage="1"    style="margin-top:15px;"  class="weui-btn weui-btn_mini weui-btn_default loadmore">更多课程</a>
+     </div><!-- loadmore -->
+
+	<div class="weui-loadmore hidden loading">
+	  <i class="weui-loading"></i>
+	  <span class="weui-loadmore__tips">正在加载</span>
+	</div><!-- loading -->
+	
+	<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
+	  <span class="weui-loadmore__tips" style="background:#eee;">暂无更多数据</span>
+	</div><!-- no more -->
+           
+    </div><!-- 我的课程 -->
    
   </div>
 </div>
@@ -343,7 +366,7 @@ z-index:1001;
 
      </div>
     </div>
-    <div class="weui-tabbar" style="position:fixed;">
+    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
@@ -386,23 +409,30 @@ z-index:1001;
 $(function(){
 
 
+
+
 //渲染数据
 function viewdata(obj,initdata,invoke){
 	var html="";
-	 for(key in initdata  ){ 
-	html+='<div class="job-item "  >'+
-	         '<div style="width:75%;">'+
-		       '<h3 style="color:#1881ec;">'+initdata[key]['name']+'</h3>'+
-			   '<div  style="display:flex;width:100%;">'+
-			     '<p style="width:33%;white-space: nowrap;font-weight:700;" >工作职责：</p>'+
-			     '<p  class="texts-hide" style="width:66%;height:50px;width:auto;">'+initdata[key]['desc']+'</p>'+
-		      '</div>'+
-	         '</div>'+
-	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
-		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="padding:0 1.2em;">点击报名</a>'+
-	         '</div>'+
-           '</div>';
+	 for(key in initdata  ){  
+	 ttDate = initdata[key]['createtime'];   
+	 ttDate = ttDate.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString(); 
+     ttDate = ttDate.replace(/[^0-9]/mg, '-');   
+	 
+	html+=' <div class="item "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">'+
+                '<div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">'+
+                    '<p style="width:33%;">'+ttDate+'</p>'+
+                    '<p class="text-hide" style="width:33%;">'+initdata[key]['name']+'</p>'+
+                    '<p class="status" style="width:33%;"><span class="fa fa-caret-down">&nbsp;</span>'+(initdata[key]['status']==1?"<span style='color:red;'>查看反馈</span>":"查看")+'</p>'+
+               ' </div>'+
+               ' <div  class="hidden" style="background:#eee;padding:13px;">'+
+                    '<p class="texts-hide"><span>课程导师：'+initdata[key]['teacher']+'</span>&nbsp;<span>联系方式：'+initdata[key]['contact']+'</span></p>'+
+                    '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
+                   ' <p class="texts-hide">'+initdata[key]['feedback']+'</p>'+
+                '</div>'+
+
+            '</div>';
+           
 	 }
 	 
 	 if(invoke){
@@ -413,15 +443,14 @@ function viewdata(obj,initdata,invoke){
 
 }
 
-$(".loaditem1").on("click",function(){
+$(".loaditem").on("click",function(){
 var that=$(this);
-var cateid=$(this).attr("data-cateid");
+var url=$(this).attr("data-url");
 $.ajax({
-url:"<?php echo url('job/catedetail'); ?>",
-data:{cateid:cateid,page:1},
+url:url,
 beforeSend:function(){
 $(that.attr("href")).find(".nomore").addClass("hidden")
-$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
+//$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
 $.showLoading();
 },
 success:function(data){
@@ -429,10 +458,10 @@ if(data.length == 0){
 $(that.attr("href")).find(".nomore").removeClass("hidden")
 return;
 }
-if(data.length == 4){
-$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
-}
-viewdata($(that.attr("href")).find(".jobs"),data,true)
+//if(data.length == 4){
+//$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
+//}
+viewdata($(that.attr("href")).find(".my-items"),data,true)
 },
 complete:function(){
 $.hideLoading();
@@ -458,7 +487,11 @@ $.hideLoading();
 		  $("textarea[name='selfevaluation']").text(menu)
 	<?php endif; ?>
 	
-
+$(".my-items").on("click",".status",function(){
+console.log("")
+    $(this).toggleClass("cl-active");
+    $(this).parent().next().toggleClass("hidden");
+})
 
 //保存
 	
@@ -529,7 +562,23 @@ $.hideLoading();
 })
 
 
-
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "企业后台",
+		    onClick: function() {
+		      window.location.href="<?php echo url('company/login'); ?>"
+		    }
+		  },{
+		    text: "删除",
+		    onClick: function() {
+		      //do something
+		    }
+		  }]
+		});
+	
+})
 
 
 </script>

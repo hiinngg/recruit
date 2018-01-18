@@ -1,0 +1,120 @@
+{extend name="indexlayout" /}
+{block name="css"}
+.bg:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;
+    opacity: 0.3;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+.weui-cell:before,.weui-cell:after,.weui-cells:after, .weui-cells:before{
+display:none;
+}
+.weui-cell input{
+
+background:#ffffff;
+border-radius:5px;
+padding-left:10px;
+border:1px solid #ccc;
+}
+.weui-uploader__input-box{
+width:175px;height:100px;
+}
+{/block}
+
+{block name="content"}
+<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/user.png');background-size:cover;height:100vh; width:100%;">
+
+<div class="weui-cells weui-cells_form " style="position:absolute;z-index:1;width:100%;min-height:100vh; background-color: rgba(0,0,0,0);">
+	 <div class="weui-cell" >
+	  <div class="weui-cell__hd" ><label class="weui-label">企业名称</label></div>
+	    <div class="weui-cell__bd" >
+	      
+	      <input class="weui-input"  name="username" type="text"  >
+	    </div>
+	  </div>
+	   <div class="weui-cell" >
+	  <div class="weui-cell__hd"><label class="weui-label">登录密码</label></div>
+	    <div class="weui-cell__bd" >
+	      <input class="weui-input" name="userpass" type="password"  >
+	    </div>
+	  </div>
+	   <div class="weui-cell" >
+	  <div class="weui-cell__hd"><label class="weui-label">确认密码</label></div>
+	    <div class="weui-cell__bd" >
+	      
+	      <input class="weui-input" name="userpass" type="password"  >
+	    </div>
+	  </div>
+	   <div class="weui-cell" >
+	   <div class="weui-cell__hd"><label class="weui-label">HR联系电话</label></div>
+	    <div class="weui-cell__bd" >
+	       
+	      <input class="weui-input" name="userpass" type="password" >
+	    </div>
+	  </div>
+	  
+	  <h4  style="margin-left:10px; color:#1881EC;">完成以下信息成为内推企业</h4>
+	  
+	   <div class="weui-cell" >
+	   <div class="weui-cell__hd"><label class="weui-label">企业全称</label></div>
+	    <div class="weui-cell__bd" >
+	       
+	      <input class="weui-input" name="userpass" type="password" >
+	    </div>
+	  </div>
+	   <div class="weui-cell" >
+	   <div class="weui-cell__hd"><label class="weui-label">企业地址</label></div>
+	    <div class="weui-cell__bd" >
+	       
+	      <input class="weui-input" name="userpass" type="password" >
+	    </div>
+	  </div>
+   <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <div class="weui-uploader">
+       <div class="weui-uploader__hd">
+          <p class="weui-uploader__title">企业LOGO</p>   
+        </div>
+
+           <div class="weui-uploader__input-box">
+            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+          </div>
+      </div>
+     </div>
+    </div>
+	  
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <div class="weui-uploader">
+       <div class="weui-uploader__hd">
+          <p class="weui-uploader__title">办公环境</p>   
+        </div>
+
+           <div class="weui-uploader__input-box">
+            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+           <span style="position:absolute;bottom:0;right:-50%;">企业门口</span>
+          </div>
+           <div class="weui-uploader__input-box">
+            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+           <span style="position:absolute;bottom:0;right:-50%;">办公环境</span>
+           </div>
+           <div class="weui-uploader__input-box">
+            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+          <span style="position:absolute;bottom:0;right:-50%;">办公环境</span>
+          </div>
+      </div>
+     </div>
+    </div>
+	  
+	  
+	</div>
+
+
+
+</div>
+{/block}

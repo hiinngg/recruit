@@ -2,6 +2,7 @@
 {block name="nav-course"}weui-bar__item_on{/block}
 {block name="title"}微课{/block}
 {block name="css"}
+
 .course-item p,h4{
 margin:0;
 }
@@ -25,13 +26,14 @@ margin:0;
 width:45%;
 }
 
+
 {/block}
 {block name="content"}
 <div class="content-padded"   style="height:30px;">
 <p></p>
 </div>  
 
-<div class="weui-tab" id='page-infinite-navbar' style="padding:15px;">
+<div class="weui-tab" id='page-infinite-navbar' style="min-height:100%;">
 
     <div class="swiper-container" id="cates" style="border-bottom:1px solid #eee;" >
    <div class="swiper-wrapper weui-navbar"  > 
@@ -45,7 +47,7 @@ width:45%;
    </div> 
  
 	
-<div class="weui-tab__bd" style="">
+<div class="weui-tab__bd" style="overflow:hidden;">
 {volist name="cates"  id="vo"}
   <div id="tab{$vo.cateid}" class="weui-tab__bd-item   {eq name="i"  value="1"} weui-tab__bd-item--active{/eq}  " style="">
       <h2 class="text-center" style="margin:15px 0;">{$vo.name}</h2>

@@ -116,7 +116,7 @@ function viewdata(obj,initdata,invoke){
 	         '</div>'+
 	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
 		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default " style="padding:0 1.2em;">点击报名</a>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default  apply" style="padding:0 1.2em;">点击报名</a>'+
 	         '</div>'+
            '</div>';
 	 }
@@ -156,6 +156,10 @@ $.hideLoading();
 
 })
 })
+
+
+
+
 
 $(".weui-navbar a.weui-bar__item--on").trigger("click")
 
