@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516279864;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516279864;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516279864;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516366442;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -83,6 +83,9 @@ white-space: nowrap;
 word-wrap:break-word;
 word-break: break-all;
 
+}
+.weui-toptips{
+	z-index:2000;
 }
 
   
@@ -562,6 +565,8 @@ console.log("")
 })
 
 
+
+
 $(".menu").on("click",function(){
 	
 	$.actions({
@@ -570,15 +575,12 @@ $(".menu").on("click",function(){
 		    onClick: function() {
 		      window.location.href="<?php echo url('company/login'); ?>"
 		    }
-		  },{
-		    text: "删除",
-		    onClick: function() {
-		      //do something
-		    }
 		  }]
 		});
 	
 })
+
+
 
 
 </script>
