@@ -22,12 +22,13 @@ padding-left:10px;
 border:1px solid #ccc;
 }
 .weui-uploader__input-box{
+float:none;
 width:175px;height:100px;
 }
 {/block}
 
 {block name="content"}
-<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/user.png');background-size:cover;height:100vh; width:100%;">
+<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/user.png');background-size:cover;height:100vh; width:100%;overflow:scroll;background-attachment: fixed;">
 
 <div class="weui-cells weui-cells_form " style="position:absolute;z-index:1;width:100%;min-height:100vh; background-color: rgba(0,0,0,0);">
 	 <div class="weui-cell" >
@@ -81,8 +82,9 @@ width:175px;height:100px;
           <p class="weui-uploader__title">企业LOGO</p>   
         </div>
 
-           <div class="weui-uploader__input-box">
-            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+           <div class="weui-uploader__input-box" style="width: 128px;height: 64px;">
+            <input id="uploaderInput1" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+               <span style="position:absolute;bottom:0;right:-128px;">128px*64px</span>
           </div>
       </div>
      </div>
@@ -96,22 +98,22 @@ width:175px;height:100px;
         </div>
 
            <div class="weui-uploader__input-box">
-            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+            <input id="uploaderInput2" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
            <span style="position:absolute;bottom:0;right:-50%;">企业门口</span>
           </div>
            <div class="weui-uploader__input-box">
-            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+            <input id="uploaderInput3" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
            <span style="position:absolute;bottom:0;right:-50%;">办公环境</span>
            </div>
            <div class="weui-uploader__input-box">
-            <input id="uploaderInput" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+            <input id="uploaderInput4" class="weui-uploader__input"  type="file" accept="image/*" multiple="">
           <span style="position:absolute;bottom:0;right:-50%;">办公环境</span>
           </div>
       </div>
      </div>
     </div>
-	  
-	  
+
+    <a href="javascript:;" class="weui-btn weui-btn_plain-default" style="margin:0 15px;">提交</a>
 	</div>
 
 
