@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516007131;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516351781;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\teamedit.html";i:1516344601;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516326769;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,9 +11,6 @@
    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
-<link rel="stylesheet" href="/static/css/swiper.min.css" />
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
 </head>
 <style>
 
@@ -93,15 +90,28 @@ word-break: break-all;
 
   
 
-.company-logo{
-width:8rem; 
-height:4rem; 
+
+.weui-navbar:after,.weui-navbar__item:after,.hidden{
+display:none; 
 }
-.course-item p,h4{
-margin:0;
+.weui-navbar__item.weui-bar__item--on{
+color:#1881ec;
+background:#ffffff;
 }
-.course-item{
-width:45%;
+.wrap:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;;
+    opacity: 0.5;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.cl-active{
+color:#1881EC;
 }
 
 
@@ -117,54 +127,48 @@ width:45%;
     <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
      <div class="content" style="width:100%;">
      
-    <div class="swiper-container" id="coursel" >
-            <div class="swiper-wrapper">
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>           
-		     <div class="content-padded" style="padding:15px;">
-		            <p><?php echo $data; ?></p>
-		    </div>    
-       <h2 class="text-center ">职造课程</h2>
-       <div class="row-center" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
-      <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-      <div class=" course-item">
-          <img src="<?php echo $vo['label_img']; ?>" style="object-fit:cover;width:100%;height:8rem;" />
-       <h4><?php echo $vo['name']; ?></h4>
-       <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
-       <p>
-       <span class="fa fa-eye"></span>
-       <span><?php echo $vo['pageview']; ?></span>
-       <span class="pull-right"><?php echo $vo['price']; ?>元</span>
-       </p>
-	  </div>
-	  <?php endforeach; endif; else: echo "" ;endif; ?>
-	  </div>
+      <div class="weui-cells weui-cells_form" style="margin-top:35px;">
+   
+  <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">团队名称</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="name"   value="<?php echo isset($data['name'])?$data['name']:''; ?>">
+        </div>
+  </div>
+  
+ 
+   <div class="weui-cells__title">定制说明</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+  
+     <div class="weui-cells__title">预期效果</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="result"  rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+  
+  
+  
+  <div class="button_sp_area text-center">
 
-	<div class="container sever">
-	<h2 class="text-center">内推企业</h2>
-	
-	<div class="swiper-container sever" id="company-list">
-	    <div class="swiper-wrapper ">
-	        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-	        <div class="swiper-slide company-logo">
-	            <img src="<?php echo $vo['avastar']; ?>" alt=""  style="width:100%;height:100%;"   >
-	        </div>
-	        <?php endforeach; endif; else: echo "" ;endif; ?>
-	
-	    </div>
-	</div>
-	</div>
-   
-   
+        <a href="javascript:;" class="teamsave weui-btn weui-btn_mini weui-btn_default">提交</a>
+ </div> 
+     </div>
 
      </div>
     </div>
     <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
-        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  weui-bar__item_on" >
+        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
             <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
@@ -198,22 +202,77 @@ width:45%;
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
-<script src="/static/js/swiper.min.js"></script>
+
 <script>
 
 
 
-  var mySwiper = new Swiper ('#company-list', {
-	slidesPerView : "auto",
-	spaceBetween : 20,
-    freeMode:true
-  })
-    var coursel = new Swiper ('#coursel', {
-    pagination: {
-     el: '.swiper-pagination',
-    },
-  })
+	<?php if(isset($data)): ?>
+		  var desc="<?php echo $data['desc']; ?>";
+		  var menu="<?php echo $data['result']; ?>";
+		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+		  desc=desc.replace(reg,"\n");
+		  menu=menu.replace(reg,"\n");
+		  $("textarea[name='desc']").text(desc)
+		  $("textarea[name='result']").text(menu)
+	<?php endif; ?>
+
+
+
+$(".teamsave").on("click",function(){
+   	data={};
+  
+        $(this).parent().parent().find("input").each(function(){
+    		
+    		if($(this).val()==""){
+    			
+    	     $.toptip('必填项不能为空', 'error');
+    			
+    			return false;
+    		}
+    		data[$(this).attr("name")]=$(this).val();
+    	})
+    	if(data.length==0){
+    	$.toptip('必填项不能为空', 'error');
+    		return;
+    	}
+
+    	if($("textarea[name='desc']").val()==""||$("textarea[name='result']").val()==""){
+    	    $.toptip('必填项不能为空', 'error');
+			return ;
+    	}
+
+    data['desc']=$("textarea[name='desc']").val().replace(/\n|\r\n/g,"<br>")
+    data['result']=$("textarea[name='result']").val().replace(/\n|\r\n/g,"<br>")
+    $.ajax({
+    	
+    	url:"<?php echo url('teamedit'); ?>",
+    	data:{data:data,teamid:"<?php echo $data['teamid']; ?>"},
+    	type:"post",
+    	beforeSend:function(){
+    		 $.showLoading('正在保存')
+    	},
+    	success:function(data){
+    	    $.hideLoading();
+    		if(data==1){
+    	     $.toast("保存成功",500);
+    	      setTimeout(function(){
+    	         location.href="<?php echo url('company/index'); ?>"
+    	     },500)
     
+    		}else{
+    			$.toast(data);
+    		}
+    		
+    	},
+    	complete:function(){
+    		
+    		 $.hideLoading();
+    	}
+    	
+    })
+
+})
 
 
 
@@ -226,12 +285,15 @@ $(".menu").on("click",function(){
 		    onClick: function() {
 		      window.location.href="<?php echo url('company/login'); ?>"
 		    }
+		  },{
+		    text: "删除",
+		    onClick: function() {
+		      //do something
+		    }
 		  }]
 		});
 	
 })
-
-
 
 
 </script>

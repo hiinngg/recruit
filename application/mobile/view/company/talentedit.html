@@ -1,0 +1,163 @@
+{extend name="indexlayout" /}
+{block name="menu"}
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "退出",
+		    onClick: function() {
+		      window.location.href="{:url('company/logout')}"
+		    }
+		  }]
+		});
+	
+})
+{/block}
+{block name="css"}
+
+.weui-navbar:after,.weui-navbar__item:after,.hidden{
+display:none; 
+}
+.weui-navbar__item.weui-bar__item--on{
+color:#1881ec;
+background:#ffffff;
+}
+.wrap:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;;
+    opacity: 0.5;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.cl-active{
+color:#1881EC;
+}
+{/block}
+{block name="content"}
+   <div class="weui-cells weui-cells_form" style="margin-top:35px;">
+   
+  <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">职位名称</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="name"   value="{$data.name??''}">
+        </div>
+  </div>
+  
+   <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">职位薪酬</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="salary"   value="{$data.salary??''}">
+        </div>
+  </div>
+  
+   <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">工作地点</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="location"   value="{$data.location??''}">
+        </div>
+  </div>
+  
+   <div class="weui-cells__title">工作内容</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="content"  rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+  
+     <div class="weui-cells__title">职业技能</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="skill"  rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+  
+  
+  
+  <div class="button_sp_area text-center">
+
+        <a href="javascript:;" class="talentsave weui-btn weui-btn_mini weui-btn_default">提交</a>
+ </div> 
+     </div>
+{/block}
+{block name="script"}
+	{present name="data"}
+		  var desc="{$data.skill}";
+		  var menu="{$data.content}";
+		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+		  desc=desc.replace(reg,"\n");
+		  menu=menu.replace(reg,"\n");
+		  $("textarea[name='skill']").text(desc)
+		  $("textarea[name='content']").text(menu)
+	{/present}
+
+
+
+$(".talentsave").on("click",function(){
+   	data={};
+  
+        $(this).parent().parent().find("input").each(function(){
+    		
+    		if($(this).val()==""){
+    			
+    	     $.toptip('必填项不能为空', 'error');
+    			
+    			return false;
+    		}
+    		data[$(this).attr("name")]=$(this).val();
+    	})
+    	if(data.length==0){
+    	$.toptip('必填项不能为空', 'error');
+    		return;
+    	}
+
+    	if($("textarea[name='skill']").val()==""||$("textarea[name='content']").val()==""){
+    	    $.toptip('必填项不能为空', 'error');
+			return ;
+    	}
+
+    data['skill']=$("textarea[name='skill']").val().replace(/\n|\r\n/g,"<br>")
+    data['content']=$("textarea[name='content']").val().replace(/\n|\r\n/g,"<br>")
+    $.ajax({
+    	
+    	url:"{:url('talentedit')}",
+    	data:{data:data,taid:"{$data.taid}"},
+    	type:"post",
+    	beforeSend:function(){
+    		 $.showLoading('正在保存')
+    	},
+    	success:function(data){
+    	    $.hideLoading();
+    		if(data==1){
+    	     $.toast("保存成功",500);
+    	      setTimeout(function(){
+    	         location.href="{:url('company/index')}"
+    	     },500)
+    
+    		}else{
+    			$.toast(data);
+    		}
+    		
+    	},
+    	complete:function(){
+    		
+    		 $.hideLoading();
+    	}
+    	
+    })
+
+})
+
+
+
+{/block}

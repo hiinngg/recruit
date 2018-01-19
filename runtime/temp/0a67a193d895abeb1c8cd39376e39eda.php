@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\login.html";i:1516267442;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516267283;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\login.html";i:1516326805;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516351781;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -84,6 +84,9 @@ word-wrap:break-word;
 word-break: break-all;
 
 }
+.weui-toptips{
+	z-index:2000;
+}
 
   
 
@@ -113,7 +116,7 @@ word-break: break-all;
     <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
      <div class="content" style="width:100%;">
      
-<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/login.png');background-size:cover;min-height:100vh; width:100%;overflow:hidden;">
+<div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/login.png');background-size:cover;min-height:100vh; width:100%;overflow:hidden;background-attachment: fixed;">
 
 <div style="position:absolute;z-index:1; border-radius:20px; top: 40%;left: 50%;transform: translate(-50%, -50%);width:80%;background:#ffffff;margin:0 auto;padding:15px;">
 <p class="text-center">企业入口</p>
@@ -221,6 +224,8 @@ $.ajax({
 
 
 
+
+
 $(".menu").on("click",function(){
 	
 	$.actions({
@@ -229,15 +234,12 @@ $(".menu").on("click",function(){
 		    onClick: function() {
 		      window.location.href="<?php echo url('company/login'); ?>"
 		    }
-		  },{
-		    text: "删除",
-		    onClick: function() {
-		      //do something
-		    }
 		  }]
 		});
 	
 })
+
+
 
 
 </script>

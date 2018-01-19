@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	    <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-	<title>小猫直聘</title>
+	<title>企业直聘</title>
 <!-- 	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
@@ -94,36 +94,30 @@ word-break: break-all;
 
 </style>
 <body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:center;border-bottom:1px solid #eee;">
 
-<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
+<span class="fa fa-angle-left" style="margin-left:10px;display:none;"></span>
 <span >首页</span>
-<span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
-     {block name="content"}
-     {/block}
-     </div>
-    </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
-        <a href="{:url('index/index')}" class="weui-tabbar__item  {block name='nav-index'}{/block}" >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
-        </a>
-        <a href="{:url('course/courselist')}" class="weui-tabbar__item {block name='nav-course'}{/block}">
 
-            <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
-        </a>
-        <a href="{:url('job/joblist')}" class="weui-tabbar__item {block name='nav-job'}{/block}">
-            <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
-        </a>
-        <a href="{:url('user/index')}" class="weui-tabbar__item {block name='nav-user'}{/block}">
-            <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
-        </a>
-    </div>
 </div>
-  
+ <div style="width:100%;height:155px;">
+<img src="/static/images/user.png" alt="" style="width:100%;height:100%;" />
+</div>
+ <div class="" style="height:100%;padding:0 15px 60px 15px;">
+
+ {block name="content"}
+ 
+ {/block}
+ </div>
+ <div class="weui-footer " style="background:#eee;color:#333;position:absolute;bottom:0;width:100%;height:60px;">
+  <p class="weui-footer__links">
+    <a href="javascript:void(0);" class="weui-footer__link">首页</a>
+    <a href="javascript:void(0);" class="weui-footer__link">关于我们</a>
+      <a href="javascript:void(0);" class="weui-footer__link">企业入口</a>
+  </p>
+  <p class="weui-footer__text">企业直聘网：为您匹配理想的打工生活</p>
+    <p class="weui-footer__text">企业直聘 © 2008-2016 </p>
+</div>
   
   
   
@@ -151,20 +145,6 @@ word-break: break-all;
 {/block}
 
 
-{block name="menu"}
-$(".menu").on("click",function(){
-	
-	$.actions({
-		  actions: [{
-		    text: "企业后台",
-		    onClick: function() {
-		      window.location.href="{:url('company/login')}"
-		    }
-		  }]
-		});
-	
-})
-{/block}
 
 
 

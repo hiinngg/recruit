@@ -1,0 +1,213 @@
+{extend name="indexlayout" /}
+{block name="menu"}
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "退出",
+		    onClick: function() {
+		      window.location.href="{:url('company/logout')}"
+		    }
+		  }]
+		});
+	
+})
+{/block}
+{block name="css"}
+
+.weui-navbar:after,.weui-navbar__item:after,.hidden{
+display:none; 
+}
+.weui-navbar__item.weui-bar__item--on{
+color:#1881ec;
+background:#ffffff;
+}
+.wrap:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;;
+    opacity: 0.5;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.cl-active{
+color:#1881EC;
+}
+{/block}
+{block name="content"}
+ <div class="weui-cells weui-cells_form" style="margin-top:35px;">
+   
+  <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">职位名称</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="name"   value="{$data.name??''}">
+        </div>
+  </div>
+  
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">招聘人数</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="number"   value="{$data.number??''}">
+        </div>
+  </div>
+  
+   <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">职位薪酬</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="salary"   value="{$data.salary??''}">
+        </div>
+  </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">岗位福利</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  id="treatment" name="treat" value="{$data.value}" data-value="{$data.value}" >
+        </div>
+    </div>
+  <a href="javascript:void(0);" class="weui-cell weui-cell_link  addtreat">
+        <div class="weui-cell__bd">自定义岗位福利</div>
+  </a>
+
+   <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">入职补贴</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="subsidy">
+            <option value="0" >否</option>
+            <option value="1" selected>是</option>
+          </select>
+        </div>
+      </div>
+  
+  
+ <div class="weui-cells__title">工作描述</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+
+  <div class="button_sp_area text-center">
+        <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary close-popup">取消</a>
+        <a href="javascript:;" class="positionsave weui-btn weui-btn_mini weui-btn_default">提交</a>
+ </div> 
+     </div>
+{/block}
+{block name="script"}
+var items=[
+  
+  ];
+
+	{present name="data"}
+		  var desc="{$data.desc}";
+	      $("select[name='subsidy']").val("{$data.is_subsidy}").change()
+		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+		  desc=desc.replace(reg,"\n");
+		  $("textarea[name='desc']").text(desc)
+		  
+		  
+		  {volist name="data.arr" id="vo"}
+		  items.push({
+		  title:"{$vo}",
+		  value:"{$vo}"
+		  })
+		  {/volist}
+		    $("#treatment").select("update", { multi:true,items:items })
+		  
+	{/present}
+
+
+
+
+$(".addtreat").on("click",function(){
+$.prompt({
+  title: '自定义福利',
+  text: '',
+  input: '',
+  empty: false, // 是否允许为空
+  onOK: function (input) {
+    items.push({
+      title:input,
+      value:input
+    })
+    $("#treatment").select("update", { items:items })
+  },
+  onCancel: function () {
+    //点击取消
+  }
+});
+})
+
+
+$("#treatment").select({
+  title: "岗位福利",
+  multi: true,
+  items: items
+});
+
+
+$(".positionsave").on("click",function(){
+   	data={};
+  
+        $(this).parent().parent().find("input").each(function(){
+    		
+    		if($(this).val()==""){
+    			
+    	     $.toptip('必填项不能为空', 'error');
+    			
+    			return false;
+    		}
+    		data[$(this).attr("name")]=$(this).val();
+    	})
+    	if(data.length==0){
+    	$.toptip('必填项不能为空', 'error');
+    		return;
+    	}
+
+    	if($(this).parent().parent().find("textarea[name='desc']").val()==""){
+    	    $.toptip('必填项不能为空', 'error');
+			return ;
+    	}
+   data['subsidy']=$("select[name='subsidy']").val();	
+    data['desc']=$(this).parent().parent().find("textarea[name='desc']").val().replace(/\n|\r\n/g,"<br>")
+
+    $.ajax({
+    	
+    	url:"{:url('positionedit')}",
+    	data:{data:data,poid:{$data.poid}},
+    	type:"post",
+    	beforeSend:function(){
+    		 $.showLoading('正在保存')
+    	},
+    	success:function(data){
+    	    $.hideLoading();
+    		if(data==1){
+    	     $.toast("保存成功",500);
+    	      setTimeout(function(){
+    	         location.href="{:url('company/index')}"
+    	     },500)
+    
+    		}else{
+    			$.toast(data);
+    		}
+    		
+    	},
+    	complete:function(){
+    		
+    		 $.hideLoading();
+    	}
+    	
+    })
+
+})
+
+
+
+{/block}
