@@ -56,6 +56,21 @@ class Course extends Common
         return  $course;
     }
     
+    public function  detail($courseid){
+        if(!Session::has("flag")){
+            Session::set("flag",1);
+            Db::name("course")->where("courseid",$courseid)->setInc('pageview');
+        }
+        $data=Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img,apply")->find();
+        $data['type']=$this->tran[$data['type']];
+        $this->assign("data",$data );
+        
+        return $this->fetch();
+        
+        
+    }
+    
+    
 
     public function apply(){
 
@@ -68,10 +83,11 @@ class Course extends Common
             'userid'=>Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid"),
             'courseid'=>$post['courseid'],
             'feedback'=>'',
-            'status'=>1,
+            'status'=>0,
             'createtime'=>date("Y-m-d H:i:s")
         ];
         if(Db::name("course_user")->insert($data)==1){
+            Db::name('course')->where('courseid', $post['courseid'])->setInc('apply');
             return 1;
         }else{
             return "报名失败";

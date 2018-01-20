@@ -1,0 +1,126 @@
+{extend name="positionlayout" /}
+{block  name="content"}
+<div style="height:100%;width:100%;">
+<div  class="row-center sever"  style="flex-wrap:wrap;align-content:space-around;justify-content:space-between;border-bottom:1px solid #eee;">
+<h3 style="width:50%;">{$data.cfname==""?$data.cname:$data.cfname}</h3>
+<a href="javascript:;" class="weui-btn weui-btn_plain-default apply" style="width:50%;background:#1881EC;color:#ffffff;border-color:#1881EC;">免费报名</a>
+<p style="margin:8px 0;">{$data.salary}</p>
+<p style="margin:8px 0;">已有{$data.apply}人报名</p>
+</div><!-- info -->
+
+<div style="border-bottom:1px solid #eee;">
+<p style="background:#E6E6E6;padding:10px;line-height:2;border-radius:8px;">岗位福利</p>
+
+<div style="padding:10px;">
+
+{volist name="data.treatment" id="vo"}
+
+
+<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default" style="background:#1881EC;color:#ffffff;border-color:#1881EC;">{$vo}</a>
+
+{/volist}
+
+</div>
+
+</div>
+
+
+<div style="border-bottom:1px solid #eee;">
+<p style="background:#E6E6E6;padding:10px;line-height:2;border-radius:8px;">企业与工作说明</p>
+
+<p style="padding:8px 0;">{$data.desc}</p>
+
+</div>
+
+
+<div style="border-bottom:1px solid #eee;">
+<p style="background:#E6E6E6;padding:10px;line-height:2;border-radius:8px;">工作环境照片</p>
+
+{present name="data.pics"}
+<div class="sever swiper-container">
+    <div class="swiper-wrapper">
+    {volist name="data.pics" id="vo1"}
+        <div class="swiper-slide">
+        <img src=" {$vo1}" alt=""  width="175px"  height="100px" />
+       </div>
+
+    {/volist}
+
+    </div>
+
+    
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+
+{/present}
+
+
+
+</div>
+
+
+
+</div>
+{/block}
+{block  name="script"}
+
+$(".apply").on("click",function(){
+$.modal({
+  title: "报名",
+  autoClose: false ,
+  text: '<p class="weui-prompt-text"></p><input type="text" class="weui-input weui-prompt-input" id="weui-prompt-username" name="name"  placeholder="姓名"><input type="text"  name="tel"  class="weui-input weui-prompt-input" id="weui-prompt-password"  placeholder="电话">',
+  buttons: [
+    { text: "取消", onClick: function(){} },
+    { text: "确认", onClick: function(){
+     if($("input[name='name']").val()==""||$("input[name='tel']").val()==""){
+     $.toptip('姓名或电话不能为空', 'error');
+     return;
+     }
+     $.closeModal();
+     $.ajax({
+     url:"{:url('apply')}",
+     type:"post",
+     data:{name:$("input[name='name']").val(),tel:$("input[name='tel']").val(),poid:"{$data.poid}"},
+     beforeSend:function(){
+     $.showLoading();
+     },
+     success:function(data){
+     if(data==1){
+     $.hideLoading();
+     $.alert('<p>您的职位申请已成功</p><p>请注意接听直聘电话，安排入职事宜</p><p style="color:red">直聘服务电话：13455555555</p>','');
+     }
+     
+     }
+     })
+    
+
+
+
+} },
+  ]
+});
+
+
+})
+
+
+
+ var mySwiper = new Swiper ('.swiper-container', {
+slidesPerView : 2,
+spaceBetween : 20,
+
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    
+    // 如果需要滚动条
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })    
+{/block}

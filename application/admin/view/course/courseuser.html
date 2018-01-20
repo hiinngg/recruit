@@ -107,7 +107,7 @@
 		                    });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该新闻么', function(index){
+					    layer.confirm('确定删除该课程么', function(index){
 					    	  _ajax("{:url('articleDel')}",{postid:data.postid},dtd)
 							  dtd.done(function(){
 								  obj.del(); 

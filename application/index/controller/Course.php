@@ -73,7 +73,7 @@ class Course extends Common
             'userid'=>Session::get("username"),
             'courseid'=>$post['courseid'],
             'feedback'=>'',
-            'status'=>1,
+            'status'=>0,
             'createtime'=>date("Y-m-d H:i:s")
         ];
         if(Db::name("course_user")->insert($data)==1){

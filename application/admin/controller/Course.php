@@ -28,9 +28,12 @@ class Course extends Common
     public function editfeedback()
     {
        $post = $this->request->post();
-   return Db::name("course_user")->where("orderid", $post['orderid'])->update([
-            "feedback"=>$post['text']
-        ]);
+       Db::name("course_user")->where("orderid", $post['orderid'])->update([
+           "feedback"=>$post['text'],
+           'status'=>1
+       ]);
+       
+        return 1;
     }
 
     public function myCourse($courseid = "", $page = "", $limit = "")

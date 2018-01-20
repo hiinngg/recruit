@@ -80,18 +80,12 @@
     </div>
   </div>
   
- <div class="layui-form-item">
-   <div class="layui-inline">
+  <div class="layui-form-item">
     <label class="layui-form-label">职位薪酬</label>
-    <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" name="price_min" lay-verify="required"  placeholder="￥" autocomplete="off" class="layui-input" value="{$data.salary_min??''}">
-    </div>
-    <div class="layui-form-mid">-</div>
-    <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" name="price_max" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input"  value="{$data.salary_max??'' }">
+    <div class="layui-input-block">
+      <input type="text" name="salary" required  lay-verify="required" placeholder="请输入职位薪酬" autocomplete="off" class="layui-input" value="{$data.salary??''}">
     </div>
   </div>
- </div>
 
 
  
@@ -239,10 +233,10 @@
 	    //保存
 		form.on('submit(addPosition)', function(data){
 	     //判断是否设置正确的薪酬区间
-			  if(parseInt(data.field['price_min'])>parseInt(data.field['price_max'])){
+/* 			  if(parseInt(data.field['price_min'])>parseInt(data.field['price_max'])){
 					layer.msg("请设置正确的薪酬区间",{icon:5,shift:6})
 					return false;
-			  }
+			  } */
 			    
 	    
 	    //遍历待遇多选

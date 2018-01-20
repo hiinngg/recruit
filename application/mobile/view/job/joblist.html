@@ -116,7 +116,7 @@ function viewdata(obj,initdata,invoke){
 	         '</div>'+
 	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
 		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default  apply" style="padding:0 1.2em;">点击报名</a>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default  apply"  data-jobid="'+initdata[key]['jobid']+'" style="padding:0 5px;white-apace:nowrap;">点击报名</a>'+
 	         '</div>'+
            '</div>';
 	 }
@@ -167,6 +167,31 @@ $(".weui-navbar a.weui-bar__item--on").trigger("click")
 //初始化分类列表
 var cates = new Swiper('#cates',{
 slidesPerView :'auto',
+})
+
+$(".jobs").on("click",".apply",function(){
+var jobid = $(this).attr("data-jobid")
+$.ajax({
+url:"{:url('apply')}",
+data:{jobid:jobid},
+type:"post",
+beforeSend:function(){
+
+$.showLoading()
+},
+success:function(data){
+$.hideLoading();
+if(data==1){
+ 
+     $.alert('<p>亲，报名已经提交了喔</p><p>职造师将会在24小时内通知你</p><p>可添加微信咨询：xxxxx</p>','');
+}else{
+$.alert(data,'');
+}
+}
+
+})
+
+
 })
 
 //加载更多   

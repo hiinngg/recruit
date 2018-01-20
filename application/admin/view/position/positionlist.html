@@ -104,16 +104,17 @@
                             layer.close(index);
                         })
                     });
-                } else if(layEvent === 'edit'){ //编辑
-                    layer.open({
-                        type: 2,
-                        title: '内容编辑',
-                        shadeClose: true,
-                        shade: false,
-                        maxmin: true, //开启最大化最小化按钮
-
-                        content: "editPage?pageid="+data.pageid
-                    });
+                } else if(layEvent === 'list'){ //编辑
+              	  layer.open({
+				      type: 2,
+				      title: '申请人数管理',
+				      shadeClose: true,
+				      shade: false,
+				      maxmin: true, //开启最大化最小化按钮
+				      area: ['893px', '500px'],
+                     moveOut: true,
+				      content: "myposition?poid="+data.poid
+				    });
 
                 }else if(layEvent === 'change2on'){
                     _ajax("{:url('statusChange')}",{poid:data.poid,is_show:1},dtd)
@@ -172,7 +173,7 @@
     {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
     {{#  } }}
-
+    <button class="layui-btn layui-btn-xs" lay-event="list">申请人数</button>
 
     <!-- 这里同样支持 laytpl 语法，如： -->
 

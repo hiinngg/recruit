@@ -40,6 +40,39 @@ class Index extends Controller{
         }
         return $data;
     }
+    
+    public  function detail($poid){
+        
+        $data=Db::view("position","*")->view("company",['name'=>"cname",'fullname'=>"cfname",'position_pics'=>"pics"],"company.cid=position.cid")
+        ->where("poid",$poid)->find();
+        if(isset($data['pics'])){
+            
+            $data['pics']=json_decode($data['pics'],true);
+            
+        }
+        $data['treatment']=json_decode($data['treatment'],true);
+        $this->assign("data",$data);
+        return $this->fetch();
+        
+        
+    }
+    
+    public  function  apply(){
+        $post=$this->request->post();
+        $data=[
+            'name'=>$post['name'],
+            'tel'=>$post['tel'],
+            'createtime'=>date("Y-m-d H:i:s"),
+            'poid'=>$post['poid']
+        ];
+        if(Db::name("position_user")->insert($data)==1){
+           Db::name('position')->where('poid', $post['poid'])->setInc('apply');
+            return 1;
+        }
+        
+        
+        
+    }
 
     
 }
