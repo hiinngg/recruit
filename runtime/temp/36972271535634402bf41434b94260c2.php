@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1516149951;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\index.html";i:1516776619;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -50,9 +50,14 @@ a {
 			<div class="layui-logo">企业管理系统</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-right">
-				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="http://t.cn/RCzsdCq" class="layui-nav-img"> 
+				<li class="layui-nav-item"><a href="javascript:;">
+				<?php if($data['avastar'] != ''): ?>
+				 <img src="<?php echo $data['avastar']; ?>" class="layui-nav-img"> 
+				<?php endif; ?>
+				
+						<?php echo $data['name']; ?>
 				</a>
+			  
 					<dl class="layui-nav-child">
 						<dd>
 							<a href="">基本资料</a>

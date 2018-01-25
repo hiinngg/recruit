@@ -79,7 +79,7 @@ class Common  extends Controller{
         $resume=[
             'userid'=>$userid,
             'avastar'=>$logo_url,
-            'status'=>1,
+            'status'=>0,
             'createtime'=>date("Y-m-d H:i:s")
         
         ];

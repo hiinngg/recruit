@@ -49,9 +49,14 @@ a {
 			<div class="layui-logo">企业管理系统</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-right">
-				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="http://t.cn/RCzsdCq" class="layui-nav-img"> 
+				<li class="layui-nav-item"><a href="javascript:;">
+				{neq  name="data.avastar" value=""}
+				 <img src="{$data.avastar}" class="layui-nav-img"> 
+				{/neq}
+				
+						{$data.name}
 				</a>
+			  
 					<dl class="layui-nav-child">
 						<dd>
 							<a href="">基本资料</a>

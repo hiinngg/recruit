@@ -25,25 +25,35 @@
 
 <div class="layui-container">
 
-<p style="text-align:center;font-size:18px;line-height:2;"><span >企业全称：</span>{$data.fullname??""}</p>
-<p style="text-align:center;font-size:18px;line-height:2;"><span >HR联系人：</span>{$data.contact??""}</p>
+<p style="text-align:center;font-size:18px;line-height:2;"><span >企业全称：</span>{$data.fullname|default="（未填）"}</p>
 <!-- <p class="sever" style="text-align:center;"><button class="layui-btn" >修改资料</button></p> -->
+<p class="sever" style="text-align:center;font-size:18px;line-height:2;">企业logo</p>
+{neq name="data.avastar"  value=""}
+<img src="{$data.avastar}" alt="" style="width:128px; height:64px;margin:0 auto;text-align:center;display:block;" />
+{else/}
+<p style="text-align:center;">（未填）</p>
+{/neq}
+
 
 
 <p class="sever" style="text-align:center;font-size:18px;line-height:2;">办公室环境照片</p>
 
-<div class="sever row-center" style="margin-left:15px;">
+<div class="row-center" >
 
+{present name="data.pics"}
 {volist name="data.pics" id="vo"}
 
-<div style="border:1px solid #c2c2c2; width:300px;height:150px;position:relative;" class="text-center companyimg" id="image1">
+<div style="margin-right:15px; width:300px;height:150px;position:relative;" class="text-center companyimg" id="image1">
 <img src="{$vo}" alt="" style="width:100%;height:100%;object-fit:center;background:#ccc;" />
 </div>
 
 {/volist}
+{else/}
+<p style="text-align:center;">（未填）</p>
+{/present}
+
 
 </div>
-
 
 </div>
 

@@ -95,22 +95,18 @@ word-break: break-all;
 {/block}
 
 </style>
-<body style="overflow:scroll;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:center;border-bottom:1px solid #eee;">
+<body style="overflow:scroll;min-height:100%;background:#eee;">
 
-<span class="fa fa-angle-left" style="margin-left:10px;display:none;"></span>
-<span >首页</span>
-
-</div>
- <div style="width:100%;height:155px;">
-<img src="/static/images/user.png" alt="" style="width:100%;height:100%;" />
-</div>
- <div class="" style="height:100%;padding:0 15px 60px 15px;">
+ <div class="" style="">
 
  {block name="content"}
  
  {/block}
-     <div class="weui-footer " style="background:#eee;color:#333;width:100%;height:60px;">
+
+
+ </div>
+
+       <div class="weui-footer " style="background:#eee;color:#333;width:100%;height:60px;">
          <p class="weui-footer__links">
              <a href="{:url('mobile/index/index')}" class="weui-footer__link">首页</a>
              <a href="javascript:void(0);" class="weui-footer__link">关于我们</a>
@@ -119,10 +115,6 @@ word-break: break-all;
          <p class="weui-footer__text">企业直聘网：为您匹配理想的打工生活</p>
          <p class="weui-footer__text">企业直聘 © 2008-2016 </p>
      </div>
-
- </div>
-
-  
   
   
  <!--    <div class="panel-overlay"></div>

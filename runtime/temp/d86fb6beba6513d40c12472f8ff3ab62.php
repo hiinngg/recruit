@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\positionlist.html";i:1516421724;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\positionlist.html";i:1516786774;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -188,7 +188,7 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
+
   <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
   {{#  if(d.status== 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销提交审核</button>

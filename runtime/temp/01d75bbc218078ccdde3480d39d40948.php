@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editPosition.html";i:1516420966;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editPosition.html";i:1516787248;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,11 +118,10 @@
   
    
    <p style="font-size:18px;margin:15px 0;">工作描述</p>
-    <div class="layui-form-item layui-form-text"  style="width:70%;">
-    <div class="layui-input-block">
-      <textarea name="desc" placeholder="请输入内容" lay-verify="required" class="layui-textarea"></textarea>
-    </div>
-  </div>
+      <script id="container" name="content" type="text/plain">
+<?php echo isset($data['desc'])?$data['desc']: ''; ?>
+    </script>
+ 
 
    <p style="font-size:18px;margin:15px 0;">工作环境照片</p>
    
@@ -195,6 +194,18 @@
 	<script src="/admin/layui/layui.js"></script>
 	<script>
 
+    var ue = UE.getEditor('container',{
+        initialFrameWidth :700,
+        initialFrameHeight :500,
+        zIndex:300,
+        pasteplain:true,
+        toolbars: [
+                   ['fullscreen', 'source', 'undo', 'redo','simpleupload',  'edittable', 'edittd'],
+                   ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+               ]
+    });
+	
+	
 	var treatNum =$(".treat label:not(#myprompt)").length;
 	var mySwiper = new Swiper ('.swiper-container', {
 		slidesPerView:'auto',
@@ -215,12 +226,7 @@
 		
 		  <?php if(isset($data)): ?>
 		  
-		  //格式化文本域的文字
-		  var desc="<?php echo $data['desc']; ?>";
-		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
-		  desc=desc.replace(reg,"\n");
-		  $("textarea[name='desc']").text(desc)
-		  
+
 		  //选择radio
 		  $(".radio[value='<?php echo $data['is_subsidy']; ?>']").prop("checked",true);
            
@@ -239,7 +245,11 @@
 					return false;
 			  } */
 			    
-	    
+	     if(ue.getContent()==""){
+                 layer.msg("请编辑内容",{icon:5,shift:6})
+                 return false;
+         }
+	
 	    //遍历待遇多选
 	    var  treat=[];
 		$(".treat").children('input').each(function(){
@@ -259,19 +269,21 @@
 
 		})
 
-        if (images === undefined ||images.length == 0) {
-            layer.msg("请上传环境照片",{icon:5,shift:6})
-            return false;
-        }
+       	  if (images === undefined ||images.length == 0) {
+	            layer.msg("请上传环境照片",{icon:5,shift:6})
+	            return false;
+	        }
 		
 		//对提交数据的处理
 	    data.field['treat'] = treat
-	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
+	    data.field['desc']=ue.getContent();
 		var url="<?php echo url('addPosition'); ?>";
 		var data={data:data.field,image:images};
 		<?php if(isset($data)): ?>
 		url="<?php echo url('positionEdit'); ?>"
-		data['poid']=<?php echo $data['poid']; endif; ?>
+		data['poid']=<?php echo $data['poid']; ?>;
+		data['oldcontent']='<?php echo $data['desc']; ?>';
+		<?php endif; ?>
 		
 		
 		//提交给后台处理

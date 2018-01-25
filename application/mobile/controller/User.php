@@ -60,6 +60,7 @@ class User extends Common{
             'selfevaluation'=>$post['data']['selfevaluation'],
             'experience'=>$post['data']['experience'],
             'birthdate'=>$post['data']['date'],
+            'status'=>1
         ];
         if(Db::name("resume")->where("userid",Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid"))->update($data)>=0){
         

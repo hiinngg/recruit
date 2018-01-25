@@ -40,13 +40,12 @@ class Company extends Common{
     
     public function  companyPreview($cid=""){
         
-        $res=Db::name("company")->where("cid",$cid)->find();
-        if(isset($res['pics'])){
-        
-            $res['pics']= json_decode($res['pics']);
-        
+      $res = Db::name("company")->where("cid", $cid)->find();
+        if (isset($res['pics'])) {
+            
+            $res['pics'] = json_decode($res['pics'],true);
         }
-        $this->assign("data",$res);
+        $this->assign("data", $res);
         return $this->fetch();
         
         

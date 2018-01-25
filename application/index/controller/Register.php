@@ -17,6 +17,7 @@ class Register extends Common
                 return 0;
             }
             $data=[
+          
                 'userid'=>Session::get("username"),
                 'truename'=>$post['data']['name'],
                 'sex'=>$post['data']['sex'],
@@ -47,7 +48,7 @@ class Register extends Common
             if (! Session::has("username")) {
                 return 0;
             }
-            $data=[
+            $data=[ 
                 'userid'=>Session::get("username"),
                 'truename'=>$post['data']['name'],
                 'sex'=>$post['data']['sex'],
@@ -131,6 +132,9 @@ class Register extends Common
       
          // if (($post['data']['fullName'] != "") && (isset($post['images']))) {
             
+          
+          
+          
               if (isset($post['images']['image4'])) {
                   // 有企业logo
                   $data['avastar'] = transOneImage($post['images']['image4'], "/image/company");
@@ -146,9 +150,13 @@ class Register extends Common
                   $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
               }
              
-      
+              if(isset($data['fullname'])&&$data['fullname']!=""){
+                  $data['fullname'] = trim($post['data']['fullName']);
+              }
+              
+              
               // 成为内推企业
-              $data['fullname'] = trim($post['data']['fullName']);
+           
             
          // }
       

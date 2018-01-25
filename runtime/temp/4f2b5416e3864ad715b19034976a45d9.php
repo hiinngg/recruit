@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\talent\talentlist.html";i:1516432256;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\talent\talentlist.html";i:1516787478;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,7 +180,7 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
+
  
   {{#  if(d.status == 1){ }}
    <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="feedback">反馈信息</button>

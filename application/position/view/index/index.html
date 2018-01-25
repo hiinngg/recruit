@@ -9,8 +9,20 @@ background:#ffffff;
 }
 {/block}
 {block name="content"}
+ 
+   <div class=" swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        <img src="/static/images/user.png" alt=""  width="100%"  height="155px" />
+       </div>
+    </div>
 
-<div class="weui-tab">
+  
+
+</div>
+
+
+<div class="weui-tab"  >
   <div class="weui-navbar">
     <a class="weui-navbar__item weui-bar__item--on all" href="#tab1">
       所有企业
@@ -23,8 +35,8 @@ background:#ffffff;
     </a>
   </div>
   <div class="weui-tab__bd">
-    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active" >
-        <div class=" jobs " style="margin:0;width:100%;background:#eee;">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active"  style="background:#eee;">
+        <div class=" jobs " style="margin:0;">
 
 	    
 	  </div><!-- item -->
@@ -69,7 +81,7 @@ background:#ffffff;
     </div>
   <div id="tab3" class="weui-tab__bd-item">
       <h1 class="text-center">求职须知</h1>
-      <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+      <p style="margin-bottom:30px;">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
     </div>
   </div>
 </div>
@@ -94,6 +106,9 @@ $(function(){
 		}
 	}
 
+var mySwiper = new Swiper ('.swiper-container', {
+
+  }) 
 
 
 //渲染数据
@@ -107,19 +122,31 @@ for(i in initdata[key]['treatment'] ){
 treat+=' <span>'+initdata[key]['treatment'][i]+'</span>';
 }
 }
+logo="";
+
+if(initdata[key]['pics']&&(initdata[key]['pics']!='')){
+logo= '<div style="width:40%; height:100%;"><img src="'+initdata[key]['pics']+'" alt="" style="width:100%; height:100%;" /></div> ';
+
+}else{
+
+logo= '<p style="text-align:center;width:40%;height:100%;line-height:100px;">暂无企业图片</p>';
+}
+
 sub="";
 if(initdata[key]['is_subsidy']==1){
 sub= ' <img src="/static/images/subsidy.png" alt="" style="width:20%; height:80%;object-fit:contain;" /> ';
+}else{
+sub= '<div style="width:20%; height:80%;"></div> ';
 }
-	html+= '<div class="po row-center"  data-poid="'+initdata[key]['poid']+'" style="width:100% ;height:100px;align-items:center;margin:15px 0;background:#ffffff;">'+
-		       ' <img src="/static/images/user.png" alt="" style="width:40%; height:100%;" />'+
-		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;"> '+
-		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;" >'+
-			      ' <h5>'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
-			       '<p class="texts-hide" style="font-size:9px;padding-left:3px;">'+treat+'</p> '+
+	html+= '<div class="po row-center"  data-poid="'+initdata[key]['poid']+'" style="width:100% ;height:100px;justify-content:flex-start;margin:15px 0;background:#ffffff;">'+
+		       logo+
+		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;padding-right:15px;padding-left:4px;"> '+
+		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
+			      ' <h5 >'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
+			       '<p class="texts-hide" style="font-size:11px;padding-left:3px;">'+treat+'</p> '+
 		       ' </div>'+
 		      sub+
-		     '  <p class="row-center" style="justify-content:space-between; flex-basis:100%;flex-shrink:0;"><span  style="font-size:9px;padding-left:3px;"   >已有'+initdata[key]['apply']+'人报名</span><span>'+initdata[key]['salary']+'</span></p>'+
+		     '  <p class="row-center" style="justify-content:space-between; flex-basis:100%;flex-shrink:0;"><span  style="font-size:9px;padding-left:3px;"   >已有'+initdata[key]['apply']+'人报名</span><span  style="color:#1881EC;">'+initdata[key]['salary']+'</span></p>'+
 		     ' </div>'+
 	      '</div>';
 	 }
@@ -194,6 +221,11 @@ location.href="/position/index/detail?poid="+poid;
 
 })
 
+$(".sub_jobs").on("click",".po",function(){
+var poid=$(this).attr("data-poid");
+location.href="/position/index/detail?poid="+poid;
+
+})
 
 
 $(".weui-navbar a.weui-bar__item--on").trigger("click")

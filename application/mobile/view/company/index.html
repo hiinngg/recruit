@@ -39,6 +39,7 @@ z-index:2000;}
 .cl-active{
 color:#1881EC;
 }
+
 {/block}
 {block name="content"}
 <div class="wrap" style="position:relative;width:100%;height:200px; background-image: url(/static/images/user.png);background-size:cover;">
@@ -141,7 +142,7 @@ color:#1881EC;
 	
     </div><!-- 团队定制 -->
     <div id="tab3" class="weui-tab__bd-item">
-          <p class="open-popup" data-target="#position" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
+          <p class="addposition" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增普工招聘</span>
      </p>
      
@@ -345,21 +346,18 @@ color:#1881EC;
       </div>
   
   
- <div class="weui-cells__title">工作描述</div>
-<div class="weui-cells weui-cells_form">
-  <div class="weui-cell">
-    <div class="weui-cell__bd">
-      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
-     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
-    </div>
-  </div>
-</div>
 
-  <div class="button_sp_area text-center">
+ 
+     </div>
+     
+     <p style="padding-left:15px;">工作描述</p>
+
+      <div style="padding:10px 15px;overflow-x:auto;" id="articleEditor"></div>
+     
+      <div class="button_sp_area text-center">
         <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary close-popup">取消</a>
         <a href="javascript:;" class="positionsave weui-btn weui-btn_mini weui-btn_default">提交</a>
- </div> 
-     </div>
+    </div> 
 
   </div>
 </div>
@@ -368,8 +366,23 @@ color:#1881EC;
 
 
 {/block}
+{block name="scriptlink"}
+<script src="/admin/eleditor/Eleditor.min.js"></script>
+<script src="/admin/eleditor/webuploader.min.js"></script>
+{/block}
+
 {block name="script"}
 $(function(){
+
+$(".addposition").on("click",function(){
+
+location.href="{:url('addposition')}";
+
+})
+
+
+
+
 
 $(".addtreat").on("click",function(){
 $.prompt({

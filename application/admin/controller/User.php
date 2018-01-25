@@ -19,15 +19,15 @@ protected  $tran=['男','女'];
         if ($this->request->isAjax()) {
 
             if (! isset($count)) {
-                $this->count =Db::view("re_user","userid,telphone,createtime")->view("re_resume","truename","re_resume.resumeid=re_user.resumeid","LEFT")->count();
+                $this->count =Db::view("re_user","resumeid as rsid,userid as user_id,telphone,createtime as time")->view("re_resume","*","re_resume.resumeid=re_user.resumeid","LEFT")->count();
                 if ($this->count == 0) {
                     $this->assign("none", "none");
                 }
             }
             
-            $res=Db::view("re_user","userid,telphone,createtime")->view("re_resume","truename","re_resume.resumeid=re_user.resumeid",'LEFT')
+            $res=Db::view("re_user","resumeid as rsid,userid as user_id,telphone,createtime as time")->view("re_resume","*","re_resume.resumeid=re_user.resumeid",'LEFT')
             ->page($page, $limit)
-            ->order("createtime desc")
+            ->order("time desc")
             ->select();
 
             return [

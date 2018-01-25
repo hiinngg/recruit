@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1514853472;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1516783087;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +35,7 @@
 <?php endif; ?>
 <script src="/admin/layui/layui.js"></script>
 <script type="text/javascript">
+var sex=["男",'女'];
     layui.use([ 'table', 'layer','jquery','form' ], function() {
         var $=layui.jquery;
         var table = layui.table;
@@ -47,10 +48,9 @@
             url: "<?php echo url('UserList'); ?>",
             cols:[[
                 {checkbox: true},
-                {field: 'userid', title: '编号' },
-                {field: 'truename', title: '真实姓名' ,templet: '#nameTpl' },
-                {field: 'telphone', title: '手机号码',templet: '#telTpl'},
-                {field: 'createtime', title: '创建时间' },
+                {field: 'user_id', title: '编号' },
+                {field: 'telphone', title: '注册信息（手机或微信授权）',templet: '#telTpl'},
+                {field: 'time', title: '创建时间' },
                 {field: 'score', title: '操作', width:250, toolbar: '#bar'}
             ]],
             page:true,
@@ -85,7 +85,7 @@
                 var dtd=$.Deferred();
                 console.log(data)
                 if(layEvent === 'detail'){ //查看
-                    layer.open({
+                   /*  layer.open({
                         type: 2,
                         title: '内容查看',
                         shadeClose: true,
@@ -93,7 +93,30 @@
                         maxmin: true, //开启最大化最小化按钮
                         area: ['893px', '600px'],
                         content: "info?userid="+data.userid
-                    });
+                    }); */
+                    if(data.rsid==0){
+                    	
+                    	layer.alert("这家伙很懒，什么也没留下")
+
+                    }else if(data.status==0&&data.rsid>0){
+                    	layer.alert( '<p><strong>头像：</strong><img src="'+data.avastar+'"  style="width:64px;height:64px;" /></p>')
+
+                    }else{
+                   	  layer.alert(
+                   			  '<p><strong>头像：</strong><img src="'+((data.avastar==""||!data.avastar)?"/static/images/avastar.png":data.avastar)+'"  style="width:64px;height:64px;" /></p>'+
+                              '<p><strong>姓名：</strong><span>'+data.truename+'</span></p>'+
+                              '<p><strong>性别：</strong><span>'+sex[data.sex]+'</span></p>'+
+                              '<p><strong>出生日期：</strong><span>'+data.birthdate+'</span></p>'+
+                              '<p><strong>目标职位：</strong><span>'+data.position+'</span></p>'+
+                              '<p><strong>毕业院校：</strong><span>'+data.graduated+'</span></p>'+
+                              '<p><strong>学历：</strong><span>'+data.education+'</span></p>'+
+                              '<p><strong>自我评价：</strong></p>'+
+                              '<p>'+data.selfevaluation+'</p>'+
+                              '<p><strong>工作地点：</strong></p>'+
+                              '<p>'+data.experience+'</p>'
+    						  )
+                    }                    
+             
 
                 }else if(layEvent === 'eval'){
                 	  layer.open({
@@ -171,7 +194,7 @@
     {{#  if(d.telphone !=""){ }}
     <span style="color:#5FB878;">{{d.telphone}}</span>
     {{#  } else { }}
-    <span style="color:#FFB800;">未填</span>
+    <span style="color:#FFB800;">微信授权</span>
     {{#  } }}
 </script>
 <script type="text/html" id="statusTpl">

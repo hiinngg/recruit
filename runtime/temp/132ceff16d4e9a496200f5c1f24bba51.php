@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1514853472;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1516777861;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +56,7 @@
 			         {checkbox: true},
 			         {field: 'cid', title: '编号' },
 			         {field: 'name', title: '名称' },
-			         {field: 'fullname', title: '公司全称' },
+			  
 			         {field: 'contact', title: '联系人电话' },
 			         {field: 'status', title: '状态',templet: '#statusTpl' },
 			         {field: 'createtime', title: '创建时间' },
@@ -107,7 +107,7 @@
 						      shadeClose: true,
 						      shade: false,
 						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+						      area: ['893px', '450px'],
 						      content: "companyPreview?cid="+data.cid
 						    });
 
@@ -126,7 +126,7 @@
 						      shadeClose: true,
 						      shade: false,
 						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+						      area: ['893px', '500px'],
 						      content: "articleEdit?id="+data.postid
 						    });
 					    
