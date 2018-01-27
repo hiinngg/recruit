@@ -827,3 +827,69 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.067004s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.021001s ]
 [ sql ] [ SQL ] SELECT `position`.*,`company`.`name` AS `cname`,`company`.`fullname` AS `cfname` FROM `re_position` `position` INNER JOIN `re_company` `company` ON `company`.`cid`=`position`.`cid` WHERE  `position`.`is_show` = 1  AND `position`.`is_subsidy` = 1 ORDER BY createtime desc LIMIT 0,4 [ RunTime:0.022001s ]
+---------------------------------------------------------------
+[ 2018-01-19T22:08:17+08:00 ] 127.0.0.1 127.0.0.1 GET /position/index/allposition.html?page=1
+[ info ] www.rec.com/position/index/allposition.html?page=1 [运行时间：0.143009s][吞吐率：6.99req/s] [内存消耗：3,730.45kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'position',
+    1 => 'index',
+    2 => 'allposition',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516366493919487 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/position/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+)
+[ info ] [ RUN ] app\position\controller\Index->allposition[ D:\wamp6\wamp64\www\recruit\application\position\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028002s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `position`.*,`company`.`name` AS `cname`,`company`.`fullname` AS `cfname` FROM `re_position` `position` INNER JOIN `re_company` `company` ON `company`.`cid`=`position`.`cid` WHERE  `position`.`is_show` = 1 ORDER BY createtime desc LIMIT 0,4 [ RunTime:0.018001s ]
+---------------------------------------------------------------
+[ 2018-01-19T22:08:26+08:00 ] 127.0.0.1 127.0.0.1 GET /position/index/subposition.html?page=1
+[ info ] www.rec.com/position/index/subposition.html?page=1 [运行时间：0.135008s][吞吐率：7.41req/s] [内存消耗：3,730.71kb] [文件加载：42]
+[ info ] [ LANG ] D:\wamp6\wamp64\www\recruit\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'position',
+    1 => 'index',
+    2 => 'subposition',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.rec.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1801081 MicroMessenger/6.5.7 Language/zh_CN webview/1516366493919487 webdebugger port/9974',
+  'referer' => 'http://www.rec.com/position/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'rec_openid=oNnLYsk8-NJdJmW7xQY6rScC1268',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+)
+[ info ] [ RUN ] app\position\controller\Index->subposition[ D:\wamp6\wamp64\www\recruit\application\position\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031001s ] mysql:host=119.23.51.37;port=3306;dbname=recruit;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `re_position` [ RunTime:0.018001s ]
+[ sql ] [ SQL ] SELECT `position`.*,`company`.`name` AS `cname`,`company`.`fullname` AS `cfname` FROM `re_position` `position` INNER JOIN `re_company` `company` ON `company`.`cid`=`position`.`cid` WHERE  `position`.`is_show` = 1  AND `position`.`is_subsidy` = 1 ORDER BY createtime desc LIMIT 0,4 [ RunTime:0.020002s ]
