@@ -23,7 +23,8 @@ class Team extends Common{
                 'result'=>$post['data']['detail'],
                 'desc'=>$post['data']['desc'],
                 'createtime'=>date("Y-m-d H:i:s"),
-                'status'=>1
+                'feedback'=>'',
+                'status'=>0
             ];
             if(!Db::name("team")->insert($data)>0){
                 return "保存失败，请重试";
@@ -129,7 +130,7 @@ class Team extends Common{
                 'cid' => $this->companyid
             ])
             ->page($page, $limit)
-            ->field("teamid,createtime,status")
+
             ->order("createtime desc")
             ->select();
     

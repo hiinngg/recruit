@@ -35,7 +35,7 @@
     {present name="data"}
     <div class="layui-row">
 	    <div class="layui-col-md3  col-center" >
-         <img   src="{$data.avastar ?? '/static/images/avastar.png'}" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
+         <img   src="{$data.avastar=='' ? '/static/images/avastar.png' : $data.avastar}" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
          <button class="layui-btn sever change">点击上传头像</button>
          
       <div  class="sever" style="text-align:left;">

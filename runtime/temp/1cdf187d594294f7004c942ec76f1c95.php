@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\positionedit.html";i:1516351454;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516326769;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\positionedit.html";i:1516869742;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    
+ 
 </head>
 <style>
 
@@ -19,6 +19,9 @@ body {
     box-sizing:border-box;
 	margin:0;
 	padding:0;
+}
+img{
+	max-width:100%;
 }
 .row-center{
 	display:flex;
@@ -56,9 +59,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -87,47 +88,19 @@ word-break: break-all;
 .weui-toptips{
 	z-index:2000;
 }
-
-  
-
-
-.weui-navbar:after,.weui-navbar__item:after,.hidden{
-display:none; 
+.Eleditor-controller{
+	z-index:2000;
 }
-.weui-navbar__item.weui-bar__item--on{
-color:#1881ec;
-background:#ffffff;
-}
-.wrap:after{
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    background-color: #ffffff;;
-    opacity: 0.5;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+.weui-uploader__input-box{
+float:none;
+width:175px;height:100px;
 }
 
-.cl-active{
-color:#1881EC;
-}
 
 
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
-
-<span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
-<span >首页</span>
-<span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
-     
- <div class="weui-cells weui-cells_form" style="margin-top:35px;">
+<body style="width:100%;">
+ <div class="weui-cells weui-cells_form" style="height:auto;overflow-y:scroll;width:100%;">
    
   <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">职位名称</label></div>
@@ -152,7 +125,7 @@ color:#1881EC;
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">岗位福利</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text"  id="treatment" name="treat" value="<?php echo $data['value']; ?>" data-value="<?php echo $data['value']; ?>" >
+          <input class="weui-input" type="text"  id="treatment" name="treat" value="<?php echo isset($value)?$value:''; ?>" data-value="<?php echo isset($value)?$value:''; ?>" >
         </div>
     </div>
   <a href="javascript:void(0);" class="weui-cell weui-cell_link  addtreat">
@@ -170,45 +143,45 @@ color:#1881EC;
           </select>
         </div>
       </div>
-  
-  
- <div class="weui-cells__title">工作描述</div>
-<div class="weui-cells weui-cells_form">
+
+     </div>
+
+<p style="padding-left:15px;">工作描述</p>
+
+<div style="padding:10px 15px;overflow-x:auto;" id="articleEditor"></div>
+ <!-- =======================================================================环境照片 -->
   <div class="weui-cell">
     <div class="weui-cell__bd">
-      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
-     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
-    </div>
-  </div>
-</div>
+      <div class="weui-uploader">
+       <div class="weui-uploader__hd">
+          <p class="weui-uploader__title">工作环境</p>   
+        </div>
+        <?php if(is_array($pics) || $pics instanceof \think\Collection || $pics instanceof \think\Paginator): $i = 0; $__LIST__ = $pics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+         <div class="weui-uploader__input-box">
+            <input id="image<?php echo $i; ?>" class="weui-uploader__input"  type="file" accept="image/*">
+            <!-- <span style="position:absolute;bottom:0;right:-50%;">企业门口</span> -->
+            <?php if($vo == $i): ?>
+               <img src="" alt="" data-src="" style="width:175px;height:100px;" />
+               <?php else: ?>
+                <img src="<?php echo $vo; ?>" alt="" data-src="<?php echo $vo; ?>" style="width:175px;height:100px;" />
+            <?php endif; ?>
+            
+          </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
 
-  <div class="button_sp_area text-center">
-        <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary close-popup">取消</a>
+      </div>
+     </div>
+    </div> 
+ 
+ 
+ 
+ 
+ 
+  
+     <div class="sever text-center">
+   
         <a href="javascript:;" class="positionsave weui-btn weui-btn_mini weui-btn_default">提交</a>
- </div> 
-     </div>
-
-     </div>
-    </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
-        <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
-        </a>
-        <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
-
-            <p class="weui-tabbar__label" style="line-height:2.5;">微课</p>
-        </a>
-        <a href="<?php echo url('job/joblist'); ?>" class="weui-tabbar__item ">
-            <p class="weui-tabbar__label" style="line-height:2.5;">找工作</p>
-        </a>
-        <a href="<?php echo url('user/index'); ?>" class="weui-tabbar__item ">
-            <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
-        </a>
-    </div>
-</div>
-  
-  
-  
+     </div> 
   
  <!--    <div class="panel-overlay"></div>
     Left Panel with Reveal effect
@@ -224,140 +197,348 @@ color:#1881EC;
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="/admin/eleditor/Eleditor.min.js"></script>
+<script src="/admin/eleditor/webuploader.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
 <script>
 
+var formdata = new FormData();
+
+var chooseimg=$(".weui-uploader__input").get(0);
+    
+  var canvas = document.createElement("canvas");
+ var ctx = canvas.getContext('2d');
+ //    瓦片canvas
+ var tCanvas = document.createElement("canvas");
+ var tctx = tCanvas.getContext("2d");
+ var maxsize = 100 * 1024;   
+
+
+
+
+var items=[];
+      
 
 
 var items=[
+           {
+             title:'五险一金',
+             value: 1
+           },
+           {
+             title: '周末双休',
+             value: 2
+           },
+           {
+             title:'员工培训',
+             value: 3
+           },
+           {
+             title: '员工旅游',
+             value: 4
+           },
+             {
+             title: '十三薪',
+             value: 5
+           },
+         ];
   
-  ];
+//图片上传类
+$(".weui-uploader__input").on("change",function(){
 
-	<?php if(isset($data)): ?>
-		  var desc="<?php echo $data['desc']; ?>";
-	      $("select[name='subsidy']").val("<?php echo $data['is_subsidy']; ?>").change()
-		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
-		  desc=desc.replace(reg,"\n");
-		  $("textarea[name='desc']").text(desc)
+var that = $(this)
+var id = that.attr("id")
+	 // readURL(this); 
+if (!this.files.length) return;
+
+//window.parent.del.push(imgobj.attr("src"));
+
+	var files = Array.prototype.slice.call(this.files);
+	  var reader = new FileReader();
+	   reader.readAsDataURL(files[0]);
+	   reader.onload = function (e) {
+		   
+	        var result = this.result;
+	        var img = new Image();
+	        img.src = result;
+	                      //如果图片大小小于200kb，则直接等待上传
+	        if (result.length <= maxsize) {
+	       //  that.parent().children("img").attr("src",result)
+	          img = null;
+	          upload(result, files[0].type,id);
+	          return;
+	        }
+	                      
+	                      
+             //图片加载完毕之后进行压缩，然后上传     
+	        if (img.complete) {
+	          callback();
+	        } else {
+	          img.onload = callback;
+	        }
+	        function callback() {
+	          var data = compress(img);
+	        //  that.parent().children("img").attr("src",data)
+	          upload(data, files[0].type,id);
+	          img = null;
+	        }
+					        					        
+	      }; 
+	     						  				 				  
+})	
+
+
+
+  		    	var Edr = new Eleditor({
+  		    	    el: '#articleEditor', //容器
+  		    	    upload:{
+  		    	       server: "<?php echo url('imgupload'); ?>", //填写你的后端上传路径
+  		    	       fileSizeLimit: 2 //限制图片上传大小，单位M
+  		    	    },
+  		    	  toolbars: [
+  		    	              'insertText',
+  		    	              'editText',
+  		    	              'insertImage',
+  		    	              'insertLink',
+  		    	              'insertHr',
+  		    	              'deleteThis',
+  		    	              'undo',
+  		    	              'cancel'
+                   ],
+  		    	    placeHolder: "",
+  		    	});
+  		    
+
+  		     	<?php if(isset($data)): ?>
+       		  var desc='<?php echo $data['desc']; ?>';
+       	      $("select[name='subsidy']").val("<?php echo $data['is_subsidy']; ?>").change()
+	  
+       		  <?php if(is_array($data['arr']) || $data['arr'] instanceof \think\Collection || $data['arr'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['arr'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+       		  items.push({
+       		  title:"<?php echo $vo; ?>",
+       		  value:"<?php echo $vo; ?>"
+       		  })
+       		  <?php endforeach; endif; else: echo "" ;endif; ?>
+       		    $("#treatment").select("update", { multi:true,items:items })
+       		  	Edr.append('<p>'+desc+'</p>');
+           	<?php endif; ?>
+  		    	
+  		
+         $(".addtreat").on("click",function(){
+         $.prompt({
+           title: '自定义福利',
+           text: '',
+           input: '',
+           empty: false, // 是否允许为空
+           onOK: function (input) {
+             items.push({
+               title:input,
+               value:input
+             })
+             $("#treatment").select("update", { items:items })
+           },
+           onCancel: function () {
+             //点击取消
+           }
+         });
+         })
+
+
+         $("#treatment").select({
+           title: "岗位福利",
+           multi: true,
+           items: items
+         });
+
+
+         $(".positionsave").on("click",function(){
+            	data={};
+           
+            
+           //整理表单
+                 $(".weui-cells_form").find("input").each(function(){
+             		
+             		if($(this).val()==""){
+             			
+             	     $.toptip('必填项不能为空', 'error');
+             		 data={}	
+             			return false;
+             		}
+             		data[$(this).attr("name")]=$(this).val();
+             	})
+             	if(JSON.stringify(data) == "{}"){
+             		
+             	$.toptip('必填项不能为空', 'error');
+             		return;
+             	}
+          	
+             	$("#articleEditor").children(".Eleditor-placeholder").remove();
+             	if(Edr.getContent()==""){
+             		 $.toptip('请填写工作描述', 'error');
+             		 Edr.append('<p class="Eleditor-placeholder">点击此处编辑内容</p>');
+             		 return ;
+             	}
+           /*   	if($(this).parent().parent().find("textarea[name='desc']").val()==""){
+             	    $.toptip('必填项不能为空', 'error');
+         			return ;
+             	} */
+             
+            	//遍历图片
+        		var images=[];
+        		$(".weui-uploader__input-box").each(function(){
+        			if($(this).find("img").attr("data-src")!=""){
+        				images.push($(this).find("img").attr("data-src"));
+        			}
+        		})
+
+               	  if (images === undefined ||images.length == 0) {
+               	   	$.toptip('请上传环境照片', 'error');
+        	            return ;
+        	        }	
+             	
+     
+             var postdata={};	
+             var url="<?php echo url('addposition'); ?>";
+             
+             postdata['image']=images;
+            data['subsidy']=$("select[name='subsidy']").val();	
+            // data['desc']=$(this).parent().parent().find("textarea[name='desc']").val().replace(/\n|\r\n/g,"<br>")
+            data['desc']=Edr.getContent()
+            
+            <?php if(isset($data)): ?>
+            
+            url="<?php echo url('positionedit'); ?>";
+            data['oldcontent']='<?php echo $data['desc']; ?>';
+            postdata['poid']=<?php echo $data['poid']; ?>;
+            
+            <?php endif; ?>
+            
+            postdata['data']=data;
+          
+             $.ajax({
+             	
+             	url:url,
+             	data:postdata,
+             	type:"post",
+             	beforeSend:function(){
+             		 $.showLoading('正在保存')
+             	},
+             	success:function(data){
+             	    $.hideLoading();
+             		if(data==1){
+             	     $.toast("保存成功",500);
+             	      setTimeout(function(){
+             	        // location.href="<?php echo url('company/index'); ?>"
+             	        history.go(0)
+             	     },500)
+             
+             		}else{
+             			$.toast(data);
+             		}
+             		
+             	},
+             	complete:function(){
+             		
+             		 $.hideLoading();
+             	}
+             	
+             })
+
+         })
+
+//转化为src 并加入formdata
+function upload(basestr,type,name){        
+ 	  var text = window.atob(basestr.split(",")[1]);
+	  var buffer = new ArrayBuffer(text.length);
+	  var ubuffer = new Uint8Array(buffer);
+	  var pecent = 0 , loop = null;
+	  for (var i = 0; i < text.length; i++) {
+	    ubuffer[i] = text.charCodeAt(i);
+	  }
+ 	  var Builder = window.BlobBuilder || window.WebKitBlobBuilder ||
+      window.MozBlobBuilder || window.MSBlobBuilder;
+     window.URL = window.URL || window.webkitURL;
+	  var blob;
+	  if (Builder) {
+	    var builder = new BlobBuilder();
+	    builder.append(buffer);
+	    blob = builder.getBlob(type);
+	  } else { 
+	   var  blob = new  Blob([buffer], {type: type});
+	  }
+	//应为覆盖  formdata.append('imagefile', blob);
+	  formdata.set(name,blob)
+	  $.ajax({
+		  url:"<?php echo url('poimg'); ?>",
+		  type:"POST",
+		  data:formdata,
+		  processData: false,  // 不处理数据
+		  contentType: false ,  // 不设置内容类型
+		  beforeSend:function(){
+		   $.showLoading()
+		  },
+		  success:function(data){
+			  $.hideLoading();
+			  if(data==0){
+		
+			   $.toptip('请上传正确的照片格式', 'error');
+			 
+			  }else{
+				  $("#"+data['id']).next().attr("src",data['src']);
+				  $("#"+data['id']).next().attr("data-src",data['src']);
+			  }
+			  
+			 
+			/*   if(data==1){
+			  $.toast("注册成功");
+			  setTimeout(function(){
+				  
+			  },1000)
+			  }else{
+			  $.toast(data,"cancel");
+			  } */
+	     }
 		  
-		  
-		  <?php if(is_array($data['arr']) || $data['arr'] instanceof \think\Collection || $data['arr'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['arr'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-		  items.push({
-		  title:"<?php echo $vo; ?>",
-		  value:"<?php echo $vo; ?>"
-		  })
-		  <?php endforeach; endif; else: echo "" ;endif; ?>
-		    $("#treatment").select("update", { multi:true,items:items })
-		  
-	<?php endif; ?>
+	  })
+
+}
 
 
 
 
-$(".addtreat").on("click",function(){
-$.prompt({
-  title: '自定义福利',
-  text: '',
-  input: '',
-  empty: false, // 是否允许为空
-  onOK: function (input) {
-    items.push({
-      title:input,
-      value:input
-    })
-    $("#treatment").select("update", { items:items })
-  },
-  onCancel: function () {
-    //点击取消
-  }
-});
-})
+//压缩函数
+function compress(img) {
+	  var initSize = img.src.length;
+	  var width = img.width;
+	  var height = img.height;
+	  //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
+	  var ratio;
+	  if ((ratio = width * height / 4000000)>1) {
+	      ratio = Math.sqrt(ratio);
+	      width /= ratio;
+	      height /= ratio;
+	  }else {
+	      ratio = 1;
+	  }
+	  canvas.width = width;
+	  canvas.height = height;
+//		铺底色
+	  ctx.fillStyle = "#fff";
+	  ctx.fillRect(0, 0, canvas.width, canvas.height);
+	  //如果图片像素大于100万则使用瓦片绘制
+	  var count;
 
-
-$("#treatment").select({
-  title: "岗位福利",
-  multi: true,
-  items: items
-});
-
-
-$(".positionsave").on("click",function(){
-   	data={};
-  
-        $(this).parent().parent().find("input").each(function(){
-    		
-    		if($(this).val()==""){
-    			
-    	     $.toptip('必填项不能为空', 'error');
-    			
-    			return false;
-    		}
-    		data[$(this).attr("name")]=$(this).val();
-    	})
-    	if(data.length==0){
-    	$.toptip('必填项不能为空', 'error');
-    		return;
-    	}
-
-    	if($(this).parent().parent().find("textarea[name='desc']").val()==""){
-    	    $.toptip('必填项不能为空', 'error');
-			return ;
-    	}
-   data['subsidy']=$("select[name='subsidy']").val();	
-    data['desc']=$(this).parent().parent().find("textarea[name='desc']").val().replace(/\n|\r\n/g,"<br>")
-
-    $.ajax({
-    	
-    	url:"<?php echo url('positionedit'); ?>",
-    	data:{data:data,poid:<?php echo $data['poid']; ?>},
-    	type:"post",
-    	beforeSend:function(){
-    		 $.showLoading('正在保存')
-    	},
-    	success:function(data){
-    	    $.hideLoading();
-    		if(data==1){
-    	     $.toast("保存成功",500);
-    	      setTimeout(function(){
-    	         location.href="<?php echo url('company/index'); ?>"
-    	     },500)
+	      ctx.drawImage(img, 0, 0, width, height);
+	  //进行最小压缩
+	  var ndata = canvas.toDataURL('image/jpeg', 0.6);
+	  console.log('压缩前：' + initSize);
+	  console.log('压缩后：' + ndata.length);
+	  console.log('压缩率：' + ~~(100 * (initSize - ndata.length) / initSize) + "%");
+	  tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
+	  return ndata;
+	    }
     
-    		}else{
-    			$.toast(data);
-    		}
-    		
-    	},
-    	complete:function(){
-    		
-    		 $.hideLoading();
-    	}
-    	
-    })
-
-})
-
-
-
-
-
-$(".menu").on("click",function(){
-	
-	$.actions({
-		  actions: [{
-		    text: "企业后台",
-		    onClick: function() {
-		      window.location.href="<?php echo url('company/login'); ?>"
-		    }
-		  },{
-		    text: "删除",
-		    onClick: function() {
-		      //do something
-		    }
-		  }]
-		});
-	
-})
 
 
 </script>

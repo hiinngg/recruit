@@ -39,6 +39,36 @@ class Position extends  Common{
         }
         return $this->fetch();
     }
+    
+    
+    public  function  myposition($poid="",$page = "", $limit = ""){
+    
+        if ($this->request->isAjax()) {
+    
+            if (! isset($count)) {
+                $this->count = Db::name("position_user", "*")->where('poid',$poid)->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+    
+            $res = Db::name("position_user", "*")->where('poid',$poid)
+            ->page($page, $limit)
+            ->order("createtime desc")
+            ->select();
+    
+            return [
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count,
+                'data' => $res
+            ];
+        }
+        $this->assign('poid',$poid);
+        return $this->fetch();
+    
+    
+    }
 
     public function statusChange(){
         $post = $this->request->post();

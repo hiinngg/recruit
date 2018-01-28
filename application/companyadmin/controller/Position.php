@@ -6,6 +6,7 @@
 namespace app\companyadmin\controller;
 
 use think\Db;
+use app\common\controller\Editor;
 
 class Position extends Common
 {
@@ -64,18 +65,20 @@ class Position extends Common
     {
         if ($this->request->isAjax()) {
             $post = $this->request->post();
+            $content = new Editor($post['data']['desc']);
+            $content->imageTrans();
+            $post['data']['desc'] = $content->getContent();
             // 执行保存
             $data = [
                 'cid' => $this->companyid,
                 'name' => trim($post['data']['title']),
                 'number' => $post['data']['number'],
-                'salary_min' => $post['data']['price_min'],
-                'salary_max' => $post['data']['price_max'],
+                'salary' => $post['data']['salary'],
                 'desc' => $post['data']['desc'],
                 'is_subsidy'=>$post['data']['subsidy'],
                 'treatment' => json_encode($post['data']['treat'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK),
                 'createtime' => date("Y-m-d H:i:s"),
-                'status' => 1
+                'status' => 0
             ];
             if (Db::name("position")->insert($data) <= 0) {
                 return "新增失败";
@@ -106,12 +109,16 @@ class Position extends Common
     {
       if ($this->request->isAjax()) {
             $post = $this->request->post();
+            $content = new Editor($post['data']['content']);
+            $content->setOldContent($post['oldcontent']);
+            $content->imageDel();
+            $content->imageTrans();
+            $post['data']['desc'] = $content->getContent();
             // 执行保存
             $data = [
                 'name' => trim($post['data']['title']),
                 'number' => $post['data']['number'],
-                'salary_min' => $post['data']['price_min'],
-                'salary_max' => $post['data']['price_max'],
+                'salary' => $post['data']['salary'],
                 'is_subsidy'=>$post['data']['subsidy'],
                 'desc' => $post['data']['desc'],
                 'treatment' => json_encode($post['data']['treat'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK),

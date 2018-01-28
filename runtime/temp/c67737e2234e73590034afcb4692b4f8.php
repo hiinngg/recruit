@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516279864;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516366442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1517149086;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517035579;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,9 +56,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -116,18 +114,19 @@ color:#1881EC;
 
 
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<body style="">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+   
+     <div class="content" style="width:100%;height:auto;">
      
 <div class="wrap" style="position:relative;width:100%;height:226px; background-image: url(/static/images/user.png);background-size:cover;">
+    <span class="fa fa-list menu" style="position:absolute;top:15px;right:30px;z-index:10;"></span>
   <img src="<?php echo $data['avastar']; ?>"  style="position:absolute;z-index:10;top:50%;left:50%;margin-top:-73px;margin-left:-73px; width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
 </div>
 <div class="weui-tab">
@@ -135,17 +134,27 @@ color:#1881EC;
     <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
       我的简历
     </a>
-    <a class="loaditem  weui-navbar__item"  data-url="<?php echo url('user/jobuser'); ?>"  href="#tab2">
+    <a class="loadjobitem  weui-navbar__item"  data-url="<?php echo url('user/jobuser'); ?>"  href="#tab2">
       我的申请
     </a>
-        <a class="loaditem weui-navbar__item"  data-url="<?php echo url('user/courseuser'); ?>" href="#tab3">
+        <a class="loadcourseitem weui-navbar__item"  data-url="<?php echo url('user/courseuser'); ?>" href="#tab3">
       我的课程
     </a>
  
   </div>
   <div class="weui-tab__bd">
     <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-     
+
+
+        <!-- 评测 -->
+        <div  style="display:flex;justify-content:flex-end;align-items:center;margin-right:10px;margin-top:10px;">
+            <a href="javascript:;"  data-target="#eval"  style="margin:0;" class=" open-popup weui-btn weui-btn_mini  weui-btn_plain-default">综合能力报告</a>
+        </div>
+
+
+
+
+
        <div style="padding:0 15px;">
         <?php if(isset($none)): ?>
             <p class="text-center sever">你还没有填写简历,<a href="#" href="javascript:;" class="open-popup" data-target="#resume"  >马上去填写</a></p>
@@ -366,12 +375,32 @@ color:#1881EC;
   </div>
 </div>
 
-
-     </div>
+<div id="eval" style="z-index:2000;" class="weui-popup__container popup-bottom">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                <h1 class="title">综合能力报告</h1>
+            </div>
+        </div>
+        <div class="modal-content" style="padding:15px;">
+          <p>我的报告：</p>
+            <hr>
+            <p>亲，综合能力报告是参与我们“职造计划”才能获得哦</p>
+            <p class="sever" style="text-align:right;">立即参与</p>
+        </div>
     </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
+</div>
+
+
+
+    </div>
+
+</div>
+      <div class="weui-tabbar" style="position:fixed;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+            <p class="weui-tabbar__label" style="line-height:2.5;">首页</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
@@ -384,8 +413,6 @@ color:#1881EC;
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
-</div>
-  
   
   
   
@@ -415,13 +442,17 @@ $(function(){
 
 
 //渲染数据
-function viewdata(obj,initdata,invoke){
+function viewcoursedata(obj,initdata,invoke){
 	var html="";
 	 for(key in initdata  ){  
 	 ttDate = initdata[key]['createtime'];   
 	 ttDate = ttDate.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString(); 
      ttDate = ttDate.replace(/[^0-9]/mg, '-');   
-	 
+	    feedbackhtml="";   
+	 if(initdata[key]['status']==1){
+	  feedbackhtml='<p class="texts-hide">'+initdata[key]['feedback']+'</p>';
+
+	 }
 	html+=' <div class="item "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">'+
                 '<div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">'+
                     '<p style="width:33%;">'+ttDate+'</p>'+
@@ -431,7 +462,48 @@ function viewdata(obj,initdata,invoke){
                ' <div  class="hidden" style="background:#eee;padding:13px;">'+
                     '<p class="texts-hide"><span>课程导师：'+initdata[key]['teacher']+'</span>&nbsp;<span>联系方式：'+initdata[key]['contact']+'</span></p>'+
                     '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
-                   ' <p class="texts-hide">'+initdata[key]['feedback']+'</p>'+
+                   feedbackhtml+
+                '</div>'+
+
+            '</div>';
+           
+	 }
+	 
+	 if(invoke){
+	  $(obj).html(html);
+	 }else{
+	    $(obj).append(html);
+	 }
+
+}
+function viewjobdata(obj,initdata,invoke){
+	var html="";
+	 for(key in initdata  ){  
+	 ttDate = initdata[key]['createtime'];   
+	 ttDate = ttDate.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString(); 
+     ttDate = ttDate.replace(/[^0-9]/mg, '-');   
+	 
+	   feedbackhtml="";   
+	 if(initdata[key]['status']==1){
+	  feedbackhtml='<p style="margin:0;margin-top:10px;">内容已被查看，反馈如下</p>'+
+	               '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
+	               '<p class="texts-hide">'+initdata[key]['feedback']+'</p>';
+	 
+	 
+	 }else{
+	 feedbackhtml='<p style="margin:0;margin-top:10px;">亲，你的简历已经提交，职造师在审核中</p>'+
+	                          '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>';
+     
+	 }
+	 
+	html+=' <div class="item "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">'+
+                '<div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">'+
+                    '<p style="width:33%;">'+ttDate+'</p>'+
+                    '<p class="text-hide" style="width:33%;">'+initdata[key]['name']+'</p>'+
+                    '<p class="status" style="width:33%;"><span class="fa fa-caret-down">&nbsp;</span>'+(initdata[key]['status']==1?"<span style='color:red;'>查看反馈</span>":"查看")+'</p>'+
+               ' </div>'+
+               ' <div  class="hidden" style="background:#eee;padding:13px;">'+
+                    feedbackhtml+
                 '</div>'+
 
             '</div>';
@@ -446,7 +518,7 @@ function viewdata(obj,initdata,invoke){
 
 }
 
-$(".loaditem").on("click",function(){
+$(".loadjobitem").on("click",function(){
 var that=$(this);
 var url=$(this).attr("data-url");
 $.ajax({
@@ -464,7 +536,33 @@ return;
 //if(data.length == 4){
 //$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
 //}
-viewdata($(that.attr("href")).find(".my-items"),data,true)
+viewjobdata($(that.attr("href")).find(".my-items"),data,true)
+},
+complete:function(){
+$.hideLoading();
+}
+
+})
+})
+$(".loadcourseitem").on("click",function(){
+var that=$(this);
+var url=$(this).attr("data-url");
+$.ajax({
+url:url,
+beforeSend:function(){
+$(that.attr("href")).find(".nomore").addClass("hidden")
+//$(that.attr("href")).find("a.loadmore").attr("data-currentpage",1)
+$.showLoading();
+},
+success:function(data){
+if(data.length == 0){
+$(that.attr("href")).find(".nomore").removeClass("hidden")
+return;
+}
+//if(data.length == 4){
+//$(that.attr("href")).find(".loadmore").parent().removeClass("hidden");
+//}
+viewcoursedata($(that.attr("href")).find(".my-items"),data,true)
 },
 complete:function(){
 $.hideLoading();

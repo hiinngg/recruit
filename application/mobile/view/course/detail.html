@@ -1,0 +1,118 @@
+{extend name="indexlayout" /}
+{block name="nav-course"}weui-bar__item_on{/block}
+{block name="title"}微课{/block}
+{block name="css"}
+
+.course-item p,h4{
+margin:0;
+}
+.cate-item{
+color:#000000;
+}
+.cate-item:hover,.cate-item:active,.cate-item:focus{
+color:#1881EC;
+}
+.weui-navbar:after,.weui-navbar__item:after,.hidden{
+display:none; 
+}
+.weui-navbar__item.weui-bar__item--on{
+color:#1881ec;
+background:#ffffff;
+}
+.course-item p,h4{
+margin:0;
+}
+.course-item{
+width:45%;
+}
+
+
+{/block}
+{block name="content"}
+<!-- <div>
+<img src="/static/images/zzz.jpg" style="width:100%;object-fit:contain;" alt="" />
+</div>  -->
+<h3 class="text-center">{$data.name}</h3>
+<div class="" >
+	   <img src="{$data.label_img}" height="200px;" style="object-fit:contain;" width="100%" />
+</div>
+	<div class="sever row-center" style="padding:0  8px;line-height:2;">
+	   
+	   <div class=" col-center" style="align-items:flex-start;width:60%;">
+	   <p><span style="font-weight:bold;">课程形式：</span><span>{$data.type}</span></p>
+	   <p><p><strong >课程简介：</strong></p><p >{$data.desc}</p></p>
+	   </div>
+	   
+	   <div class="col-md-3 col-center"  style="justify-content:space-between;width:40%;">
+
+	<h3 style="color:#1881EC;">&yen;&nbsp;{$data.price}元 </h3>
+	<small >已有{$data.apply}人报名</small>
+	<a href="javascript:;" data-courseid="{$data.courseid}" class="weui-btn weui-btn_plain-default weui-btn_mini apply" style="background:#1881EC;color:#ffffff;border-color:#ffffff;">马上报名</a>
+     
+	</div>
+	   
+	</div>
+	
+	<div class="weui-tab">
+  <div class="weui-navbar">
+    <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+     课程介绍
+    </a>
+    <a class="weui-navbar__item" href="#tab2">
+     课程目录
+    </a>
+  
+  </div>
+  <div class="weui-tab__bd" >
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active" style="padding:0 10px;">
+     {$data.content}
+    </div>
+    <div id="tab2" class="weui-tab__bd-item">
+     <p style="padding:0 10px;">{$data.menu}</p>
+    </div>
+
+  </div>
+</div>
+	
+
+
+{/block}
+{block name="script"}
+
+$(function(){
+
+
+$(".apply").on("click",function(){
+var courseid = $(this).attr("data-courseid")
+$.ajax({
+url:"{:url('apply')}",
+data:{courseid:courseid},
+type:"post",
+beforeSend:function(){
+
+$.showLoading()
+},
+success:function(data){
+$.hideLoading();
+if(data==1){
+ 
+     $.alert('<p>报名成功</p>','');
+}else{
+$.alert(data,'');
+}
+}
+
+})
+
+
+})
+
+
+
+})
+
+
+
+
+  
+{/block}

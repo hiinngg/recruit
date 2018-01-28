@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp6\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1516370800;s:83:"D:\wamp6\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1516370383;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp6\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517037423;s:83:"D:\wamp6\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1517032849;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -102,21 +102,25 @@ background:#ffffff;
 
 
 </style>
-<body style="overflow:scroll;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:center;border-bottom:1px solid #eee;">
+<body style="overflow:scroll;min-height:100%;background:#eee;">
 
-<span class="fa fa-angle-left" style="margin-left:10px;display:none;"></span>
-<span >首页</span>
-
-</div>
- <div style="width:100%;height:155px;">
-<img src="/static/images/user.png" alt="" style="width:100%;height:100%;" />
-</div>
- <div class="" style="height:100%;padding:0 15px 60px 15px;">
+ <div class="" style="">
 
  
+ 
+   <div class=" swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        <img src="/static/images/user.png" alt=""  width="100%"  height="155px" />
+       </div>
+    </div>
 
-<div class="weui-tab">
+  
+
+</div>
+
+
+<div class="weui-tab"  >
   <div class="weui-navbar">
     <a class="weui-navbar__item weui-bar__item--on all" href="#tab1">
       所有企业
@@ -124,13 +128,13 @@ background:#ffffff;
     <a class="weui-navbar__item sub" href="#tab2">
       入职补贴
     </a>
-   <a class="weui-navbar__item" href="#tab2">
+   <a class="weui-navbar__item" href="#tab3">
      求职须知
     </a>
   </div>
   <div class="weui-tab__bd">
-    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active" >
-        <div class=" jobs " style="margin:0;width:100%;background:#eee;">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active"  style="background:#eee;">
+        <div class=" jobs " style="margin:0;">
 
 	    
 	  </div><!-- item -->
@@ -155,7 +159,7 @@ background:#ffffff;
     
     <div id="tab2" class="weui-tab__bd-item" style="">
 		<div class=" sub_jobs " style="margin:0;width:100%;background:#eee;overflow: scroll;">
-
+        
 
 		</div><!-- item -->
 
@@ -174,26 +178,27 @@ background:#ffffff;
 		</div><!-- no more -->
     </div>
   <div id="tab3" class="weui-tab__bd-item">
-      <h1>页面三</h1>
+      <h1 class="text-center">求职须知</h1>
+      <p style="margin-bottom:30px;">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
     </div>
   </div>
 </div>
 
 
 
-     <div class="weui-footer " style="background:#eee;color:#333;width:100%;height:60px;">
+
+
+ </div>
+
+       <div class="weui-footer " style="background:#eee;color:#333;width:100%;height:60px;">
          <p class="weui-footer__links">
-             <a href="javascript:void(0);" class="weui-footer__link">首页</a>
+             <a href="<?php echo url('mobile/index/index'); ?>" class="weui-footer__link">首页</a>
              <a href="javascript:void(0);" class="weui-footer__link">关于我们</a>
-             <a href="javascript:void(0);" class="weui-footer__link">企业入口</a>
+             <a href="<?php echo url('mobile/company/index'); ?>" class="weui-footer__link">企业入口</a>
          </p>
          <p class="weui-footer__text">企业直聘网：为您匹配理想的打工生活</p>
          <p class="weui-footer__text">企业直聘 © 2008-2016 </p>
      </div>
-
- </div>
-
-  
   
   
  <!--    <div class="panel-overlay"></div>
@@ -233,6 +238,9 @@ $(function(){
 		}
 	}
 
+var mySwiper = new Swiper ('.swiper-container', {
+
+  }) 
 
 
 //渲染数据
@@ -246,19 +254,31 @@ for(i in initdata[key]['treatment'] ){
 treat+=' <span>'+initdata[key]['treatment'][i]+'</span>';
 }
 }
+logo="";
+
+if(initdata[key]['pics']&&(initdata[key]['pics']!='')){
+logo= '<div style="width:40%; height:100%;"><img src="'+initdata[key]['pics']+'" alt="" style="width:100%; height:100%;" /></div> ';
+
+}else{
+
+logo= '<p style="text-align:center;width:40%;height:100%;line-height:100px;">暂无企业图片</p>';
+}
+
 sub="";
 if(initdata[key]['is_subsidy']==1){
-sub= ' <img src="/static/images/subsidy.png" alt="" style="width:20%; height:80%;object-fit:contain;" /> ';
+sub= ' <img src="/static/images/sub.jpg"  style="width:35px; height:70px;" /> ';
+}else{
+sub= '<div style="width:20%; height:80%;"></div> ';
 }
-	html+= '<div class="row-center" style="width:100% ;height:100px;align-items:center;margin:15px 0;background:#ffffff;">'+
-		       ' <img src="/static/images/user.png" alt="" style="width:40%; height:100%;" />'+
-		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;"> '+
-		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;" >'+
-			      ' <h5>'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
-			       '<p class="texts-hide" style="font-size:9px;padding-left:3px;">'+treat+'</p> '+
+	html+= '<div class="po row-center"  data-poid="'+initdata[key]['poid']+'" style="width:100% ;height:100px;justify-content:flex-start;margin:15px 0;background:#ffffff;">'+
+		       logo+
+		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;padding-right:15px;padding-left:4px;"> '+
+		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
+			      ' <h5 >'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
+			       '<p class="texts-hide" style="font-size:11px;padding-left:3px;">'+treat+'</p> '+
 		       ' </div>'+
 		      sub+
-		     '  <p class="row-center" style="justify-content:space-between; flex-basis:100%;flex-shrink:0;"><span  style="font-size:9px;padding-left:3px;"   >已有321人报名</span><span>'+initdata[key]['salary']+'</span></p>'+
+		     '  <p class="row-center" style="justify-content:space-between; flex-basis:100%;flex-shrink:0;"><span  style="font-size:9px;padding-left:3px;"   >已有'+initdata[key]['apply']+'人报名</span><span  style="color:#1881EC;">'+initdata[key]['salary']+'</span></p>'+
 		     ' </div>'+
 	      '</div>';
 	 }
@@ -327,6 +347,17 @@ $.hideLoading();
 })
 })
 
+$(".jobs").on("click",".po",function(){
+var poid=$(this).attr("data-poid");
+location.href="/position/index/detail?poid="+poid;
+
+})
+
+$(".sub_jobs").on("click",".po",function(){
+var poid=$(this).attr("data-poid");
+location.href="/position/index/detail?poid="+poid;
+
+})
 
 
 $(".weui-navbar a.weui-bar__item--on").trigger("click")

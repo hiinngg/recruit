@@ -68,6 +68,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -124,8 +125,7 @@ $(".addcate").on("click",function(){
 							      title: '工作编辑',
 							      shadeClose: true,
 							      shade: false,
-							      maxmin: true, //开启最大化最小化按钮
-							      area: ['893px', '500px'],
+                                 area: ['100%', '100%'],
 			                      moveOut: true,
 							      content: "editJob?jobid="+data.jobid
 							    });
@@ -156,7 +156,17 @@ $(".addcate").on("click",function(){
 						 });
 						  })
 					
-					  }
+					  }else if(layEvent === 'list'){
+						  layer.open({
+						      type: 2,
+						      title: '申请人数管理',
+						      shadeClose: true,
+						      shade: false,
+                              area: ['100%', '100%'],
+		                     moveOut: true,
+						      content: "myjob?jobid="+data.jobid
+						    });
+						  }
 					});
 				
 				function  _ajax(url,data,deferred){
@@ -197,7 +207,7 @@ $(".addcate").on("click",function(){
   {{#  } else { }}
     <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
   {{#  } }}
-
+  <button class="layui-btn layui-btn-xs" lay-event="list">申请列表</button>
   <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
  
   <!-- 这里同样支持 laytpl 语法，如： -->

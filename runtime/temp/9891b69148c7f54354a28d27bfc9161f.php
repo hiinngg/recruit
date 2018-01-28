@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1516279864;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516366442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\job\joblist.html";i:1517036741;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517035579;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,9 +56,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -122,16 +120,16 @@ background: #FFFFFF;
 
 
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<body style="">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+   
+     <div class="content" style="width:100%;height:auto;">
      
 <div>
 <img src="/static/images/zzz.jpg" style="width:100%;object-fit:contain;" alt="" />
@@ -162,7 +160,7 @@ background: #FFFFFF;
       
       
      <div class="text-center  hidden">
-          <a href="javascript:;"  data-currentpage="1"  data-cateid="<?php echo $vo['cateid']; ?>"   style="margin-top:15px;"  class="weui-btn weui-btn_mini weui-btn_default loadmore">更多课程</a>
+          <a href="javascript:;"  data-currentpage="1"  data-cateid="<?php echo $vo['cateid']; ?>"   style="margin-top:15px;"  class="weui-btn weui-btn_mini weui-btn_default loadmore">更多岗位</a>
      </div><!-- loadmore -->
 
 	<div class="weui-loadmore hidden loading">
@@ -181,11 +179,12 @@ background: #FFFFFF;
 
 </div>
 
-     </div>
     </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
+
+</div>
+      <div class="weui-tabbar" style="position:fixed;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+            <p class="weui-tabbar__label" style="line-height:2.5;">首页</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
@@ -198,8 +197,6 @@ background: #FFFFFF;
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
-</div>
-  
   
   
   
@@ -257,7 +254,7 @@ function viewdata(obj,initdata,invoke){
 	         '</div>'+
 	         '<div class="text-center" style="width:25%;flex-shrink:0;display:flex;align-items:center;flex-direction: column;justify-content: space-around;" >'+
 		       '<p class="text-hide" style="width:100%;"><span class="fa fa-map-marker"></span><span>'+initdata[key]['location']+'</span></p>'+
-		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default  apply" style="padding:0 1.2em;">点击报名</a>'+
+		       '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-default  apply"  data-jobid="'+initdata[key]['jobid']+'" style="padding:0 5px;white-apace:nowrap;">点击报名</a>'+
 	         '</div>'+
            '</div>';
 	 }
@@ -308,6 +305,31 @@ $(".weui-navbar a.weui-bar__item--on").trigger("click")
 //初始化分类列表
 var cates = new Swiper('#cates',{
 slidesPerView :'auto',
+})
+
+$(".jobs").on("click",".apply",function(){
+var jobid = $(this).attr("data-jobid")
+$.ajax({
+url:"<?php echo url('apply'); ?>",
+data:{jobid:jobid},
+type:"post",
+beforeSend:function(){
+
+$.showLoading()
+},
+success:function(data){
+$.hideLoading();
+if(data==1){
+ 
+     $.alert('<p>亲，报名已经提交了喔</p><p>职造师将会在24小时内通知你</p><p>可添加微信咨询：xxxxx</p>','');
+}else{
+$.alert(data+'<p>可在“我的”查看反馈</p>','');
+}
+}
+
+})
+
+
 })
 
 //加载更多   

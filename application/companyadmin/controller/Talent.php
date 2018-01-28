@@ -23,11 +23,12 @@ class Talent extends Common
                 'name' => trim($post['data']['title']),
                 'cid' => $this->companyid,
                 'skill' => $post['data']['skill'],
-                'salary_min' => $post['data']['price_min'],
-                'salary_max' => $post['data']['price_max'],
+                'salary' => $post['data']['salary'],
                 'content' => $post['data']['desc'],
                 'createtime' => date("Y-m-d H:i:s"),
-                'status' => 1
+                'location'=>$post['data']['location'],
+                'feedback'=>'',
+                'status' => 0
             ];
             if (! Db::name("talent")->insert($data) > 0) {
                 return "保存失败，请重试";
@@ -65,7 +66,6 @@ class Talent extends Common
                 'cid' => $this->companyid
             ])
             ->page($page, $limit)
-            ->field("taid,name,createtime,status")
             ->order("createtime desc")
             ->select();
             
@@ -127,12 +127,18 @@ class Talent extends Common
         if($this->request->isAjax()){
             //执行更新操作
             $post = $this->request->post();
+            
+           if(Db::name("talent")->where("taid",$post['taid'])->value("status")==1){
+               return "该人才定制已被收录，不能修改。";
+               
+           }
+            
             $data = [
                 'name' => trim($post['data']['title']),
                 'skill' => $post['data']['skill'],
-                'salary_min' => $post['data']['price_min'],
-                'salary_max' => $post['data']['price_max'],
+                'salary' => $post['data']['salary'],
                 'content' => $post['data']['desc'],
+                'location' => $post['data']['location'],
             ];
             if ( Db::name("talent")->where("taid",$post['taid'])->update($data) < 0) {
                 return "保存失败，请重试";

@@ -25,7 +25,12 @@
   </div>
   
   {/notpresent}
-  
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:auto;display:inline-block;">联系人：</label>
+        <div class="layui-input-block" style="width:320px;display:inline-block;margin-left:0;">
+            <input type="text" name="linkman" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  value="{$data.linkman??''}">
+        </div>
+    </div>
   
    
    <div class="layui-form-item">

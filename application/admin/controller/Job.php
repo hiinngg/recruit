@@ -32,6 +32,103 @@ class Job extends Common
         return $this->fetch();
     }
     
+    public  function  editfeedback(){
+        $post = $this->request->post();
+        Db::name("talent")->where("taid", $post['taid'])->update([
+            "feedback"=>$post['text'],
+            'status'=>1
+        ]);
+         
+        return 1;
+    }
+    
+    public  function  myjob($jobid="",$page = "", $limit = ""){
+        
+        if ($this->request->isAjax()) {
+        
+            if (! isset($count)) {
+                $this->count = Db::view("re_job_user", "*")->view("re_user", "telphone", "re_user.userid=re_job_user.userid")->where('re_job_user.jobid',$jobid)->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+        
+            $res = Db::view("re_job_user", "*")->view("re_user", "telphone", "re_user.userid=re_job_user.userid")->where('re_job_user.jobid',$jobid)
+            ->page($page, $limit)
+            ->order("re_job_user.createtime desc")
+            ->select();
+        
+            return [
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count,
+                'data' => $res
+            ];
+        }
+        $this->assign('jobid',$jobid);
+        return $this->fetch();
+        
+        
+    }
+    
+    public function edituserfeedback(){
+        
+        $post = $this->request->post();
+        Db::name("job_user")->where("orderid", $post['orderid'])->update([
+            "feedback"=>$post['text'],
+            'status'=>1
+        ]);
+         
+        return 1;
+    }
+    
+    public function ctalent($page = "", $limit = ""){
+    
+      if($this->request->isAjax()){
+
+            if (! isset($count)) {
+                $this->count = Db::name("talent")->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+            
+            $res =  Db::name("talent")
+            ->page($page, $limit)
+    
+            ->order("createtime desc")
+            ->select();
+            
+            return ['code'=>0,'msg'=>"","count"=>$this->count,'data'=>$res];
+        }
+        return $this->fetch();
+    
+    }
+
+    public function cteam($page = "", $limit = ""){
+
+        if($this->request->isAjax()){
+
+            if (! isset($count)) {
+                $this->count = Db::name("team")->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+
+            $res =  Db::name("team")
+                ->page($page, $limit)
+
+                ->order("createtime desc")
+                ->select();
+
+            return ['code'=>0,'msg'=>"","count"=>$this->count,'data'=>$res];
+        }
+        return $this->fetch();
+
+    }
+
+    
     public function addcate($name){
         $data=[
             'name'=>$name,
@@ -59,6 +156,9 @@ class Job extends Common
         }
         
     }
+    
+
+    
     
     
     public function  jobcate($page = "", $limit = ""){

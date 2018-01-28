@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1516351813;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516351781;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1516862713;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516846307;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,9 +56,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -117,17 +115,18 @@ color:#1881EC;
 }
 
 
+
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<body style="">
+<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
 </div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
+  <div class="main" style="position:absolute;overflow-y: scroll;top:35px;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+   
+     <div class="content" style="width:100%;height:auto;">
      
 <div class="wrap" style="position:relative;width:100%;height:200px; background-image: url(/static/images/user.png);background-size:cover;">
 <?php if($data['avastar'] != ''): ?>
@@ -229,7 +228,7 @@ color:#1881EC;
 	
     </div><!-- 团队定制 -->
     <div id="tab3" class="weui-tab__bd-item">
-          <p class="open-popup" data-target="#position" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
+          <p class="addposition" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增普工招聘</span>
      </p>
      
@@ -433,21 +432,18 @@ color:#1881EC;
       </div>
   
   
- <div class="weui-cells__title">工作描述</div>
-<div class="weui-cells weui-cells_form">
-  <div class="weui-cell">
-    <div class="weui-cell__bd">
-      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
-     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
-    </div>
-  </div>
-</div>
 
-  <div class="button_sp_area text-center">
+ 
+     </div>
+     
+     <p style="padding-left:15px;">工作描述</p>
+
+      <div style="padding:10px 15px;overflow-x:auto;" id="articleEditor"></div>
+     
+      <div class="button_sp_area text-center">
         <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary close-popup">取消</a>
         <a href="javascript:;" class="positionsave weui-btn weui-btn_mini weui-btn_default">提交</a>
- </div> 
-     </div>
+    </div> 
 
   </div>
 </div>
@@ -456,11 +452,12 @@ color:#1881EC;
 
 
 
-     </div>
     </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
+
+</div>
+      <div class="weui-tabbar" style="position:fixed;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+            <p class="weui-tabbar__label" style="line-height:2.5;">首页</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
@@ -473,8 +470,6 @@ color:#1881EC;
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
-</div>
-  
   
   
   
@@ -494,11 +489,24 @@ color:#1881EC;
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
+<script src="/admin/eleditor/Eleditor.min.js"></script>
+<script src="/admin/eleditor/webuploader.min.js"></script>
+
 <script>
 
 
 
 $(function(){
+
+$(".addposition").on("click",function(){
+
+location.href="<?php echo url('addposition'); ?>";
+
+})
+
+
+
+
 
 $(".addtreat").on("click",function(){
 $.prompt({

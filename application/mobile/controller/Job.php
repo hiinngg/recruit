@@ -3,6 +3,7 @@ namespace  app\mobile\controller;
 
 
 use think\Db;
+use think\Cookie;
 
 class Job  extends  Common{
     
@@ -40,6 +41,34 @@ class Job  extends  Common{
         
         
         return $this->fetch();
+    }
+    
+    public function apply(){
+
+        
+            $userid=Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid");
+            $post=$this->request->post();
+            if(Db::name('job_user')
+                ->where(['userid'=>$userid,'jobid'=>$post['jobid']])->find()){
+                    return "你已申请该工作";
+            }
+            $data=[
+                'userid'=>$userid,
+                'jobid'=>$post['jobid'],
+                'status'=>0,
+                'createtime'=>date("Y-m-d H:i:s"),
+                'feedback'=>""
+            ];
+            if(Db::name("job_user")->insert($data)==1){
+                return 1;
+            }else{
+                return "申请失败";
+            }
+        
+        
+        
+        
+        
     }
     
     

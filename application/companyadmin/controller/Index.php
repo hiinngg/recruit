@@ -16,7 +16,7 @@ class Index extends Controller
     public function index(Common $common)
     {
         $this->assign("data", Db::name("company")->where("cid", $common->companyid)
-            ->value("name"));
+            ->field("avastar,name")->find());
         
         return $this->fetch();
     }

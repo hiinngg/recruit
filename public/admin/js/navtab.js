@@ -79,7 +79,7 @@ layui.define(['element'], function (exports) {
         // 若不存在  
         if (tabIndex === -1) {     //要新增
             globalTabIdIndex++;
-            var content = '<iframe src="' + data.href + '" id="' +globalTabIdIndex+ '"    frameborder="0"  scrolling="auto"  style="width:100%;height:95%;" ></iframe>';
+            var content = '<iframe src="' + data.href + '" id="' +globalTabIdIndex+ '"    frameborder="0"  scrolling="auto"  style=" width:100%;height:100%; " ></iframe>';
             var title = '';
             // 若icon有定义
            /* if (data.icon !== undefined) {
@@ -101,7 +101,9 @@ layui.define(['element'], function (exports) {
                 id:idt
             });
             //iframe 自适应
-      
+
+
+
             if (_this.config.closed) {
                 //监听关闭事件
                 ELEM.titleBox.find('li').children('i.layui-tab-close[data-id=' + globalTabIdIndex + ']').on('click', function () {
@@ -114,6 +116,7 @@ layui.define(['element'], function (exports) {
         } else {
             element.tabChange(ELEM.tabFilter, tabIndex);
         }
+        return globalTabIdIndex;
     };
     var navtab = new LarryTab();
     exports(module_name, function (options) {

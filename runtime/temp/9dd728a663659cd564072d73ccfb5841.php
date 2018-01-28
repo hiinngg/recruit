@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1515897373;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516104906;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1517032849;s:72:"D:\wamp6\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516104906;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,9 +220,9 @@ body,html{
 
 <div class="container sever">
 <h2 class="text-center">职造课程</h2>
-<div class=" sever row-center  " style="">
+<div class=" sever row-center  " id="courselist" style="">
  <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="course-item"  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
+   <div class="course-item  "  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $vo['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
@@ -235,6 +235,7 @@ body,html{
         <span class="pull-right"><?php echo $vo['price']; ?>元</span>
         </p>
     </div>
+    
 
     <?php endforeach; endif; else: echo "" ;endif; ?>
 

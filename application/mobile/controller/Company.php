@@ -4,6 +4,7 @@ namespace app\mobile\controller;
 use think\Controller;
 use think\Db;
 use think\Session;
+use app\common\controller\Editor;
 
 class Company extends Controller
 {
@@ -29,8 +30,7 @@ class Company extends Controller
         Session::delete("cid");
         return $this->fetch("login");
     }
-    
-
+   
     public function addtalent(){
         
         $post = $this->request->post();
@@ -51,15 +51,13 @@ class Company extends Controller
         return 1;
         
     }
-    
-   
-    
-    
     public function addposition(){
         
         if ($this->request->isAjax()) {
             $post = $this->request->post();
-
+            $content = new Editor($post['data']['desc']);
+            $content->imageTrans();
+            $post['data']['desc'] = $content->getContent();
             // 执行保存
             $data = [
                 'cid' => Session::get("cid"),
@@ -70,24 +68,25 @@ class Company extends Controller
                 'is_subsidy'=>$post['data']['subsidy'],
                 'treatment' =>json_encode(explode(",",$post['data']['treat']),JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK) ,
                 'createtime' => date("Y-m-d H:i:s"),
-                'status' => 1
+                'status' => 0
             ];
             if (Db::name("position")->insert($data) <= 0) {
                 return "新增失败";
             }
-        /*     if (isset($post['image'])) {
+             if (isset($post['image'])) {
                 //检查原先的工厂图片
                 $this->changePics($post['image']);
                 // 保存或更新到company
                 $this->savePics($post['image']);
-            } */
+            } 
             return 1;
         }
-       /*  $position_pics=Db::name("company")->where("cid",$this->companyid)->value("position_pics");
+        $position_pics=Db::name("company")->where("cid",Session::get("cid"))->value("position_pics");
         
         $this->assign("pics", $position_pics ?  (json_decode($position_pics, true) + [1,2,3,4,5]): [1,2,3,4,5]);
-        $this->assign("treat",$this->treat); */
-        return $this->fetch('editposition');
+  
+ 
+        return $this->fetch('positionedit');
         
     }
     
@@ -100,7 +99,8 @@ class Company extends Controller
             'desc' => $post['data']['desc'],
             'result'=>$post['data']['result'],
             'createtime' => date("Y-m-d H:i:s"),
-            'status' => 1
+            'status' => 0,
+            'feedback'=>""
         ];
         if (! Db::name("team")->insert($data) > 0) {
             return "保存失败，请重试";
@@ -138,7 +138,11 @@ class Company extends Controller
         
         if ($this->request->isAjax()) {
             $post = $this->request->post();
-        
+            $content = new Editor($post['data']['desc']);
+            $content->setOldContent($post['data']['oldcontent']);
+            $content->imageDel();
+            $content->imageTrans();
+            $post['data']['desc'] = $content->getContent();
             // 执行保存
             $data = [
                
@@ -151,26 +155,66 @@ class Company extends Controller
           
             ];
             if (Db::name("position")->where("poid",$poid)->update($data) < 0) {
+                
+                
+                
                 return "保存失败";
             }
-            /*     if (isset($post['image'])) {
+                if (isset($post['image'])) {
              //检查原先的工厂图片
              $this->changePics($post['image']);
              // 保存或更新到company
              $this->savePics($post['image']);
-             } */
+             } 
             return 1;
         }
         
         
+        
+        
         $data=Db::name("position")->where("poid",$poid)->find();
+        $position_pics=Db::name("company")->where("cid",Session::get("cid"))->value("position_pics");
+        
+        $this->assign("pics", $position_pics ?  (json_decode($position_pics, true) + [1,2,3,4,5]): [1,2,3,4,5]);
+        
         if(isset($data['treatment'])){
             
             $data['arr']=json_decode($data['treatment'],true);
-            $data['value']=implode(",", $data['arr']);
+            $value=implode(",", $data['arr']);
+            $this->assign("value",$value);
         }
         $this->assign("data",$data);
         return $this->fetch();
+    }
+    
+    
+    public function changePics($temp_arr)
+    {
+        $pics = Db::name("company")->where("cid", Session::get("cid"))->value("position_pics");
+        if ($pics) {
+            foreach (json_decode($pics, true) as $k=>$val) {
+                if(array_search($val, $temp_arr)===false){
+                    unlink(".".$val);
+                }
+            }
+        }
+    }
+    
+    public function savePics($temp_arr)
+    {
+        $pics = [];
+        foreach ($temp_arr as $val) {
+            array_push($pics, transOneImage($val, "/image/company"));
+        }
+    
+        if (! empty($pics)) {
+    
+            Db::name("company")->where("cid",Session::get("cid"))->update([
+                'position_pics' => json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK)
+            ]);
+            delDir("/temp/" . Session::get("cid"));
+        }
+        return true;
     }
     
     
@@ -263,11 +307,16 @@ class Company extends Controller
                 'name' => trim($post['name']),
                 'password' => md5($post['pwd']),
                 'contact' => trim($post['tel']),
+                'linkman'=>trim($post['linkman']),
                 'status' => 0,
                 'createtime' => date("Y-m-d H:i:s")
             ];
             
-            if (($post['fullname'] != "") && (! empty($_FILES))) {
+            
+            if(isset($post['fullname'])&&$post['fullname']!=""){
+                $data['fullname'] = trim($post['fullname']);
+            }
+            if(!empty($_FILES)){
                 $pics = [];
                 if (isset($_FILES['avastar'])) {
                     // 有企业logo
@@ -282,9 +331,8 @@ class Company extends Controller
                     $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
                 }
                 
-                // 成为内推企业
-                $data['fullname'] = trim($post['fullname']);
             }
+            
             
             if (Db::name("company")->insert($data) <= 0) {
                 return "新增失败";
@@ -308,6 +356,7 @@ class Company extends Controller
         }
         
         $uniqid = md5(uniqid());
+  
         $img = "/image/company/" . $uniqid . "." . $ext;
         $image = \think\Image::open($val['tmp_name']);
         // 按照原图的比例生成一个最大为150*150的缩略图并保存为thumb.png
@@ -320,4 +369,60 @@ class Company extends Controller
         
         return $img;
     }
+    
+    public function poimg( $width = 350, $height = 200)
+    {
+        $val=current($_FILES);
+ 
+        // $file = $_FILES;
+        // $finfo = new \finfo(FILEINFO_MIME_TYPE);
+        if (false === $ext = array_search($val['type'], array(
+            'jpg' => 'image/jpeg',
+            'png' => 'image/png',
+            'gif' => 'image/gif'
+        ), true)) {
+            return 0;
+        }
+    
+        $uniqid = md5(uniqid());
+       $datefloder ="./temp/".Session::get("cid");
+    if (! file_exists($datefloder)) {
+        mkdir($datefloder);
+    } 
+        $img = "/temp/". Session::get("cid") ."/" . $uniqid . "." . $ext;
+        $image = \think\Image::open($val['tmp_name']);
+        // 按照原图的比例生成一个最大为150*150的缩略图并保存为thumb.png
+        $image->thumb($width, $height, \think\Image::THUMB_CENTER)->save("." . $img);
+    
+        // move_uploaded_file($val['tmp_name'], "./temp/" . $this->user . "/" . $uniqid . "." . $ext);
+    
+        // return "/temp/" . $this->user . "/" . $uniqid . "." . $ext;
+        // $res[$k] = "/temp/" . $this->user . "/" . $uniqid . "." . $ext;
+    
+        return [
+            'id'=>key($_FILES),
+            'src'=>$img
+        ];
+    }
+    
+    
+    public function imgupload()
+    {
+        $file = request()->file('file');
+        if ($file) {
+            $info = $file->rule(function () {
+                return md5(uniqid());
+            })->move(ROOT_PATH . 'public' . DS . 'temp' . DS .date("Y-m-d"));
+            if ($info) {
+                return json([
+                    'status' =>1,
+                    'url' => "/temp" . "/" . date("Y-m-d"). "/" . $info->getFileName()
+                ]);
+            } else {
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
+    }
+    
 }

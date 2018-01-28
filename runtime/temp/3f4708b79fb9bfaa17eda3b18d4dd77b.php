@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1516329511;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516326769;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1516329511;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516846307;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,9 +56,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -118,16 +116,16 @@ width:175px;height:100px;
 
 
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<body style="">
+<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
 </div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
+  <div class="main" style="position:absolute;overflow-y: scroll;top:35px;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+   
+     <div class="content" style="width:100%;height:auto;">
      
 <div class="bg" style="position:relative;z-index:0;background-image:url('/static/images/user.png');background-size:cover;height:100vh; width:100%;overflow:scroll;background-attachment: fixed;">
 
@@ -225,11 +223,12 @@ width:175px;height:100px;
 
 </div>
 
-     </div>
     </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
+
+</div>
+      <div class="weui-tabbar" style="position:fixed;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  " >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+            <p class="weui-tabbar__label" style="line-height:2.5;">首页</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
@@ -242,8 +241,6 @@ width:175px;height:100px;
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
-</div>
-  
   
   
   
@@ -439,6 +436,8 @@ function compress(img) {
 
 
 
+
+
 $(".menu").on("click",function(){
 	
 	$.actions({
@@ -447,15 +446,12 @@ $(".menu").on("click",function(){
 		    onClick: function() {
 		      window.location.href="<?php echo url('company/login'); ?>"
 		    }
-		  },{
-		    text: "删除",
-		    onClick: function() {
-		      //do something
-		    }
 		  }]
 		});
 	
 })
+
+
 
 
 </script>

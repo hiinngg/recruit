@@ -45,8 +45,12 @@ class Editor extends Controller
                 }
                 
                 $image = Image::open($tmpimg);
+                $width=$image->width();
+                if($image->width()>=640){
+                    $width=640;
+                }
                 $newimg = str_replace('/temp/', '/image/', $tmpimg);
-                if (! $image->thumb(640, $image->height())
+                if (! $image->thumb($width, $image->height())
                     ->save($newimg)) {
                     throw new \think\exception("保存图片出错");
                 }

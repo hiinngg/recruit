@@ -52,6 +52,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -107,7 +108,7 @@
 		                    });
 
 					  } else if(layEvent === 'del'){ //删除
-					    layer.confirm('确定删除该新闻么', function(index){
+					    layer.confirm('确定删除该课程么', function(index){
 					    	  _ajax("{:url('articleDel')}",{postid:data.postid},dtd)
 							  dtd.done(function(){
 								  obj.del(); 
@@ -120,8 +121,7 @@
 						      title: '内容编辑',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+                              area: ['100%', '100%'],
 						      content: "articleEdit?id="+data.postid
 						    });
 					    

@@ -33,6 +33,18 @@ class Team  extends  Common{
         return $this->fetch();
     }
 
+    public  function  editfeedback(){
+        $post = $this->request->post();
+        Db::name("team")->where("teamid", $post['teamid'])->update([
+            "feedback"=>$post['text'],
+            'status'=>1
+        ]);
+
+        return 1;
+    }
+
+
+
     public function imgUpload()
     {
         $image = \think\Image::open(request()->file('image'));

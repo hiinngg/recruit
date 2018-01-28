@@ -39,9 +39,11 @@ z-index:2000;}
 .cl-active{
 color:#1881EC;
 }
+
 {/block}
 {block name="content"}
 <div class="wrap" style="position:relative;width:100%;height:200px; background-image: url(/static/images/user.png);background-size:cover;">
+    <span class="fa fa-list menu" style="position:absolute;top:15px;right:30px;z-index:10;"></span>
 {neq name="data.avastar" value=""}
  <img src="{$data.avastar}"  style="position:absolute;z-index:10;top:50%;left:50%;width:128px;height:64px;margin-top:-32px;margin-left:-64px; border:5px solid #717171;"/>
 {/neq}
@@ -141,7 +143,7 @@ color:#1881EC;
 	
     </div><!-- 团队定制 -->
     <div id="tab3" class="weui-tab__bd-item">
-          <p class="open-popup" data-target="#position" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
+          <p class="addposition" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增普工招聘</span>
      </p>
      
@@ -252,7 +254,7 @@ color:#1881EC;
   <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">团队名称</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text"  name="name"   value="{$data.truename??''}">
+          <input class="weui-input" type="text"  name="name"  style="border:1px solid #eee;"  value="{$data.truename??''}">
         </div>
   </div>
   
@@ -345,21 +347,18 @@ color:#1881EC;
       </div>
   
   
- <div class="weui-cells__title">工作描述</div>
-<div class="weui-cells weui-cells_form">
-  <div class="weui-cell">
-    <div class="weui-cell__bd">
-      <textarea class="weui-textarea" name="desc"  rows="4"></textarea>
-     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
-    </div>
-  </div>
-</div>
 
-  <div class="button_sp_area text-center">
+ 
+     </div>
+     
+     <p style="padding-left:15px;">工作描述</p>
+
+      <div style="padding:10px 15px;overflow-x:auto;" id="articleEditor"></div>
+     
+      <div class="button_sp_area text-center">
         <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary close-popup">取消</a>
         <a href="javascript:;" class="positionsave weui-btn weui-btn_mini weui-btn_default">提交</a>
- </div> 
-     </div>
+    </div> 
 
   </div>
 </div>
@@ -368,8 +367,23 @@ color:#1881EC;
 
 
 {/block}
+{block name="scriptlink"}
+<script src="/admin/eleditor/Eleditor.min.js"></script>
+<script src="/admin/eleditor/webuploader.min.js"></script>
+{/block}
+
 {block name="script"}
 $(function(){
+
+$(".addposition").on("click",function(){
+
+location.href="{:url('addposition')}";
+
+})
+
+
+
+
 
 $(".addtreat").on("click",function(){
 $.prompt({
@@ -657,6 +671,7 @@ function viewpodata(obj,initdata,invoke){
                     '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">待遇：</span>'+treat+'</p>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">是否补贴：</span>'+(initdata[key]['status']==1?"是":"否")+'</p>'+
+
                 '</div>'+
             '</div>';
            
@@ -677,17 +692,25 @@ function viewtedata(obj,initdata,invoke){
 	 ttDate = initdata[key]['createtime'];   
 	 ttDate = ttDate.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString(); 
      ttDate = ttDate.replace(/[^0-9]/mg, '-');
+feedbackhtml="";
+if(initdata[key]['status']==1){
+feedbackhtml='<p style="margin:0;margin-top:10px;color:red;">反馈</p>'+
+'<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
+'<p style="color:red;">'+initdata[key]['feedback']+'</p>';
 
+
+}
 	html+=' <div class="item "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">'+
                 '<div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">'+
                     '<p style="width:33%;">'+ttDate+'</p>'+
                     '<p class="text-hide" style="width:33%;">'+initdata[key]['name']+'</p>'+
-                    '<p data-id="'+initdata[key]['teamid']+'" style="width:33%;"><span class="status">查看</span>&nbsp;<span  class="teamedit">编辑</span></p>'+
+        '<p data-id="'+initdata[key]['taid']+'" style="width:33%;">'+(initdata[key]['status']==1?"<span class='status' style='color:red;'>查看反馈</span>":"<span class='status'>查看</span>&nbsp;<span   class='talentedit'>编辑</span>")+'</p>'+
                '</div>'+
                ' <div  class="hidden" style="background:#eee;padding:13px;">'+
                     '<p class="texts-hide"><span style="font-weight:bold;">定制说明：</span>'+initdata[key]['desc']+'</p>'+
                     '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">预期效果：</span>'+initdata[key]['result']+'</p>'+
+                 feedbackhtml+
                 '</div>'+
             '</div>';
            

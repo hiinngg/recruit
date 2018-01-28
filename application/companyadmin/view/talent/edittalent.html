@@ -18,20 +18,20 @@
     </div>
   </div>
   
+  <div class="layui-form-item">
+    <label class="layui-form-label">工作地点</label>
+    <div class="layui-input-block">
+      <input type="text" name="location" required  lay-verify="required" placeholder="请输入工作地点" autocomplete="off" class="layui-input" value="{$data.name??''}">
+    </div>
+  </div>
   
   
-   <div class="layui-form-item">
-	   <div class="layui-inline">
-	    <label class="layui-form-label">职位薪酬</label>
-	    <div class="layui-input-inline" style="width: 100px;">
-	      <input type="text" name="price_min" lay-verify="required"  placeholder="￥" autocomplete="off" class="layui-input" value="{$data.salary_min??''}">
-	    </div>
-	    <div class="layui-form-mid">-</div>
-	    <div class="layui-input-inline" style="width: 100px;">
-	      <input type="text" name="price_max" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input"  value="{$data.salary_max??''}">
-	    </div>
-	  </div>
-   </div>
+ <div class="layui-form-item">
+    <label class="layui-form-label">职位薪酬</label>
+    <div class="layui-input-block">
+      <input type="text" name="salary" required  lay-verify="required" placeholder="请输入职位薪酬" autocomplete="off" class="layui-input" value="{$data.salary??''}">
+    </div>
+  </div>
    
    <div class="layui-form-item">
     <label class="layui-form-label">职业技能</label>
@@ -39,6 +39,8 @@
       <textarea name="skill" rows="6" lay-verify="required" placeholder="请输入职业技能" class="layui-textarea">{$data.skill ?? ''}</textarea>
     </div>
   </div>
+  
+   
    
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">工作内容</label>
@@ -78,10 +80,10 @@
 		  //监听提交
 		  form.on('submit(addTalent)', function(data){
 			  
-			  if(parseInt(data.field['price_min'])>parseInt(data.field['price_max'])){
+		/* 	  if(parseInt(data.field['price_min'])>parseInt(data.field['price_max'])){
 					layer.msg("请设置正确的薪酬区间",{icon:5,shift:6})
 					return false;
-			  }
+			  } */
 			  data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
 			  data.field['skill']=data.field['skill'].replace(/\n|\r\n/g,"<br>");
 			  
@@ -106,6 +108,8 @@
 			    			setTimeout(function(){
 			    				history.go(0)
 			    			},500)
+			    		}else{
+			    			layer.msg(data)
 			    		}
 			    	},
 			    	complete:function(){

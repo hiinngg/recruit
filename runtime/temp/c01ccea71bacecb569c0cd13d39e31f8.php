@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516104906;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516279864;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1517032849;s:78:"D:\wamp6\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517035579;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,9 +59,7 @@ text-overflow:ellipsis;
 -o-text-overflow:ellipsis; 
 overflow: hidden; 
   }
-  .content{
-	margin-top:35px;
-  }
+
   
   .weui-tabbar__label{
 	font-size:16px;
@@ -87,6 +85,9 @@ word-wrap:break-word;
 word-break: break-all;
 
 }
+.weui-toptips{
+	z-index:2000;
+}
 
   
 
@@ -103,16 +104,16 @@ width:45%;
 
 
 </style>
-<body style="overflow:hidden;height:100vh;">
-<div style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<body style="">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="weui-tab">
-    <div class="weui-tab__panel" style="width:100%;overflow:scroll;">
-     <div class="content" style="width:100%;">
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+   
+     <div class="content" style="width:100%;height:auto;">
      
     <div class="swiper-container" id="coursel" >
             <div class="swiper-wrapper">
@@ -128,7 +129,7 @@ width:45%;
        <h2 class="text-center ">职造课程</h2>
        <div class="row-center" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
       <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-      <div class=" course-item">
+      <div class=" course-item" data-courseid="<?php echo $vo['courseid']; ?>">
           <img src="<?php echo $vo['label_img']; ?>" style="object-fit:cover;width:100%;height:8rem;" />
        <h4><?php echo $vo['name']; ?></h4>
        <p class="text-nowrap"><?php echo $vo['desc']; ?></p>
@@ -158,11 +159,12 @@ width:45%;
    
    
 
-     </div>
     </div>
-    <div class="weui-tabbar" style="position:absolute;bottom:0;z-index:1000;">
+
+</div>
+      <div class="weui-tabbar" style="position:fixed;bottom:0;z-index:1000;">
         <a href="<?php echo url('index/index'); ?>" class="weui-tabbar__item  weui-bar__item_on" >
-            <p class="weui-tabbar__label" style="line-height:2.5;">微信</p>
+            <p class="weui-tabbar__label" style="line-height:2.5;">首页</p>
         </a>
         <a href="<?php echo url('course/courselist'); ?>" class="weui-tabbar__item ">
 
@@ -175,8 +177,6 @@ width:45%;
             <p class="weui-tabbar__label" style="line-height:2.5;">我的</p>
         </a>
     </div>
-</div>
-  
   
   
   
@@ -200,6 +200,11 @@ width:45%;
 
 
 
+$(".course-item").on("click",function(){
+var courseid=$(this).attr("data-courseid")
+location.href="/mobile/course/detail?courseid="+courseid;
+})
+
   var mySwiper = new Swiper ('#company-list', {
 	slidesPerView : "auto",
 	spaceBetween : 20,
@@ -213,6 +218,8 @@ width:45%;
     
 
 
+
+
 $(".menu").on("click",function(){
 	
 	$.actions({
@@ -221,15 +228,12 @@ $(".menu").on("click",function(){
 		    onClick: function() {
 		      window.location.href="<?php echo url('company/login'); ?>"
 		    }
-		  },{
-		    text: "删除",
-		    onClick: function() {
-		      //do something
-		    }
 		  }]
 		});
 	
 })
+
+
 
 
 </script>

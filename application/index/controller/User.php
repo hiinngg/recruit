@@ -163,7 +163,11 @@ class User extends Controller
                 
             })->move(ROOT_PATH . 'public' . DS . 'image'.DS.'user');
             if ($info) {
-                
+                $old_img=Db::name("resume")->where('userid',Session::get("username"))->value("avastar");
+                if($old_img&&$old_img!=""){
+                    unlink(".".$old_img);
+                }
+               
                 Db::name("resume")->where('userid',Session::get("username"))->update(['avastar'=>'/image/user/'.$info->getSaveName()]);
                 
                 return [
