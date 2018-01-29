@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\joblist.html";i:1516433368;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\joblist.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +69,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -125,8 +126,7 @@ $(".addcate").on("click",function(){
 							      title: '工作编辑',
 							      shadeClose: true,
 							      shade: false,
-							      maxmin: true, //开启最大化最小化按钮
-							      area: ['893px', '500px'],
+                                 area: ['100%', '100%'],
 			                      moveOut: true,
 							      content: "editJob?jobid="+data.jobid
 							    });
@@ -163,8 +163,7 @@ $(".addcate").on("click",function(){
 						      title: '申请人数管理',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '500px'],
+                              area: ['100%', '100%'],
 		                     moveOut: true,
 						      content: "myjob?jobid="+data.jobid
 						    });

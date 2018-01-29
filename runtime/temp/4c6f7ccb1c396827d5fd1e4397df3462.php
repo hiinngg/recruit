@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1516783087;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1517215700;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,10 +51,12 @@ var sex=["男",'女'];
                 {field: 'user_id', title: '编号' },
                 {field: 'telphone', title: '注册信息（手机或微信授权）',templet: '#telTpl'},
                 {field: 'time', title: '创建时间' },
-                {field: 'score', title: '操作', width:250, toolbar: '#bar'}
+                {field: 'score', title: '操作', width:250, toolbar: '#bar'},
+                {field: 'request', title: '申请', width:250, toolbar: '#request'}
             ]],
             page:true,
             done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
                 layer.close(init)
             }
         });
@@ -118,14 +120,35 @@ var sex=["男",'女'];
                     }                    
              
 
+                }else if(layEvent === 're2'){
+               	  layer.open({
+                      type: 2,
+                      title: '课程申请查看',
+                      shadeClose: true,
+                      shade: false,
+                      area: ['100%', '100%'],
+                      content: "courseuser?userid="+data.userid
+                  })
+                	
+                	
+                }else if(layEvent === 're3'){
+                	
+               	  layer.open({
+                      type: 2,
+                      title: '工作申请查看',
+                      shadeClose: true,
+                      shade: false,
+                      area: ['100%', '100%'],
+                      content: "jobuser?userid="+data.userid
+                  })
+                	
                 }else if(layEvent === 'eval'){
                 	  layer.open({
                           type: 2,
                           title: '内容查看',
                           shadeClose: true,
                           shade: false,
-                          maxmin: true, //开启最大化最小化按钮
-                          area: ['893px', '600px'],
+                          area: ['100%', '100%'],
                           content: "evalbyuse?userid="+data.userid
                       });
                 }
@@ -135,8 +158,7 @@ var sex=["男",'女'];
                         title: '内容查看',
                         shadeClose: true,
                         shade: false,
-                        maxmin: true, //开启最大化最小化按钮
-                        area: ['893px', '600px'],
+                        area: ['100%', '100%'],
                         content: "addeval?userid="+data.userid
                     });
               }
@@ -196,6 +218,13 @@ var sex=["男",'女'];
     {{#  } else { }}
     <span style="color:#FFB800;">微信授权</span>
     {{#  } }}
+</script>
+<script type="text/html" id="request">
+ 
+
+    <button class="layui-btn  layui-btn-xs " lay-event="re2">课程申请</button>
+ 
+    <button class="layui-btn  layui-btn-xs " lay-event="re3">工作申请</button>
 </script>
 <script type="text/html" id="statusTpl">
     {{#  if(d.is_subsidy == 1){ }}

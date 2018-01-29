@@ -36,11 +36,11 @@
 </div>
 
 
-<div class="container sever">
+<div class="container sever col-center">
 <h2 class="text-center">职造课程</h2>
-<div class=" sever row-center  " id="courselist" style="">
+<div class="row sever  " id="courselist" style="">
  {volist name="coursedata" id="vo"}
-   <div class="course-item  "  style="width:380px;padding:0 15px;" data-id="{$vo.courseid}">
+   <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="{$vo.courseid}">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="{$vo.label_img}" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="{$vo.courseid}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1516872487;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1516774110;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517186675;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1516774110;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -266,7 +266,7 @@ logo= '<p style="text-align:center;width:40%;height:100%;line-height:100px;">暂
 
 sub="";
 if(initdata[key]['is_subsidy']==1){
-sub= ' <img src="/static/images/subsidy.png" alt="" style="width:20%; height:80%;object-fit:contain;" /> ';
+sub= ' <img src="/static/images/sub.jpg"  style="width:35px; height:70px;" /> ';
 }else{
 sub= '<div style="width:20%; height:80%;"></div> ';
 }

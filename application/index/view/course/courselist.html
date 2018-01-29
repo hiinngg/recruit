@@ -45,12 +45,13 @@
  
    
   <!-- Tab panes -->
-  <div  id="courselist" class=" container sever">
+  <div  id="courselist" class=" container sever col-center">
  
     
     <h2 class="text-center" style="margin-bottom:30px;">{$catename}</h2>
-    {volist name="course" id="cour"}
-   <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="{$cour.courseid}">
+	 <div class="row ">
+	          {volist name="course" id="cour"}
+   <div class="course-item  col-md-4"   data-id="{$cour.courseid}">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="{$cour.label_img}" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="{$cour.courseid}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
@@ -65,7 +66,9 @@
     </div>
     
     {/volist}
-
+	        
+	    </div>
+  
     </div>
    
   {eq name=":count($course)" value="6"}

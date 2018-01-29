@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\ctalent.html";i:1516431762;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\ctalent.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +57,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -107,6 +108,8 @@
 							  title: '请输入反馈信息',
 							  area: ['300px', '200px'] //自定义文本域宽高
 							}, function(value, index, elem){
+
+
 								 $.ajax({
 								    	url:"<?php echo url('editfeedback'); ?>",  	
 								    	data:{taid:data.taid,text:value},
@@ -179,7 +182,7 @@
   {{#  if(d.status == 1){ }}
     <span style="color:#5FB878;">已反馈</span>
   {{#  } else { }}
-     <span style="color:#FFB800;">审核中</span>
+     <span style="color:#FFB800;">未反馈</span>
   {{#  } }}
 </script>
 </body>

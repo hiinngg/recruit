@@ -23,7 +23,7 @@ class Job extends Common{
         $this->assign("position",$res); */
         $res=Db::name("job")->where('status',1)->select();
         $this->assign("data",$res);
-        $this->assign("companydata",Db::name("company")->where("status",1)->field("cid,avastar")->select()); 
+        $this->assign("companydata",Db::name("company")->where("status",1)->where("avastar",'neq',"")->field("cid,avastar")->select()); 
         
        
         

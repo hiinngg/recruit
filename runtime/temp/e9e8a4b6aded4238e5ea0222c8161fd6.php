@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\jobcate.html";i:1516090505;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\job\jobcate.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,6 +72,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -148,8 +149,7 @@
 						      title: '内容查看',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+                              area: ['100%', '100%'],
 						      content: "articlePreview?id="+data.postid
 						    });
 

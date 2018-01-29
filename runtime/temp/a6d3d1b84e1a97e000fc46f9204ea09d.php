@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\login.html";i:1513905258;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\login.html";i:1517199043;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +35,7 @@ background-size:cover;
 <button style="padding: 0 102px;width:100%;" class="layui-btn" lay-submit lay-filter="form">立即登录</button>
 </div>
 <p style="color:#ffffff;">还没有账号？现在去<a  style="color:#ff5722;" href="<?php echo url('index/register/companyReg'); ?>">注册</a></p>
+<a style="color:#ffffff;margin-top:15px;" href="<?php echo url('index/index/index'); ?>">返回首页</a>
 </form>
 <script src="/admin/layui/layui.js"></script>
 <script>

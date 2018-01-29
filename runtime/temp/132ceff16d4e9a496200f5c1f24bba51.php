@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1516777861;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\company\companylist.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,6 +64,7 @@
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 			        layer.close(init)
 			    }
 				});
@@ -106,8 +107,7 @@
 						      title: '内容查看',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '450px'],
+                              area: ['100%', '100%'],
 						      content: "companyPreview?cid="+data.cid
 						    });
 
@@ -125,8 +125,7 @@
 						      title: '内容编辑',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '500px'],
+                              area: ['100%', '100%'],
 						      content: "articleEdit?id="+data.postid
 						    });
 					    

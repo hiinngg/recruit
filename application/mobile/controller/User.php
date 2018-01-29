@@ -4,31 +4,45 @@ namespace   app\mobile\controller;
 
 use think\Cookie;
 use think\Db;
+use app\common\controller\Download;
 
 class User extends Common{
     
     
     public  function  index(){
-        $res=Db::view("re_user","*")->view("re_resume","*","re_resume.userid=re_user.userid")->where("re_user.openid",Cookie::get("rec_openid"))
+      
+        $userid = Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid");
+        $res=Db::view("re_user","*")->view("re_resume","*","re_resume.userid=re_user.userid")->where("re_user.userid",$userid)
         ->find();
         if(!$res['truename']||$res['truename']==""){
             $this->assign("none");
         }
+        $eval=Db::name("evaluation")->where("userid",$userid)->select();
         
-        $courselist=Db::view("course_user","*")->view("course","name,type,period,teacher,contact","course.courseid=course_user.courseid")
+        if(!empty($eval)){
+            $this->assign("eval",$eval);
+        }
+       
+   /*      $courselist=Db::view("course_user","*")->view("course","name,type,period,teacher,contact","course.courseid=course_user.courseid")
         ->view("user","*","user.userid=course_user.userid")
         ->where("user.openid",Cookie::get("rec_openid"))
         ->order("course_user.createtime desc")
-        ->select();
+        ->select(); */
         
         
   /*        $joblist=Db::name("job_user")->where("userid",Session::get("username"))
         ->page($page,$limit)
         ->order("createtime desc")
         ->select(); */
-        $this->assign("courselist",$courselist);
+        //$this->assign("courselist",$courselist);
         $this->assign("data",$res); 
+       
         return $this->fetch();
+    }
+    
+    public function evalDownload($evalid){
+        $download=new Download(Db::name("evaluation")->where("evalid",$evalid)->value("path"));
+        $download->download();
     }
     
     public  function jobuser(){
@@ -45,6 +59,24 @@ class User extends Common{
     
     
     }
+    
+    public  function  evalapply(){
+        
+        
+        
+      $userid = Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid");
+    
+      if(Db::name("user")->where("userid",$userid)->update([
+          'eval'=>1,
+          'evaltime'=>time()
+      ])){
+          
+          return 1;
+      }
+        
+        
+    }
+    
     
     
     

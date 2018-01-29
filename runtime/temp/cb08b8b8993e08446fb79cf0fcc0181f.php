@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1515464093;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1515464093;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517207138;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
-<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" /> 
 <link rel="stylesheet" href="/static/css/hover-min.css" />
 <link rel="stylesheet" href="/static/css/bootsnav.css" />
 
@@ -89,6 +89,8 @@ body,html{
  }
  .course-item{
 	cursor:pointer;
+ 	width:380px;
+ 	
  }
  .course-name:hover{
 	color:#1881EC;

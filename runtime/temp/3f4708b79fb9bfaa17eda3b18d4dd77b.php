@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1516329511;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516846307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1517186675;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -117,13 +117,13 @@ width:175px;height:100px;
 
 </style>
 <body style="">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="main" style="position:absolute;overflow-y: scroll;top:35px;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
    
      <div class="content" style="width:100%;height:auto;">
      
@@ -150,6 +150,14 @@ width:175px;height:100px;
 	      <input class="weui-input" required="required" name="pwd2" type="password"  >
 	    </div>
 	  </div>
+	    <div class="weui-cell" >
+	   <div class="weui-cell__hd"><label class="weui-label">联系人</label></div>
+	    <div class="weui-cell__bd" >
+	       
+	      <input class="weui-input" required="required" name="linkman" type="text" >
+	    </div>
+	  </div>
+	  
 	   <div class="weui-cell" >
 	   <div class="weui-cell__hd"><label class="weui-label">HR联系电话</label></div>
 	    <div class="weui-cell__bd" >

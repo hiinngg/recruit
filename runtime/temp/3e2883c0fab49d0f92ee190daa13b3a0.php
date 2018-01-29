@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\team\teamlist.html";i:1516787489;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\team\teamlist.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,13 +55,17 @@
 			        cols:[[
 			         {checkbox: true},
 			         {field: 'teamid', title: '编号', },
+						{field:'name',title:"团队名称"},
 			         {field: 'status', title: '状态',templet: '#statusTpl' },
 			         {field: 'createtime', title: '创建时间' },
 			         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
 			        ]],
 				   page:true,
 				   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
-			        layer.close(init)
+
+
+
+                       layer.close(init)
 			    }
 				});
 			 
@@ -111,7 +115,7 @@
 						      shadeClose: true,
 						      shade: false,
 						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+
 						      content: "articlePreview?id="+data.postid
 						    });
 
@@ -129,12 +133,14 @@
 						      title: '团队编辑',
 						      shadeClose: true,
 						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
+                              area: ['100%', '100%'],
 						      content: "teamEdit?teamid="+data.teamid
 						    });
 					    
-					  }else if(layEvent === 'change2on'){
+					  }else if(layEvent === 'feedback'){
+                          layer.alert(data.feedback)
+
+                      }else if(layEvent === 'change2on'){
 						  _ajax("<?php echo url('statusChange'); ?>",{teamid:data.teamid,status:1},dtd)
 						  dtd.done(function(){
 							  $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
@@ -186,27 +192,27 @@
 		
 		
 	</script>
-<script type="text/html" id="bar">
- 
-  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-  {{#  if(d.status == 1){ }}
-   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
-  {{#  } else { }}
-    <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
-  {{#  } }}
+		<script type="text/html" id="bar">
 
-  <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
- 
-  <!-- 这里同样支持 laytpl 语法，如： -->
 
-</script>
-<script type="text/html" id="statusTpl">
-  {{#  if(d.status == 1){ }}
-    <span style="color:#5FB878;">发布中</span>
-  {{#  } else { }}
-     <span style="color:#FFB800;">未发布</span>
-  {{#  } }}
-</script>
+			{{#  if(d.status == 1){ }}
+			<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="feedback">反馈信息</button>
+			{{#  } else { }}
+			<button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+			{{#  } }}
+
+
+
+			<!-- 这里同样支持 laytpl 语法，如： -->
+
+		</script>
+		<script type="text/html" id="statusTpl">
+			{{#  if(d.status == 1){ }}
+			<span style="color:#5FB878;">已反馈</span>
+			{{#  } else { }}
+			<span style="color:#FFB800;">审核中</span>
+			{{#  } }}
+		</script>
 </body>
 
 </html>

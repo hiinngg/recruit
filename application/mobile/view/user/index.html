@@ -279,17 +279,38 @@ color:#1881EC;
 <div id="eval" style="z-index:2000;" class="weui-popup__container popup-bottom">
     <div class="weui-popup__overlay"></div>
     <div class="weui-popup__modal">
-        <div class="toolbar">
+        <div class="toolbar"  style="position:static;">
             <div class="toolbar-inner">
                 <a href="javascript:;" class="picker-button close-popup">关闭</a>
                 <h1 class="title">综合能力报告</h1>
             </div>
         </div>
         <div class="modal-content" style="padding:15px;">
-          <p>我的报告：</p>
+        {present name="eval"}
+        {volist  name="eval" id="vo"}
+         <p style="padding:15px 0;margin-bottom:15px;">我的报告：<span>{$vo.name}</span></p>
+           <hr>
+           <p>{:date("Y-m-d",strtotime($vo.createtime))}</p>
+           <p style="padding:8px 0;"><strong>报告说明：</strong>{$vo.desc}</p>
+           <p style="padding:8px 0;color:#1881EC;" class="download" id="{$vo.evalid}"><strong style="color:#3d4145;">查看报告：</strong>{$vo.name}</p>
+        {/volist}
+        {else/}
+           <p style="padding:15px 0;">我的报告：<span>暂无</span></p>
             <hr>
+        
             <p>亲，综合能力报告是参与我们“职造计划”才能获得哦</p>
-            <p class="sever" style="text-align:right;">立即参与</p>
+            
+            {if condition="$data.eval eq 1"}
+             <p class="sever " style="text-align:right;">申请成功，职造师会联系亲哦</p>
+            {else/}
+             <p class="sever evalApply" style="text-align:right;">立即参与</p>
+            {/if}
+        
+        {/present}
+        
+        
+       
+           
         </div>
     </div>
 </div>
@@ -299,6 +320,28 @@ color:#1881EC;
 {block name="script"}
 $(function(){
 
+$(".evalApply").on("click",function(){
+var that =this
+$.ajax({
+url:"{:url('evalapply')}",
+beforeSend:function(){
+$.showLoading();
+},
+success:function(){
+$.hideLoading();
+$(that).text("申请成功，职造师会联系亲哦")
+}
+
+})
+
+})
+
+$(".download").on("click",function(){
+
+  var evalid=$(this).attr("id")
+ location.href="/mobile/myfile/evalDownload?evalid="+evalid
+ // window.open("/admin/user/evalDownload?evalid="+evalid)
+})
 
 
 

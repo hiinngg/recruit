@@ -68,6 +68,32 @@
 			<ul class="layui-nav layui-nav-tree" lay-filter="navtab">
 				<li class="layui-nav-item layui-this"><a href="#" data-url="">后台首页</a>
 				</li>
+			<li class="layui-nav-item"><a href="#">公司申请审核</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a   data-url="{:url('position/positionList')}"  href="javascript:;">企业普工招聘</a>
+						</dd>
+						<dd>
+							<a href="#"  data-url="{:url('job/cteam')}">企业团队定制</a>
+						</dd>
+						<dd>
+							<a href="#"  data-url="{:url('job/ctalent')}">企业人才定制</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item"><a href="#">会员申请审核</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a data-url="{:url('user/jobuser')}" href="javascript:;">工作申请</a>
+						</dd>
+						<dd>
+							<a href="#"  data-url="{:url('user/courseuser')}">课程申请</a>
+						</dd>
+						<dd>
+							<a data-url="{:url('user/pouser')}" href="javascript:;">普工申请</a>
+						</dd>
+					</dl>
+				</li>	
 				<li class="layui-nav-item"><a href="#">课程管理</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -81,8 +107,6 @@
 				</li>
 				<li class="layui-nav-item"><a href="#"
 											  data-url="{:url('company/companyList')}">企业管理</a></li>
-				<li class="layui-nav-item"><a href="#"
-											  data-url="{:url('position/positionList')}">普工管理</a></li>
 				<li class="layui-nav-item"><a href="#">职位管理</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -90,13 +114,7 @@
 						</dd>
 						<dd>
 							<a href="#"  data-url="{:url('job/jobList')}">职位列表</a>
-						</dd>
-						<dd>
-							<a href="#"  data-url="{:url('job/ctalent')}">企业人才定制审核</a>
-						</dd>
-						<dd>
-							<a href="#"  data-url="{:url('job/cteam')}">企业团队定制审核</a>
-						</dd>
+						</dd>	
 					</dl>
 				</li>
 				<li class="layui-nav-item"><a href="#"

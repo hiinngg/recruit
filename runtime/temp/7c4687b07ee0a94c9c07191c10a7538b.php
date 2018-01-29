@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1516862713;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516846307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1517186675;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -118,17 +118,18 @@ color:#1881EC;
 
 </style>
 <body style="">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="main" style="position:absolute;overflow-y: scroll;top:35px;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
    
      <div class="content" style="width:100%;height:auto;">
      
 <div class="wrap" style="position:relative;width:100%;height:200px; background-image: url(/static/images/user.png);background-size:cover;">
+    <span class="fa fa-list menu" style="position:absolute;top:15px;right:30px;z-index:10;"></span>
 <?php if($data['avastar'] != ''): ?>
  <img src="<?php echo $data['avastar']; ?>"  style="position:absolute;z-index:10;top:50%;left:50%;width:128px;height:64px;margin-top:-32px;margin-left:-64px; border:5px solid #717171;"/>
 <?php endif; ?>
@@ -339,7 +340,7 @@ color:#1881EC;
   <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">团队名称</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text"  name="name"   value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
+          <input class="weui-input" type="text"  name="name"  style="border:1px solid #eee;"  value="<?php echo isset($data['truename'])?$data['truename']:''; ?>">
         </div>
   </div>
   
@@ -794,6 +795,7 @@ function viewpodata(obj,initdata,invoke){
                     '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">待遇：</span>'+treat+'</p>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">是否补贴：</span>'+(initdata[key]['status']==1?"是":"否")+'</p>'+
+
                 '</div>'+
             '</div>';
            
@@ -814,17 +816,25 @@ function viewtedata(obj,initdata,invoke){
 	 ttDate = initdata[key]['createtime'];   
 	 ttDate = ttDate.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString(); 
      ttDate = ttDate.replace(/[^0-9]/mg, '-');
+feedbackhtml="";
+if(initdata[key]['status']==1){
+feedbackhtml='<p style="margin:0;margin-top:10px;color:red;">反馈</p>'+
+'<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
+'<p style="color:red;">'+initdata[key]['feedback']+'</p>';
 
+
+}
 	html+=' <div class="item "  style="width:100%;height:auto;background:#ffffff;margin:15px 0;">'+
                 '<div class="row-center text-center" style="width:100%;height:35px;justify-content:space-around;">'+
                     '<p style="width:33%;">'+ttDate+'</p>'+
                     '<p class="text-hide" style="width:33%;">'+initdata[key]['name']+'</p>'+
-                    '<p data-id="'+initdata[key]['teamid']+'" style="width:33%;"><span class="status">查看</span>&nbsp;<span  class="teamedit">编辑</span></p>'+
+        '<p data-id="'+initdata[key]['taid']+'" style="width:33%;">'+(initdata[key]['status']==1?"<span class='status' style='color:red;'>查看反馈</span>":"<span class='status'>查看</span>&nbsp;<span   class='talentedit'>编辑</span>")+'</p>'+
                '</div>'+
                ' <div  class="hidden" style="background:#eee;padding:13px;">'+
                     '<p class="texts-hide"><span style="font-weight:bold;">定制说明：</span>'+initdata[key]['desc']+'</p>'+
                     '<div style="height:1px;width:80%;background: #CCCCCC;margin: 15px 0;"></div>'+
                     '<p class="texts-hide"><span style="font-weight:bold;">预期效果：</span>'+initdata[key]['result']+'</p>'+
+                 feedbackhtml+
                 '</div>'+
             '</div>';
            

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1516420666;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1516846307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1517198755;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -115,17 +115,18 @@ color:#1881EC;
 
 </style>
 <body style="">
-<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
+<!--<div style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;">
 
 <span class="fa fa-angle-left" style="margin-left:10px;visibility:hidden;"></span>
 <span >首页</span>
 <span class="fa fa-list menu" style="margin-right:10px;"></span>
-</div>
-  <div class="main" style="position:absolute;overflow-y: scroll;top:35px;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
+</div>-->
+  <div class="main" style="position:absolute;overflow-y: scroll;top:0;bottom:50px;width:100%;-webkit-overflow-scrolling: touch;" >
    
      <div class="content" style="width:100%;height:auto;">
      
 <div class="wrap" style="position:relative;width:100%;height:226px; background-image: url(/static/images/user.png);background-size:cover;">
+    <span class="fa fa-list menu" style="position:absolute;top:15px;right:30px;z-index:10;"></span>
   <img src="<?php echo $data['avastar']; ?>"  style="position:absolute;z-index:10;top:50%;left:50%;margin-top:-73px;margin-left:-73px; width:146px;height:146px;border-radius:50%;border:5px solid #717171;"/>
 </div>
 <div class="weui-tab">
@@ -143,7 +144,17 @@ color:#1881EC;
   </div>
   <div class="weui-tab__bd">
     <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-     
+
+
+        <!-- 评测 -->
+        <div  style="display:flex;justify-content:flex-end;align-items:center;margin-right:10px;margin-top:10px;">
+            <a href="javascript:;"  data-target="#eval"  style="margin:0;" class=" open-popup weui-btn weui-btn_mini  weui-btn_plain-default">综合能力报告</a>
+        </div>
+
+
+
+
+
        <div style="padding:0 15px;">
         <?php if(isset($none)): ?>
             <p class="text-center sever">你还没有填写简历,<a href="#" href="javascript:;" class="open-popup" data-target="#resume"  >马上去填写</a></p>
@@ -364,6 +375,42 @@ color:#1881EC;
   </div>
 </div>
 
+<div id="eval" style="z-index:2000;" class="weui-popup__container popup-bottom">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar"  style="position:static;">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                <h1 class="title">综合能力报告</h1>
+            </div>
+        </div>
+        <div class="modal-content" style="padding:15px;">
+        <?php if(isset($eval)): if(is_array($eval) || $eval instanceof \think\Collection || $eval instanceof \think\Paginator): $i = 0; $__LIST__ = $eval;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+         <p style="padding:15px 0;margin-bottom:15px;">我的报告：<span><?php echo $vo['name']; ?></span></p>
+           <hr>
+           <p><?php echo date("Y-m-d",strtotime($vo['createtime'])); ?></p>
+           <p style="padding:8px 0;"><strong>报告说明：</strong><?php echo $vo['desc']; ?></p>
+           <p style="padding:8px 0;color:#1881EC;" class="download" id="<?php echo $vo['evalid']; ?>"><strong style="color:#3d4145;">查看报告：</strong><?php echo $vo['name']; ?></p>
+        <?php endforeach; endif; else: echo "" ;endif; else: ?>
+           <p style="padding:15px 0;">我的报告：<span>暂无</span></p>
+            <hr>
+        
+            <p>亲，综合能力报告是参与我们“职造计划”才能获得哦</p>
+            
+            <?php if($data['eval'] == 1): ?>
+             <p class="sever " style="text-align:right;">申请成功，职造师会联系亲哦</p>
+            <?php else: ?>
+             <p class="sever evalApply" style="text-align:right;">立即参与</p>
+            <?php endif; endif; ?>
+        
+        
+       
+           
+        </div>
+    </div>
+</div>
+
+
 
     </div>
 
@@ -408,6 +455,28 @@ color:#1881EC;
 
 $(function(){
 
+$(".evalApply").on("click",function(){
+var that =this
+$.ajax({
+url:"<?php echo url('evalapply'); ?>",
+beforeSend:function(){
+$.showLoading();
+},
+success:function(){
+$.hideLoading();
+$(that).text("申请成功，职造师会联系亲哦")
+}
+
+})
+
+})
+
+$(".download").on("click",function(){
+
+  var evalid=$(this).attr("id")
+ location.href="/mobile/myfile/evalDownload?evalid="+evalid
+ // window.open("/admin/user/evalDownload?evalid="+evalid)
+})
 
 
 

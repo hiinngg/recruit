@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editposition.html";i:1516787248;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:94:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\position\editposition.html";i:1517216846;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,8 +109,8 @@
     <label class="layui-form-label">入职补贴</label>
     <div class="layui-input-block">
     
-    <input class="radio" type="radio" name="subsidy" value="0" title="否" >
-    <input class="radio" type="radio" name="subsidy" value="1" title="是">
+    <input class="radio" type="radio" name="subsidy" required  lay-verify="required" value="0" title="否"  >
+    <input class="radio" type="radio" name="subsidy" required  lay-verify="required" value="1" title="是">
      
       
     </div>
@@ -244,7 +244,12 @@
 					layer.msg("请设置正确的薪酬区间",{icon:5,shift:6})
 					return false;
 			  } */
-			    
+			  
+		 if(!data.field['subsidy']){
+			 layer.msg("请选择是否津贴",{icon:5,shift:6})
+			 return false;
+		 }	  
+			  
 	     if(ue.getContent()==""){
                  layer.msg("请编辑内容",{icon:5,shift:6})
                  return false;
@@ -269,6 +274,9 @@
 
 		})
 
+		
+	
+		
        	  if (images === undefined ||images.length == 0) {
 	            layer.msg("请上传环境照片",{icon:5,shift:6})
 	            return false;

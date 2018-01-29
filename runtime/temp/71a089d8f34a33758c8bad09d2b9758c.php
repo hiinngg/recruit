@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1514876904;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\courselist.html";i:1517186675;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,6 +96,7 @@
 				        ]],
 					   page:true,
 					   done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
+
 				        layer.closeAll("loading")
 				    }
 					});
@@ -152,8 +153,7 @@
 				      title: '课程编辑',
 				      shadeClose: true,
 				      shade: false,
-				      maxmin: true, //开启最大化最小化按钮
-				      area: ['893px', '500px'],
+                      area: ['100%', '100%'],
                       moveOut: true,
 				      content: "editCourse?courseid="+data.courseid
 				    });
@@ -199,8 +199,7 @@
 				      title: '学员管理',
 				      shadeClose: true,
 				      shade: false,
-				      maxmin: true, //开启最大化最小化按钮
-				      area: ['893px', '500px'],
+                     area: ['100%', '100%'],
                      moveOut: true,
 				      content: "mycourse?courseid="+data.courseid
 				    });

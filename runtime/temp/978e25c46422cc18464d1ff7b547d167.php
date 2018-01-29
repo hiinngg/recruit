@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1515572638;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1517207228;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517207138;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
-<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" /> 
 <link rel="stylesheet" href="/static/css/hover-min.css" />
 <link rel="stylesheet" href="/static/css/bootsnav.css" />
 
@@ -89,6 +89,8 @@ body,html{
  }
  .course-item{
 	cursor:pointer;
+ 	width:380px;
+ 	
  }
  .course-name:hover{
 	color:#1881EC;
@@ -225,12 +227,13 @@ body,html{
  
    
   <!-- Tab panes -->
-  <div  id="courselist" class=" container sever">
+  <div  id="courselist" class=" container sever col-center">
  
     
     <h2 class="text-center" style="margin-bottom:30px;"><?php echo $catename; ?></h2>
-    <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
-   <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="<?php echo $cour['courseid']; ?>">
+	 <div class="row ">
+	          <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
+   <div class="course-item  col-md-4"   data-id="<?php echo $cour['courseid']; ?>">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="<?php echo $cour['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $cour['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
@@ -245,7 +248,9 @@ body,html{
     </div>
     
     <?php endforeach; endif; else: echo "" ;endif; ?>
-
+	        
+	    </div>
+  
     </div>
    
   <?php if(count($course) == '6'): ?>

@@ -128,6 +128,7 @@ class Register extends Common
           $data = [
               'name' => trim($post['data']['name']),
               'contact' => trim($post['data']['tel']),
+              'linkman'=>$post['data']['linkman']
           ];
       
          // if (($post['data']['fullName'] != "") && (isset($post['images']))) {
@@ -145,7 +146,12 @@ class Register extends Common
                   $pics = json_decode(Db::name("company")->where("cid",Session::get("cid"))->value("pics"),true);
                   foreach ($post['images'] as $k => $val) {
                       //array_push($pics, transOneImage($val, "/image/company"));
-                      $pics[$k]= transOneImage(matchImage($val, $pics[$k]), "/image/company");
+                      if(isset($pics[$k])){
+                         $oldimage= matchImage($val, $pics[$k]);
+                      }else{
+                          $oldimage=$val;
+                      }
+                      $pics[$k]= transOneImage($oldimage, "/image/company");
                   }
                   $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
               }
@@ -168,6 +174,7 @@ class Register extends Common
       }
 
       $res = Db::name("company")->where("cid", Session::get("cid"))->find();
+   
       if (isset($res['pics'])) {
       
           $res['pics'] = json_decode($res['pics'],true);
