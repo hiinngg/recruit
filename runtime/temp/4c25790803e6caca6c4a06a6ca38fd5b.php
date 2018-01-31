@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514363401;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userregister.html";i:1514363401;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517294515;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
-<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" /> 
 <link rel="stylesheet" href="/static/css/hover-min.css" />
 <link rel="stylesheet" href="/static/css/bootsnav.css" />
 
@@ -51,7 +51,7 @@ body,html{
 .company-logo{
 	width:128px;
 	height:64px;
-	background:#ccc;
+	
 }
 #mynav>ul>li>a{
    color:#000000;
@@ -89,6 +89,8 @@ body,html{
  }
  .course-item{
 	cursor:pointer;
+ 	width:380px;
+ 	
  }
  .course-name:hover{
 	color:#1881EC;
@@ -402,18 +404,24 @@ body,html{
 </div> 
 <!-- 用户注册时弹出 -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/js/bootsnav.js"></script>
+
 <script>
+window.onload=function(){
+	lazyload();
+}
+
 
 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
 		 
-	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"  data-id="'+initdata[key]['courseid']+'">'+
 			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
 			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
 			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
@@ -427,7 +435,7 @@ function viewdata(initdata){
 			'</p></div>'	 
 	 }
 	
-   $("#courselist").append(html);
+   $("#courselist").children(".row").append(html);
 
 }
 /*common*/

@@ -21,8 +21,13 @@ class Course extends Common
         $cate=new Category(Db::name("category")->select()); 
         $tree=$cate->getmenu();
         $sel_cateid=$cateid==""?$tree[0]['cateid']:$cateid;
+        if($cateid==0){
+            $this->assign("catename","所有课程");
+        }else{
+            $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
+        }
         $this->assign("course",$this->catedetail($sel_cateid));
-        $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
+
         $this->assign("cateid",$sel_cateid);
         $this->assign("cates",$tree);
         return $this->fetch();
@@ -34,7 +39,7 @@ class Course extends Common
        Session::set("flag",1);
        Db::name("course")->where("courseid",$courseid)->setInc('pageview');
        }   
-       $data=Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img")->find();
+       $data=Db::name("course")->where("courseid",$courseid)->field("courseid,name,price,type,desc,menu,content,label_img,apply")->find();
        $data['type']=$this->tran[$data['type']];
         $this->assign("data",$data );
         
@@ -42,10 +47,16 @@ class Course extends Common
     }
     
     public function catedetail($cateid,$page=1){
+        if($cateid==0){
+            $query=['re_course.status'=>1];
+        }else{
+            $query=['re_course.status'=>1,'re_course.cateid'=>$cateid];
+        }
         $course = Db::view("re_course", "courseid,label_img,name,desc,price,cateid,pageview")->view("re_category", [
             'name' => "catename"
         ], "re_category.cateid=re_course.cateid")
-        ->where(['re_course.status'=>1,'re_course.cateid'=>$cateid])
+        ->where($query)
+        ->order("is_top,re_course.createtime desc")
         ->page($page,6)
         ->select();
    /*   $cate = [];

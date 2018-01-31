@@ -9,15 +9,19 @@ class Index extends Controller{
     
    public function index(){
        
-       
+       $pics=Db::name("carousel")->where("column","企业直聘")->value("path");
+       if($pics&&$pics!=""){
+           $this->assign("pics",json_decode($pics,true));
+       }
       return $this->fetch();
    } 
    public  function allposition($page=1){
        $data=Db::view("position","*")
            ->view("company",['name'=>"cname",'fullname'=>"cfname",'pics'=>'pics'],"company.cid=position.cid")
-           ->where("position.is_show",1)
+           ->where("is_show",1)
+       
            ->page($page,4)
-           ->order("createtime desc")
+           ->order("is_top,createtime desc")
            ->select();
        
        foreach ($data as $k=>$val){
@@ -33,7 +37,7 @@ class Index extends Controller{
     public  function subposition($page=1){
         $data=Db::view("position","*")
             ->view("company",['name'=>"cname",'fullname'=>"cfname",'pics'=>'pics'],"company.cid=position.cid")
-            ->where(['position.is_show'=>1,'position.is_subsidy'=>1])
+            ->where(['is_show'=>1,'is_subsidy'=>1])
             ->page($page,4)
             ->order("createtime desc")
             ->select();

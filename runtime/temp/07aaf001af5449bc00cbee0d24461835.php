@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1516417722;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1517276639;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -99,7 +99,9 @@ height:4rem;
 margin:0;
 }
 .course-item{
-width:45%;
+width:50%;
+box-sizing:border-box;
+padding-right:5%;
 }
 
 
@@ -127,7 +129,7 @@ width:45%;
 		            <p><?php echo $data; ?></p>
 		    </div>    
        <h2 class="text-center ">职造课程</h2>
-       <div class="row-center" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+       <div class="row-center" style="margin-left:5%;flex-wrap:wrap;justify-content:flex-start;">
       <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
       <div class=" course-item" data-courseid="<?php echo $vo['courseid']; ?>">
           <img src="<?php echo $vo['label_img']; ?>" style="object-fit:cover;width:100%;height:8rem;" />
@@ -193,6 +195,7 @@ width:45%;
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
@@ -226,7 +229,7 @@ $(".menu").on("click",function(){
 		  actions: [{
 		    text: "企业后台",
 		    onClick: function() {
-		      window.location.href="<?php echo url('company/login'); ?>"
+		      window.location.href="<?php echo url('company/index'); ?>"
 		    }
 		  }]
 		});

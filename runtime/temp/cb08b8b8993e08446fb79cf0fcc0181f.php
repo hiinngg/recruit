@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1515464093;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517207138;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\talent\talent.html";i:1515464093;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517294515;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +51,7 @@ body,html{
 .company-logo{
 	width:128px;
 	height:64px;
-	background:#ccc;
+	
 }
 #mynav>ul>li>a{
    color:#000000;
@@ -298,18 +298,24 @@ body,html{
 </div> 
 <!-- 用户注册时弹出 -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/js/bootsnav.js"></script>
+
 <script>
+window.onload=function(){
+	lazyload();
+}
+
 
 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
 		 
-	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"  data-id="'+initdata[key]['courseid']+'">'+
 			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
 			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
 			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
@@ -323,7 +329,7 @@ function viewdata(initdata){
 			'</p></div>'	 
 	 }
 	
-   $("#courselist").append(html);
+   $("#courselist").children(".row").append(html);
 
 }
 /*common*/

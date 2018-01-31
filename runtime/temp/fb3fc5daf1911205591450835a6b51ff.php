@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517186675;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1516774110;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517304638;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1517295744;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -107,14 +107,16 @@ background:#ffffff;
  <div class="" style="">
 
  
- 
+   <?php if(isset($pics)): ?>
    <div class=" swiper-container">
     <div class="swiper-wrapper">
+     <?php if(is_array($pics) || $pics instanceof \think\Collection || $pics instanceof \think\Paginator): $i = 0; $__LIST__ = $pics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <div class="swiper-slide">
-        <img src="/static/images/user.png" alt=""  width="100%"  height="155px" />
+        <img src="<?php echo $vo; ?>" alt=""  width="100%"  height="155px" />
        </div>
+       <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
-
+  <?php endif; ?>
   
 
 </div>
@@ -150,7 +152,7 @@ background:#ffffff;
 	</div><!-- loading -->
 	
 	<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
-	  <span class="weui-loadmore__tips">暂无更多数据</span>
+	  <span style="background:#eee;" class="weui-loadmore__tips">暂无更多数据</span>
 	</div><!-- no more -->
     </div><!-- tab -->
     
@@ -173,8 +175,8 @@ background:#ffffff;
 			<span class="weui-loadmore__tips">正在加载</span>
 		</div><!-- loading -->
 
-		<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
-			<span class="weui-loadmore__tips">暂无更多数据</span>
+		<div class="weui-loadmore hidden  weui-loadmore_line  nomore"  >
+			<span style="background:#eee;" class="weui-loadmore__tips">暂无更多数据</span>
 		</div><!-- no more -->
     </div>
   <div id="tab3" class="weui-tab__bd-item">
@@ -214,6 +216,7 @@ background:#ffffff;
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
@@ -222,6 +225,10 @@ background:#ffffff;
 
 
 $(function(){
+
+
+
+
 
   function text(obj){
 
@@ -257,7 +264,7 @@ treat+=' <span>'+initdata[key]['treatment'][i]+'</span>';
 logo="";
 
 if(initdata[key]['pics']&&(initdata[key]['pics']!='')){
-logo= '<div style="width:40%; height:100%;"><img src="'+initdata[key]['pics']+'" alt="" style="width:100%; height:100%;" /></div> ';
+logo= '<div style="width:40%; height:100%;"><img  src="'+initdata[key]['pics']+'"  style="width:100%; height:100%;" /></div> ';
 
 }else{
 
@@ -266,14 +273,14 @@ logo= '<p style="text-align:center;width:40%;height:100%;line-height:100px;">暂
 
 sub="";
 if(initdata[key]['is_subsidy']==1){
-sub= ' <img src="/static/images/sub.jpg"  style="width:35px; height:70px;" /> ';
+sub= ' <img src="/static/images/sub.png"  style="width:15%; " /> ';
 }else{
-sub= '<div style="width:20%; height:80%;"></div> ';
+sub= '<div style="width:15%; height:80%;"></div> ';
 }
 	html+= '<div class="po row-center"  data-poid="'+initdata[key]['poid']+'" style="width:100% ;height:100px;justify-content:flex-start;margin:15px 0;background:#ffffff;">'+
 		       logo+
 		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;padding-right:15px;padding-left:4px;"> '+
-		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
+		       ' <div class="col-center" style="width:85%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
 			      ' <h5 >'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
 			       '<p class="texts-hide" style="font-size:11px;padding-left:3px;">'+treat+'</p> '+
 		       ' </div>'+
@@ -424,6 +431,8 @@ viewdata(that.parent().prev(),data,false)
 })
 
 })
+
+
 
 
 })

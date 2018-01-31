@@ -2,14 +2,15 @@
 <h2  class="text-center sever">企业注册</h2>
 <div class="container ">
 <form  class="layui-form sever" >
+   
+  
+  {notpresent name="data"}
     <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;">企业名称：</label>
     <div class="layui-input-block" style="width:320px;">
       <input type="text" name="name"  required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  value="{$data.name??''}">
     </div>
   </div>
-  
-  {notpresent name="data"}
 
   <div class="layui-form-item">
     <label class="layui-form-label" style="width:auto;">登录密码：</label>

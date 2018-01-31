@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1517207228;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517207138;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\courselist.html";i:1517378908;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517294515;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +51,7 @@ body,html{
 .company-logo{
 	width:128px;
 	height:64px;
-	background:#ccc;
+	
 }
 #mynav>ul>li>a{
    color:#000000;
@@ -194,7 +194,11 @@ body,html{
                 </div>
                 <div class="collapse navbar-collapse" id="course">
                     <ul class="nav navbar-nav "  data-in="fadeInDown" data-out="fadeOutUp">
+                       <li  >
+                          <a href="<?php echo url('course/courselist','cateid=0'); ?>" >所有课程</a>
+                     </li>  
                     <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                  
                     <li  <?php if(isset($vo['children'])): ?>class="dropdown"<?php endif; ?> >
                     <a href="<?php echo url('course/courselist','cateid='.$vo['cateid']); ?>"  <?php if(isset($vo['children'])): ?>class="dropdown-toggle" data-toggle="dropdown"<?php endif; ?> ><?php echo $vo['name']; ?></a>            
                      <?php if(isset($vo['children'])): ?>
@@ -209,12 +213,15 @@ body,html{
                             <a href="<?php echo url('course/courselist','cateid='.$vo2['cateid']); ?>" ><?php echo $vo2['name']; ?></a>
                            </li>                              
                            <?php endforeach; endif; else: echo "" ;endif; ?> 
-                            </li>
+                           
                            </ul> 
-		                 <?php endif; endforeach; endif; else: echo "" ;endif; ?>
+		                 <?php endif; ?> 	
+		                </li>                    
+	                   <?php endforeach; endif; else: echo "" ;endif; ?>
 	                   </ul>
-	                  </li>
-	                 <?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	                 <?php endif; ?> 
+	                 </li>                
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
                     </ul>
                 </div>
             </nav>
@@ -233,7 +240,7 @@ body,html{
     <h2 class="text-center" style="margin-bottom:30px;"><?php echo $catename; ?></h2>
 	 <div class="row ">
 	          <?php if(is_array($course) || $course instanceof \think\Collection || $course instanceof \think\Paginator): $i = 0; $__LIST__ = $course;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cour): $mod = ($i % 2 );++$i;?>
-   <div class="course-item  col-md-4"   data-id="<?php echo $cour['courseid']; ?>">
+   <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"   data-id="<?php echo $cour['courseid']; ?>">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
      <img  class="" src="<?php echo $cour['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $cour['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
@@ -368,18 +375,24 @@ body,html{
 </div> 
 <!-- 用户注册时弹出 -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/js/bootsnav.js"></script>
+
 <script>
+window.onload=function(){
+	lazyload();
+}
+
 
 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
 		 
-	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"  data-id="'+initdata[key]['courseid']+'">'+
 			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
 			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
 			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
@@ -393,7 +406,7 @@ function viewdata(initdata){
 			'</p></div>'	 
 	 }
 	
-   $("#courselist").append(html);
+   $("#courselist").children(".row").append(html);
 
 }
 /*common*/

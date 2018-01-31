@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1517207252;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517207138;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\index\index.html";i:1517294328;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517294515;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +51,7 @@ body,html{
 .company-logo{
 	width:128px;
 	height:64px;
-	background:#ccc;
+	
 }
 #mynav>ul>li>a{
    color:#000000;
@@ -194,10 +194,10 @@ body,html{
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="/static/images/ccc.jpg" width="1920px" style="height:400px;object-fit:cover;"  alt="...">
+      <img   src="/static/images/ccc.jpg" width="1920px" style="height:400px;object-fit:cover;"  >
     </div>
     <div class="item">
-       <img src="/static/images/zzz.jpg" width="1920px" style="height:400px;object-fit:cover;" alt="...">
+       <img  src="/static/images/zzz.jpg" width="1920px" style="height:400px;object-fit:cover;" >
     </div>
     
   </div>
@@ -226,7 +226,7 @@ body,html{
  <?php if(is_array($coursedata) || $coursedata instanceof \think\Collection || $coursedata instanceof \think\Paginator): $i = 0; $__LIST__ = $coursedata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
    <div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="<?php echo $vo['courseid']; ?>">
     <div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">
-     <img  class="" src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
+     <img  class="lazyload" data-src="<?php echo $vo['label_img']; ?>" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />
      <button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="<?php echo $vo['courseid']; ?>" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>
     </div>    
         <h3><?php echo $vo['name']; ?></h3>
@@ -256,7 +256,7 @@ body,html{
     <div class="swiper-wrapper row-center">
         <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <div class="swiper-slide company-logo">
-            <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
+            <img class="lazyload" data-src="<?php echo $vo['avastar']; ?>" alt=""   width="100%" height="100%"  style="object-fit: cover;">
         </div>
         <?php endforeach; endif; else: echo "" ;endif; ?>
 
@@ -368,18 +368,24 @@ body,html{
 </div> 
 <!-- 用户注册时弹出 -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/js/bootsnav.js"></script>
+
 <script>
+window.onload=function(){
+	lazyload();
+}
+
 
 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
 		 
-	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"  data-id="'+initdata[key]['courseid']+'">'+
 			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
 			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
 			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
@@ -393,7 +399,7 @@ function viewdata(initdata){
 			'</p></div>'	 
 	 }
 	
-   $("#courselist").append(html);
+   $("#courselist").children(".row").append(html);
 
 }
 /*common*/

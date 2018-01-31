@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1517210219;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1517298065;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -128,6 +128,9 @@
 						</dd>
 						<dd>
 							<a data-url="<?php echo url('nav/navList'); ?>" href="javascript:;">导航设置</a>
+						</dd>
+						<dd>
+							<a data-url="<?php echo url('carousel/carlist'); ?>" href="javascript:;">轮播图设置</a>
 						</dd>
 
 					</dl>

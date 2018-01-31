@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\positionedit.html";i:1516869742;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\positionedit.html";i:1517363807;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -203,7 +203,7 @@ width:175px;height:100px;
 
 <script>
 
-var formdata = new FormData();
+
 
 var chooseimg=$(".weui-uploader__input").get(0);
     
@@ -220,6 +220,7 @@ var chooseimg=$(".weui-uploader__input").get(0);
 var items=[];
       
 
+<?php if(!isset($data)): ?>
 
 var items=[
            {
@@ -243,6 +244,9 @@ var items=[
              value: 5
            },
          ];
+
+<?php endif; ?>
+
   
 //图片上传类
 $(".weui-uploader__input").on("change",function(){
@@ -467,8 +471,9 @@ function upload(basestr,type,name){
 	  } else { 
 	   var  blob = new  Blob([buffer], {type: type});
 	  }
+	  var formdata = new FormData();
 	//应为覆盖  formdata.append('imagefile', blob);
-	  formdata.set(name,blob)
+	  formdata.append(name,blob)
 	  $.ajax({
 		  url:"<?php echo url('poimg'); ?>",
 		  type:"POST",

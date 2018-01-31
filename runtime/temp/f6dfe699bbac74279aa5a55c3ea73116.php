@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1515566744;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1517365814;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +81,7 @@
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">课程简介</label>
     <div class="layui-input-block">
-      <textarea name="desc" rows="4" placeholder="请填写课程简介" class="layui-textarea" value=""></textarea>
+      <textarea name="desc" rows="4"  required  lay-verify="required"  placeholder="请填写课程简介" class="layui-textarea" ></textarea>
     </div>
   </div>
 
@@ -95,14 +95,14 @@
   <div class="layui-form-item">
     <label class="layui-form-label">手机号码</label>
     <div class="layui-input-block">
-      <input type="text" name="tel" required  lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="<?php echo isset($data['tel'])?$data['tel']: ''; ?>">
+      <input type="text" name="tel"  required  lay-verify="required"  placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="<?php echo isset($data['contact'])?$data['contact']: ''; ?>">
     </div>
   </div>
 
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">目录</label>
     <div class="layui-input-block">
-      <textarea name="menu" rows="8" placeholder="请输入目录" class="layui-textarea" value=""></textarea>
+      <textarea name="menu" rows="8" placeholder="请输入目录" required  lay-verify="required" class="layui-textarea" value=""></textarea>
     </div>
   </div>
   

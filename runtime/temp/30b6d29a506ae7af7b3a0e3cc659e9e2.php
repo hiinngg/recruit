@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1516415798;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:84:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\course\courselist.html";i:1517276795;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -109,7 +109,9 @@ background:#ffffff;
 margin:0;
 }
 .course-item{
-width:45%;
+width:50%;
+box-sizing:border-box;
+padding-right:5%;
 }
 
 
@@ -151,7 +153,7 @@ width:45%;
       <h2 class="text-center" style="margin:15px 0;"><?php echo $vo['name']; ?></h2>
       <!-- cate name -->
       
-      <div class="row-center courses" style="margin:0;width:100%;flex-wrap:wrap;justify-content:space-around;">
+      <div class="row-center courses" style="margin-left:5%;flex-wrap:wrap;justify-content:flex-start;">
       
 	  </div><!-- item -->
       
@@ -210,6 +212,7 @@ width:45%;
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
@@ -333,7 +336,7 @@ $(".menu").on("click",function(){
 		  actions: [{
 		    text: "企业后台",
 		    onClick: function() {
-		      window.location.href="<?php echo url('company/login'); ?>"
+		      window.location.href="<?php echo url('company/index'); ?>"
 		    }
 		  }]
 		});

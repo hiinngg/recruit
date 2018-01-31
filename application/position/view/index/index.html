@@ -9,14 +9,16 @@ background:#ffffff;
 }
 {/block}
 {block name="content"}
- 
+   {present name="pics"}
    <div class=" swiper-container">
     <div class="swiper-wrapper">
+     {volist name="pics" id="vo"}
         <div class="swiper-slide">
-        <img src="/static/images/user.png" alt=""  width="100%"  height="155px" />
+        <img src="{$vo}" alt=""  width="100%"  height="155px" />
        </div>
+       {/volist}
     </div>
-
+  {/present}
   
 
 </div>
@@ -52,7 +54,7 @@ background:#ffffff;
 	</div><!-- loading -->
 	
 	<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
-	  <span class="weui-loadmore__tips">暂无更多数据</span>
+	  <span style="background:#eee;" class="weui-loadmore__tips">暂无更多数据</span>
 	</div><!-- no more -->
     </div><!-- tab -->
     
@@ -75,8 +77,8 @@ background:#ffffff;
 			<span class="weui-loadmore__tips">正在加载</span>
 		</div><!-- loading -->
 
-		<div class="weui-loadmore hidden  weui-loadmore_line  nomore">
-			<span class="weui-loadmore__tips">暂无更多数据</span>
+		<div class="weui-loadmore hidden  weui-loadmore_line  nomore"  >
+			<span style="background:#eee;" class="weui-loadmore__tips">暂无更多数据</span>
 		</div><!-- no more -->
     </div>
   <div id="tab3" class="weui-tab__bd-item">
@@ -90,6 +92,10 @@ background:#ffffff;
 {/block}
 {block name="script"}
 $(function(){
+
+
+
+
 
   function text(obj){
 
@@ -125,7 +131,7 @@ treat+=' <span>'+initdata[key]['treatment'][i]+'</span>';
 logo="";
 
 if(initdata[key]['pics']&&(initdata[key]['pics']!='')){
-logo= '<div style="width:40%; height:100%;"><img src="'+initdata[key]['pics']+'" alt="" style="width:100%; height:100%;" /></div> ';
+logo= '<div style="width:40%; height:100%;"><img  src="'+initdata[key]['pics']+'"  style="width:100%; height:100%;" /></div> ';
 
 }else{
 
@@ -134,14 +140,14 @@ logo= '<p style="text-align:center;width:40%;height:100%;line-height:100px;">暂
 
 sub="";
 if(initdata[key]['is_subsidy']==1){
-sub= ' <img src="/static/images/sub.jpg"  style="width:35px; height:70px;" /> ';
+sub= ' <img src="/static/images/sub.png"  style="width:15%; " /> ';
 }else{
-sub= '<div style="width:20%; height:80%;"></div> ';
+sub= '<div style="width:15%; height:80%;"></div> ';
 }
 	html+= '<div class="po row-center"  data-poid="'+initdata[key]['poid']+'" style="width:100% ;height:100px;justify-content:flex-start;margin:15px 0;background:#ffffff;">'+
 		       logo+
 		     ' <div class="row-center" style="width:60%;height:100%;flex-wrap:wrap;padding-right:15px;padding-left:4px;"> '+
-		       ' <div class="col-center" style="width:80%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
+		       ' <div class="col-center" style="width:85%;height:80%;justify-content:space-around;align-items:flex-start;" >'+
 			      ' <h5 >'+(initdata[key]['cfname']==""?initdata[key]['cname']:initdata[key]['cfname'])+'</h5>'+
 			       '<p class="texts-hide" style="font-size:11px;padding-left:3px;">'+treat+'</p> '+
 		       ' </div>'+
@@ -292,6 +298,8 @@ viewdata(that.parent().prev(),data,false)
 })
 
 })
+
+
 
 
 })

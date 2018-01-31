@@ -68,7 +68,7 @@ class Company extends Controller
                 'is_subsidy'=>$post['data']['subsidy'],
                 'treatment' =>json_encode(explode(",",$post['data']['treat']),JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK) ,
                 'createtime' => date("Y-m-d H:i:s"),
-                'status' => 0
+                'status' => 1
             ];
             if (Db::name("position")->insert($data) <= 0) {
                 return "新增失败";

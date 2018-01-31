@@ -193,7 +193,7 @@ class Position extends Common
      */
     public function statusChange(){
         $post = $this->request->post();
-        if(Db::name('position')->where("poid",$post['poid'])->update(['status'=>$post['status']])){
+        if(Db::name('position')->where("poid",$post['poid'])->update(['status'=>$post['status'],'createtime'=>date("Y-m-d H:i:s")])){
             return 1;
         }else{
             return 0;

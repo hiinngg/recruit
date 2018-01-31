@@ -81,12 +81,12 @@ class Register extends Common
         $result = $this->validate([
             'telphone' => $post['mobile']
         ], [
-            'telphone' => "unique:user,telphone"
-        ]);
+            'telphone' => "length:11|unique:user,telphone"
+        ],['telphone.length'=>"请输入有效的手机号码",'telphone.unique'=>"手机已经被注册"]);
         if (true !== $result) {
             return [
                'code' => 0,
-               'msg'=>"该手机号已被注册"
+               'msg'=>$result
             ];
         }
         
@@ -156,7 +156,7 @@ class Register extends Common
                   $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
               }
              
-              if(isset($data['fullname'])&&$data['fullname']!=""){
+              if(isset($post['data']['fullName'])&&$post['data']['fullName']!=""){
                   $data['fullname'] = trim($post['data']['fullName']);
               }
               
@@ -224,7 +224,7 @@ class Register extends Common
                 // 成为内推企业
                 $data['fullname'] = trim($post['data']['fullName']);
                 $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
-                $data['status'] = 1;
+                $data['status'] = 0;
             }
             
             if (Db::name("company")->insert($data) <= 0) {

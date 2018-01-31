@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html";i:1517186675;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html";i:1517362827;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,8 +52,9 @@
                 {field: 'name', title: '职位名称' },
                 {field: 'is_subsidy', title: '是否有津贴',templet: '#statusTpl' },
                 {field: 'is_show', title: '前台显示',templet: '#showTpl' },
+                {field: 'is_top', title: '是否置顶',templet: '#topTpl' },
                 {field: 'createtime', title: '创建时间' },
-                {field: 'score', title: '操作', width:250, toolbar: '#bar'}
+                {field: 'score', title: '操作', width:300, toolbar: '#bar'}
             ]],
             page:true,
             done: function(res, curr, count){ //res:返回的数据  curr:当前页码  count：数据总量
@@ -117,7 +118,25 @@
 				      content: "myposition?poid="+data.poid
 				    });
 
-                }else if(layEvent === 'change2on'){
+                } else if(layEvent === 'topon'){ //编辑
+                	 _ajax("<?php echo url('settop'); ?>",{poid:data.poid,is_top:1},dtd)
+                     dtd.done(function(){
+                         $(tr).find("button.topon").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs topoff" lay-event="topoff">取消置顶</button>'
+                         obj.update({
+                             is_top:1
+                         });
+                     })
+
+                    }else if(layEvent === 'topoff'){ //编辑
+                	 _ajax("<?php echo url('settop'); ?>",{poid:data.poid,is_top:0},dtd)
+                     dtd.done(function(){
+                         $(tr).find("button.topoff").get(0).outerHTML='<button class="layui-btn  layui-btn-xs topon" lay-event="topon">置顶</button>'
+                         obj.update({
+                             is_top:0
+                         });
+                     })
+
+                    } else if(layEvent === 'change2on'){
                     _ajax("<?php echo url('statusChange'); ?>",{poid:data.poid,is_show:1},dtd)
                     dtd.done(function(){
                         $(tr).find("button.on").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>'
@@ -146,6 +165,8 @@
                         layer.close(index)
                         if(data==1){
                             deferred.resolve();
+                        }else if(data==3){
+                        	 layer.msg("最多只能置顶三个职位哦");
                         }else{
                             layer.msg("操作失败");
                         }
@@ -176,11 +197,25 @@
     {{#  } }}
     <button class="layui-btn layui-btn-xs" lay-event="list">申请人数</button>
 
+    {{#  if(d.is_top == 1){ }}
+    <button class="layui-btn-warm layui-btn layui-btn-xs  topoff" lay-event="topoff">取消置顶</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  topon" lay-event="topon">置顶</button>
+    {{#  } }}
+
+   
     <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
 <script type="text/html" id="showTpl">
     {{#  if(d.is_show == 1){ }}
+    <span style="color:#5FB878;">是</span>
+    {{#  } else { }}
+    <span style="color:#FFB800;">否</span>
+    {{#  } }}
+</script>
+<script type="text/html" id="topTpl">
+    {{#  if(d.is_top == 1){ }}
     <span style="color:#5FB878;">是</span>
     {{#  } else { }}
     <span style="color:#FFB800;">否</span>

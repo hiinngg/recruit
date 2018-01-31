@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1517186675;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517186675;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1517364251;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -197,7 +197,7 @@ color:#1881EC;
      
      
     </div><!-- 人才定制 -->
-    <div id="tab2" class="weui-tab__bd-item">
+    <div id="tab2" class="weui-tab__bd-item"  style="background:#F4F4F4;position:relative;overflow: hidden;">
       
      <p class="open-popup" data-target="#team" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增团队定制</span>
@@ -228,7 +228,7 @@ color:#1881EC;
 	</div><!-- no more -->
 	
     </div><!-- 团队定制 -->
-    <div id="tab3" class="weui-tab__bd-item">
+    <div id="tab3" class="weui-tab__bd-item"  style="background:#F4F4F4;position:relative;overflow: hidden;">
           <p class="addposition" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增普工招聘</span>
      </p>
@@ -487,6 +487,7 @@ color:#1881EC;
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 

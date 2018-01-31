@@ -24,9 +24,9 @@ class Position extends  Common{
                     $this->assign("none", "none");
                 }
             }
-            $res=Db::view("re_position",'poid,cid,name,is_subsidy,createtime,is_show')->view("re_company",['name'=>'cname'],"re_company.cid=re_position.cid")
+            $res=Db::view("re_position",'poid,cid,name,is_subsidy,createtime,is_show,is_top')->view("re_company",['name'=>'cname'],"re_company.cid=re_position.cid")
                 ->where("re_position.status",1)
-                ->order("createtime desc")
+                ->order("is_top,createtime desc")
                 ->page($page, $limit)
                 ->select();
 
@@ -80,6 +80,23 @@ class Position extends  Common{
             return 0;
         }
 
+    }
+    public function settop(){
+        
+        $post = $this->request->post();
+        if($post['is_top']==1){
+            if(Db::name("position")->where("is_top",1)->count()==3){
+               return 3; 
+            }
+        }
+        if (Db::name('position')->where("poid", $post['poid'])->update([
+            'is_top' => $post['is_top']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+    
     }
 
     public  function  positionPreview($poid=""){
