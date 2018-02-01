@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1517391747;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\reg.html";i:1517469186;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517447235;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -258,18 +258,28 @@ width:175px;height:100px;
     </div>  -->
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/vconsole/dist/vconsole.min.js"></script>
 <script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
 <script>
+window.onload=function(){
+	var vConsole = new VConsole();
+}
 
 
 
 
 var formdata = new FormData();
 
+if(!typeof formdata.append === "function"){
+	 $.toast("对不起，你的浏览器版本太旧了,暂无法注册","cancel",function(){
+	    location.href="<?php echo url('company/login'); ?>";
+	 });
+}
 var chooseimg=$(".weui-uploader__input").get(0);
     
   var canvas = document.createElement("canvas");
@@ -290,13 +300,18 @@ if (!this.files.length) return;
 
 	var files = Array.prototype.slice.call(this.files);
 	  var reader = new FileReader();
+	  if(!reader){
+	  $.toast("对不起，你的浏览器版本太旧了,暂无法上传图片","cancel");
+	   return;
+	  }
+	  
 	   reader.readAsDataURL(files[0]);
 	   reader.onload = function (e) {
 		   
 	        var result = this.result;
 	        var img = new Image();
 	        img.src = result;
-	                      //如果图片大小小于200kb，则直接等待上传
+	         //如果图片大小小于200kb，则直接等待上传
 	        if (result.length <= maxsize) {
 	         that.parent().children("img").attr("src",result)
 	          img = null;
@@ -335,12 +350,13 @@ $("input.weui-input").each(function(){
 	   return  false;
 	}
 
- formdata.set($(this).attr("name"),$(this).val())   
+ formdata.append($(this).attr("name"),$(this).val())   
 
 })
 if(stop){
 return;
 }
+
 $.ajax({
 url:"<?php echo url('company/reg'); ?>",
 data:formdata,
@@ -393,7 +409,7 @@ function upload(basestr,type,name){
 	   var  blob = new  Blob([buffer], {type: type});
 	  }
 	//应为覆盖  formdata.append('imagefile', blob);
-	  formdata.set(name,blob)
+	  formdata.append(name,blob)
 
 }
 

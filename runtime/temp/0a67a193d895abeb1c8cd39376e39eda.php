@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\login.html";i:1516326805;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\login.html";i:1516326805;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517447235;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -173,12 +173,17 @@ word-break: break-all;
     </div>  -->
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/vconsole/dist/vconsole.min.js"></script>
 <script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 
 <script>
+window.onload=function(){
+	var vConsole = new VConsole();
+}
 
 
 

@@ -329,11 +329,8 @@ class Company extends Controller
                         $pics[$k] = $this->regimg($val);
                     }
                     $data['pics'] = json_encode($pics, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
-                }
-                
+                }       
             }
-            
-            
             if (Db::name("company")->insert($data) <= 0) {
                 return "新增失败";
             }
@@ -350,7 +347,6 @@ class Company extends Controller
         if (false === $ext = array_search($val['type'], array(
             'jpg' => 'image/jpeg',
             'png' => 'image/png',
-            'gif' => 'image/gif'
         ), true)) {
             return 0;
         }

@@ -22,6 +22,7 @@ class Course extends Common
         $tree=$cate->getmenu();
         $sel_cateid=$cateid==""?$tree[0]['cateid']:$cateid;
         if($cateid==0){
+            $sel_cateid=0;
             $this->assign("catename","所有课程");
         }else{
             $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
@@ -73,7 +74,7 @@ class Course extends Common
     public function apply(){
 
         if(!Session::has("username")){
-            return "请先登录";
+            return 0;
         }
         $post=$this->request->post();
         if(Db::name('course_user')

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1517366470;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517294515;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\course\coursedetail.html";i:1517480557;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517479926;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,7 +129,7 @@ body,html{
 /* userreg */
 
 </style>
-<body>
+<body style="">
 <nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -169,7 +169,7 @@ body,html{
                 </ul>
             </li>
             <?php else: ?>
-            <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+            <p class="navbar-text navbar-right "><a href="#" class="navbar-link useroper" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
             <?php endif; ?>
 
 
@@ -192,18 +192,10 @@ body,html{
 	  
 	   <img src="<?php echo $data['label_img']; ?>" height="200px;" style="object-fit:contain;" width="100%" />
 	   </div>
-	   <div class="col-md-5 col-center" style="height:200px;align-items:flex-start;">
-	
-	   <dl class="dl-horizontal "  >
-	       <dt>课程名称</dt>
-	       <dd><?php echo $data['name']; ?></dd>
-	       <dt style="margin-top:15px;">课程形式</dt>
-	       <dd style="margin-top:15px;"><?php echo $data['type']; ?></dd>
-	       <dt style="margin-top:15px;">课程简介</dt>
-	       <dd style="margin-top:15px;"><?php echo $data['desc']; ?></dd>
-       </dl>
-	   
-		  <!--   -->
+	   <div class="col-md-5 col-center" style="height:200px;align-items:flex-start;">    	
+	    <p><strong>课程名称：</strong>&nbsp;<?php echo $data['name']; ?></p>
+	    <p><strong>课程形式：</strong>&nbsp;<?php echo $data['type']; ?></p>
+	    <p><strong>课程简介：</strong>&nbsp;<?php echo $data['desc']; ?></p>
 	   </div>
 	   
 	   <div class="col-md-3 col-center"  style="justify-content:space-between;height:200px;">
@@ -358,9 +350,18 @@ body,html{
 window.onload=function(){
 	lazyload();
 }
-
-
-
+$('#companyReg').modal({
+	  'backdrop':'static',
+	  'show':false,
+	  "keyboard":false
+})
+ $('#addjob').modal({
+  'show':false,
+ })
+$("#userModal").modal({
+ 'show':false, 
+})
+ 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
@@ -405,16 +406,20 @@ $("#footvideo").on("click",function(event){
 /*common  */
 
 $(".courseApply").on("click",function(e){
-	e.stopPropagation();
-    var $btn = $(this).button('loading')
+
+e.stopPropagation();
+ var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
 	url:"<?php echo url('course/apply'); ?>",
     data:{courseid:id},
     type:"post",
 	success:function(data){
+	
 		if(data==1){
 			layer.msg("报名成功")
+		}else if(data===0){
+			 $(".useroper").trigger("click")
 		}else{
 			layer.msg(data)
 		}
@@ -427,9 +432,7 @@ $.ajax({
 	
 })
 })
-  $('#addjob').modal({
-	  'show':false,
-  })
+
 
 $(".jobApply").on("click",function(){
 var $btn = $(this).button('loading')
@@ -441,6 +444,8 @@ $.ajax({
 	success:function(data){
 		if(data==1){
 			$('#addjob').modal('toggle')
+		}else if(data===0){
+			 $(".useroper").trigger("click")
 		}else{
 			layer.msg(data)
 		}
@@ -457,6 +462,7 @@ $.ajax({
 
 $("#courselist").on({
 	mouseenter:function(){
+	    
 		$(this).children("button").removeClass("hidden")
 	},
 	mouseleave:function(){
@@ -483,11 +489,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
    var laydate=layui.laydate;
   
   /*企业注册  */
-  $('#companyReg').modal({
-	  'backdrop':'static',
-	  'show':false,
-	  "keyboard":false
-  })
+
    var images={};
   
    form.on('submit(companyReg)', function(data){
@@ -496,10 +498,10 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
     	 return;
      }
-   if(JSON.stringify(images) == "{}"){
+  /*  if(JSON.stringify(images) == "{}"){
 	   layer.msg("请上传公司图片",{icon:5,shift:6});
    } 
-
+ */
 
     $.ajax({
     	url:"<?php echo url('companyReg'); ?>",
@@ -567,7 +569,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
    
    /* 用户注册 */
    form.on('submit(userreg)', function(data){
-	   var $btn = $(data.elem).button('loading')
+	 var $btn = $(data.elem).button('loading')
      if(data.field.pwd!=data.field.pwd2){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
     	

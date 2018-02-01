@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1517364251;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517364003;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\company\index.html";i:1517448626;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517447235;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -166,9 +166,9 @@ color:#1881EC;
   </div>
   <div class="weui-tab__bd">
     <div id="tab1"  class="weui-tab__bd-item weui-tab__bd-item--active " style="background:#F4F4F4;position:relative;overflow: hidden;">
-     <p class="open-popup" data-target="#talent" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
-     <span class="fa fa-plus">&nbsp;</span><span>新增人才定制</span>
-     </p>
+     <a  href="javascript:;" class="open-popup" data-target="#talent" style="height:50px;background:#f4f4f4;color:#000;line-height:50px;padding:0 15px;">
+      <span class="fa fa-plus">&nbsp;</span><span>新增人才定制</span>
+     </a>
      
         <div class="item row-center text-center"  style="width:100%;height:35px;background:#ffffff;margin:15px 0;margin-top:0;justify-content:space-around;">
                <p style="width:33%;">创建时间</p>
@@ -199,9 +199,9 @@ color:#1881EC;
     </div><!-- 人才定制 -->
     <div id="tab2" class="weui-tab__bd-item"  style="background:#F4F4F4;position:relative;overflow: hidden;">
       
-     <p class="open-popup" data-target="#team" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
+     <a  href="javascript:;" class="open-popup" data-target="#team" style="height:50px;background:#F4F4F4;color:#000;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增团队定制</span>
-     </p>
+     </a>
      
         <div class="item row-center text-center"  style="width:100%;height:35px;background:#ffffff;margin:15px 0;margin-top:0;justify-content:space-around;">
                <p style="width:33%;">创建时间</p>
@@ -229,7 +229,7 @@ color:#1881EC;
 	
     </div><!-- 团队定制 -->
     <div id="tab3" class="weui-tab__bd-item"  style="background:#F4F4F4;position:relative;overflow: hidden;">
-          <p class="addposition" style="height:50px;background:#eee;line-height:50px;padding:0 15px;">
+          <p class="addposition" style="height:50px;background:#F4F4F4;line-height:50px;padding:0 15px;">
      <span class="fa fa-plus">&nbsp;</span><span>新增普工招聘</span>
      </p>
      
@@ -486,7 +486,9 @@ color:#1881EC;
     </div>  -->
 <!--    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/vconsole/dist/vconsole.min.js"></script>
 <script src="/static/js/lazyload.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
@@ -495,6 +497,9 @@ color:#1881EC;
 <script src="/admin/eleditor/webuploader.min.js"></script>
 
 <script>
+window.onload=function(){
+	var vConsole = new VConsole();
+}
 
 
 

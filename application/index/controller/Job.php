@@ -33,7 +33,7 @@ class Job extends Common{
     
     public  function apply(){
         if(!Session::has("username")){
-            return "请先登录";
+            return 0;
         }
         $post=$this->request->post();
         if(Db::name('job_user')
@@ -44,6 +44,7 @@ class Job extends Common{
             'userid'=>Session::get("username"),
             'jobid'=>$post['jobid'],
             'status'=>0,
+            'feedback'=>'',
             'createtime'=>date("Y-m-d H:i:s")
         ];
         if(Db::name("job_user")->insert($data)==1){
