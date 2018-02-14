@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\jobuser.html";i:1517215647;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\jobuser.html";i:1517881882;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,7 @@
 			        url: "<?php echo url('user/jobuser'); ?>",
 			        cols:[[
 			         {checkbox: true},
-			         {field: 'orderid', title: '编号',type:"numbers" },
+			         {field: 'orderid', title: '编号' },
 			         {field:'jname',title:'职位名称'},
 			         {field: 'createtime', title: '申请时间' },
 			         {field: 'status', title: '状态',templet: '#statusTpl' },
@@ -173,7 +173,7 @@
 							  area: ['300px', '200px'] //自定义文本域宽高
 							}, function(value, index, elem){
 								 $.ajax({
-								    	url:"<?php echo url('course/editfeedback'); ?>",  	
+								    	url:"<?php echo url('job/editjobfeedback'); ?>",  	
 								    	data:{orderid:data.orderid,text:value},
 								    	type:"post",
 								    	beforeSend:function(){

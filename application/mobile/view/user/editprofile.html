@@ -1,0 +1,197 @@
+
+{extend name="indexlayout" /}
+{block name="nav-user"}weui-bar__item_on{/block}
+{block name="css"}
+
+.weui-navbar:after,.weui-navbar__item:after,.hidden{
+display:none; 
+}
+.weui-navbar__item.weui-bar__item--on{
+color:#1881ec;
+background:#ffffff;
+}
+.wrap:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #ffffff;;
+    opacity: 0.5;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.cl-active{
+color:#1881EC;
+}
+{/block}
+{block name="content"}
+<div class="close-popup" style="position:absolute;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:flex-start;border-bottom:1px solid #eee;">
+<span class="fa fa-angle-left back" style="margin:0 10px;"></span>
+
+</div>
+ <div class="weui-cells weui-cells_form" style="margin-top:35px;">
+   
+  <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="name"  placeholder="请输入姓名" value="{$data.truename??''}">
+        </div>
+  </div>
+
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><label for="" class="weui-label">出生年月</label></div>
+    <div class="weui-cell__bd">
+      <input class="weui-input" type="date" name="date" value="{$data.birthdate??''}">
+    </div>
+  </div>
+  
+ <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">性别</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="sex">
+            <option value="0">男</option>
+            <option value="1">女</option>
+          </select>
+        </div>
+      </div>
+ <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">目标职业</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text" name="position"  placeholder="请输入职业" value="{$data.position??''}">
+        </div>
+  </div>
+  <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">毕业院校</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text"  name="graduated" placeholder="请输入院校名" value="{$data.graduated??''}">
+        </div>
+  </div>
+  
+<div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">学历</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="edu">
+          <option value="">请选择</option>
+          <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                  <option value="大专">大专</option>
+                    <option value="本科">本科</option>
+                    
+                      <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+          </select>
+        </div>
+      </div>
+      
+   <div class="weui-cells__title">自我评价</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="selfevaluation" placeholder="请输入自我评价" rows="4"></textarea>
+     <!--  <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+
+<div class="weui-cells__title">工作经历</div>
+<div class="weui-cells weui-cells_form">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" name="experience" placeholder="请输入工作经历" rows="4"></textarea>
+      <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>   
+  
+</div>
+ 
+<div class="button_sp_area text-center">
+    
+        <a href="javascript:;" class="save weui-btn weui-btn_mini weui-btn_default">提交</a>
+</div> 
+{/block}
+{block name="script"}
+
+$(".back").on("click",function(){
+
+history.back();
+})
+
+{present name="data"}
+	$("select[name='sex']").val("{$data.sex}").change()
+	$("select[name='edu']").val("{$data.education}").change()
+	
+		  var desc="{$data.experience}";
+		  var menu="{$data.selfevaluation}";
+		  var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+		  desc=desc.replace(reg,"\n");
+		  menu=menu.replace(reg,"\n");
+		  $("textarea[name='experience']").text(desc)
+		  $("textarea[name='selfevaluation']").text(menu)
+	{/present}
+
+  $(".save").on("click",function(){
+    	data={};
+  
+        $("input").each(function(){
+    		
+    		if($(this).val()==""){
+    			
+    	     $.toptip('必填项不能为空', 'error');
+    			
+    			return false;
+    		}
+    		data[$(this).attr("name")]=$(this).val();
+    	})
+    	if(data.length==0){
+    	$.toptip('必填项不能为空', 'error');
+    		return;
+    	}
+     	if($("input[name='pwd']").val()!=$("input[name='pwd2']").val()){
+    		$.toptip("两次密码输入不一致",'error')
+			return ;
+    	} 
+    	if($("textarea[name='experience']").val()==""||$("textarea[name='selfevaluation']").val()==""){
+    	    $.toptip('必填项不能为空', 'error');
+			return ;
+    	}
+    data['sex']=$("select[name='sex']").val();	
+    data['edu']=$("select[name='edu']").val();	
+    data['experience']=$("textarea[name='experience']").val().replace(/\n|\r\n/g,"<br>")
+    data['selfevaluation']=$("textarea[name='selfevaluation']").val().replace(/\n|\r\n/g,"<br>")
+    $.ajax({
+    	
+    	url:"{:url('editinfo')}",
+    	data:{data:data},
+    	type:"post",
+    	beforeSend:function(){
+    		 $.showLoading('正在保存')
+    	},
+    	success:function(data){
+    	    $.hideLoading();
+    		if(data==1){
+    	
+   window.location.href="{:url('user/index')}"
+    		}else{
+    			$.toast(data);
+    		}
+    		
+    	},
+    	complete:function(){
+    		
+    		 $.hideLoading();
+    	}
+    	
+    })
+    	
+    })
+
+{/block}
+
+

@@ -7,12 +7,21 @@ use think\Db;
 
 class Index extends Controller{
     
+   public function _initialize(){
+       //获取title ,keyword
+       $po_desc=Db::name("page")->where("column","直聘-desc")->value("content");
+       $this->assign("po",json_decode($po_desc,true));
+   } 
+    
    public function index(){
        
        $pics=Db::name("carousel")->where("column","企业直聘")->value("path");
        if($pics&&$pics!=""){
            $this->assign("pics",json_decode($pics,true));
        }
+       
+     
+       
       return $this->fetch();
    } 
    public  function allposition($page=1){

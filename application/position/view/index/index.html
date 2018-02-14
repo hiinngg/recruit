@@ -14,7 +14,7 @@ background:#ffffff;
     <div class="swiper-wrapper">
      {volist name="pics" id="vo"}
         <div class="swiper-slide">
-        <img src="{$vo}" alt=""  width="100%"  height="155px" />
+        <img class="mycarousel" src="{$vo.src}"   {neq name="$vo.url" value=""}data-url="{$vo.url}"{/neq}  alt=""  width="100%"  height="155px" />
        </div>
        {/volist}
     </div>
@@ -93,7 +93,12 @@ background:#ffffff;
 {block name="script"}
 $(function(){
 
+$(".mycarousel").on("click",function(){
+if($(this).attr("data-url")){
+location.href=$(this).attr("data-url")
+}
 
+})
 
 
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1517380160;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\index.html";i:1517618729;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,7 +214,9 @@ $("ul#demo ").on("click","li .del",function(){
 			 
 		       if((that.parent("ul").children("li").length == 1)&&(that.parent("ul").parent("li").children("i.layui-tree-spread").length=1)){
 		    	   //要把分类名前的三角符号和ul标签删除
-		    	    that.parent("ul").parent("li").children("i.layui-tree-spread").remove();		   
+		    	    that.parent("ul").parent("li").children("i.layui-tree-spread").remove();
+		    	    that.parent("ul").remove();	
+		    	    return;
 		       }
 		      that.remove()
 			 }else{

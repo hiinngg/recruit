@@ -4,13 +4,18 @@ namespace app\index\controller;
 use think\Db;
 use think\Session;
 use think\exception\HttpException;
+use Yunpian\Sdk\YunpianClient;
+use think\captcha\Captcha;
 
 
 class Register extends Common
 {
 
     public function userRegister()
-    {   
+    {    
+        
+       
+        
         if ($this->request->isAjax()) {
             $post = $this->request->post();
             if (! Session::has("username")) {
@@ -31,9 +36,9 @@ class Register extends Common
                 'createtime'=>date("Y-m-d H:i:s")
             ];
             if(Db::name("resume")->insert($data)==1){
-                $resumeid =  Db::name('resume')->getLastInsID();
+       /*          $resumeid =  Db::name('resume')->getLastInsID();
                $a =  Db::name("user")->where("userid",$data['userid'])
-                    ->update(['userpassword'=>md5($post['data']['pwd']),'resumeid'=>$resumeid]);
+                    ->update(['userpassword'=>md5($post['data']['pwd']),'resumeid'=>$resumeid]); */
                 return 1;
             }
         }
@@ -74,15 +79,74 @@ class Register extends Common
       return $this->fetch('userRegister');
 
     }
+    
+    
+    public function sendsns(){
+        $post = $this->request->post();
+        $result = $this->validate([
+            'telphone' => $post['tel'],
+            'captcha' => $post['captcha']
+        ], [
+            'telphone' => "require|length:11|unique:user,telphone",
+            'captcha' => 'require|captcha'
+        ],['telphone.length'=>"请输入有效的手机号码",'telphone.unique'=>"手机已经被注册"]);
+        if (true !== $result) {
+            return $result;
+        }
+        $clnt = YunpianClient::create(YunPianApiKey);
+        $num=createRandNum(6);
+  /*       Session::init([
+            'expire'=>60
+        ]); */
+        
+       
+        
+        Session::set("smscode",$num);
+       // return $num;
+        $param = [YunpianClient::MOBILE => $post['tel'],YunpianClient::TEXT =>'【遇见offer】感谢您注册小猫招聘，您的验证码是'.$num];
+        $r = $clnt->sms()->single_send($param);
 
+        if($r->isSucc()){
+           
+            //$r->data()
+            return 1;
+            //return 1;
+        }else{
+           //todo
+        return  "msg:".$r->msg()."code:".$r->code();
+        }
+    }
+    
+    //发送短信异常处理
+    private function smsdeal($code){
+      if($code >= 0){
+          return "系统繁忙，请稍后再试";
+      }else{
+          return "发送失败";
+      }
+    }
     public function userBaseRegister()
     {
         $post = $this->request->post();
         $result = $this->validate([
-            'telphone' => $post['mobile']
+            'telphone' => $post['mobile'],
+            'captcha' => $post['captcha'],
+            'signpwd' =>$post['signpwd'],
+            'signpwd2'=>$post['signpwd2']
         ], [
-            'telphone' => "length:11|unique:user,telphone"
-        ],['telphone.length'=>"请输入有效的手机号码",'telphone.unique'=>"手机已经被注册"]);
+            'telphone' => "length:11|unique:user,telphone",
+            'captcha' => 'require|captcha',
+            'signpwd' => "require|confirm:signpwd2",
+            'signpwd2' => "require|confirm:signpwd",
+        ],[
+            'telphone.length'=>"请输入有效的手机号码",
+            'telphone.unique'=>"手机已经被注册",
+            'captcha.require'=>"验证码不能为空",
+            'signpwd.confirm'=>'密码两次输入不一致',
+            'signpwd2.confirm'=>"密码两次输入不一致",
+            'signpwd.require'=>'密码不能为空',
+            'signpwd2.require'=>'密码不能为空'
+        ]);
         if (true !== $result) {
             return [
                'code' => 0,
@@ -90,9 +154,29 @@ class Register extends Common
             ];
         }
         
+
         
+       //验证短信验证码
+       if(!Session::has("smscode")){
+           return [
+               'code' => 0,
+               'msg'=>"短信验证码错误"
+           ];
+       }
+        
+        
+       if($post['code']!=Session::get("smscode")){
+             return [
+               'code' => 0,
+               'msg'=>"短信验证码错误"
+            ];
+       }
+  
+        
+        //验证成功
         $data = [
             'telphone' => $post['mobile'],
+            'userpassword'=>md5($post['signpwd']),
             'status' => 1,
             'createtime' => date("Y-m-d H:i:s")
         ];

@@ -1,11 +1,12 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517304638;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1517295744;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\index\index.html";i:1517565201;s:83:"D:\wamp3\wamp64\www\recruit\public/../application/position\view\positionlayout.html";i:1517560703;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	    <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-	<title>企业直聘</title>
+         <meta name="keywords" content="<?php echo $po['keywords']; ?>" />
+	<title><?php echo $po['title']; ?></title>
 <!-- 	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
@@ -112,7 +113,7 @@ background:#ffffff;
     <div class="swiper-wrapper">
      <?php if(is_array($pics) || $pics instanceof \think\Collection || $pics instanceof \think\Paginator): $i = 0; $__LIST__ = $pics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <div class="swiper-slide">
-        <img src="<?php echo $vo; ?>" alt=""  width="100%"  height="155px" />
+        <img class="mycarousel" src="<?php echo $vo['src']; ?>"   <?php if($vo['url'] != ''): ?>data-url="<?php echo $vo['url']; ?>"<?php endif; ?>  alt=""  width="100%"  height="155px" />
        </div>
        <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
@@ -120,7 +121,7 @@ background:#ffffff;
   
 
 </div>
-
+<a href="http://www.baidu.com">12312</a>
 
 <div class="weui-tab"  >
   <div class="weui-navbar">
@@ -226,7 +227,12 @@ background:#ffffff;
 
 $(function(){
 
+$(".mycarousel").on("click",function(){
+if($(this).attr("data-url")){
+location.href=$(this).attr("data-url")
+}
 
+})
 
 
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html";i:1517362827;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\position\positionlist.html";i:1517640964;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,7 @@
 
 <body  style="scroll-x:scroll;">
 <blockquote class="layui-elem-quote flex-row">
-    <!-- 		<button class="layui-btn layui-btn-danger">
-                <i class="layui-icon">&#xe640;</i>批量删除
-            </button> -->
+   
     <button class="layui-btn " onclick="refresh()">
         刷新
     </button>
@@ -64,21 +62,6 @@
         });
 
 
-        $(".search").on("click",function(){
-            var keyword=$("input[name='keyword']").val();
-            if(keyword==""){
-                return;
-            }
-            articleTable.reload({
-                where: {
-                    keyword:keyword
-                }
-                ,page: {
-                    curr: 1 //重新从第 1 页开始
-                }
-            });
-
-        })
 
 
         <?php endif; ?>

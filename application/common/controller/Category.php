@@ -93,6 +93,41 @@ class Category
     }
      
     
+    /**
+     * 按照特定结构（多级菜单）
+     *
+     * @access public
+     * @param mixed $arg1 有序的数据
+     * @return array 返回类型
+     */
+    public function  getallmenu(){
+        $tree=[];
+        $res = [];
+        // 整理数组
+        foreach ($this->data as $key => $vo) {
+            $res[$vo[$this->cateid]] = $vo;
+             
+        }
+        unset($this->data);
+    
+        // 查询子孙
+        foreach ($res as $key => $vo) {
+            if ($vo[$this->parentid] != 0) {
+                $res[$vo[$this->parentid]]['children'][] = &$res[$key];
+            }
+        }
+    
+        // 去除杂质
+        foreach ($res as $key => $vo) {
+            if ($vo[$this->parentid] == 0) {
+                $tree[] = $vo;
+            }
+        }
+        unset($res);
+        return $tree;
+    }
+    
+    
     
     
     

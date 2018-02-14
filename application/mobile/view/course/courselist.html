@@ -31,25 +31,25 @@ padding-right:5%;
 
 {/block}
 {block name="content"}
-<div class="content-padded"   style="height:30px;">
-<p></p>
+<div style="padding:15px;">
+<p>{$content}</p>
 </div>  
 
 <div class="weui-tab" id='page-infinite-navbar' style="min-height:100%;">
-
+  
     <div class="swiper-container" id="cates" style="border-bottom:1px solid #eee;" >
    <div class="swiper-wrapper weui-navbar"  > 
     {volist name="cates" id="vo"}
-	         <a href='#tab{$vo.cateid}'   data-cateid="{$vo.cateid}" class="swiper-slide weui-navbar__item  {eq name="i"  value="1"}weui-bar__item--on{/eq}"  style="flex:0 0 auto;width:auto;padding:13px 5px;">
+	         <a href='#tab{$vo.cateid}'   data-cateid="{$vo.cateid}" class="swiper-slide weui-navbar__item {eq name="i" value="1"}weui-bar__item--on{/eq} "  style="flex:0 0 auto;width:auto;padding:13px 5px;">
                 {$vo.name}
              </a>   
     {/volist}
-
     </div>
    </div> 
  
 	
 <div class="weui-tab__bd" style="overflow:hidden;">
+
 {volist name="cates"  id="vo"}
   <div id="tab{$vo.cateid}" class="weui-tab__bd-item   {eq name="i"  value="1"} weui-tab__bd-item--active{/eq}  " style="">
       <h2 class="text-center" style="margin:15px 0;">{$vo.name}</h2>
@@ -116,6 +116,8 @@ function viewdata(obj,initdata,invoke){
 $(".weui-navbar a").on("click",function(){
 var that=$(this);
 var cateid=$(this).attr("data-cateid");
+if(cateid==0){
+}
 $.ajax({
 url:"{:url('course/catedetail')}",
 data:{cateid:cateid,page:1},

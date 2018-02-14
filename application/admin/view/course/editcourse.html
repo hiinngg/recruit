@@ -127,6 +127,9 @@
   </script>
 </div>
 
+
+
+<input type="hidden" name="__token__" value="{$Request.token}" />
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit lay-filter="formDemo">立即发布</button>
@@ -176,6 +179,7 @@
 
 		  //监听提交
 		  form.on('submit(formDemo)', function(data){
+			
 	 		if(data.field.label_img==""){
 				layer.msg("请上传封面",{icon:5,shift:6})
 				return false;
@@ -184,6 +188,8 @@
 				layer.msg("请编辑内容",{icon:5,shift:6})
 				return false;
 			}
+			
+		
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
 	    data.field['menu']=data.field['menu'].replace(/\n|\r\n/g,"<br>");
 	    

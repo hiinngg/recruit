@@ -213,7 +213,9 @@ $("ul#demo ").on("click","li .del",function(){
 			 
 		       if((that.parent("ul").children("li").length == 1)&&(that.parent("ul").parent("li").children("i.layui-tree-spread").length=1)){
 		    	   //要把分类名前的三角符号和ul标签删除
-		    	    that.parent("ul").parent("li").children("i.layui-tree-spread").remove();		   
+		    	    that.parent("ul").parent("li").children("i.layui-tree-spread").remove();
+		    	    that.parent("ul").remove();	
+		    	    return;
 		       }
 		      that.remove()
 			 }else{

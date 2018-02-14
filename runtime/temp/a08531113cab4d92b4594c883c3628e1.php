@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\pouser.html";i:1517215638;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\pouser.html";i:1517640981;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +27,10 @@
 <!-- 		<button class="layui-btn layui-btn-danger">
 			<i class="layui-icon">&#xe640;</i>批量删除
 		</button> -->
+		
+				<button class="layui-btn layui-btn-danger getexcel">
+                                   导出Excel
+            </button> 
 		<button class="layui-btn " onclick="refresh()">
 			刷新
 		</button>
@@ -109,6 +113,9 @@
 				})
 			
 				
+        $(".getexcel").on("click",function(){
+         window.open("<?php echo url('position/getexcel'); ?>");
+        })
 
 
 				table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"

@@ -1,8 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1514858572;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517479926;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\job\joblist.html";i:1518315034;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1518423604;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="keywords" content="<?php echo $pc['keywords']; ?>" />
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
@@ -10,7 +11,7 @@
 <link rel="stylesheet" href="/static/css/hover-min.css" />
 <link rel="stylesheet" href="/static/css/bootsnav.css" />
 
-<title>招聘网站</title>
+<title><?php echo $pc['title']; ?></title>
 </head>
 <style>
 /* common */
@@ -29,6 +30,12 @@ body,html{
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+}
+
+.carousel-inner>.item>img{
+	vertical-align: middle;
+	display:inline-block;
+	
 }
 .sever{
 	margin-top:30px;
@@ -127,11 +134,28 @@ body,html{
 	
 }
 /* userreg */
+ .myModal-open{
+   overflow-y:scroll;
+padding-right:0 !important;
+} 
+
+
+.wechat:hover,.wechat:active,.wechat:focus{
+	color:green;
+	cursor:pointer;
+}
+
+/* 验证码样式 */
+.captcha img{
+	max-width:100%;
+}
+
+
 
 </style>
 <body style="">
-<nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
-  <div class="container " style="">
+<nav class="navbar navbar-default row-center" style="margin-bottom: 0;background:#ffffff;align-items:flex-end;">
+  <div class="container " style="height:100%;position:relative;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynav" aria-expanded="false">
@@ -140,20 +164,25 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
+      
+       <a class="navbar-brand" href="#"  style="overflow:hidden;padding-top:0;padding-bottom:0;height:auto;">
+      <img src="<?php echo $logo; ?>" alt=""  />
+      </a>
+      
+    
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse " id="mynav">
+    <div class="collapse navbar-collapse " id="mynav"  style="position:absolute;bottom:0;margin-left:64px;width:100%;">
  
-     <ul class="nav navbar-nav "  style="display:inline-block;" >
+     <ul class="nav navbar-nav "  style="margin-left:15px;" >
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
       <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
       <?php endforeach; endif; else: echo "" ;endif; ?>
      </ul>
 
-        <ul class="nav navbar-nav navbar-right "  style="display:inline-block;" >
+        <ul class="nav navbar-nav  "  style="display:inline-block;position:absolute;right:0;" >
             <?php if(isset($username)): ?>
          <!--   <div class="navbar-text ">
 
@@ -164,12 +193,12 @@ body,html{
             <li  class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $username; ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo url('user/index'); ?>">个人中心</a></li>
+                    <li><a target="_blank" href="<?php echo url('user/index'); ?>">个人中心</a></li>
                     <li><a href="<?php echo url('user/logout'); ?>">退出</a></li>
                 </ul>
             </li>
             <?php else: ?>
-            <p class="navbar-text navbar-right "><a href="#" class="navbar-link useroper" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+            <p class="navbar-text navbar-right"><a href="#" class="navbar-link useroper" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
             <?php endif; ?>
 
 
@@ -182,56 +211,62 @@ body,html{
   </div><!-- /.container-fluid -->
 </nav>
 
- <img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
-<div class="container sever">
+ <div style="text-align:center;">
+<img class="mycarousel" src="<?php echo current($banner)['src']; ?>"  <?php if(current($banner)['url'] != ''): ?>data-url="<?php echo current($banner)['url']; ?>"<?php endif; ?> >
+</div>
+
+
+<div class="container sever col-center">
 <h2 class="text-center">找工作</h2>
-
-<div class="sever  col-center">
-    <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div class="sever media " style="width:900px;border:1px solid #c2c2c2;justify-content:flex-start;border-radius:5px;">
-  <div class="media-left media-middle">
-    <a href="#">
-      <img class="media-object" src="<?php echo $vo['pic']; ?>"  width="350px"  height="200px" alt="...">
-    </a>
-  </div>
-  <div class="media-body media-middle " style="position:relative; ">
-  <div style="width:70%;display:inline-block;">
-     <p style="line-height:1.75;"><span style="margin-right:15px;">企业</span><span><?php echo $vo['cname']; ?></span></p>
-      <p style="line-height:1.75;"><span style="margin-right:15px;">岗位</span><span><?php echo $vo['name']; ?></span></p>
-         <p style="line-height:1.75;"><span style="margin-right:15px;">地点</span><span><?php echo $vo['location']; ?></span></p>
-            <p style="line-height:1.75;"><span style="margin-right:15px;">职责</span><span><?php echo $vo['desc']; ?></span></p>
-  </div>
-
-<div style="width:20%;display:inline-block;" >
-<button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-jobid="<?php echo $vo['jobid']; ?>" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
-</div>
- 
-  </div>
-</div>
+<?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+<div class="sever  row " style="width:900px;height:200px;">
+    
+   <div class="col-md-4" style="height:200px;">
+       <img  src="<?php echo $vo['pic']; ?>"  width="100%"  height="200px" >
+   </div>
+   
+   <div class="col-md-5" style="height:100%;">
+   <div class="col-center" style="align-items:flex-start;height:100%;">
+     <p><strong>企业名称：</strong><?php echo $vo['cname']; ?></p>
+       <p><strong>招聘岗位：</strong><?php echo $vo['name']; ?></p>
+       <p><strong>岗位职责：</strong><?php echo $vo['desc']; ?></p>
+   </div>
+     
+   </div>
+   
+   <div class="col-md-3 col-center" style="justify-content:space-between;height:100%;">
+       <p>
+       <span class="fa fa-map-marker"></span>
+       <?php echo $vo['location']; ?>
+       </p> 
+       
+       <button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-jobid="<?php echo $vo['jobid']; ?>" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
+       
+   </div>
         
 <!--        -->
   
-     <?php endforeach; endif; else: echo "" ;endif; ?>
+  
 
 </div>
+   <?php endforeach; endif; else: echo "" ;endif; ?>
 <!--<button type="button"  c class='center-block btn btn-default'>更多工作</button>-->
 
 
 
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-    <div class="swiper-container sever" id="company-list">
-        <div class="swiper-wrapper row-center">
-            <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-            <div class="swiper-slide company-logo">
-                <img src="<?php echo $vo['avastar']; ?>" alt="" width="100%" height="100%"  style="object-fit: cover;">
-            </div>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
+	<div class="container sever col-center">
+	<h2 class="text-center">内推企业</h2>
 
-        </div>
-    </div>
-
-</div>
+	<div class=""  >
+	 <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+	  
+	 <img class="lazyload" data-src="<?php echo $vo['avastar']; ?>" alt=""   width="128px" height="64px"  style="margin-top:15px;">
+	       
+	 <?php endforeach; endif; else: echo "" ;endif; ?>
+	
+	</div>
+	</div>
+   
 
 </div>
 
@@ -284,8 +319,10 @@ body,html{
        <span id="footvideo" class="fa fa-play-circle fa-3x" style="position:absolute;color:#ffffff;cursor:pointer;top: 50%;left: 50%;transform: translate(-50%, -50%);"></span> 
          </div>
         </div>
-	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-     <?php echo $footer['desc']; ?>
+	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;overflow:auto;">
+        <?php if(is_array($posts) || $posts instanceof \think\Collection || $posts instanceof \think\Paginator): $i = 0; $__LIST__ = $posts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <p><a href="<?php echo url('post/postdetail','postid='.$vo['postid']); ?>"><?php echo $vo['title']; ?></a></p>
+        <?php endforeach; endif; else: echo "" ;endif; ?>   
        </div>
 	   <div class="col-md-4 col-center">
       <div style="background:#ffffff;width:150px;height:150px;">
@@ -313,7 +350,7 @@ body,html{
 
         <div class="modal-body">
         
-        	<form class="form-horizontal">
+        	<form class="form-horizontal" >
         	
         	<div class="form-group">
 	        	<div class="col-md-12">
@@ -323,13 +360,24 @@ body,html{
         	</div>
         	
             <div class="form-group">
-            <div class="col-md-8">
+            <div class="col-md-6">
+            <label class="control-label hidden mylabel" for="code">验证码不能为空</label>
+            	<input type="text"  name="captcha" id="code" class="form-control" placeholder="请输入验证码" />
+            </div>
+
+            <div class="col-md-6">
+              <div class="captcha" style="max-width:100%;"><?php echo captcha_img(); ?></div>
+            </div>            
+        	</div>
+        	
+            <div class="form-group">
+            <div class="col-md-7">
             <label class="control-label hidden mylabel" for="code">验证码不能为空</label>
             	<input type="text"  name="code" id="code" class="form-control" placeholder="请输入验证码" />
             </div>
 
-             <div class="col-md-4">
-               <button type="button"  style="width:100%;" class="btn btn-default">验证码</button>
+             <div class="col-md-5">
+               <button type="button"   style="width:100%;" class="btn btn-default sendsns">验证码</button>
              </div>            
         	</div>
 
@@ -364,6 +412,8 @@ body,html{
                  </div>
 
                  <h5>还没有账号？现在去 <a href="#" class="reg">注册</a></h5>
+                 <h6>使用以下账号直接登录</h6>
+                 <p><span class="fa fa-wechat wechat"></span></p>
                  <button  type="submit" class="center-block btn btn-default userlogin"  style="background:#1881EC;width:80px; color:#ffffff;border-radius:15px;">登录</button>
              </form>
          </div>
@@ -379,9 +429,58 @@ body,html{
 <script src="/static/js/bootsnav.js"></script>
 
 <script>
-window.onload=function(){
+
+var countdown=60; 
+
+var isScroll = function (el) { // test targets   
+	var elems = el ? [el] : [document.documentElement, document.body];   
+	var scrollX = false, scrollY = false;    
+	for (var i = 0; i < elems.length; i++) {      var o = elems[i];     
+	// test horizontal     
+	var sl = o.scrollLeft;     
+	o.scrollLeft += (sl > 0) ? -1 : 1;    
+	o.scrollLeft !== sl && (scrollX = scrollX || true);  
+	o.scrollLeft = sl;     
+	// test vertical    
+	var st = o.scrollTop;  
+	o.scrollTop += (st > 0) ? -1 : 1;    
+	o.scrollTop !== st && (scrollY = scrollY || true);   
+	o.scrollTop = st;  
+	}    
+	// ret  
+	return scrollY; 
+		}; 
+		
+function settime(obj) { //发送验证码倒计时
+    if (countdown == 0) { 
+        obj.attr('disabled',false); 
+        //obj.removeattr("disabled"); 
+        obj.text("重新发送");
+        countdown = 60; 
+        return;
+    } else { 
+        obj.attr('disabled',true);
+        obj.text("重新发送(" + countdown + ")");
+        countdown--; 
+    } 
+setTimeout(function() { 
+    settime(obj) }
+    ,1000) 
+}		
+		
+		
+
+$(function(){
 	lazyload();
-}
+})		
+		
+$(".captcha").on("click",function(){
+	$(this).html('<?php echo captcha_img(); ?>')
+})
+
+
+
+
 $('#companyReg').modal({
 	  'backdrop':'static',
 	  'show':false,
@@ -393,6 +492,28 @@ $('#companyReg').modal({
 $("#userModal").modal({
  'show':false, 
 })
+ 
+$('#userModal').on('show.bs.modal', function (e) {
+	console.log("dsf")
+	if (isScroll()) {
+		console.log("dfsd")
+		  $("body").addClass("myModal-open")
+		}
+
+}) 
+$('#userModal').on('hidden.bs.modal', function (e) {
+	    $("body").removeClass("myModal-open")
+}) 
+
+
+ 
+ 
+$(".mycarousel").on("click",function(){
+if($(this).attr("data-url")){
+location.href=$(this).attr("data-url")
+}
+
+}) 
  
 function viewdata(initdata){
 	var html="";
@@ -452,6 +573,8 @@ $.ajax({
 			layer.msg("报名成功")
 		}else if(data===0){
 			 $(".useroper").trigger("click")
+		}else if(data==2){
+		      location.href="<?php echo url('register/userRegister'); ?>";
 		}else{
 			layer.msg(data)
 		}
@@ -478,6 +601,8 @@ $.ajax({
 			$('#addjob').modal('toggle')
 		}else if(data===0){
 			 $(".useroper").trigger("click")
+		}else if(data==2){
+		      location.href="<?php echo url('register/userRegister'); ?>";
 		}else{
 			layer.msg(data)
 		}
@@ -506,6 +631,7 @@ $("#courselist").on({
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
+	direction: 'vertical',
 	slidesPerView : "auto",
 	spaceBetween : 20,
       freeMode:true
@@ -523,6 +649,46 @@ layui.use(['layer', 'form','upload','laydate'], function(){
   /*企业注册  */
 
    var images={};
+  
+   $(".sendsns").on("click",function(){
+		var that = $(this) 
+	  $tel = $("input[name='tel']").val();
+	  $captcha = $("input[name='captcha']").val();	
+		if($tel==""){
+			layer.msg("请填写手机号")
+			return;
+		}
+		if($captcha==""){
+			layer.msg("请填写验证码")
+			return;
+		}
+	     $.ajax({
+	    	 url:"<?php echo url('register/sendsns'); ?>",
+	    	 data:{tel:$tel,captcha:$captcha},
+	    	 type:"post",
+	    	 beforeSend:function(){
+	    		 layer.load(2)
+	    	 },
+	    	 success:function(data){
+	    		 layer.closeAll("loading")
+	    	   if(data==1){
+	    		   layer.msg("验证码已发送，请查收短信")
+	    		  
+	    	   }else{
+	    		   $(".captcha").html('<?php echo captcha_img(); ?>')
+	    		   layer.msg(data)   
+	    	   }
+	    	 },
+	    	 complete:function(){
+	    		 settime(that)
+	    	 }
+	    	 
+	     })
+		
+	})
+  
+  
+  
   
    form.on('submit(companyReg)', function(data){
 	   var $btn = $(data.elem).button('loading')
@@ -742,6 +908,7 @@ $(".login").on("click",function(e){
     e.preventDefault();
     $tel=$("input[name='tel']");
     $code=$("input[name='code']");
+    $captcha=$("input[name='captcha']");
     if($tel.val()==""){
     	
     	$tel.closest(".form-group").addClass("has-error");
@@ -762,9 +929,15 @@ $(".login").on("click",function(e){
     	},1500)
     	return;
     }
+    
+    if($captcha.val()==""){
+    	layer.msg("请输入验证码");
+    	return;
+    }
+    
  	$.ajax({
 		url: "<?php echo url('register/userBaseRegister'); ?>",
-		data:{mobile:$tel.val(),code:$code.val()},
+		data:{mobile:$tel.val(),code:$code.val(),captcha:$captcha.val()},
 		beforeSend:function(){		
 			layer.load(2);
 		},
@@ -783,8 +956,6 @@ $(".login").on("click",function(e){
 		complete:function(){
 			 layer.closeAll('loading');
 		}
-		
-		
 	}) 
 
 })

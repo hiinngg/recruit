@@ -144,16 +144,209 @@ word-break: break-all;
 <script src="/static/js/swiper.min.js"></script>
 {block name="scriptlink"}{/block}
 <script>
-window.onload=function(){
-	var vConsole = new VConsole();
+var countdown=60; 
+function  login(){
+	
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<input type="text" class="weui-input weui-prompt-input" name="logtel"  placeholder="手机">'+
+		  '<input type="password"  name="pwd"  class="weui-input weui-prompt-input" id="mypassword" >'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">还没有账号？<a href="javascript:;" class="signin" style="color:#1881EC;">马上去注册</a></p>',
+		  buttons: [
+		    { text: "绑定", onClick: function(){  
+	    	 if($("input[name='logtel']").val()==""||$("#mypassword").val()==""){ 
+	    	 $.toptip('手机或密码不能为空', 'error'); 
+	    	 return false;
+	    	 }
+	    	 $.ajax({
+	    		 url:"{:url('user/userbind')}",
+	    		data:{logtel:$("input[name='logtel']").val(),pwd:$("#mypassword").val()},
+	    		type:"post",
+	    		beforeSend:function(){
+	    			$.showLoading()
+	    		},
+	    		success:function(data){
+	    			$.hideLoading()
+	    			if(data==1){
+	    				$.closeModal();
+	    				$.alert({
+	    					  title: '',
+	    					  text: '绑定成功',
+	    					  onOK: function () {
+	    						  history.go(0)
+	    					  }
+	    					});
+	    			}else if(data==0){
+	    				history.go(0)
+	    			}else{
+	    				 $.toptip(data, 'error'); 
+	    			}
+	    		}
+	    	 })
+		    } },
+		  ]
+		});
+	
+}	
+function  signin(){
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<div class="weui-cell">'+
+		    '<div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="number" name="signtel"  placeholder="请输入手机号">'+
+		    '</div>'+
+		  '</div>'+
+		  '<div class="weui-cell weui-cell_vcode">'+
+		   ' <div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="code"  name="code" placeholder="请输入验证码">'+
+		    '</div>'+
+		    '<div class="weui-cell__ft">'+
+		      '<button class="weui-vcode-btn vcode" style="color:#1881EC;">获取验证码</button>'+
+		    '</div>'+
+		  '</div>'+
+		  '<div class="weui-cell">'+
+		    '<div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="password" name="signpwd"  placeholder="请输入密码">'+
+		    '</div>'+
+		  '</div>'+
+		  '<div class="weui-cell">'+
+		    '<div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="password" name="signpwd2"  placeholder="请确认密码">'+
+		    '</div>'+
+		  '</div>'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">已经有账号了？<a  href="javascript:;" class="bind" style="color:#1881EC;">马上去登录</a></p>',
+		  buttons: [
+		    { text: "创建并绑定", onClick: function(){
+		    	 if($("input[name='signtel']").val()==""||$("input[name='code']").val()==""){
+		    		 
+			    	 $.toptip('手机或验证码不能为空', 'error');
+			    	 
+			    	 return false;
+			    	 
+			    	 }
+		    	 
+		    	 $.ajax({
+		    		url:"{:url('user/userreg')}",
+		    		data:{signtel:$("input[name='signtel']").val(),code:$("input[name='code']").val(),signpwd:$("input[name='signpwd']").val(),signpwd2:$("input[name='signpwd2']").val()},
+		    		type:"post",
+		    		beforeSend:function(){
+		    			$.showLoading()
+		    		},
+		    		success:function(data){
+		    			$.hideLoading()
+		    			if(data==1){
+		    				$.closeModal();
+		    				$.alert({
+		    					  title: '',
+		    					  text: '绑定成功',
+		    					  onOK: function () {
+		    						  history.go(0)
+		    					  }
+		    					});
+		    			}else if(data==0){
+		    				history.go(0)
+		    			}else{
+		    				 $.toptip(data.msg, 'error'); 
+		    			}
+		    		}
+		    	 })
+		    	 
+		    	 
+		    } },
+		  ]
+		});
 }
 
 
-{block name="script"}
-
-{/block}
 
 
+
+$(function(){
+	var vConsole = new VConsole();
+	
+	$(".mycarousel").on("click",function(){
+		if($(this).attr("data-url")){
+		location.href=$(this).attr("data-url")
+		}
+
+		}) 
+	
+
+function settime(obj) { //发送验证码倒计时
+    if (countdown == 0) { 
+        obj.attr('disabled',false); 
+        //obj.removeattr("disabled"); 
+        obj.text("重新发送");
+        countdown = 60; 
+        return;
+    } else { 
+        obj.attr('disabled',true);
+        obj.text("重新发送(" + countdown + ")");
+        countdown--; 
+    } 
+setTimeout(function() { 
+    settime(obj) }
+    ,1000) 
+}		
+		
+
+$(document).on({
+	'click':function(){
+		var that=$(this);
+		if($("input[name='signtel']").val()==""){
+	      $.toptip('手机号码不能为空', 'error'); 
+	      return;
+		}
+		$.ajax({
+			url:"{:url('user/sendsns')}",
+			data:{signtel:$("input[name='signtel']").val()},
+			type:"post",
+			beforeSend:function(){
+				$.showLoading();
+			},
+			success:function(data){
+				$.hideLoading();
+				if(data==1){
+					$.toptip('验证码已发送，请查收短信', 'success');
+					settime(that)
+				}else{
+				    $.toptip(data, 'error');
+				}
+			}
+			
+			
+		})
+		
+		
+		
+		
+	}
+	
+},".vcode")
+
+
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		signin()
+	}
+	
+},".signin")
+
+
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		login()
+	}
+	
+},".bind")		
+
+		
 {block name="menu"}
 $(".menu").on("click",function(){
 	
@@ -168,6 +361,22 @@ $(".menu").on("click",function(){
 	
 })
 {/block}
+	
+
+	
+	
+	
+})
+
+
+
+
+{block name="script"}
+
+{/block}
+
+
+
 
 
 

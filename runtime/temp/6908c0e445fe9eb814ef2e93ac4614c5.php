@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\myevaluationlist.html";i:1514360975;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\myevaluationlist.html";i:1517887170;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +27,16 @@
 		<button class="layui-btn " onclick="refresh()">
 			刷新
 		</button>
+	
 	</blockquote>
 		
 	
     <?php if(isset($none)): ?>
-	<div style="position: absolute; left: 50%; top:50%;margin-top:-30px; margin-left:-63px; text-align: center;">
-			<i class="layui-icon" style="font-size: 36px;color: #009688;">&#xe69c;</i>
-			<p>这里一点内容都没有</p>			
+	<div style="position: absolute; left: 50%; top:50%;transform: translate(-50%, -50%); text-align: center;">
+			<p >亲，综合能力报告是参与我们“职造计划”才能获得哦</p>	
+			<button class="layui-btn evalapply" >立即参与</button>	
 		</div>
-		<?php else: ?>
+    <?php else: ?>
 		<table class="layui-table"  id="table"  lay-filter="table" style="width:auto;" >
 	    </table>
 	<?php endif; ?>
@@ -52,7 +53,7 @@
 			var form = layui.form
 		<?php if(!isset($none)): ?>
 			var init= layer.load(2, {shade: false});
-		var articleTable = table.render({
+		    var articleTable = table.render({
 			        elem:"#table",	
 			       
 			        url: "<?php echo url('user/myEvaluationList'); ?>",
@@ -92,7 +93,22 @@
 			 
 			<?php endif; ?>
 
-			
+			$(".evalapply").on("click",function(){
+			   $.ajax({
+				   url:"<?php echo url('evalapply'); ?>",
+				   beforeSend:function(){
+					   layer.load(2)
+				   },
+				   success:function(res){
+					   layer.closeAll("loading")
+					   if(res==1){
+						   layer.msg("申请成功，职造师会联系亲哦",{anim:0},function(){
+							   history.go(0);
+						   })
+					   }
+				   }
+			   })	
+			})
 				
 
 

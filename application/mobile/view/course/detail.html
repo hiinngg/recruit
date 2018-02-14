@@ -32,7 +32,11 @@ width:45%;
 <!-- <div>
 <img src="/static/images/zzz.jpg" style="width:100%;object-fit:contain;" alt="" />
 </div>  -->
-<h3 class="text-center">{$data.name}</h3>
+<div class="close-popup" style="position:fixed;height:35px;width:100%;display:flex;top:0;background:#ffffff;z-index:1000;align-items:center;justify-content:flex-start;border-bottom:1px solid #eee;">
+<span class="fa fa-angle-left back" style="margin:0 10px;"></span>
+
+</div>
+<h3 class="text-center" style="margin-top:35px;">{$data.name}</h3>
 <div class="" >
 	   <img src="{$data.label_img}" height="200px;" style="object-fit:contain;" width="100%" />
 </div>
@@ -84,6 +88,20 @@ $(function(){
 
 $(".apply").on("click",function(){
 var courseid = $(this).attr("data-courseid")
+
+
+
+//询问用户是否绑定账号
+{if condition="session('?muser') neq null"}
+login();
+return;
+{else/}
+{/if}
+
+
+
+
+
 $.ajax({
 url:"{:url('apply')}",
 data:{courseid:courseid},
@@ -96,9 +114,11 @@ success:function(data){
 $.hideLoading();
 if(data==1){
  
-     $.alert('<p>报名成功</p>','');
+ $.alert('<p>报名成功</p><p>你的报名申请已成功，可以在“我的”查看反馈</p>','');
+}else if(data==0){
+$.alert('<p>你还没有填写简历，暂不能申请课程哦，可在“我的”进行简历填写</p>','');
 }else{
-$.alert(data,'');
+$.alert(data+"<p>可以在“我的”查看反馈</p>",'');
 }
 }
 
@@ -106,6 +126,12 @@ $.alert(data,'');
 
 
 })
+
+
+$(".back").on("click",function(){
+history.back();
+})
+
 
 
 

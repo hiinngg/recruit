@@ -1,53 +1,59 @@
-<img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
-<div class="container sever">
+<div style="text-align:center;">
+<img class="mycarousel" src="{:current($banner)['src']}"  {neq name=":current($banner)['url']" value="" }data-url="{:current($banner)['url']}"{/neq} >
+</div>
+
+
+<div class="container sever col-center">
 <h2 class="text-center">找工作</h2>
-
-<div class="sever  col-center">
-    {volist name="data"  id="vo"}
-    <div class="sever media " style="width:900px;border:1px solid #c2c2c2;justify-content:flex-start;border-radius:5px;">
-  <div class="media-left media-middle">
-    <a href="#">
-      <img class="media-object" src="{$vo.pic}"  width="350px"  height="200px" alt="...">
-    </a>
-  </div>
-  <div class="media-body media-middle " style="position:relative; ">
-  <div style="width:70%;display:inline-block;">
-     <p style="line-height:1.75;"><span style="margin-right:15px;">企业</span><span>{$vo.cname}</span></p>
-      <p style="line-height:1.75;"><span style="margin-right:15px;">岗位</span><span>{$vo.name}</span></p>
-         <p style="line-height:1.75;"><span style="margin-right:15px;">地点</span><span>{$vo.location}</span></p>
-            <p style="line-height:1.75;"><span style="margin-right:15px;">职责</span><span>{$vo.desc}</span></p>
-  </div>
-
-<div style="width:20%;display:inline-block;" >
-<button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-jobid="{$vo.jobid}" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
-</div>
- 
-  </div>
-</div>
+{volist name="data"  id="vo"}
+<div class="sever  row " style="width:900px;height:200px;">
+    
+   <div class="col-md-4" style="height:200px;">
+       <img  src="{$vo.pic}"  width="100%"  height="200px" >
+   </div>
+   
+   <div class="col-md-5" style="height:100%;">
+   <div class="col-center" style="align-items:flex-start;height:100%;">
+     <p><strong>企业名称：</strong>{$vo.cname}</p>
+       <p><strong>招聘岗位：</strong>{$vo.name}</p>
+       <p><strong>岗位职责：</strong>{$vo.desc}</p>
+   </div>
+     
+   </div>
+   
+   <div class="col-md-3 col-center" style="justify-content:space-between;height:100%;">
+       <p>
+       <span class="fa fa-map-marker"></span>
+       {$vo.location}
+       </p> 
+       
+       <button type="button" class="btn jobApply "   data-loading-text="正在报名..." data-jobid="{$vo.jobid}" style="width:100%;background:#000000; color:#ffffff;">申请工作</button> 
+       
+   </div>
         
 <!--        -->
   
-     {/volist}
+  
 
 </div>
+   {/volist}
 <!--<button type="button"  c class='center-block btn btn-default'>更多工作</button>-->
 
 
 
-<div class="container sever">
-<h2 class="text-center">内推企业</h2>
-    <div class="swiper-container sever" id="company-list">
-        <div class="swiper-wrapper row-center">
-            {volist name="companydata" id="vo"}
-            <div class="swiper-slide company-logo">
-                <img src="{$vo.avastar}" alt="" width="100%" height="100%"  style="object-fit: cover;">
-            </div>
-            {/volist}
+	<div class="container sever col-center">
+	<h2 class="text-center">内推企业</h2>
 
-        </div>
-    </div>
-
-</div>
+	<div class=""  >
+	 {volist name="companydata" id="vo"}
+	  
+	 <img class="lazyload" data-src="{$vo.avastar}" alt=""   width="128px" height="64px"  style="margin-top:15px;">
+	       
+	 {/volist}
+	
+	</div>
+	</div>
+   
 
 </div>
 

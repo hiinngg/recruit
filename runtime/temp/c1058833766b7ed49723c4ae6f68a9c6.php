@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\myjoblist.html";i:1514351190;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\myjoblist.html";i:1517882223;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,9 +60,8 @@
 			         {checkbox: true},
 			         {field: 'orderid', title: '编号'},
 			         {field: 'name', title: '岗位'  ,templet: '#nameTpl' },
-			         {field: 'cname', title: '公司名称' ,templet: '#cnameTpl' },
 			         {field: 'createtime', title: '申请时间' },
-			         {field: 'status', title: '申请状态', templet: '#statusTpl' },
+			         {field: 'status', title: '申请状态', templet: '#bar' },
 			        // {field: 'sche', title: '课程安排',templet: '#scheTpl'},
 			        // {field: 'created_at', title: '创建时间' },
 			        ]],
@@ -102,15 +101,10 @@
 					  var tr = obj.tr; //获得当前行 tr 的DOM对象	
 					  var dtd=$.Deferred();
 					  console.log(data)
-					  if(layEvent === 'detail'){ //查看
+					  if(layEvent === 'feedback'){ //查看
 						  layer.open({
-						      type: 2,
-						      title: '内容查看',
-						      shadeClose: true,
-						      shade: false,
-						      maxmin: true, //开启最大化最小化按钮
-						      area: ['893px', '600px'],
-						      content: "articlePreview?id="+data.postid
+						   
+						      content: data.feedback
 						    });
 
 					  } else if(layEvent === 'del'){ //删除
@@ -185,16 +179,12 @@
 		
 	</script>
 <script type="text/html" id="bar">
-  <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
-  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-  {{#  if(d.is_valid == 1){ }}
-   <button class="layui-btn layui-btn-warm layui-btn-xs off" lay-event="change2off">撤销发布</button>
-  {{#  } else { }}
-    <button class="layui-btn layui-btn-xs on" lay-event="change2on">发布</button>
-  {{#  } }}
 
-  <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
- 
+  {{#  if(d.status == 1){ }}
+  <button class="layui-btn layui-btn-xs" lay-event="feedback">反馈信息</button>
+  {{#  } else { }}
+     <span style="color:#FFB800;">待反馈</span>
+  {{#  } }}
   <!-- 这里同样支持 laytpl 语法，如： -->
 
 </script>
@@ -215,11 +205,7 @@
 
 </script>
 <script type="text/html" id="statusTpl">
-  {{#  if(d.status == 1){ }}
-    <span style="color:#5FB878;">已通过</span>
-  {{#  } else { }}
-     <span style="color:#FFB800;">待通过</span>
-  {{#  } }}
+
 
 </script>
 </body>

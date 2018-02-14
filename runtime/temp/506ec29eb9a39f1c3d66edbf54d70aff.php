@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\profile.html";i:1517186675;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\index\profile.html";i:1517897252;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +24,15 @@
 
 <body style="overflow:scroll;">
 
-<div class="layui-container">
+<div class="layui-container row-center">
 
-<p style="text-align:center;font-size:18px;line-height:2;"><span >企业全称：</span><?php echo isset($data['fullname'])?$data['fullname']:""; ?></p>
-<p style="text-align:center;font-size:18px;line-height:2;"><span >HR联系人：</span><?php echo isset($data['contact'])?$data['contact']:""; ?></p>
+<div  class="sever">
+  <p style="font-size:18px;"><strong >企业全称：</strong><?php echo isset($data['fullname'])?$data['fullname']:""; ?></p>
+<p style="font-size:18px;"><strong >HR联系人：</strong><?php echo isset($data['linkman'])?$data['linkman']:""; ?></p>
 <!-- <p class="sever" style="text-align:center;"><button class="layui-btn" >修改资料</button></p> -->
+<p style="font-size:18px;"><strong>联系人电话：</strong><?php echo isset($data['contact'])?$data['contact']:""; ?></p>
 
-
-<p class="sever" style="text-align:center;font-size:18px;line-height:2;">办公室环境照片</p>
+<p class="sever" style="text-align:center;font-size:18px;line-height:2;">公司环境照片</p>
 
 <div class="sever row-center" style="margin-left:15px;">
 
@@ -48,6 +49,9 @@
 <div style="text-align:center;margin-top:30px;">
 <button class="layui-btn"  onclick="editprofile()" >修改</button>
 </div>
+</div>
+
+
 
 
 

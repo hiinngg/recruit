@@ -50,16 +50,30 @@ class Carousel extends Controller
     }
     
     
-    public  function  edit($carid){
+    public  function  poedit($carid){
         
         if($this->request->isAjax()){
             $post=$this->request->post();
             $pics=[];
+            $pics_src=[];
             if(isset($post['images'])){
                 foreach ($post['images'] as $k=>$val){
-                    array_push($pics, transOneImage($val , "/image/admin"));
+                    $image=transOneImage($val['src'] , "/image/admin");
+                    $array=['url'=>$val['url']?$val['url']:"",'src'=>$image];
+                    array_push($pics_src, $image);
+                    array_push($pics, $array);
                 }
-            
+                
+                
+                $old_pics = Db::name("carousel")->where("carid",$post['carid'])->value("path");
+                
+                foreach (json_decode($old_pics,true) as $k=>$val){
+                    if(array_search($val['src'], $pics_src)===false){
+                        @unlink(".".$val['src']);
+                    }
+                  
+                }
+
             }
             $data=[
               'path'=>json_encode($pics,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK)  
@@ -77,10 +91,59 @@ class Carousel extends Controller
         
             $data['path']= $data['path'] ? json_decode($data['path'],true)+[1,2,3]:[1,2,3];
             $this->assign("data",$data);
+           $this->assign("width",640);
+           $this->assign("height",300);
     
-            return $this->fetch();
-    
-        return $this->fetch();
+        return $this->fetch('edit');
         
     }
+    
+    public  function  indexedit($carid){
+    
+        if($this->request->isAjax()){
+            $post=$this->request->post();
+            $pics=[];
+            $pics_src=[];
+            if(isset($post['images'])){
+           
+                foreach ($post['images'] as $k=>$val){
+                   $image=cropOneImage($val['src'] , "/image/admin");
+                    $array=['url'=>$val['url']?$val['url']:"",'src'=>$image];
+                    array_push($pics_src, $image);
+                    array_push($pics, $array);
+                }
+               $old_pics = Db::name("carousel")->where("carid",$post['carid'])->value("path");
+                
+                foreach (json_decode($old_pics,true) as $k=>$val){
+                    if(array_search($val['src'], $pics_src)===false){
+                        @unlink(".".$val['src']);
+                    }
+               
+                }
+    
+            }
+            $data=[
+                'path'=>json_encode($pics,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK)
+            ];
+            if(Db::name("carousel")->where("carid",$post['carid'])->update($data)>=0){
+                return 1;
+            }
+    
+        }
+    
+    
+    
+        $data=Db::name("carousel")->where("carid",$carid)->find();
+    
+    
+        $data['path']= $data['path'] ? json_decode($data['path'],true)+[1,2,3]:[1,2,3];
+        $this->assign("data",$data);
+        $this->assign("width",1920);
+        $this->assign("height",400);
+    
+        return $this->fetch('edit');
+    
+    }
+    
+    
 }

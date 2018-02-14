@@ -132,16 +132,32 @@
 							  })
 					    });
 					  } else if(layEvent === 'edit'){ //编辑
-						  layer.open({
-						      type: 2,
-						      title: '内容编辑(建议640px * 300px)',
-						      shadeClose: true,
-						      shade: false,
-				
-						      area: ['100%', '100%'],
-						      content: "edit?carid="+data.carid
-						    });
-					    
+						  
+						  if(data.column=="首页"){
+							  
+							  layer.open({
+							      type: 2,
+							      title: '内容编辑(建议1920px * 400px)',
+							      shadeClose: true,
+							      shade: false,
+					
+							      area: ['100%', '100%'],
+							      content: "indexedit?carid="+data.carid
+							    });
+						  }else{
+							  layer.open({
+							      type: 2,
+							      title: '内容编辑(建议640px * 300px)',
+							      shadeClose: true,
+							      shade: false,
+					
+							      area: ['100%', '100%'],
+							      content: "poedit?carid="+data.carid
+							    });
+						    
+						  }
+						  
+					
 					  }else if(layEvent === 'change2on'){
 						  _ajax("{:url('statusChange')}",{postid:data.postid,status:1},dtd)
 						  dtd.done(function(){

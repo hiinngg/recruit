@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\carousel\carlist.html";i:1517304852;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\carousel\carlist.html";i:1517565702;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,16 +133,32 @@
 							  })
 					    });
 					  } else if(layEvent === 'edit'){ //编辑
-						  layer.open({
-						      type: 2,
-						      title: '内容编辑(建议640px * 300px)',
-						      shadeClose: true,
-						      shade: false,
-				
-						      area: ['100%', '100%'],
-						      content: "edit?carid="+data.carid
-						    });
-					    
+						  
+						  if(data.column=="首页"){
+							  
+							  layer.open({
+							      type: 2,
+							      title: '内容编辑(建议1920px * 400px)',
+							      shadeClose: true,
+							      shade: false,
+					
+							      area: ['100%', '100%'],
+							      content: "indexedit?carid="+data.carid
+							    });
+						  }else{
+							  layer.open({
+							      type: 2,
+							      title: '内容编辑(建议640px * 300px)',
+							      shadeClose: true,
+							      shade: false,
+					
+							      area: ['100%', '100%'],
+							      content: "poedit?carid="+data.carid
+							    });
+						    
+						  }
+						  
+					
 					  }else if(layEvent === 'change2on'){
 						  _ajax("<?php echo url('statusChange'); ?>",{postid:data.postid,status:1},dtd)
 						  dtd.done(function(){

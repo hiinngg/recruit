@@ -21,10 +21,12 @@ padding-right:5%;
 {block name="content"}
     <div class="swiper-container" id="coursel" >
             <div class="swiper-wrapper">
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                </div>
+            {volist name="carousel" id="vo"}
+            <div class="swiper-slide " style="width:100%;height:155px;text-align:center;" >
+             <img class="mycarousel"  src="{$vo.src}"  {neq name="$vo.url" value=""}data-url="{$vo.url}"{/neq}  alt=""  style="max-width:100%;height:100%;">
+            </div>
+            {/volist}     
+            </div>
                 <div class="swiper-pagination"></div>
             </div>           
 		     <div class="content-padded" style="padding:15px;">
@@ -46,18 +48,16 @@ padding-right:5%;
 	  {/volist}
 	  </div>
 
-	<div class="container sever">
+	<div class="container sever col-center">
 	<h2 class="text-center">内推企业</h2>
-	
-	<div class="swiper-container sever" id="company-list">
-	    <div class="swiper-wrapper ">
+
+	<div class="sever " style="padding-left:15px;">
+	  
 	        {volist name="companydata" id="vo"}
-	        <div class="swiper-slide company-logo">
-	            <img src="{$vo.avastar}" alt=""  style="width:100%;height:100%;"   >
-	        </div>
+	    
+	            <img src="{$vo.avastar}" alt=""  style="width:128px;height:64px;max-width:50%;margin-right:15px;"   >
+	      
 	        {/volist}
-	
-	    </div>
 	</div>
 	</div>
    
@@ -65,16 +65,17 @@ padding-right:5%;
 {/block}
 {block name="scriptlink"}<script src="/static/js/swiper.min.js"></script>{/block}
 {block name="script"}
+
+
+
+
+
 $(".course-item").on("click",function(){
 var courseid=$(this).attr("data-courseid")
 location.href="/mobile/course/detail?courseid="+courseid;
 })
 
-  var mySwiper = new Swiper ('#company-list', {
-	slidesPerView : "auto",
-	spaceBetween : 20,
-    freeMode:true
-  })
+
     var coursel = new Swiper ('#coursel', {
     pagination: {
      el: '.swiper-pagination',

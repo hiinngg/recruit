@@ -89,6 +89,7 @@
 				         {field: 'type', title: '授课形式',templet:"#typeTpl" },
 				         {field: 'price', title: '价格' },
                          {field:'is_show',title:"首页显示",templet: '#show'},
+                         {field:'is_top',title:"置顶",templet: '#top'},
 				         {field: 'status', title: '状态',templet: '#statusTpl' },
 				         {field: 'createtime', title: '创建时间' },
 				         {field: 'score', title: '操作', width:250, toolbar: '#bar'}
@@ -192,7 +193,24 @@
                      });
                  })
 
-              }else if(layEvent === "user"){
+              }else if(layEvent === 'top2on'){
+                  _ajax("{:url('topChange')}",{courseid:data.courseid,is_top:1},dtd)
+                  dtd.done(function(){
+                      $(tr).find("button.topon").get(0).outerHTML='<button class="layui-btn layui-btn-warm layui-btn-xs topoff" lay-event="top2off">撤销</button>'
+                      obj.update({
+                          is_top:1
+                      });
+                  })
+
+               }else if(layEvent === 'top2off'){
+                   _ajax("{:url('topChange')}",{courseid:data.courseid,is_top:0},dtd)
+                   dtd.done(function(){
+                       $(tr).find("button.topoff").get(0).outerHTML=' <button class="layui-btn layui-btn-xs topon" lay-event="top2on">激活</button>'
+                       obj.update({
+                           is_top:0
+                       });
+                   })
+               }else if(layEvent === "user"){
      			 layer.open({
 				      type: 2,
 				      title: '学员管理',
@@ -216,6 +234,9 @@
 							layer.close(index)
 							if(data==1){
 								deferred.resolve();
+							}else if(data==3){
+								layer.msg("最多只能置顶三个课程");
+								
 							}else{
 								layer.msg("操作失败");
 							}
@@ -238,10 +259,17 @@
 		
 	</script>
 <script type="text/html" id="show">
-    {{#  if(d.is_show== 1){ }}
+    {{#  if(d.is_show==1){ }}
     <button class="layui-btn layui-btn-warm layui-btn-xs showoff" lay-event="show2off">撤销</button >
     {{#  } else { }}
         <button class="layui-btn layui-btn-xs showon" lay-event="show2on">激活</button>
+    {{#  } }}
+</script>
+<script type="text/html" id="top">
+    {{#  if(d.is_top==1){ }}
+    <button class="layui-btn layui-btn-warm layui-btn-xs topoff" lay-event="top2off">撤销</button >
+    {{#  } else { }}
+        <button class="layui-btn layui-btn-xs topon" lay-event="top2on">激活</button>
     {{#  } }}
 </script>
 <script type="text/html" id="bar">

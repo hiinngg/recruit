@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1517198755;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517447235;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\user\index.html";i:1517884814;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1518487726;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -394,7 +394,6 @@ color:#1881EC;
         <?php endforeach; endif; else: echo "" ;endif; else: ?>
            <p style="padding:15px 0;">我的报告：<span>暂无</span></p>
             <hr>
-        
             <p>亲，综合能力报告是参与我们“职造计划”才能获得哦</p>
             
             <?php if($data['eval'] == 1): ?>
@@ -453,9 +452,112 @@ color:#1881EC;
 <script src="/static/js/swiper.min.js"></script>
 
 <script>
-window.onload=function(){
+$(function(){
 	var vConsole = new VConsole();
+	
+	$(".mycarousel").on("click",function(){
+		if($(this).attr("data-url")){
+		location.href=$(this).attr("data-url")
+		}
+
+		}) 
+		
+//login();		
+		
+
+		
+		
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		signin()
+	}
+	
+},".signin")
+
+
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		login()
+	}
+	
+},".bind")		
+
+		
+
+$(".menu").on("click",function(){
+	
+	$.actions({
+		  actions: [{
+		    text: "企业后台",
+		    onClick: function() {
+		      window.location.href="<?php echo url('company/index'); ?>"
+		    }
+		  }]
+		});
+	
+})
+
+	
+function  login(){
+	
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<input type="text" class="weui-input weui-prompt-input" id="weui-prompt-username" name="logtel"  placeholder="手机">'+
+		  '<input type="text"  name="pwd"  class="weui-input weui-prompt-input" id="weui-prompt-password"  placeholder="密码">'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">还没有账号？<span class="signin" style="color:#1881EC;">马上去注册</span></p>',
+		  buttons: [
+		    { text: "绑定", onClick: function(){
+	    	 if($("input[name='logtel']").val()==""||$("input[name='pwd']").val()==""){ 
+	    	 $.toptip('手机或密码不能为空', 'error'); 
+	    	 return false;
+	    	 }
+		    } },
+		  ]
+		});
+	
+}	
+function  signin(){
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<div class="weui-cell">'+
+		    '<div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="number" name="signtel" pattern="[0-9]*" placeholder="请输入手机号">'+
+		    '</div>'+
+		  '</div>'+
+		  '<div class="weui-cell weui-cell_vcode">'+
+		   ' <div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="code" placeholder="请输入验证码">'+
+		    '</div>'+
+		    '<div class="weui-cell__ft">'+
+		      '<button class="weui-vcode-btn" style="color:#1881EC;">获取验证码</button>'+
+		    '</div>'+
+		  '</div>'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">已经有账号了？<span class="bind" style="color:#1881EC;">马上去登录</span></p>',
+		  buttons: [
+		    { text: "创建并绑定", onClick: function(){
+		    	 if($("input[name='signtel']").val()==""||$("input[name='code']").val()==""){
+		    		 
+			    	 $.toptip('手机或验证码不能为空', 'error');
+			    	 
+			    	 return false;
+			    	 
+			    	 }
+		    } },
+		  ]
+		});
 }
+	
+	
+	
+})
+
+
 
 
 
@@ -709,19 +811,6 @@ console.log("")
 
 
 
-
-$(".menu").on("click",function(){
-	
-	$.actions({
-		  actions: [{
-		    text: "企业后台",
-		    onClick: function() {
-		      window.location.href="<?php echo url('company/index'); ?>"
-		    }
-		  }]
-		});
-	
-})
 
 
 

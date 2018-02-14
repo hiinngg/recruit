@@ -93,15 +93,18 @@ class User extends Controller
                 }
             }
     
-            $res=Db::name("job_user")->where("userid",Session::get("username"))
-            ->page($page,$limit)
-            ->order("createtime desc")
+             $data = Db::view("job_user", "*")->view("user", "userid", "user.userid=job_user.userid")
+            ->view("job", "name", "job.jobid=job_user.jobid")
+            ->where([
+            'user.userid' => Session::get("username")
+             ])
+            ->order("job_user.createtime desc")
             ->select();
             return [
                 'code' => 0,
                 'msg' => "",
                 "count" => $this->count,
-                'data' => $res
+                'data' => $data
             ];
         }
         return $this->fetch();
@@ -125,19 +128,37 @@ class User extends Controller
     }
     
     
+    public function evalapply()
+    {
+     
+        
+        if (Db::name("user")->where("userid", Session::get("username"))->update([
+            'eval' => 1,
+            'evaltime' => time()
+        ])) {
+            
+            return 1;
+        }
+    
+    }
+    
+    
     public function myEvaluationList($page = "", $limit = ""){
         
-        if ($this->request->isAjax()) {
-        
-            if (! isset($count)) {
-                $this->count = Db::name("evaluation")->where([
-                    'userid' =>Session::get("username")
-                ])->count();
-                if ($this->count == 0) {
-                    $this->assign("none", "none");
-                }
+       $count=Db::name("evaluation")->where("userid",Session::get("username"))->count();
+       if($count==0){
+        //如果为0，判断有没有申请评测
+            $status = Db::name("user")->where([
+                'userid' =>Session::get("username")
+            ])->value("eval");
+            if ($status == 0) {
+                $this->assign("none", "none");
+                 
             }
+        }
         
+        if ($this->request->isAjax()) {
+
             $res=Db::name("evaluation")->where("userid",Session::get("username"))
             ->page($page,$limit)
             ->order("createtime desc")
@@ -145,7 +166,7 @@ class User extends Controller
             return [
                 'code' => 0,
                 'msg' => "",
-                "count" => $this->count,
+                "count" => $count,
                 'data' => $res
             ];
         }

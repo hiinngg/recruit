@@ -9,15 +9,31 @@ class Job  extends  Common{
     
     
     public  function  jobList(){
-        
-       $this->assign("jobcates",Db::name("jobcate")->select());
+       $jobcates = Db::name("jobcate")->select();
+       array_unshift($jobcates, [
+           'cateid'=>0,
+           'name' => '所有工作'
+       ]);
+       
+       
+       $this->assign("jobcates",$jobcates);
+       $this->assign("banner" , json_decode(Db::name("banner")->where("column","找工作")->value("path"),true));
        return  $this->fetch();
     }
     public function catedetail($cateid,$page=1){
+        
+
+        if($cateid==0){
+            $query=['re_job.status'=>1];
+        }else{
+            $query=['re_job.status'=>1,'re_job.cate'=>$cateid];
+        }
+        
+        
         $job = Db::view("re_job", "*")->view("re_jobcate", [
             'name' => "catename"
         ], "re_jobcate.cateid=re_job.cate")
-            ->where(['re_job.status'=>1,'re_job.cate'=>$cateid])
+            ->where($query)
             ->page($page,4)
             ->select();
         /*   $cate = [];
@@ -46,8 +62,14 @@ class Job  extends  Common{
     public function apply(){
 
         
-            $userid=Db::name("user")->where("openid",Cookie::get("rec_openid"))->value("userid");
+            $userid=Db::name("user")->where("openid",Cookie::get("rec_openId"))->value("userid");
+            
+            if(Db::name("resume")->where("userid",$userid)->value("status")!=1){
+                return 0;
+            }
             $post=$this->request->post();
+           
+            
             if(Db::name('job_user')
                 ->where(['userid'=>$userid,'jobid'=>$post['jobid']])->find()){
                     return "你已申请该工作";

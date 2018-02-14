@@ -9,6 +9,7 @@ namespace app\admin\controller;
 
 
 use think\Db;
+use app\common\controller\Excel;
 
 class Position extends  Common{
 
@@ -39,6 +40,22 @@ class Position extends  Common{
         }
         return $this->fetch();
     }
+    
+    public function  getexcel(){
+        $excel = new Excel();
+        $filename = '普工申请'.date('YmdHis');
+        $header = array('姓名','手机号','职位名称','申请时间');
+        $index = array('name','tel','pname','createtime');
+        $res = Db::view("position_user")->view("position",['name'=>'pname'],"position.poid=position_user.poid")
+        ->order("createtime desc")
+        ->select();
+        
+        $excel->createtable($res,$filename,$header,$index);
+        
+        
+    }
+    
+    
     
     
     public  function  myposition($poid="",$page = "", $limit = ""){

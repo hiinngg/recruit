@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1517276639;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1517447235;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\index\index.html";i:1518329520;s:78:"D:\wamp3\wamp64\www\recruit\public/../application/mobile\view\indexlayout.html";i:1518487817;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -119,10 +119,12 @@ padding-right:5%;
      
     <div class="swiper-container" id="coursel" >
             <div class="swiper-wrapper">
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide" ><img style="width:100%;height:226px;object-fit:cover;" src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                </div>
+            <?php if(is_array($carousel) || $carousel instanceof \think\Collection || $carousel instanceof \think\Paginator): $i = 0; $__LIST__ = $carousel;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <div class="swiper-slide " style="width:100%;height:155px;text-align:center;" >
+             <img class="mycarousel"  src="<?php echo $vo['src']; ?>"  <?php if($vo['url'] != ''): ?>data-url="<?php echo $vo['url']; ?>"<?php endif; ?>  alt=""  style="max-width:100%;height:100%;">
+            </div>
+            <?php endforeach; endif; else: echo "" ;endif; ?>     
+            </div>
                 <div class="swiper-pagination"></div>
             </div>           
 		     <div class="content-padded" style="padding:15px;">
@@ -144,18 +146,16 @@ padding-right:5%;
 	  <?php endforeach; endif; else: echo "" ;endif; ?>
 	  </div>
 
-	<div class="container sever">
+	<div class="container sever col-center">
 	<h2 class="text-center">内推企业</h2>
-	
-	<div class="swiper-container sever" id="company-list">
-	    <div class="swiper-wrapper ">
+
+	<div class="sever " style="padding-left:15px;">
+	  
 	        <?php if(is_array($companydata) || $companydata instanceof \think\Collection || $companydata instanceof \think\Paginator): $i = 0; $__LIST__ = $companydata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-	        <div class="swiper-slide company-logo">
-	            <img src="<?php echo $vo['avastar']; ?>" alt=""  style="width:100%;height:100%;"   >
-	        </div>
+	    
+	            <img src="<?php echo $vo['avastar']; ?>" alt=""  style="width:128px;height:64px;max-width:50%;margin-right:15px;"   >
+	      
 	        <?php endforeach; endif; else: echo "" ;endif; ?>
-	
-	    </div>
 	</div>
 	</div>
    
@@ -202,31 +202,39 @@ padding-right:5%;
 <script src="/static/js/swiper.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script>
-window.onload=function(){
+$(function(){
 	var vConsole = new VConsole();
-}
+	
+	$(".mycarousel").on("click",function(){
+		if($(this).attr("data-url")){
+		location.href=$(this).attr("data-url")
+		}
+
+		}) 
+		
+login();		
+		
+
+		
+		
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		signin()
+	}
+	
+},".signin")
 
 
+$(document).on({
+	'click':function(){
+		$.closeModal();	
+		login()
+	}
+	
+},".bind")		
 
-$(".course-item").on("click",function(){
-var courseid=$(this).attr("data-courseid")
-location.href="/mobile/course/detail?courseid="+courseid;
-})
-
-  var mySwiper = new Swiper ('#company-list', {
-	slidesPerView : "auto",
-	spaceBetween : 20,
-    freeMode:true
-  })
-    var coursel = new Swiper ('#coursel', {
-    pagination: {
-     el: '.swiper-pagination',
-    },
-  })
-    
-
-
-
+		
 
 $(".menu").on("click",function(){
 	
@@ -240,6 +248,89 @@ $(".menu").on("click",function(){
 		});
 	
 })
+
+	
+function  login(){
+	
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<input type="text" class="weui-input weui-prompt-input" id="weui-prompt-username" name="logtel"  placeholder="手机">'+
+		  '<input type="text"  name="pwd"  class="weui-input weui-prompt-input" id="weui-prompt-password"  placeholder="密码">'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">还没有账号？<span class="signin" style="color:#1881EC;">马上去注册</span></p>',
+		  buttons: [
+		    { text: "绑定", onClick: function(){
+	    	 if($("input[name='logtel']").val()==""||$("input[name='pwd']").val()==""){ 
+	    	 $.toptip('手机或密码不能为空', 'error'); 
+	    	 return false;
+	    	 }
+		    } },
+		  ]
+		});
+	
+}	
+function  signin(){
+	$.modal({
+		  title: "请关联您的账号",
+		  autoClose: false ,
+		  text: '<p class="weui-prompt-text"></p>'+
+		  '<div class="weui-cell">'+
+		    '<div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="number" name="signtel" pattern="[0-9]*" placeholder="请输入手机号">'+
+		    '</div>'+
+		  '</div>'+
+		  '<div class="weui-cell weui-cell_vcode">'+
+		   ' <div class="weui-cell__bd">'+
+		      '<input class="weui-input" type="code" placeholder="请输入验证码">'+
+		    '</div>'+
+		    '<div class="weui-cell__ft">'+
+		      '<button class="weui-vcode-btn" style="color:#1881EC;">获取验证码</button>'+
+		    '</div>'+
+		  '</div>'+
+		  '<p class="weui-prompt-text " style="margin-top:10px;">已经有账号了？<span class="bind" style="color:#1881EC;">马上去登录</span></p>',
+		  buttons: [
+		    { text: "创建并绑定", onClick: function(){
+		    	 if($("input[name='signtel']").val()==""||$("input[name='code']").val()==""){
+		    		 
+			    	 $.toptip('手机或验证码不能为空', 'error');
+			    	 
+			    	 return false;
+			    	 
+			    	 }
+		    } },
+		  ]
+		});
+}
+	
+	
+	
+})
+
+
+
+
+
+
+
+
+
+
+$(".course-item").on("click",function(){
+var courseid=$(this).attr("data-courseid")
+location.href="/mobile/course/detail?courseid="+courseid;
+})
+
+
+    var coursel = new Swiper ('#coursel', {
+    pagination: {
+     el: '.swiper-pagination',
+    },
+  })
+    
+
+
+
 
 
 

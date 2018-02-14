@@ -16,9 +16,9 @@
  */
 define('HTTP', 'http://');
 define('DOMAIN', "recruit.zszmr.com");
-define('APPID', 'wx572619f18a92ca3e');
-define('APPSECRET', 'a74348b1003be4ad5abe49e70eb632c1');
-
+define('APPID', 'wx21484ca7d1351913');
+define('APPSECRET', '693d6ef39b8a341f1015e02d562a8cea');
+define('YunPianApiKey', '0acb7f520c75626028c39d88cb652084');
 
 function httpGet($url)
 {
@@ -36,7 +36,48 @@ function httpGet($url)
     return $res;
 }
 
-function transOneImage($path, $tgpath, $width = "640", $height = "")
+function createRandNum($length )
+{
+   
+    $str = "";
+    for ($i = 0; $i < $length; $i ++) {
+        $str .=  mt_rand(0, 9);
+    }
+    return $str;
+}
+
+
+
+function cropOneImage($path, $tgpath, $width = "1920", $height = "400")
+{
+    if (! strstr($path, "temp")) {
+        return $path;
+    }
+    $tgpathArr = explode("/", $tgpath);
+    if ($tgpathArr[count($tgpathArr) - 1] == "") {
+        unset($tgpathArr[count($tgpathArr) - 1]);
+        $tgpathArr = implode("/", $tgpathArr);
+    }
+    $datefloder =".".$tgpath;
+    if (! file_exists($datefloder)) {
+
+        mkdir($datefloder,600,true);
+
+    }
+    $temp_arr = explode("/", $path);
+    $fileName = $temp_arr[count($temp_arr) - 1];
+
+    $newimg = $tgpath . "/" . $fileName;
+    $image = \think\Image::open("." . $path);
+    $image->crop($image->width() > $width ? $width : $image->width(),$image->height() > $height ? $height : $image->height())
+    ->save("." . $newimg);
+    @unlink(".".$path);
+    return $newimg;
+}
+
+
+
+function transOneImage($path, $tgpath, $width = "", $height = "")
 {
     if (! strstr($path, "temp")) {
         return $path;
@@ -56,9 +97,9 @@ function transOneImage($path, $tgpath, $width = "640", $height = "")
     $newimg = $tgpath . "/" . $fileName;
     
     $image = \think\Image::open("." . $path);
-    
-    $image->thumb($width, $height == "" ? $image->height() : $height)
+    $image->thumb($width==""? $image->width():$width, $height == "" ? $image->height() : $height)
         ->save("." . $newimg);
+    @unlink(".".$path); 
     return $newimg;
 }
 

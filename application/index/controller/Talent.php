@@ -16,6 +16,10 @@ class Talent extends Common
         if(!empty($res2)){
             $this->assign("team",$res2);
         }
+        
+        $this->assign("banner" , json_decode(Db::name("banner")->where("column","找人才")->value("path"),true));
+        
+        
         return $this->fetch();
     }
 }

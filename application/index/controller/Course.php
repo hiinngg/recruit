@@ -28,7 +28,7 @@ class Course extends Common
             $this->assign("catename",Db::name("category")->where("cateid",$sel_cateid)->value("name"));
         }
         $this->assign("course",$this->catedetail($sel_cateid));
-
+        $this->assign("content",Db::name("page")->where("title","职学院")->value("content"));
         $this->assign("cateid",$sel_cateid);
         $this->assign("cates",$tree);
         return $this->fetch();
@@ -75,6 +75,9 @@ class Course extends Common
 
         if(!Session::has("username")){
             return 0;
+        }
+        if(Db::name("resume")->where("userid",Session::get("username"))->value("status")!=1){
+            return 2;
         }
         $post=$this->request->post();
         if(Db::name('course_user')

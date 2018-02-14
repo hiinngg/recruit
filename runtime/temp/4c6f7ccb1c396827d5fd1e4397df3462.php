@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1517215700;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\user\userlist.html";i:1518591371;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +18,12 @@
     <!-- 		<button class="layui-btn layui-btn-danger">
                 <i class="layui-icon">&#xe640;</i>批量删除
             </button> -->
+		    <input style="width: 200px; margin-right: 15px;" type="text"
+			name="tel" placeholder="请输入手机号" autocomplete="off"
+			class="layui-input"> 
+		<button class="layui-btn userSearch" >
+			<i class="layui-icon">&#xe615;</i>查询
+		</button>      
     <button class="layui-btn " onclick="refresh()">
         刷新
     </button>
@@ -49,6 +55,7 @@ var sex=["男",'女'];
             cols:[[
                 {checkbox: true},
                 {field: 'user_id', title: '编号' },
+                {field:'truename',title:'姓名'},
                 {field: 'telphone', title: '注册信息（手机或微信授权）',templet: '#telTpl'},
                 {field: 'time', title: '创建时间' },
                 {field: 'score', title: '操作', width:250, toolbar: '#bar'},
@@ -62,14 +69,18 @@ var sex=["男",'女'];
         });
 
 
-        $(".search").on("click",function(){
-            var keyword=$("input[name='keyword']").val();
+        $(".userSearch").on("click",function(){
+       
+       /*      var keyword=$("input[name='keyword']").val();
             if(keyword==""){
                 return;
-            }
+            } */
+   
+                 var tel=$("input[name='tel']").val()
             articleTable.reload({
                 where: {
-                    keyword:keyword
+         
+                    tel:tel
                 }
                 ,page: {
                     curr: 1 //重新从第 1 页开始
@@ -127,7 +138,7 @@ var sex=["男",'女'];
                       shadeClose: true,
                       shade: false,
                       area: ['100%', '100%'],
-                      content: "courseuser?userid="+data.userid
+                      content: "courseuser?userid="+data.user_id
                   })
                 	
                 	
@@ -139,18 +150,26 @@ var sex=["男",'女'];
                       shadeClose: true,
                       shade: false,
                       area: ['100%', '100%'],
-                      content: "jobuser?userid="+data.userid
+                      content: "jobuser?userid="+data.user_id
                   })
                 	
                 }else if(layEvent === 'eval'){
-                	  layer.open({
-                          type: 2,
-                          title: '内容查看',
-                          shadeClose: true,
-                          shade: false,
-                          area: ['100%', '100%'],
-                          content: "evalbyuse?userid="+data.userid
-                      });
+                	
+                	if(data.eval==0){
+                	layer.alert("该用户未申请评测")
+                	}else{
+                		 layer.open({
+                             type: 2,
+                             title: '内容查看',
+                             shadeClose: true,
+                             shade: false,
+                             area: ['100%', '100%'],
+                             content: "evalbyuse?userid="+data.user_id
+                         });
+                	}
+                	
+                	
+                	 
                 }
                 else if(layEvent === 'addeval'){
               	  layer.open({
@@ -159,7 +178,7 @@ var sex=["男",'女'];
                         shadeClose: true,
                         shade: false,
                         area: ['100%', '100%'],
-                        content: "addeval?userid="+data.userid
+                        content: "addeval?userid="+data.user_id
                     });
               }
             });
@@ -199,7 +218,7 @@ var sex=["男",'女'];
 
     <button class="layui-btn layui-btn-warm layui-btn-xs " lay-event="eval">评测管理</button>
  
-    <button class="layui-btn  layui-btn-xs " lay-event="addeval">上传评测</button>
+ 
 
     <!-- 这里同样支持 laytpl 语法，如： -->
 

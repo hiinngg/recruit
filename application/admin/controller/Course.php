@@ -21,6 +21,7 @@ class Course extends Common
         }
         $this->assign("courselist", Db::name("course")->where("status", 1)
             ->field("courseid,name")
+          
             ->select());
         return $this->fetch();
     }
@@ -75,6 +76,23 @@ class Course extends Common
         }
     }
 
+    
+    public function topChange()
+    {
+        $post = $this->request->post();
+        if($post['is_top']==1&&(Db::name("course")->where("is_top",1)->count()==3)){
+            return 3;
+        }
+        if (Db::name('course')->where("courseid", $post['courseid'])->update([
+            'is_top' => $post['is_top']
+        ])) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    
     public function courseUser($page = "", $limit = "")
     {
         if ($this->request->isAjax()) {
@@ -162,13 +180,14 @@ class Course extends Common
                     ->where([
                     'cateid' => $cateid
                 ])
-                    ->field("courseid,name,price,type,status,createtime,is_show")
-                    ->order("createtime desc")
+                    ->field("courseid,name,price,type,status,createtime,is_show,is_top")
+                    ->order("is_top,createtime desc")
+                    
                     ->select();
             } else {
                 $res = Db::name("course")->page($page, $limit)
-                    ->field("courseid,name,price,type,status,createtime,is_show")
-                    ->order("createtime desc")
+                    ->field("courseid,name,price,type,status,createtime,is_show,is_top")
+                    ->order("is_top,createtime desc")
                     ->select();
             }
             

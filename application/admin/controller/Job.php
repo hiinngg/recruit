@@ -42,6 +42,19 @@ class Job extends Common
         return 1;
     }
     
+    public function editjobfeedback(){
+        $post = $this->request->post();
+        Db::name("job_user")->where("orderid", $post['orderid'])->update([
+            "feedback"=>$post['text'],
+            'status'=>1
+        ]);
+         
+        return 1;
+        
+        
+    }
+    
+    
     public  function  myjob($jobid="",$page = "", $limit = ""){
         
         if ($this->request->isAjax()) {

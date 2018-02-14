@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1517365814;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\course\editCourse.html";i:1518345305;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,6 +128,9 @@
   </script>
 </div>
 
+
+
+<input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit lay-filter="formDemo">立即发布</button>
@@ -177,6 +180,8 @@
 
 		  //监听提交
 		  form.on('submit(formDemo)', function(data){
+			  console.log(data.field.__token__)
+			  return false;
 	 		if(data.field.label_img==""){
 				layer.msg("请上传封面",{icon:5,shift:6})
 				return false;
@@ -185,6 +190,8 @@
 				layer.msg("请编辑内容",{icon:5,shift:6})
 				return false;
 			}
+			
+		
 	    data.field['desc']=data.field['desc'].replace(/\n|\r\n/g,"<br>");
 	    data.field['menu']=data.field['menu'].replace(/\n|\r\n/g,"<br>");
 	    

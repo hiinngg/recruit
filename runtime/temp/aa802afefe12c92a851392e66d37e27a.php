@@ -1,16 +1,17 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userRegister.html";i:1514363401;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1516086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:87:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\register\userRegister.html";i:1514363401;s:72:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\layout.html";i:1517825523;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="keywords" content="<?php echo $pc['keywords']; ?>" />
 <link rel="stylesheet" href="/static/css/swiper.min.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/admin/layui/css/layui.css" />
-<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" /> 
 <link rel="stylesheet" href="/static/css/hover-min.css" />
 <link rel="stylesheet" href="/static/css/bootsnav.css" />
 
-<title>招聘网站</title>
+<title><?php echo $pc['title']; ?></title>
 </head>
 <style>
 /* common */
@@ -51,7 +52,7 @@ body,html{
 .company-logo{
 	width:128px;
 	height:64px;
-	background:#ccc;
+	
 }
 #mynav>ul>li>a{
    color:#000000;
@@ -89,6 +90,8 @@ body,html{
  }
  .course-item{
 	cursor:pointer;
+ 	width:380px;
+ 	
  }
  .course-name:hover{
 	color:#1881EC;
@@ -127,7 +130,7 @@ body,html{
 /* userreg */
 
 </style>
-<body>
+<body style="">
 <nav class="navbar navbar-default" style="margin-bottom: 0;background:#ffffff;">
   <div class="container " style="">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -138,13 +141,15 @@ body,html{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo url('index/index'); ?>" >logo</a>
+      
+      <img src="<?php echo $logo; ?>" alt=""  style="width:64px;height:64px;"/>
+    
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse " id="mynav">
+    <div class="collapse navbar-collapse " id="mynav" >
  
-     <ul class="nav navbar-nav "  style="display:inline-block;" >
+     <ul class="nav navbar-nav "  style="display:inline-block;margin-left:15px;" >
       <li  data-c="index" class="active"><a href="<?php echo url('index/index'); ?>">首页 <span class="sr-only">(current)</span></a></li>
       <?php if(is_array($navlist) || $navlist instanceof \think\Collection || $navlist instanceof \think\Paginator): $i = 0; $__LIST__ = $navlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
       <li data-c="<?php echo $vo['c']; ?>"><a href="<?php echo $vo['column']; ?>"><?php echo $vo['name']; ?></a></li>
@@ -167,7 +172,7 @@ body,html{
                 </ul>
             </li>
             <?php else: ?>
-            <p class="navbar-text navbar-right "><a href="#" class="navbar-link" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
+            <p class="navbar-text navbar-right "><a href="#" class="navbar-link useroper" data-toggle="modal" data-target="#userModal">注册/登录</a></p>
             <?php endif; ?>
 
 
@@ -314,8 +319,10 @@ body,html{
        <span id="footvideo" class="fa fa-play-circle fa-3x" style="position:absolute;color:#ffffff;cursor:pointer;top: 50%;left: 50%;transform: translate(-50%, -50%);"></span> 
          </div>
         </div>
-	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;">
-     <?php echo $footer['desc']; ?>
+	   <div class="col-md-4 col-center" style="height:150px;border-right:1px solid #ffffff;overflow:auto;">
+        <?php if(is_array($posts) || $posts instanceof \think\Collection || $posts instanceof \think\Paginator): $i = 0; $__LIST__ = $posts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+        <p><a href="<?php echo url('post/postdetail','postid='.$vo['postid']); ?>"><?php echo $vo['title']; ?></a></p>
+        <?php endforeach; endif; else: echo "" ;endif; ?>   
        </div>
 	   <div class="col-md-4 col-center">
       <div style="background:#ffffff;width:150px;height:150px;">
@@ -402,18 +409,41 @@ body,html{
 </div> 
 <!-- 用户注册时弹出 -->
 <script src="/admin/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script src="/static/js/swiper.min.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script  src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/js/bootsnav.js"></script>
+
 <script>
+window.onload=function(){
+	lazyload();
+}
+$('#companyReg').modal({
+	  'backdrop':'static',
+	  'show':false,
+	  "keyboard":false
+})
+ $('#addjob').modal({
+  'show':false,
+ })
+$("#userModal").modal({
+ 'show':false, 
+})
+ 
+ 
+$(".mycarousel").on("click",function(){
+if($(this).attr("data-url")){
+location.href=$(this).attr("data-url")
+}
 
-
+}) 
+ 
 function viewdata(initdata){
 	var html="";
 	 for(key in initdata  ){
 		 
-	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;" data-id="'+initdata[key]['courseid']+'">'+
+	html+='<div class="course-item  col-md-4"  style="width:380px;padding:0 15px;"  data-id="'+initdata[key]['courseid']+'">'+
 			'<div class="hvr-sweep-to-top coursehover" style="height:200px;width:350px;">'+
 			'<img  class="" src="'+initdata[key]['label_img']+'" width="350px"  height="200px"  style="object-fit: cover;position:absolute;" />'+
 			'<button class="btn btn-default hidden courseApply" data-loading-text="正在报名..." data-id="'+initdata[key]['courseid']+'" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:20;" >加入课程</button>'+
@@ -427,7 +457,7 @@ function viewdata(initdata){
 			'</p></div>'	 
 	 }
 	
-   $("#courselist").append(html);
+   $("#courselist").children(".row").append(html);
 
 }
 /*common*/
@@ -453,16 +483,20 @@ $("#footvideo").on("click",function(event){
 /*common  */
 
 $(".courseApply").on("click",function(e){
-	e.stopPropagation();
-    var $btn = $(this).button('loading')
+
+e.stopPropagation();
+ var $btn = $(this).button('loading')
 var id=$(this).attr("data-id");
 $.ajax({
 	url:"<?php echo url('course/apply'); ?>",
     data:{courseid:id},
     type:"post",
 	success:function(data){
+	
 		if(data==1){
 			layer.msg("报名成功")
+		}else if(data===0){
+			 $(".useroper").trigger("click")
 		}else{
 			layer.msg(data)
 		}
@@ -475,9 +509,7 @@ $.ajax({
 	
 })
 })
-  $('#addjob').modal({
-	  'show':false,
-  })
+
 
 $(".jobApply").on("click",function(){
 var $btn = $(this).button('loading')
@@ -489,6 +521,8 @@ $.ajax({
 	success:function(data){
 		if(data==1){
 			$('#addjob').modal('toggle')
+		}else if(data===0){
+			 $(".useroper").trigger("click")
 		}else{
 			layer.msg(data)
 		}
@@ -505,6 +539,7 @@ $.ajax({
 
 $("#courselist").on({
 	mouseenter:function(){
+	    
 		$(this).children("button").removeClass("hidden")
 	},
 	mouseleave:function(){
@@ -516,6 +551,7 @@ $("#courselist").on({
 
 /*首页  */
   var mySwiper = new Swiper ('#company-list', {
+	direction: 'vertical',
 	slidesPerView : "auto",
 	spaceBetween : 20,
       freeMode:true
@@ -531,11 +567,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
    var laydate=layui.laydate;
   
   /*企业注册  */
-  $('#companyReg').modal({
-	  'backdrop':'static',
-	  'show':false,
-	  "keyboard":false
-  })
+
    var images={};
   
    form.on('submit(companyReg)', function(data){
@@ -544,10 +576,10 @@ layui.use(['layer', 'form','upload','laydate'], function(){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
     	 return;
      }
-   if(JSON.stringify(images) == "{}"){
+  /*  if(JSON.stringify(images) == "{}"){
 	   layer.msg("请上传公司图片",{icon:5,shift:6});
    } 
-
+ */
 
     $.ajax({
     	url:"<?php echo url('companyReg'); ?>",
@@ -615,7 +647,7 @@ layui.use(['layer', 'form','upload','laydate'], function(){
    
    /* 用户注册 */
    form.on('submit(userreg)', function(data){
-	   var $btn = $(data.elem).button('loading')
+	 var $btn = $(data.elem).button('loading')
      if(data.field.pwd!=data.field.pwd2){
     	 layer.msg("两次密码输入不一致",{icon:5,shift:6});
     	

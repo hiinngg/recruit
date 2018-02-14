@@ -8,14 +8,14 @@
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img   src="/static/images/ccc.jpg" width="100%" style="height:400px;object-fit:cover;"  >
-    </div>
-    <div class="item">
-       <img  src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" >
-    </div>
-    
+  <div class="carousel-inner" role="listbox" style="">
+ {volist name="carousel" id="vo"}
+<div class="row-center  item {eq name="i" value="1"}active{/eq}"  style="text-align:center;width:100%;height:400px;line-height:400px; font-size: 0;" >
+ <img   src="{$vo.src}"  {neq name="$vo.url" value=""}data-url="{$vo.url}"{/neq}  class="mycarousel"  style=""  >
+</div>
+ {/volist}
+  
+
   </div>
 
   <!-- Controls -->
@@ -65,18 +65,20 @@
 </p> -->
 
 
-<div class="container sever">
+<div class="container sever col-center" >
 <h2 class="text-center">内推企业</h2>
 
-<div class="swiper-container sever" id="company-list">
-    <div class="swiper-wrapper row-center">
-        {volist name="companydata" id="vo"}
-        <div class="swiper-slide company-logo">
-            <img class="lazyload" data-src="{$vo.avastar}" alt=""   width="100%" height="100%"  style="object-fit: cover;">
-        </div>
-        {/volist}
+<div class=""  >
+ {volist name="companydata" id="vo"}
+  
+ <img class="lazyload" data-src="{$vo.avastar}" alt=""   width="128px" height="64px"  style="margin-top:15px;">
+       
+ {/volist}
 
-    </div>
+</div>
+       
+
+   
 </div>
 
 </div>

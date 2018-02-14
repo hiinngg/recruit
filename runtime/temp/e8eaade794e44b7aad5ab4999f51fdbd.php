@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1517298065;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp3\wamp64\www\recruit\public/../application/admin\view\index\index.html";i:1518505274;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -93,6 +93,9 @@
 						<dd>
 							<a data-url="<?php echo url('user/pouser'); ?>" href="javascript:;">普工申请</a>
 						</dd>
+						<dd>
+							<a data-url="<?php echo url('user/evaluser'); ?>" href="javascript:;">综合测评申请</a>
+						</dd>
 					</dl>
 				</li>	
 				<li class="layui-nav-item"><a href="#">课程管理</a>
@@ -106,6 +109,10 @@
 					</dl>
 
 				</li>
+				
+			<li class="layui-nav-item"><a href="#"  data-url="<?php echo url('post/index'); ?>">文章管理</a></li>
+				
+				
 				<li class="layui-nav-item"><a href="#"
 											  data-url="<?php echo url('company/companyList'); ?>">企业管理</a></li>
 				<li class="layui-nav-item"><a href="#">职位管理</a>
@@ -132,7 +139,9 @@
 						<dd>
 							<a data-url="<?php echo url('carousel/carlist'); ?>" href="javascript:;">轮播图设置</a>
 						</dd>
-
+	                    <dd>
+							<a data-url="<?php echo url('banner/bannerlist'); ?>" href="javascript:;">广告图设置</a>
+						</dd>
 					</dl>
 				</li>
 				<li class="layui-nav-item"><a href="#"

@@ -24,7 +24,7 @@ class Job extends Common{
         $res=Db::name("job")->where('status',1)->select();
         $this->assign("data",$res);
         $this->assign("companydata",Db::name("company")->where("status",1)->where("avastar",'neq',"")->field("cid,avastar")->select()); 
-        
+        $this->assign("banner" , json_decode(Db::name("banner")->where("column","找工作")->value("path"),true));
        
         
         return $this->fetch();
@@ -34,6 +34,9 @@ class Job extends Common{
     public  function apply(){
         if(!Session::has("username")){
             return 0;
+        }
+        if(Db::name("resume")->where("userid",Session::get("username"))->value("status")!=1){
+            return 2;
         }
         $post=$this->request->post();
         if(Db::name('job_user')

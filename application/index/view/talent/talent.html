@@ -1,4 +1,7 @@
-<img src="/static/images/zzz.jpg" width="100%" style="height:400px;object-fit:cover;" alt="...">
+<div style="text-align:center;">
+<img class="mycarousel" src="{:current($banner)['src']}"  {neq name=":current($banner)['url']" value="" }data-url="{:current($banner)['url']}"{/neq} >
+</div>
+
 <div class="container sever">
 
  

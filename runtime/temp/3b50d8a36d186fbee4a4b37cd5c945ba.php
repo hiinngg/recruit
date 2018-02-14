@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\info.html";i:1516783334;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\wamp3\wamp64\www\recruit\public/../application/index\view\user\info.html";i:1517882893;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,37 +28,39 @@
         justify-content:center;
 
     }
+    p,strong{
+	font-size:18px;
+    }
 </style>
 
 <body style="overflow-y:scroll;">
 
-<div class="layui-container-fluid"  style="/* display:flex;flex-direction: column ;justify-content:center;align-items: center; */">
+<div class="layui-container-fluid"  style=" display:flex;justify-content:center;align-items: center;">
     <?php if(isset($data)): ?>
-    <div class="layui-row">
-	    <div class="layui-col-md3  col-center" >
+    <div class="">
+	
          <img   src="<?php echo $data['avastar']==''?'/static/images/avastar.png' : $data['avastar']; ?>" style="width:200px;height:200px;border-radius:50%;object-fit:cover;">
          <button class="layui-btn sever change">点击上传头像</button>
          
-      <div  class="sever" style="text-align:left;">
-	      <p><span>姓名：</span><span><?php echo $data['truename']; ?></span></p>
-	      <p><span>性别：</span><span><?php echo $data['sex']; ?></span></p>
-	      <p><span>出生日期：</span><span><?php echo $data['birthdate']; ?></span></p>
-	      <p><span>目标职位：</span><span><?php echo $data['position']; ?></span></p>
-	      <p><span>毕业院校：</span><span><?php echo $data['graduated']; ?></span></p>
-	      <p><span>学历：</span><span><?php echo $data['education']; ?></span></p>
+      <div  class="sever" style="text-align:left;line-height:2;">
+	      <p><strong>姓名：</strong><span><?php echo $data['truename']; ?></span></p>
+	      <p><strong>性别：</strong><span><?php echo $data['sex']; ?></span></p>
+	      <p><strong>出生日期：</strong><span><?php echo $data['birthdate']; ?></span></p>
+	      <p><strong>目标职位：</strong><span><?php echo $data['position']; ?></span></p>
+	      <p><strong>毕业院校：</strong><span><?php echo $data['graduated']; ?></span></p>
+	      <p><strong>学历：</strong><span><?php echo $data['education']; ?></span></p>
       </div> 
-
-    <a target="_parent" href="<?php echo url('register/editRegister'); ?>" class="layui-btn sever" >修改</a>
-        </div>
-
-	    <div class="layui-col-md9">
-        <p style="font-size:24px;">自我评价</p>
-        <p style="font-size:16px;margin-top:15px;"><?php echo $data['selfevaluation']; ?></p>
-        <p class="sever" style="font-size:24px;">工作经历</p>
-        <p style="font-size:16px;margin-top:15px;"><?php echo $data['experience']; ?></p>
- 
-
-        </div>
+      
+     
+      <strong>自我评价</strong>
+      <p style="margin-top:15px;"><?php echo $data['selfevaluation']; ?></p>
+      <strong>工作经历</strong>
+      <p style="margin-top:15px;"><?php echo $data['experience']; ?></p>
+       
+       
+       
+     <a target="_parent" href="<?php echo url('register/editRegister'); ?>" class="layui-btn sever" >修改</a>
+      
     </div>
     
     

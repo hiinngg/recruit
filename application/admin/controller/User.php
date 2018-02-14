@@ -18,7 +18,7 @@ class User extends Common
         '女'
     ];
 
-    public function UserList($page = "", $limit = "")
+    public function UserList($page = "", $limit = "",$tel="")
     {
         if ($this->request->isAjax()) {
             
@@ -29,9 +29,10 @@ class User extends Common
                 }
             }
             
-            $res = Db::view("re_user", "resumeid as rsid,userid as user_id,telphone,createtime as time")->view("re_resume", "*", "re_resume.resumeid=re_user.resumeid", 'LEFT')
+            $res = Db::view("re_user", "resumeid as rsid,userid as user_id,telphone,createtime as time ,eval ")->view("re_resume", "*", "re_resume.resumeid=re_user.resumeid", 'LEFT')
                 ->page($page, $limit)
                 ->order("time desc")
+                ->where("telphone",'like',"%".$tel."%")
                 ->select();
             
             return [
@@ -53,6 +54,8 @@ class User extends Common
         
         
     }
+    
+
     
 
     public function addeval($userid = "")
@@ -160,6 +163,43 @@ class User extends Common
         return $this->fetch();
     }
  
+    
+    public function evaluser($page="",$limit="",$userid=""){
+        if ($this->request->isAjax()) {
+        
+            if (! isset($count)) {
+                $this->count =  Db::name("user")->where("evaltime",'neq',"")->count();
+                if ($this->count == 0) {
+                    $this->assign("none", "none");
+                }
+            }
+        
+            if($userid!=""){
+                $res = Db::name("user")->where("evaltime",'neq',"")
+                ->page($page, $limit)
+                ->where("userid",$userid)
+                ->order("evaltime desc")
+                ->select();
+            }else{
+                   $res = Db::name("user")->where("evaltime",'neq',"")
+                ->page($page, $limit) 
+                ->order("evaltime desc")
+                ->select();
+            }
+        
+             
+        
+            return [
+                'code' => 0,
+                'msg' => "",
+                "count" => $this->count,
+                'data' => $res
+            ];
+        }
+        return $this->fetch();
+    }
+    
+    
 
     public function pouser($page="",$limit="",$userid="")
     {

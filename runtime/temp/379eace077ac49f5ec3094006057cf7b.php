@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\talent\editTalent.html";i:1516429007;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"D:\wamp3\wamp64\www\recruit\public/../application/companyadmin\view\talent\editTalent.html";i:1516432292;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,6 +109,8 @@
 			    			setTimeout(function(){
 			    				history.go(0)
 			    			},500)
+			    		}else{
+			    			layer.msg(data)
 			    		}
 			    	},
 			    	complete:function(){
